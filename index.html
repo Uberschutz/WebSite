@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="template/css/index.css">
     <title>Überschutz | Home</title>
   </head>
-  <body>
+  <body onload="ShowHideDiv('Settings')">
     <header id="home">
       <div class="hero">
         <div class="overlay"></div>
@@ -172,13 +172,13 @@
             <div class="smartnav">
               <ul>
                 <li><input name="optionA" type="radio" id="today" class="hide" value="a" onClick="setprice('Today')" CHECKED>
-                  <label class="checkA" for="today">Today</label></li>
+                  <label class="checkB" for="today">Today</label></li>
                 <li>  <input name="optionA" type="radio" id="weekly" class="hide" value="b" onClick="setprice('This week')">
-                  <label class="checkA" for="weekly">Weekly</label></li>
+                  <label class="checkB" for="weekly">Weekly</label></li>
                 <li><input name="optionA" type="radio" id="monthly" class="hide" value="c" onClick="setprice('This month')">
-                  <label class="checkA" for="monthly">Monthly</label></li>
+                  <label class="checkB" for="monthly">Monthly</label></li>
                 <li><input name="optionA" type="radio" id="annualy" class="hide" value="d" onClick="setprice('This year')">
-                  <label class="checkA" for="annualy">Annualy</label></li>
+                  <label class="checkB" for="annualy">Annualy</label></li>
               </ul>
             </div>
           </div>
