@@ -19,6 +19,14 @@ app.get('/', function(req, res) {
 	res.sendFile(path.join(__dirname+'/index.html'));
 });
 
+app.get('/worldstats', function (req, res) {
+	res.sendFile(path.join(__dirname + '/worldstat.html'));
+});
+
+app.get('/reports', function (req, res) {
+	res.sendFile(path.join(__dirname + '/reports.html'));
+});
+
 var port = 7171;
 const hostname = '127.0.0.1';
 var server = app.listen(port, function() {
