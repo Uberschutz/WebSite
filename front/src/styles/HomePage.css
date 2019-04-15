@@ -1,0 +1,9 @@
+.uber-color {
+    background-color: cornflowerblue;
+    color: white!important;
+}
+
+.responsive-image {
+    position: relative;
+    max-width: 100%;
+}
