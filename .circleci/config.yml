@@ -20,7 +20,7 @@ jobs:
       # documented at https://circleci.com/docs/2.0/circleci-images/
       # - image: circleci/mongo:3.4.4
 
-    working_directory: ~/Front_WebSite/front
+    working_directory: ~/Front_WebSite/
 
     steps:
       - checkout
@@ -40,4 +40,4 @@ jobs:
           key: v1-dependencies-{{ checksum "package.json" }}
 
       # run tests!
-      - run: yarn test --forceExit --watchAll --passWithNoTests --rootDir "./src"
+      - run: cd front && yarn test --forceExit --watchAll --passWithNoTests
