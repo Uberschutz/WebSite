@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
-import './styles/bootstrap.css';
+import '../styles/bootstrap.css';
 
 import Header from "./Header";
-import './styles/HomePage.css';
-import canvas from './assets/canvas.png';
+import Footer from "./Footer";
+import '../styles/HomePage.css';
+import Contact from "./Contact";
+import canvas from '../assets/canvas.png';
 
 class HomePage extends Component {
     render() {
@@ -11,6 +13,8 @@ class HomePage extends Component {
             <div>
                 <Header/>
                 <img src={canvas} alt="canvas" className="responsive-image"/>
+                <Contact/>
+                <Footer/>
             </div>
         )
     }

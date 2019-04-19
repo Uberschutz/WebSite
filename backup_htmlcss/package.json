@@ -1,0 +1,24 @@
+{
+  "name": "front_website",
+  "version": "1.0.0",
+  "description": "______________________________ ReadMe in progress ______________________________",
+  "main": "App.js",
+  "dependencies": {
+    "express": "^4.16.4",
+    "express-list-endpoints": "^4.0.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Uberschutz/Front_WebSite.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Uberschutz/Front_WebSite/issues"
+  },
+  "homepage": "https://github.com/Uberschutz/Front_WebSite#readme"
+}

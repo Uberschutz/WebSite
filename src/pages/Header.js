@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import './styles/bootstrap.css';
-import './styles/HomePage.css';
+import '../styles/bootstrap.css';
+import '../styles/HomePage.css';
 
 import {Navbar, NavbarBrand, NavbarToggler, Nav, Collapse, NavItem, NavLink} from 'reactstrap';
 
