@@ -11,10 +11,10 @@ class HomePage extends Component {
     render() {
         return (
             <div>
-                <Header/>
+                {/*<Header/>*/}
                 <img src={canvas} alt="canvas" className="responsive-image"/>
                 <Contact/>
-                <Footer/>
+                {/*<Footer/>*/}
             </div>
         )
     }
