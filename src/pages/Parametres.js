@@ -6,6 +6,7 @@ class Parametres extends Component {
         return (
             <div>
                 <span>Hello parametres</span>
+                <button>KEK</button>
             </div>
         )
     }

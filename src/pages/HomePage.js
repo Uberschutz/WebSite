@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import '../styles/bootstrap.css';
-
 import '../styles/HomePage.css';
+
 import canvas from '../assets/canvas.png';
 
 class HomePage extends Component {

@@ -18,10 +18,10 @@ class App extends Component {
           <Header/>
           <Switch>
             <Route path={'/'} exact strict component={HomePage}/>
-            <Route path={'/Connexion'} exact strict component={Connexion}/>
-            <Route path={'/Contact+FAQ'} exact strict component={Contact}/>
-            <Route path={'/Profil'} exact strict component={Profil}/>
-            <Route path={'/Parametres'} exact strict component={Parametres}/>
+            <Route path={'/Connexion'} component={Connexion}/>
+            <Route path={'/Contact+FAQ'} component={Contact}/>
+            <Route path={'/Profil'} component={Profil}/>
+            <Route path={'/Parametres'} component={Parametres}/>
           </Switch>
           <Footer/>
           </Router>

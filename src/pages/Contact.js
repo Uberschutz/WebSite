@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import '../styles/bootstrap.css';
-import '../styles/HomePage.css';
+import '../styles/Contact.css';
 
 class Contact extends Component {
     render() {

@@ -36,13 +36,13 @@ class Header extends Component {
                                     <NavLink className="nav-link uber-color" href="/Connexion">Connexion</NavLink>
                                 </NavItem>
                                 <NavItem className="nav-item">
-                                    <NavLink className="nav-link uber-color" href="/Contact + FAQ">Contact + FAQ</NavLink>
+                                    <NavLink className="nav-link uber-color" href="/Contact+FAQ">Contact + FAQ</NavLink>
                                 </NavItem>
                                 <NavItem className="nav-item">
                                     <NavLink className="nav-link uber-color" href="/Profil">Profil</NavLink>
                                 </NavItem>
                                 <NavItem className="nav-item">
-                                    <NavLink className="nav-link uber-color" href="/Paramètres">Paramètres</NavLink>
+                                    <NavLink className="nav-link uber-color" href="/Parametres">Paramètres</NavLink>
                                 </NavItem>
                             </React.Fragment>
                         </Nav>
