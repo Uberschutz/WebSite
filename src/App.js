@@ -1,11 +1,14 @@
 import React, { Component } from 'react';
-// import { Switch, Route, withRouter } from "react-router-dom";
-import { BrowserRouter as Router, Route, Link, Switch, withRouter } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import './styles/App.css';
 
 import HomePage from "./pages/HomePage";
 import Header from "./pages/Header";
 import Footer from "./pages/Footer";
+import Connexion from "./pages/Connexion";
+import Contact from "./pages/Contact";
+import Profil from "./pages/Profil";
+import Parametres from "./pages/Parametres";
 
 class App extends Component {
   render() {
@@ -15,7 +18,10 @@ class App extends Component {
           <Header/>
           <Switch>
             <Route path={'/'} exact strict component={HomePage}/>
-            {/*<HomePage/>*/}
+            <Route path={'/Connexion'} exact strict component={Connexion}/>
+            <Route path={'/Contact+FAQ'} exact strict component={Contact}/>
+            <Route path={'/Profil'} exact strict component={Profil}/>
+            <Route path={'/Parametres'} exact strict component={Parametres}/>
           </Switch>
           <Footer/>
           </Router>

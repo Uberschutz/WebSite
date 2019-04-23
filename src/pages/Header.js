@@ -30,7 +30,7 @@ class Header extends Component {
                         <Nav className="ml-auto navbar  navbar-expand-md" navbar>
                             <React.Fragment>
                                 <NavItem className="nav-item">
-                                    <NavLink className="nav-link uber-color" href="/Home">Menu</NavLink>
+                                    <NavLink className="nav-link uber-color" href="/">Menu</NavLink>
                                 </NavItem>
                                 <NavItem className="nav-item">
                                     <NavLink className="nav-link uber-color" href="/Connexion">Connexion</NavLink>
