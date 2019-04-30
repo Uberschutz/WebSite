@@ -8,6 +8,27 @@
     max-width: 100%;
 }
 
+.form-align {
+    align-items: center!important;
+    align-content: center;
+    justify-content: center;
+    justify-items: center;
+    text-align: center;
+}
+
 .button-footer {
     margin: 15px;
+}
+
+.background_1 {
+    background-color: black;
+    color: white;
+}
+
+.italic-txt {
+    font-style: italic;
+}
+
+.h7-font {
+    font-weight: bold;
 }
