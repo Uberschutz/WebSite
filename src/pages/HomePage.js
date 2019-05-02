@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import '../styles/bootstrap.css';
 import '../styles/HomePage.css';
 
-import canvas from '../assets/canvas.png';
+import canvas from '../assets/canvas2.png';
 import whois from '../assets/CacherPseudo.jpg';
 
 class HomePage extends Component {
@@ -10,23 +10,26 @@ class HomePage extends Component {
         return (
             <div>
                 <img src={canvas} alt="canvas" className="responsive-image"/>
-                <div className="row">
-                    <div className="col-sm">
+                <span className="text-span">
+                    Internet :
+                    <br/> êtes-vous conscients des dangers <br/>que rencontrent vos enfants ?
+                </span>
+                <div className="row responsive-image">
+                    <div className="img-intro">
                         <img src={whois} alt="whois"/>
                     </div>
-                    <div className="col-sm form-align">
-                        <h7 className="h7-font">
+                    <div className="txt-intro">
+                        <h3 className="h7-font">
                             Notre solution :
-                        </h7>
-                        <br/>
-                        <h9>
+                        </h3>
+                        <h6 className="h6-font">
                             Pour une navigation saine, utilisez Überschutz.
+                            <br/>
                             Ce logiciel non bloquant vous préviendra lorsque votre enfant se met en danger sur Internet.
-                        </h9>
-                        <br/>
-                        <h11 className="italic-txt">
+                        </h6>
+                        <h8 className="italic-txt">
                             Suicide, drogue, anorexie, harcèlement, contenus pornographiques ... Vous n'imaginez pas à quoi il est confronté.
-                        </h11>
+                        </h8>
                     </div>
                 </div>
                 <div className="background_1">
