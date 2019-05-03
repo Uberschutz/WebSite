@@ -17,8 +17,9 @@ class HomePage extends Component {
                     Internet :
                     <br/> êtes-vous conscients des dangers <br/>que rencontrent vos enfants ?
                 </span>
-                <div className="row responsive-image">
+                <div className="row responsive-image Home">
                     <div className="img-intro">
+                        <br/><br/>
                         <img src={whois} alt="whois"/>
                     </div>
                     <div className="txt-intro">
@@ -36,39 +37,39 @@ class HomePage extends Component {
                     </div>
                 </div>
                 <div className="Home responsive-image">
-                    <br/>
-                    <h7 className="rappel">
+                    <br/><br/>
+                    <h5 className="rappel-info h7-font">
                         En quelques mots :
-                    </h7>
-                    <br/>
-                    <br/>
+                    </h5>
+                    <br/><br/>
                     <div className="row responsive-image">
                         <div className="col">
                             <img src={logiciel} alt="logiciel"/>
-                            <br/>
+                            <br/><br/>
                             <span className="rappel-info">
                                 Un logiciel
                             </span>
                         </div>
                         <div className="col responsive-image">
                             <img src={navigation} alt="navigation"/>
-                            <br/>
+                            <br/> <br/>
                             <span className="rappel-info">
                                 Non bloquant
                             </span>
                         </div>
                         <div className="col responsive-image">
                             <img src={bloquant} alt="bloquant"/>
-                            <br/>
+                            <br/> <br/>
                             <span className="rappel-info">
                                 Non intrusif
                             </span>
                         </div>
                     </div>
                     <br/>
-                    <h9>
+                    <h7 className="rappel-info">
                         Pour protéger votre enfant et discuter avec lui lorsqu'une situation compliquée se présente.
-                    </h9>
+                    </h7>
+                    <br/><br/><br/>
                 </div>
             </div>
         )

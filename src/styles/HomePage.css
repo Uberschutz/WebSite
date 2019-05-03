@@ -1,6 +1,9 @@
 .Home {
     text-align: center;
     align-items: center;
+    align-content: center;
+    justify-items: center;
+    justify-content: center;
 }
 
 .uber-color {
@@ -50,11 +53,7 @@
 .txt-intro {
     margin-top: 7%;
     margin-left: 7%;
-}
-
-.rappel {
-    font-size: 150%;
-    font-weight: bold;
+    text-align: left!important;
 }
 
 .rappel-info {

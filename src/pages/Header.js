@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import '../styles/bootstrap.css';
 import '../styles/HomePage.css';
 
+import logo from '../assets/Uberschutz-logo.png';
+
 import {Navbar, NavbarBrand, NavbarToggler, Nav, Collapse, NavItem, NavLink} from 'reactstrap';
 
 class Header extends Component {
@@ -24,7 +26,8 @@ class Header extends Component {
         return (
             <div>
                 <Navbar className="navbar navbar-expand-md uber-color" light expand="md">
-                    <NavbarBrand className="navbar-brand uber-color" href="/">Überschutz</NavbarBrand>
+                    <img src={logo} alt="logo"/>
+                    <NavbarBrand className="navbar-brand uber-color button-footer" href="/"> Überschutz</NavbarBrand>
                     <NavbarToggler className="navbar-toggler" onClick={this.toggle}/>
                     <Collapse className="collapse navbar-collapse" isOpen={this.state.isOpen} navbar>
                         <Nav className="ml-auto navbar  navbar-expand-md" navbar>
