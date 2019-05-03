@@ -1,3 +1,8 @@
+.Home {
+    text-align: center;
+    align-items: center;
+}
+
 .uber-color {
     background-color: cornflowerblue;
     color: white!important;
@@ -45,4 +50,13 @@
 .txt-intro {
     margin-top: 7%;
     margin-left: 7%;
+}
+
+.rappel {
+    font-size: 150%;
+    font-weight: bold;
+}
+
+.rappel-info {
+    font-size: 150%;
 }

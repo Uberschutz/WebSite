@@ -4,6 +4,9 @@ import '../styles/HomePage.css';
 
 import canvas from '../assets/canvas2.png';
 import whois from '../assets/CacherPseudo.jpg';
+import logiciel from '../assets/logiciel.png';
+import navigation from '../assets/navigation.png';
+import bloquant from '../assets/bloquant.png';
 
 class HomePage extends Component {
     render() {
@@ -32,22 +35,37 @@ class HomePage extends Component {
                         </h8>
                     </div>
                 </div>
-                <div className="background_1">
-                    <h7>
+                <div className="Home responsive-image">
+                    <br/>
+                    <h7 className="rappel">
                         En quelques mots :
                     </h7>
-                    <img/>
-                    <span>
-                        Un logiciel
-                    </span>
-                    <img/>
-                    <span>
-                        Non bloquant
-                    </span>
-                    <img/>
-                    <span>
-                        Non intrusif
-                    </span>
+                    <br/>
+                    <br/>
+                    <div className="row responsive-image">
+                        <div className="col">
+                            <img src={logiciel} alt="logiciel"/>
+                            <br/>
+                            <span className="rappel-info">
+                                Un logiciel
+                            </span>
+                        </div>
+                        <div className="col responsive-image">
+                            <img src={navigation} alt="navigation"/>
+                            <br/>
+                            <span className="rappel-info">
+                                Non bloquant
+                            </span>
+                        </div>
+                        <div className="col responsive-image">
+                            <img src={bloquant} alt="bloquant"/>
+                            <br/>
+                            <span className="rappel-info">
+                                Non intrusif
+                            </span>
+                        </div>
+                    </div>
+                    <br/>
                     <h9>
                         Pour protéger votre enfant et discuter avec lui lorsqu'une situation compliquée se présente.
                     </h9>
