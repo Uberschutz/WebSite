@@ -1,0 +1,24 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders without crashing 1`] = `
+<div>
+  <div
+    class="uber-color2 form-align"
+  >
+    <button
+      class="btn btn-light button-footer"
+      type="button"
+    >
+      Contact
+    </button>
+    <br />
+    <span>
+      © 2019
+    </span>
+    <br />
+    <span>
+      Created by Marianne LEVEE
+    </span>
+  </div>
+</div>
+`;

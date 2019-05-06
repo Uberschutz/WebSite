@@ -1,0 +1,88 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders without crashing 1`] = `
+<div>
+  <div>
+    <nav
+      class="navbar navbar-expand-md uber-color navbar navbar-expand-md navbar-light"
+    >
+      <img
+        alt="logo"
+        src="Uberschutz-logo.png"
+      />
+      <a
+        class="navbar-brand uber-color button-footer navbar-brand"
+        href="/"
+      >
+         Überschutz
+      </a>
+      <button
+        class="navbar-toggler navbar-toggler"
+        type="button"
+      >
+        <span
+          class="navbar-toggler-icon"
+        />
+      </button>
+      <div
+        class="collapse navbar-collapse collapse navbar-collapse"
+      >
+        <ul
+          class="ml-auto navbar  navbar-expand-md navbar-nav"
+        >
+          <li
+            class="nav-item nav-item"
+          >
+            <a
+              class="nav-link uber-color nav-link"
+              href="/"
+            >
+              Menu
+            </a>
+          </li>
+          <li
+            class="nav-item nav-item"
+          >
+            <a
+              class="nav-link uber-color nav-link"
+              href="/Connexion"
+            >
+              Connexion
+            </a>
+          </li>
+          <li
+            class="nav-item nav-item"
+          >
+            <a
+              class="nav-link uber-color nav-link"
+              href="/Contact+FAQ"
+            >
+              Contact + FAQ
+            </a>
+          </li>
+          <li
+            class="nav-item nav-item"
+          >
+            <a
+              class="nav-link uber-color nav-link"
+              href="/Profil"
+            >
+              Profil
+            </a>
+          </li>
+          <li
+            class="nav-item nav-item"
+          >
+            <a
+              class="nav-link uber-color nav-link"
+              href="/Parametres"
+            >
+              Paramètres
+            </a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  </div>
+</div>
+`;
