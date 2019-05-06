@@ -5,6 +5,12 @@
 version: 2
 jobs:
   build:
+    branches:
+      only:
+        - master
+        - develop
+        - frontend
+        - backend
     docker:
       # specify the version you desire here
       - image: circleci/node:7.10
@@ -14,7 +20,7 @@ jobs:
       # documented at https://circleci.com/docs/2.0/circleci-images/
       # - image: circleci/mongo:3.4.4
 
-    working_directory: ~/Front_WebSite
+    working_directory: ~/Front_WebSite/
 
     steps:
       - checkout
@@ -26,7 +32,7 @@ jobs:
             # fallback to using the latest cache if no exact match is found
             - v1-dependencies-
 
-      - run: yarn install
+      - run: npm install
 
       - save_cache:
           paths:
@@ -34,4 +40,4 @@ jobs:
           key: v1-dependencies-{{ checksum "package.json" }}
 
       # run tests!
-      - run: yarn test
+      - run: yarn test --forceExit --watchAll --passWithNoTests --all

@@ -1,0 +1,61 @@
+.Home {
+    text-align: center;
+    align-items: center;
+    align-content: center;
+    justify-items: center;
+    justify-content: center;
+}
+
+.uber-color {
+    background-color: cornflowerblue;
+    color: white!important;
+}
+
+.uber-color2 {
+    background-color: black;
+    color: white!important;
+}
+
+.responsive-image {
+    position: relative;
+    max-width: 100%;
+}
+
+.text-span {
+    position: absolute;
+    font-size: 17pt;
+    top: 300px;
+    left: 130px;
+    color: white;
+}
+
+.button-footer {
+    margin: 15px;
+}
+
+.background_1 {
+    background-color: black;
+    color: white;
+}
+
+.italic-txt {
+    font-style: italic;
+}
+
+.h7-font {
+    font-weight: bold;
+}
+
+.h6-font {
+    font-size: 120%;
+}
+
+.txt-intro {
+    margin-top: 7%;
+    margin-left: 7%;
+    text-align: left!important;
+}
+
+.rappel-info {
+    font-size: 150%;
+}

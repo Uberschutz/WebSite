@@ -1,24 +1,27 @@
 {
-  "name": "front_website",
-  "version": "1.0.0",
-  "description": "______________________________ ReadMe in progress ______________________________",
-  "main": "App.js",
+  "name": "front",
+  "version": "0.1.0",
+  "private": true,
   "dependencies": {
-    "express": "^4.16.4",
-    "express-list-endpoints": "^4.0.0"
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
+    "react-router-dom": "^5.0.0",
+    "react-scripts": "2.1.8",
+    "reactstrap": "^8.0.0"
   },
-  "devDependencies": {},
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/Uberschutz/Front_WebSite.git"
+  "eslintConfig": {
+    "extends": "react-app"
   },
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/Uberschutz/Front_WebSite/issues"
-  },
-  "homepage": "https://github.com/Uberschutz/Front_WebSite#readme"
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ]
 }
