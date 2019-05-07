@@ -13,7 +13,7 @@ class Footer extends Component {
                 </span>
                 <br/>
                 <span>
-                    Created by Marianne LEVEE
+                    Created by Marianne LEVEE & Thomas DEROTE-PARCELLIER
                 </span>
             </div>
         )
