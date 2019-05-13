@@ -8,14 +8,41 @@ import logiciel from '../assets/logiciel.png';
 import navigation from '../assets/navigation.png';
 import bloquant from '../assets/bloquant.png';
 
+const content = require('../assets/text');
+
 class HomePage extends Component {
-    render() {
+	constructor(props) {
+		super(props);
+
+		this.state = {
+			lang: 'fr'
+		};
+	}
+
+	componentDidMount() {
+		this.setState({
+			lang: this.props.lang
+		})
+	}
+
+	componentDidUpdate(prevProps, prevState, snapshot) {
+		console.log(this.props.lang);
+	}
+
+	displayContent(content) {
+		return(<div dangerouslySetInnerHTML={ {__html: content} }/>)
+	}
+
+	render() {
         return (
             <div>
                 <img src={canvas} alt="canvas" className="responsive-image"/>
                 <span className="text-span">
-                    Internet :
-                    <br/> êtes-vous conscients des dangers <br/>que rencontrent vos enfants ?
+	                {this.displayContent(content.filter(obj => obj.lang === this.props.lang)[0].pages.home.header)}
+	                {/*<div dangerouslySetInnerHTML={ {__html: content.filter(obj => obj.lang === 'fr')[0].pages.home.header} }/>*/}
+	                {/*{content.filter(obj => obj.lang === 'fr')[0].pages.home.header}*/}
+                    {/*Internet :*/}
+                    {/*<br/> êtes-vous conscients des dangers <br/>que rencontrent vos enfants ?*/}
                 </span>
                 <div className="row responsive-image Home">
                     <div className="img-intro">
