@@ -50,17 +50,18 @@ class HomePage extends Component {
                         <img src={whois} alt="whois"/>
                     </div>
                     <div className="txt-intro">
-                        <h3 className="h7-font">
-                            Notre solution :
-                        </h3>
-                        <h6 className="h6-font">
-                            Pour une navigation saine, utilisez Überschutz.
-                            <br/>
-                            Ce logiciel non bloquant vous préviendra lorsque votre enfant se met en danger sur Internet.
-                        </h6>
-                        <h8 className="italic-txt">
-                            Suicide, drogue, anorexie, harcèlement, contenus pornographiques ... Vous n'imaginez pas à quoi il est confronté.
-                        </h8>
+	                    {this.displayContent(content.filter(obj => obj.lang === this.props.lang)[0].pages.home.desc)}
+                        {/*<h3 className="h7-font">*/}
+                        {/*    Notre solution :*/}
+                        {/*</h3>*/}
+                        {/*<h6 className="h6-font">*/}
+                        {/*    Pour une navigation saine, utilisez Überschutz.*/}
+                        {/*    <br/>*/}
+                        {/*    Ce logiciel non bloquant vous préviendra lorsque votre enfant se met en danger sur Internet.*/}
+                        {/*</h6>*/}
+                        {/*<h8 className="italic-txt">*/}
+                        {/*    Suicide, drogue, anorexie, harcèlement, contenus pornographiques ... Vous n'imaginez pas à quoi il est confronté.*/}
+                        {/*</h8>*/}
                     </div>
                 </div>
                 <div className="Home responsive-image">

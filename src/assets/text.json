@@ -3,7 +3,8 @@
     "lang": "fr",
     "pages": {
       "home": {
-        "header": "Internet :<br/> êtes-vous conscients des dangers<br/>que rencontrent vos enfants ?"
+        "header": "Internet :<br/> êtes-vous conscients des dangers<br/>que rencontrent vos enfants ?",
+        "desc": "<h3 className=\"h7-font\">Notre solution :</h3><h6 className=\"h6-font\">Pour une navigation saine, utilisez Überschutz.<br/>Ce logiciel non bloquant vous préviendra lorsque votre enfant se met en danger sur Internet.</h6><h8 className=\"italic-txt\">Suicide, drogue, anorexie, harcèlement, contenus pornographiques ... Vous n'imaginez pas à quoi il est confronté.</h8>"
       }
     }
   },
@@ -11,7 +12,8 @@
     "lang": "en",
     "pages": {
       "home": {
-        "header": "Internet :<br/> are you aware of dangers<br/>your childrens encounter ?"
+        "header": "Internet :<br/> are you aware of dangers<br/>your childrens encounter ?",
+        "desc": "<h3 className=\"h7-font\">Our solution :</h3><h6 className=\"h6-font\">For a healthy navigation, use Überschutz.<br/>This non-blocking software will warn you when your child is at risk on the Internet.</h6><h8 className=\"italic-txt\">Suicide, drugs, anorexia, harassment, pornographic content ... You can not imagine what he's facing.</h8>"
       }
     }
   }
