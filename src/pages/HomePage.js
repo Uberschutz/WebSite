@@ -30,19 +30,19 @@ class HomePage extends Component {
 	}
 
 	displayContent(content) {
-		return(<div dangerouslySetInnerHTML={ {__html: content} }/>)
+		// return(<div dangerouslySetInnerHTML={ {__html: content} }/>)
+		return(content)
 	}
 
 	render() {
+		let i = 0;
         return (
             <div>
                 <img src={canvas} alt="canvas" className="responsive-image"/>
                 <span className="text-span">
-	                {this.displayContent(content.filter(obj => obj.lang === this.props.lang)[0].pages.home.header)}
-	                {/*<div dangerouslySetInnerHTML={ {__html: content.filter(obj => obj.lang === 'fr')[0].pages.home.header} }/>*/}
-	                {/*{content.filter(obj => obj.lang === 'fr')[0].pages.home.header}*/}
-                    {/*Internet :*/}
-                    {/*<br/> êtes-vous conscients des dangers <br/>que rencontrent vos enfants ?*/}
+	                {this.displayContent(content.filter(obj => obj.lang === this.props.lang)[0].pages.home[i++])}
+                    <br/> {this.displayContent(content.filter(obj => obj.lang === this.props.lang)[0].pages.home[i++])}
+                    <br/> {this.displayContent(content.filter(obj => obj.lang === this.props.lang)[0].pages.home[i++])}
                 </span>
                 <div className="row responsive-image Home">
                     <div className="img-intro">
@@ -50,24 +50,23 @@ class HomePage extends Component {
                         <img src={whois} alt="whois"/>
                     </div>
                     <div className="txt-intro">
-	                    {this.displayContent(content.filter(obj => obj.lang === this.props.lang)[0].pages.home.desc)}
-                        {/*<h3 className="h7-font">*/}
-                        {/*    Notre solution :*/}
-                        {/*</h3>*/}
-                        {/*<h6 className="h6-font">*/}
-                        {/*    Pour une navigation saine, utilisez Überschutz.*/}
-                        {/*    <br/>*/}
-                        {/*    Ce logiciel non bloquant vous préviendra lorsque votre enfant se met en danger sur Internet.*/}
-                        {/*</h6>*/}
-                        {/*<h8 className="italic-txt">*/}
-                        {/*    Suicide, drogue, anorexie, harcèlement, contenus pornographiques ... Vous n'imaginez pas à quoi il est confronté.*/}
-                        {/*</h8>*/}
+                        <h3 className="h7-font">
+	                        {this.displayContent(content.filter(obj => obj.lang === this.props.lang)[0].pages.home[i++])}
+                        </h3>
+                        <h6 className="h6-font">
+	                        {this.displayContent(content.filter(obj => obj.lang === this.props.lang)[0].pages.home[i++])}
+                            <br/>
+	                        {this.displayContent(content.filter(obj => obj.lang === this.props.lang)[0].pages.home[i++])}
+                        </h6>
+                        <h8 className="italic-txt">
+	                        {this.displayContent(content.filter(obj => obj.lang === this.props.lang)[0].pages.home[i++])}
+                        </h8>
                     </div>
                 </div>
                 <div className="Home responsive-image">
                     <br/><br/>
                     <h5 className="rappel-info h7-font">
-                        En quelques mots :
+	                    {this.displayContent(content.filter(obj => obj.lang === this.props.lang)[0].pages.home[i++])}
                     </h5>
                     <br/><br/>
                     <div className="row responsive-image">
@@ -75,27 +74,27 @@ class HomePage extends Component {
                             <img src={logiciel} alt="logiciel"/>
                             <br/><br/>
                             <span className="rappel-info">
-                                Un logiciel
+			                    {this.displayContent(content.filter(obj => obj.lang === this.props.lang)[0].pages.home[i++])}
                             </span>
                         </div>
                         <div className="col responsive-image">
                             <img src={navigation} alt="navigation"/>
-                            <br/> <br/>
+                            <br/><br/>
                             <span className="rappel-info">
-                                Non bloquant
-                            </span>
+        	                    {this.displayContent(content.filter(obj => obj.lang === this.props.lang)[0].pages.home[i++])}
+		                    </span>
                         </div>
                         <div className="col responsive-image">
                             <img src={bloquant} alt="bloquant"/>
                             <br/> <br/>
                             <span className="rappel-info">
-                                Non intrusif
-                            </span>
+        	                    {this.displayContent(content.filter(obj => obj.lang === this.props.lang)[0].pages.home[i++])}
+		                    </span>
                         </div>
                     </div>
                     <br/>
                     <h7 className="rappel-info">
-                        Pour protéger votre enfant et discuter avec lui lorsqu'une situation compliquée se présente.
+	                    {this.displayContent(content.filter(obj => obj.lang === this.props.lang)[0].pages.home[i])}
                     </h7>
                     <br/><br/><br/>
                 </div>

@@ -2,19 +2,22 @@
   {
     "lang": "fr",
     "pages": {
-      "home": {
-        "header": "Internet :<br/> êtes-vous conscients des dangers<br/>que rencontrent vos enfants ?",
-        "desc": "<h3 className=\"h7-font\">Notre solution :</h3><h6 className=\"h6-font\">Pour une navigation saine, utilisez Überschutz.<br/>Ce logiciel non bloquant vous préviendra lorsque votre enfant se met en danger sur Internet.</h6><h8 className=\"italic-txt\">Suicide, drogue, anorexie, harcèlement, contenus pornographiques ... Vous n'imaginez pas à quoi il est confronté.</h8>"
-      }
+      "home": [
+        "Internet :", "êtes-vous conscients des dangers", "que rencontrent vos enfants ?",
+        "Notre solution :", "Pour une navigation saine, utilisez Überschutz.", "Ce logiciel non bloquant vous préviendra lorsque votre enfant se met en danger sur Internet.", "Suicide, drogue, anorexie, harcèlement, contenus pornographiques ... Vous n'imaginez pas à quoi il est confronté.",
+        "En quelques mots :", "Un logiciel", "Non bloquant", "Non intrusif", "Pour protéger votre enfant et discuter avec lui lorsqu'une situation compliquée se présente.",
+        "Pour protéger votre enfant et discuter avec lui lorsqu'une situation compliquée se présente."
+      ]
     }
   },
   {
     "lang": "en",
     "pages": {
-      "home": {
-        "header": "Internet :<br/> are you aware of dangers<br/>your childrens encounter ?",
-        "desc": "<h3 className=\"h7-font\">Our solution :</h3><h6 className=\"h6-font\">For a healthy navigation, use Überschutz.<br/>This non-blocking software will warn you when your child is at risk on the Internet.</h6><h8 className=\"italic-txt\">Suicide, drugs, anorexia, harassment, pornographic content ... You can not imagine what he's facing.</h8>"
-      }
+      "home": [
+        "Internet :", "are you aware of dangers", "your childrens encounter ?",
+        "Our solution :", "For a healthy navigation, use Überschutz.", "This non-blocking software will warn you when your child is at risk on the Internet.", "Suicide, drugs, anorexia, harassment, pornographic content ... You can not imagine what he's facing.",
+        "In a few words :", "A Software", "Non blocking", "Non intrusive", "To protect your child and discuss with him or her when a complicated situation arises."
+      ]
     }
   }
 ]
