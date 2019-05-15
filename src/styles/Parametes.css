@@ -1,0 +1,11 @@
+.card {
+    text-align: center;
+    align-items: center;
+    align-content: center;
+    justify-items: center;
+    justify-content: center;
+}
+
+.button {
+    width: 50%;
+}
