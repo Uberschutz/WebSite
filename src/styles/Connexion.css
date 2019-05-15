@@ -18,3 +18,8 @@
     width: 50%;
     margin-left: 25%;
 }
+
+.responsive-image {
+    position: relative;
+    max-width: 100%;
+}

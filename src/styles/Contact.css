@@ -28,3 +28,8 @@
 .title-bold {
     font-weight: bold;
 }
+
+.responsive-image {
+    position: relative;
+    max-width: 100%;
+}
