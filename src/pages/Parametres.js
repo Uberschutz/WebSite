@@ -16,7 +16,9 @@ class Parametres extends Component {
 			showModal: false,
 			actual: {},
 			name: '',
-			age: ''
+			age: '',
+			id: null,
+			state: 'Create'
 		};
 		this.toggleModal = this.toggleModal.bind(this);
 	}
@@ -24,7 +26,7 @@ class Parametres extends Component {
 	componentWillMount() {
 		const newChild = [{name: 'Thomas', age: '23'}, {name: 'Marianne', age: '21'}];
 
-		this.setState({childrens: newChild})
+		this.setState({childrens: newChild});
 		console.log('Here call to the user account API to load children'); // or in componentDidMount
 	}
 
@@ -40,19 +42,38 @@ class Parametres extends Component {
 	}
 
 	createChildren() {
-		console.log('Here call to the user account API', this.state.name, this.state.age);
+		if (this.state.state === 'Create') {
+			console.log('Here call to the user account API', this.state.name, this.state.age);
+			const newChild = {name: this.state.name, age: this.state.age};
+			let list = this.state.childrens;
+			list.push(newChild);
+			this.setState({childrens: list});
+			this.toggleModal();
+		} else {
+			console.log('here', this.state.id);
+			let childrens = this.state.childrens;
+			childrens[this.state.id] = {name: this.state.name, age: this.state.age};
+			this.setState({childrens: childrens});
+			this.toggleModal();
+		}
 	}
 
 	saveChildren() {
 		console.log('Here call to the user account API');
 	}
 
-	editChildren() {
-		console.log('Here call to the user account API');
+	editChildren(children) {
+		console.log('Here call to the user account API to edit children', children);
+		this.setState({name: children.name, age: children.age, state: 'Save', id: this.state.childrens.indexOf(children)});
+		this.toggleModal();
 	}
 
-	deleteChildren() {
-		console.log('Here call to the user account API');
+	deleteChildren(children) {
+		console.log('Here call to the user account API to delete children', children);
+		let list = this.state.childrens;
+		const idx = list.indexOf(children);
+		list.splice(idx, 1);
+		this.setState({childrens: list});
 	}
 
 	setFirstName(name) {
@@ -69,9 +90,10 @@ class Parametres extends Component {
         return (
             <div className="card">
                 {/*<button onClick={this.toggleModal}>Ajouter un enfant</button>*/}
-	            <Modal isOpen={this.state.showModal} toggle={this.toggleModal}>
+	            <Modal isOpen={this.state.showModal} toggle={this.toggleModal} onClosed={() => this.setState({state: 'Created'})}>
 					<button onClick={this.toggleModal}>Fermer</button>
-					<form onSubmit={() => this.createChildren()}>
+					{/*<form onSubmit={() => this.createChildren()}>*/}
+					<form>
 						<label>
 							Name<br/>
 							<input type="text" value={this.state.name} onChange={(name) => this.setFirstName(name.target.value)}/>
@@ -82,19 +104,20 @@ class Parametres extends Component {
 							<input type="text" value={this.state.age} onChange={(age) => this.setAge(age.target.value)}/>
 						</label>
 						<br/><br/>
-						<input type="submit" value="Submit" />
+						<Button onClick={() => this.createChildren()}>{this.state.state}</Button>
+						{/*<input type="submit" value="Submit" />*/}
 					</form>
 	            </Modal>
 				{
-					this.state.childrens.map(child => {
-						console.log(child);
+					this.state.childrens.map((child, index) => {
+						// console.log(child);
 						return (
-							<Card body inverse style={{ backgroundColor: '#333', borderColor: '#333', margin: 10, width: '50%', alignItems: 'center', alignSelf: 'center' }}>
+							<Card body inverse key={index} style={{ backgroundColor: '#333', borderColor: '#333', margin: 10, width: '50%', alignItems: 'center', alignSelf: 'center' }}>
 								<CardTitle>{child.name}</CardTitle>
 								<CardText>{child.age}</CardText>
 								<CardFooter>
-									<Button onClick={(child) => this.deleteChildren(child)}>Delete</Button>
-									<Button onClick={(child) => this.editChildren(child)}>Edit</Button>
+									<Button onClick={() => this.deleteChildren(child)}>Delete</Button>
+									<Button onClick={() => this.editChildren(child)}>Edit</Button>
 								</CardFooter>
 							</Card>
 						);
