@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-// import Modal from 'react-modal';
 import '../styles/bootstrap.css';
+import  '../styles/Parameters.css';
+
 import { Modal, Button } from 'reactstrap'
 import Card from "reactstrap/es/Card";
 import CardText from "reactstrap/es/CardText";
@@ -112,7 +113,7 @@ class Parametres extends Component {
 					this.state.childrens.map((child, index) => {
 						// console.log(child);
 						return (
-							<Card body inverse key={index} style={{ backgroundColor: '#333', borderColor: '#333', margin: 10, width: '50%', alignItems: 'center', alignSelf: 'center' }}>
+							<Card body inverse key={index} className="child-card">
 								<CardTitle>{child.name}</CardTitle>
 								<CardText>{child.age}</CardText>
 								<CardFooter>
