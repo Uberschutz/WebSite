@@ -94,16 +94,16 @@ class Faq extends Component {
                     </h6>
                     <h7>
                         Überschutz propose plusieurs manières de protéger son enfant. <br/>
-                        Cela va de bloquer complètement Internet, jusqu'à bloquer uniquement certains sites tout en passant par d'autres moyens comment la restriction de sites ou la prévention.
+                        Cela va de bloquer complètement Internet, jusqu'à bloquer uniquement certains sites tout en passant par d'autres moyens comme la restriction de sites ou la prévention.
                     </h7> <br/><br/>
                     <h6 className="question">
-                        • En quoi Überschutz est différent d'un contrôl parental ?
+                        • En quoi Überschutz est différent d'un contrôle parental ?
                     </h6>
                     <h7>
                         (même réponse qu'en bas ?)
                     </h7> <br/><br/>
                     <h6 className="question">
-                        • En quoi Überschutz protège mieux qu'un contrôl parental ?
+                        • En quoi Überschutz protège mieux qu'un contrôle parental ?
                     </h6>
                     <h7>
                         Überschutz est mieux qu'un contrôle parental car il ne se contente pas uniquement de bloquer certains sites. <br/>
