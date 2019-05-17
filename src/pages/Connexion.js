@@ -6,7 +6,10 @@ import { Link } from 'react-router-dom';
 
 class Connexion extends Component {
 
-    /* constructor(){
+    /* Le constructor et la regex qui n'accepte QUE des chiffres.
+    Moi je voudrai l'inverse : qui n'accepte QUE des lettres (c'est pour prénom et nom).
+    2e probleme, les 2 inputs noms et prénom changent en meme temps :x
+    constructor(){
         super();
         this.state = {value: ''};
         this.onChange = this.onChange.bind(this)
