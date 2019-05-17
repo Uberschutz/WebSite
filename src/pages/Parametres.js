@@ -89,23 +89,27 @@ class Parametres extends Component {
 
 	render() {
         return (
-            <div className="card">
+            <div className="card align-card">
                 {/*<button onClick={this.toggleModal}>Ajouter un enfant</button>*/}
 	            <Modal isOpen={this.state.showModal} toggle={this.toggleModal} onClosed={() => this.setState({state: 'Created'})}>
-					<button onClick={this.toggleModal}>Fermer</button>
+					<button className="btn btn-danger" onClick={this.toggleModal}>Fermer</button>
 					{/*<form onSubmit={() => this.createChildren()}>*/}
-					<form>
-						<label>
+					<form> <br/>
+					<div className="align-card">
+						<label className="child-field">
 							Name<br/>
-							<input type="text" value={this.state.name} onChange={(name) => this.setFirstName(name.target.value)}/>
+							<input className="child-field" type="text" value={this.state.name} onChange={(name) => this.setFirstName(name.target.value)}/>
 						</label>
 						<br/>
-						<label>
+						<label className="child-field">
 							Age<br/>
-							<input type="text" value={this.state.age} onChange={(age) => this.setAge(age.target.value)}/>
+							<input className="child-field" type="text" value={this.state.age} onChange={(age) => this.setAge(age.target.value)}/>
 						</label>
+					</div>
 						<br/><br/>
-						<Button onClick={() => this.createChildren()}>{this.state.state}</Button>
+						<div className="align-card">
+							<Button className="save-child btn" onClick={() => this.createChildren()}>{this.state.state}</Button>
+						</div>
 						{/*<input type="submit" value="Submit" />*/}
 					</form>
 	            </Modal>
@@ -117,14 +121,14 @@ class Parametres extends Component {
 								<CardTitle>{child.name}</CardTitle>
 								<CardText>{child.age}</CardText>
 								<CardFooter>
-									<Button onClick={() => this.deleteChildren(child)}>Delete</Button>
-									<Button onClick={() => this.editChildren(child)}>Edit</Button>
+									<Button className="btn-mod btn btn-danger" onClick={() => this.deleteChildren(child)}>Delete</Button>
+									<Button className="btn-mod btn btn-success" onClick={() => this.editChildren(child)}>Edit</Button>
 								</CardFooter>
 							</Card>
 						);
 					})
 				}
-				<Button color="primary" style={{ width: '50%', alignSelf: 'center'}} onClick={this.toggleModal}>New</Button>
+				<Button className="btn btn-primary add-child" onClick={this.toggleModal}>New</Button>
             </div>
         )
     }

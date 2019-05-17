@@ -17,3 +17,27 @@
     margin-bottom: 13px;
     margin-top: 13px;
 }
+
+.add-child {
+    width: 50%;
+    align-self: center;
+    background-color: #007bff;
+    border-top-color: #007bff;
+    margin-bottom: 13px;
+    outline: none;
+}
+
+.btn-mod {
+    margin : 5px;
+}
+
+.child-field {
+    margin-top: 10px;
+}
+
+.save-child {
+    background-color: #007bff;
+    margin-bottom: 10px;
+    outline: none;
+    border-color: #007bff;
+}
