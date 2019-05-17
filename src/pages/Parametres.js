@@ -92,7 +92,6 @@ class Parametres extends Component {
             <div className="card align-card">
                 {/*<button onClick={this.toggleModal}>Ajouter un enfant</button>*/}
 	            <Modal isOpen={this.state.showModal} toggle={this.toggleModal} onClosed={() => this.setState({state: 'Created'})}>
-					<button className="btn btn-danger" onClick={this.toggleModal}>Fermer</button>
 					{/*<form onSubmit={() => this.createChildren()}>*/}
 					<form> <br/>
 					<div className="align-card">
@@ -108,7 +107,8 @@ class Parametres extends Component {
 					</div>
 						<br/><br/>
 						<div className="align-card">
-							<Button className="save-child btn" onClick={() => this.createChildren()}>{this.state.state}</Button>
+							<Button className="save-child btn change-child" onClick={() => this.createChildren()}>{this.state.state}</Button>
+							<Button className="btn btn-danger change-child" onClick={this.toggleModal}>Annuler</Button>
 						</div>
 						{/*<input type="submit" value="Submit" />*/}
 					</form>

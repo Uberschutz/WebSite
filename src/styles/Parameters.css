@@ -37,7 +37,11 @@
 
 .save-child {
     background-color: #007bff;
+    border-color: #007bff;
+}
+
+.change-child {
     margin-bottom: 10px;
     outline: none;
-    border-color: #007bff;
+    margin-left: 5px;
 }
