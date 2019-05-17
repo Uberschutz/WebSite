@@ -67,8 +67,10 @@ class Faq extends Component {
                         • En quoi Überschutz est différent d'un contrôle parental ? Et en quoi protège-t-il mieux ?
                     </h6>
                     <h7>
-                        Überschutz est mieux qu'un contrôle parental car il ne se contente pas uniquement de bloquer certains sites. <br/>
-                        Überschutz est paramétré selon les envies et les règles que les parents veulent imposer à leurs enfants. A eux de choisir le meilleur moyen pour les protéger.
+                        Überschutz est mieux qu'un contrôle parental car il ne se contente pas uniquement d'être un obstacle à la navigation des enfants.<br/>
+                        Il s'adapte selon les dangers de chaque génération, intervient uniquement dans certains cas de figure réellement néfastes et laisse un certain libre arbitre avec des limites qui seront connues de l'utilisateur. <br/>
+                        Überschutz est paramétré selon les envies et les règles que les parents veulent inculquer à leurs enfants. A eux de choisir le meilleur moyen de les protéger. <br/>
+                        En d'autres termes, Überschutz est mieux qu'un contrôle parental car le logiciel est en mesure de comprendre l'enfant et non de lui faire barrage. Ici il ne s'agit plus de surveillance mais d'accompagnement.
                     </h7> <br/><br/>
                     <h6 className="question">
                         • Que pouvez-vous faire avec ce logiciel <h7 className="address">(bloquer, avertir, être prévenu ...)</h7> ?
@@ -108,6 +110,12 @@ class Faq extends Component {
         )
     }
 }
+
+/*
+Parler RGPD ??
+ */
+
+
 
 class Form extends Component {
     render() {
