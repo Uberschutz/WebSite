@@ -23,13 +23,20 @@
 .description-txt {
     text-align: left!important;
     margin: 7px;
+    font-size: 100%;
 }
 
 .title-bold {
     font-weight: bold;
+    font-size: 120%;
 }
 
 .responsive-image {
     position: relative;
     max-width: 100%;
+}
+
+.question {
+    font-weight: bold;
+    font-size: 100%;
 }
