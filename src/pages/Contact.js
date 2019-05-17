@@ -35,47 +35,14 @@ class Contact extends Component {
                                 C'est pour cela que nous proposons un logiciel capable de monitorer la navigation Internet. <br/>
                                 De ce fait, les enfants pourront être avertis que leur recherche n'est pas adaptée pour eux selon leurs parents. <br/>
                                 Afin de respecter la liberté de l'enfant, Überschutz n'est ni bloquant ni intrusif. <br/>
-                                C'est à dire qu'en fonction du paramétrage que vous choisirez, le logiciel n'interviendra qu'en tant que superviseur. Il laissera l'enfant naviguer mais se permettera d'afficher un message lorsque le contenu du site visité risque d'être inapproprié. <br/>
-                                En conséquence, les parents pourront visualiser un détail statistique sur l'environnement virutel dans lequel vit l'enfant pour arriver à une discussion si cela est nécessaire.
+                                C'est à dire qu'en fonction du paramétrage que les parents choisiront, le logiciel n'interviendra qu'en tant que superviseur. Il laissera l'enfant naviguer mais se permettera d'afficher un message lorsque le contenu du site visité risque d'être inapproprié. <br/>
+                                En conséquence, les parents pourront visualiser un détail statistique sur l'environnement virtuel dans lequel vit l'enfant pour arriver à une discussion si cela est nécessaire.
                             </h7> <br/>
                         <br/>
                     </div>
                 </div>
                 <Faq/>
                 <Form/>
-            </div>
-        )
-    }
-}
-
-class Form extends Component {
-    render() {
-        return (
-            <div>
-                <br/>
-                <h9 className="h9-font">
-                    Vous êtes intéressés par notre solution ?
-                </h9><br/>
-                <h11>
-                    N'hésitez pas à vous tenir informés en remplissant ce formulaire !
-                </h11><br/>
-                <h11>
-                    Ou en nous contactant à l'adresse suivante : <h11 className="address">
-                    uberschutz_2021@labeip.epitech.eu</h11>
-                </h11>
-                <form><br/>
-                <div className="form-group">
-                    <div className="form-group form-align">
-                        <label>Name or Surname</label>
-                        <input type="text" className="form-control form-box" placeholder="Name or Surname"/>
-                    </div>
-                    <label>Email address</label>
-                    <input type="email" className="form-control form-box" aria-describedby="emailHelp" placeholder="Enter email"/>
-                    <small id="emailHelp" className="form-text text-muted col-sm-8">
-                        We'll never share your email with anyone else.
-                    </small>
-                </div><button type="submit" className="btn btn-primary button-footer">Submit</button>
-                </form>
             </div>
         )
     }
@@ -90,27 +57,21 @@ class Faq extends Component {
                 </h4>
                 <div className="uber-color2 description-txt">
                     <h6 className="question">
-                        • Comment Überschutz protège mon enfant ?
+                        • Comment Überschutz protège votre enfant ?
                     </h6>
                     <h7>
-                        Überschutz propose plusieurs manières de protéger son enfant. <br/>
+                        Überschutz propose plusieurs manières de protéger les enfants. <br/>
                         Cela va de bloquer complètement Internet, jusqu'à bloquer uniquement certains sites tout en passant par d'autres moyens comme la restriction de sites ou la prévention.
                     </h7> <br/><br/>
                     <h6 className="question">
-                        • En quoi Überschutz est différent d'un contrôle parental ?
-                    </h6>
-                    <h7>
-                        (même réponse qu'en bas ?)
-                    </h7> <br/><br/>
-                    <h6 className="question">
-                        • En quoi Überschutz protège mieux qu'un contrôle parental ?
+                        • En quoi Überschutz est différent d'un contrôle parental ? Et en quoi protège-t-il mieux ?
                     </h6>
                     <h7>
                         Überschutz est mieux qu'un contrôle parental car il ne se contente pas uniquement de bloquer certains sites. <br/>
                         Überschutz est paramétré selon les envies et les règles que les parents veulent imposer à leurs enfants. A eux de choisir le meilleur moyen pour les protéger.
                     </h7> <br/><br/>
                     <h6 className="question">
-                        • Qu'est-ce que les parents peuvent faire avec ce logiciel <h7 className="address">(bloquer, avertir, être prévenu ...)</h7> ?
+                        • Que pouvez-vous faire avec ce logiciel <h7 className="address">(bloquer, avertir, être prévenu ...)</h7> ?
                     </h6>
                     <h7>
                         Les parents peuvent protéger leurs enfants sur Internet de la manière dont ils l'entendent. <br/>
@@ -134,7 +95,7 @@ class Faq extends Component {
                         Choisissez le type de restriction que vous voulez <h7 className="address">(bloquer, limiter, avertir).</h7>
                     </h7> <br/><br/>
                     <h6 className="question">
-                        • Comment initialiser Überschutz sur les appareils de mes enfants ?
+                        • Comment initialiser Überschutz sur les appareils de vos enfants ?
                     </h6>
                     <h7>
                         Lors de votre 1ere visite, allez sur la page <h7 className="address"> "Connexion"</h7> et remplissez les champs demandés dans <h7 className="address">"Inscription".</h7> <br/>
@@ -148,15 +109,37 @@ class Faq extends Component {
     }
 }
 
-
-/* ------- Definir "non bloquant" et "non intrusif"
-* ---------Comment paramétrer l'application / logiciel ?
-* ---------Comment initialiser le controle parental sur mon appareil ?
-* ---------Aborder question du prix (abonnement)
-* ---------Qu'est ce que peuvent faire les parents avec logiciel (bloqué, ou avertir, tout en étant prévenus ...) par systeme d'option
-* ----------Comment Üz protège mon enfant ?
-* ---------En quoi Üz est différent d'un contrôle parental ?
-* ---------En quoi Üz protége mieux qu'un contrôle parental ?*/
-
+class Form extends Component {
+    render() {
+        return (
+            <div>
+                <br/>
+                <h9 className="h9-font">
+                    Vous êtes intéressés par notre solution ?
+                </h9><br/>
+                <h11>
+                    N'hésitez pas à vous tenir informés en remplissant ce formulaire !
+                </h11><br/>
+                <h11>
+                    Ou en nous contactant à l'adresse suivante : <h11 className="address">
+                    uberschutz_2021@labeip.epitech.eu</h11>
+                </h11>
+                <form><br/>
+                    <div className="form-group">
+                        <div className="form-group form-align">
+                            <label>Name or Surname</label>
+                            <input type="text" className="form-control form-box" placeholder="Name or Surname"/>
+                        </div>
+                        <label>Email address</label>
+                        <input type="email" className="form-control form-box" aria-describedby="emailHelp" placeholder="Enter email"/>
+                        <small id="emailHelp" className="form-text text-muted col-sm-8">
+                            We'll never share your email with anyone else.
+                        </small>
+                    </div><button type="submit" className="btn btn-primary button-footer">Submit</button>
+                </form>
+            </div>
+        )
+    }
+}
 
 export { Contact, Form, Faq };
