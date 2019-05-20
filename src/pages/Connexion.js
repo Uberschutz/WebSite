@@ -5,23 +5,48 @@ import '../styles/Connexion.css';
 import { Link } from 'react-router-dom';
 
 class Connexion extends Component {
-
-    /* Le constructor et la regex qui n'accepte QUE des chiffres.
-    Moi je voudrai l'inverse : qui n'accepte QUE des lettres (c'est pour prénom et nom).
-    2e probleme, les 2 inputs noms et prénom changent en meme temps :x
-    constructor(){
-        super();
-        this.state = {value: ''};
-        this.onChange = this.onChange.bind(this)
+	constructor(props) {
+        super(props);
+        this.state = {
+        	name: '',
+	        surname: '',
+	        email: '',
+	        password: '',
+	        alphaName: false,
+	        alphaSurname: false
+        };
     }
 
-    onChange(e){
-        const re = /^[0-9\b]+$/;
-        if (e.target.value === '' || re.test(e.target.value)) {
-            this.setState({value: e.target.value})
-            console.log(re.test(e.target.value));
-        }
-    } */
+    static isAlpha(char) {
+        const re = /^[a-zA-Z]+$/g;
+        return re.test(char);
+    }
+
+    onChangeName(name) {
+		if (name && !Connexion.isAlpha(name)) {
+			this.setState({alphaName: true});
+		} else {
+			this.setState({alphaName: false});
+		}
+	    this.setState({name: name});
+    }
+
+    onChangeSurname(surname) {
+		if (surname && !Connexion.isAlpha(surname)) {
+			this.setState({alphaSurname: true});
+		} else {
+			this.setState({alphaSurname: false});
+		}
+	    this.setState({surname: surname});
+    }
+
+	onChangeEmail(email) {
+		this.setState({email: email});
+	}
+
+	onChangePass(pass) {
+		this.setState({password: pass});
+	}
 
     render() {
         return (
@@ -30,7 +55,7 @@ class Connexion extends Component {
                     <div className="col">
                         <br/>
                         <div className="card text-white bg-dark box-center">
-                            <div className="card-body bg-dark item-align">
+                            <div className="card-body bg-dark item-align text-align">
                                 <h5 className="card-title text-align">
                                     Authentication
                                 </h5>
@@ -50,7 +75,7 @@ class Connexion extends Component {
                                     <input type="password" className="form-control" aria-label="Email"/>
                                 </div>
                                 <Link to ='/'>
-                                    <button type="button" className="btn btn-primary align-continue">Continue</button>
+                                    <button type="button" className="btn btn-primary">Continue</button>
                                 </Link>
                             </div>
                         </div>
@@ -59,7 +84,7 @@ class Connexion extends Component {
                     <div className="col">
                         <br/>
                         <div className="card text-white bg-dark box-center">
-                            <div className="card-body bg-dark item-align">
+                            <div className="card-body bg-dark item-align text-align">
                                 <h5 className="card-title text-align">
                                     Inscription
                                 </h5>
@@ -70,29 +95,34 @@ class Connexion extends Component {
                                     <div className="input-group-prepend">
                                         <span className="input-group-text" id="inputGroup-sizing-default">Nom</span>
                                     </div>
-                                    <input /*value={this.state.value} onChange={this.onChange}*/ type="text" className="form-control" aria-label="Nom"/>
+	                                {this.state.alphaName ? <input value={this.state.name} onChange={(name) => this.onChangeName(name.target.value)} type="text" className="form-control form-box-error" aria-label="Nom"/> :
+                                    <input value={this.state.name} onChange={(name) => this.onChangeName(name.target.value)} type="text" className="form-control" aria-label="Nom"/>}
                                 </div>
                                 <div className="input-group mb-3">
                                     <div className="input-group-prepend">
                                         <span className="input-group-text" id="inputGroup-sizing-default">Prénom</span>
                                     </div>
-                                    <input /*value={this.state.value} onChange={this.onChange}*/ type="text" className="form-control" aria-label="Prénom"/>
+	                                {this.state.alphaSurname ? <input value={this.state.value} onChange={(surname) => this.onChangeSurname(surname.target.value)} type="text" className="form-control form-box-error" aria-label="Prénom"/> :
+                                    <input value={this.state.value} onChange={(surname) => this.onChangeSurname(surname.target.value)} type="text" className="form-control" aria-label="Prénom"/>}
                                 </div>
                                 <div className="input-group mb-3">
                                     <div className="input-group-prepend">
                                         <span className="input-group-text" id="inputGroup-sizing-default">Email</span>
                                     </div>
-                                    <input type="text" className="form-control" aria-label="Email"/>
+                                    <input value={this.state.email} onChange={(email) => this.onChangeEmail(email.target.value)} type="text" className="form-control" aria-label="Email"/>
                                 </div>
                                 <div className="input-group mb-3">
                                     <div className="input-group-prepend">
                                         <span className="input-group-text" id="inputGroup-sizing-default">Password</span>
                                     </div>
-                                    <input type="password" className="form-control" aria-label="Email"/>
+                                    <input value={this.state.password} onChange={(password) => this.onChangePass(password.target.value)} type="password" className="form-control" aria-label="Email"/>
                                 </div>
                                 <Link to ='/Profil'>
-                                    <button type="button" className="btn btn-primary align-continue">Continue</button>
+                                    <button type="button" className="btn btn-primary">Continue</button>
                                 </Link>
+	                            <br/>
+	                            {this.state.alphaSurname || this.state.alphaName ?
+		                            <span className="address text-danger">Invalid name or surname</span> : null}
                             </div>
                         </div>
                         <br/>

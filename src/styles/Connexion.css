@@ -26,6 +26,10 @@
     max-width: 100%;
 }
 
-.align-continue {
-    margin-left: 36%;
+.form-box-error {
+	border: 2px solid red!important;
+}
+
+.address {
+	font-style: italic;
 }
