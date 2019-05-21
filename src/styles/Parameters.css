@@ -45,3 +45,16 @@
     outline: none;
     margin-left: 5px;
 }
+
+.address-params {
+    font-style: italic;
+}
+
+.uber-color2 {
+    background-color: black;
+    color: white!important;
+}
+
+.form-box-error {
+    border: 2px solid red!important;
+}
