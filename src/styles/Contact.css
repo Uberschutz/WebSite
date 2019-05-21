@@ -1,5 +1,5 @@
 .h9-font {
-    font-size: x-large;
+    font-size: 120%;
     font-weight: bold;
 }
 
@@ -13,4 +13,30 @@
     justify-content: center;
     justify-items: center;
     text-align: center;
+}
+
+.uber-color2 {
+    background-color: #1d2124;
+    color: white!important;
+}
+
+.description-txt {
+    text-align: left!important;
+    margin: 7px;
+    font-size: 100%;
+}
+
+.title-bold {
+    font-weight: bold;
+    font-size: 120%;
+}
+
+.responsive-image {
+    position: relative;
+    max-width: 100%;
+}
+
+.question {
+    font-weight: bold;
+    font-size: 100%;
 }
