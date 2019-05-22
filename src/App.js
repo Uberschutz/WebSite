@@ -29,7 +29,7 @@ class App extends Component {
     return (
         <div>
           <Router>
-          <Header setLanguage={this.setLanguage}/>
+          <Header setLanguage={this.setLanguage} lang={this.state.lang}/>
           <Switch>
             <Route path={'/'} exact strict component={() => <HomePage lang={this.state.lang}/>}/>
             <Route path={'/Connexion'} component={() => <Connexion lang={this.state.lang}/>}/>

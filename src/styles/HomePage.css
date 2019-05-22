@@ -54,3 +54,11 @@
 .rappel-info {
     font-size: 150%;
 }
+
+.clickable-flag {
+    cursor: pointer;
+}
+
+.touched {
+    opacity: 0.8;
+}

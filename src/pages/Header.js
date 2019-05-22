@@ -26,6 +26,12 @@ class Header extends Component {
     }
 
     render () {
+
+        const frenchClass = "clickable-flag" + (this.props.lang === "fr" ? " touched" : "");
+        const EnglClass = "clickable-flag" + (this.props.lang === "en" ? " touched" : "");
+        console.log(frenchClass);
+        console.log(EnglClass);
+
         return (
             <div>
                 <Navbar className="navbar navbar-expand-md uber-color" light expand="md">
@@ -57,8 +63,8 @@ class Header extends Component {
                             </React.Fragment>
                         </Nav>
                     </Collapse>
-	                <img src={french} alt="french" width="55" height="40" onClick={() => this.props.setLanguage('fr')}/>
-	                <img src={english} alt="english" width="40" height="38" onClick={() => this.props.setLanguage('en')}/>
+	                <img src={french} className={frenchClass} alt="french" width="50" height="35" onClick={() => this.props.setLanguage('fr')}/>
+	                <img src={english} className={EnglClass} alt="english" width="35" height="33" onClick={() => this.props.setLanguage('en')}/>
                 </Navbar>
             </div>
         );
