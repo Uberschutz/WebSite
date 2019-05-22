@@ -7,6 +7,51 @@
         "Notre solution :", "Pour une navigation saine, utilisez Überschutz.", "Ce logiciel non bloquant vous préviendra lorsque votre enfant se met en danger sur Internet.", "Suicide, drogue, anorexie, harcèlement, contenus pornographiques ... Vous n'imaginez pas à quoi il est confronté.",
         "En quelques mots :", "Un logiciel", "Non bloquant", "Non intrusif", "Pour protéger votre enfant et discuter avec lui lorsqu'une situation compliquée se présente.",
         "Pour protéger votre enfant et discuter avec lui lorsqu'une situation compliquée se présente."
+      ],
+      "contact": [
+        "Qui sommes nous ? Que faisons nous ?", "• Überschutz :", "Nous sommes un groupe de 7 étudiants d'Epitech de la promo 2021.",
+        "Notre groupe a été créé en octobre 2018 (tout d'abord 3 personnes), lors de la Moonshot, puis s'est complété courant janvier 2019.",
+        "• Notre but :", "Nous voulons qu'Internet soit un lieu de partage, de détente et de recherche.",
+        "Beaucoup trop de personnes et d'enfants sont harcelés, arnaqués ou confrontés à du contenu inapproprié.",
+        "Ainsi, nous souhaitons guider les plus jeunes afin qu'ils apprennent à utiliser Internet de la meilleure manière possible pour eux selon l'éducation que leurs parents veulent leurs donner.",
+        "• Notre solution :", "Aujourd'hui, en tant que jeunes adultes, nous trouvons que certains contenus sont choquants sur Internet et que ce n'est pas assez sécurisé.",
+        "Donc qu'en est-il pour un enfant ?", "C'est pour cela que nous proposons un logiciel capable de monitorer la navigation Internet.",
+        "De ce fait, les enfants pourront être avertis que leur recherche n'est pas adaptée pour eux selon leurs parents.",
+        "Afin de respecter la liberté de l'enfant, Überschutz n'est ni bloquant ni intrusif.",
+        "C'est à dire qu'en fonction du paramétrage que les parents choisiront, le logiciel n'interviendra qu'en tant que superviseur. Il laissera l'enfant naviguer mais se permettera d'afficher un message lorsque le contenu du site visité risque d'être inapproprié.",
+        "En conséquence, les parents pourront visualiser un détail statistique sur l'environnement virtuel dans lequel vit l'enfant pour arriver à une discussion si cela est nécessaire."
+      ],
+      "faq": [
+        "FAQ :", "• Comment Überschutz protège votre enfant ?", "Überschutz propose plusieurs manières de protéger les enfants.",
+        "Cela va de bloquer complètement Internet, jusqu'à bloquer uniquement certains sites tout en passant par d'autres moyens comme la restriction de sites ou la prévention.",
+        "• En quoi Überschutz est différent d'un contrôle parental ? Et en quoi protège-t-il mieux ?",
+        "Überschutz est mieux qu'un contrôle parental car il ne se contente pas uniquement d'être un obstacle à la navigation des enfants.",
+        "Il s'adapte selon les dangers de chaque génération, intervient uniquement dans certains cas de figure réellement néfastes et laisse un certain libre arbitre avec des limites qui seront connues de l'utilisateur.",
+        "Überschutz est paramétré selon les envies et les règles que les parents veulent inculquer à leurs enfants. A eux de choisir le meilleur moyen de les protéger.",
+        "En d'autres termes, Überschutz est mieux qu'un contrôle parental car le logiciel est en mesure de comprendre l'enfant et non de lui faire barrage. Ici il ne s'agit plus de surveillance mais d'accompagnement.",
+        "• Que pouvez-vous faire avec ce logiciel ", "(bloquer, avertir, être prévenu ...) ",
+        "Les parents peuvent protéger leurs enfants sur Internet de la manière dont ils l'entendent.",
+        "Si couper leur connexion lorsqu'ils dépassent les limites leurs paraît être la bonne solution, Überschutz le fera.",
+        "Si ils préfèrent jouer sur la patience de leurs enfants pour accéder à un site particulier, Überschutz le fera.",
+        "Si pour eux, l'apprentissage autonome d'Internet est la meilleure solution, Überschutz préviendra les enfants lorsqu'ils dépasseront les limites imposées par les parents, leurs laissant le choix de continuer ou non avec un pop-up.",
+        "A tout moment, les parents peuvent voir l'activité qu'ont leurs enfants sur Internet grâce au monitoring disponible avec le logiciel. Cela leur permettra de voir si l'enfant est aggressif ou agressé, s'il visite des sites peu recommandé ou si c'est un élément toxique sur Internet.",
+        "• A quel prix pouvez-vous protéger votre enfant ?",
+        "Nous proposons plusieurs formules et plusieurs types de logiciels.",
+        "Si vous voulez en savoir plus, rendez-vous sur la page ", "\"Produits\"", " ou envoyer nous un mail à ",
+        " pour avoir des renseignements supervisés.", "• Comment paramétrer l'application ", "(web et mobile)",
+        "Pour les 2 plateformes, rendez-vous sur la page ", "\"Paramètres\"",
+        ", cliquez sur le prénom de l'enfant que vous voulez protéger et cochez les options que vous voulez appliquer à sa navigation Internet.",
+        "Choisissez le type de restriction que vous voulez ", "(bloquer, limiter, avertir).",
+        "• Comment initialiser Überschutz sur les appareils de vos enfants ?",
+        "Lors de votre 1ere visite, allez sur la page ", "\"Connexion\"", " et remplissez les champs demandés dans ", "\"Inscription\"",
+        "Sur l'appareil fourni lors de l'achat de Überschutz, un numéro de série est présent. C'est celui-ci qu'il faut renseigner dans la partie ",
+        "\"Numéro de série\".", "Vous serez ensuite redirigés vers votre profil où vous pourrez ajouter et paramétrer les options que vous voulez attribuer à la navigation Internet de votre enfant.",
+        "Branchez votre boîtier et ils seront automatiquement associés à ses appareils."
+      ],
+      "form": [
+        "Vous êtes intéressés par notre solution ?", "N'hésitez pas à vous tenir informés en remplissant ce formulaire !",
+        "Ou en nous contactant à l'adresse suivante : ", "Nom ou Prénom", "Adresse email",
+        "Nous ne partagerons jamais votre adresse email avec qui que ce soit.", "Soumettre"
       ]
     }
   },
@@ -17,6 +62,50 @@
         "Internet :", "are you aware of dangers", "your childrens encounter ?",
         "Our solution :", "For a healthy navigation, use Überschutz.", "This non-blocking software will warn you when your child is at risk on the Internet.", "Suicide, drugs, anorexia, harassment, pornographic content ... You can not imagine what he's facing.",
         "In a few words :", "A Software", "Non blocking", "Non intrusive", "To protect your child and discuss with him or her when a complicated situation arises."
+      ],
+      "contact": [
+        "Who are we ? What do we do ?", "• Überschutz :", "We are a group of 7 Epitech students from the 2021 promo.",
+        "Our group was created in October 2018 (first 3 people), during the Moonshot, then completed in January 2019.",
+        "• Our goal :", "We want the Internet to be a place of sharing, relaxation and research.",
+        "Too many people and children are harassed, scammed or confronted with inappropriate content.",
+        "Thus, we want to guide the youngest to learn to use the Internet in the best possible way for them according to the education that their parents want to give them.",
+        "• Our solution :", "Today, as young adults, we find that some content is offensive on the Internet and that it is not secure enough.",
+        "So what about a child?", "That's why we offer software that can monitor Internet browsing.",
+        "In order to respect the freedom of the child, Überschutz is neither blocking nor intrusive.",
+        "That is to say that depending on the setting that parents choose, the software will only intervene as a supervisor. It will let the child navigate but will allow them to post a message when the content of the visited site may be inappropriate.",
+        "As a result, parents will be able to view a statistical detail about the virtual environment in which the child lives to arrive at a discussion if necessary."
+      ],
+      "faq": [
+        "FAQ :", "• How Überschutz protects your child?", "Überschutz offers several ways to protect children.",
+        "This will completely block the Internet, blocking only certain sites while going through other means such as site restriction or prevention.",
+        "• How is Überschutz different from parental control and how does it protect you better?",
+        "Überschutz is better than parental control because it is not only a barrier to children's navigation.",
+        "It adapts according to the dangers of each generation, intervenes only in certain really bad cases and leaves a certain free will with limits that will be known by the user.",
+        "Überschutz is set up according to the wishes and rules that parents want to instil in their children - it's up to them to choose the best way to protect them.",
+        "In other words, Überschutz is better than a parental control because the software is able to understand the child and not to stop him, here it is no longer a question of supervision but of accompaniment.",
+        "• What can you do with this software ", "(block, warn, be warned ...)",
+        "Parents can protect their children on the Internet as they see fit.",
+        "If cutting their connection when they go beyond the limits seems to be the right solution, Überschutz will do it.",
+        "If they prefer to play on the patience of their children to access a particular site, Überschutz will do it.",
+        "If for them, the autonomous learning of the Internet is the best solution, Überschutz will prevent children when they exceed the limits imposed by the parents, leaving them the choice to continue or not with a pop-up.",
+        "At any moment, parents can see the activity their children have on the Internet thanks to the monitoring available with the software.This will allow them to see if the child is aggressive or assaulted, if he visits sites that are not recommended or if it's a toxic element on the Internet. ",
+        "• At what price can you protect your child?",
+        "We offer several formulas and several types of software.",
+        "If you want to know more, go to the page ", "\"Products\"", " or send us an email to ",
+        " to have supervised information.", "• How to set the application", "(web and mobile)",
+        "For both platforms, go to the page ", "\"Settings\"",
+        ", click on the first name of the child you want to protect and tick the options you want to apply to his Internet browsing.",
+        "Choose the type of restriction you want ", "(block, limit, warn).",
+        "• How to initialize Überschutz on the devices of your children?",
+        "During your first visit, go to the page ", "\"Login\"", " and fill in the required fields in ", "\"Registration\"",
+        "On the device supplied with the purchase of Überschutz, a serial number is present which must be entered in the part ",
+        "\"Serial number\".", "You will then be redirected to your profile where you can add and set the options you want to assign to your child's Internet browsing.",
+        "Plug in your case and they will automatically associate with its devices."
+      ],
+      "form": [
+        "Are you interested in our solution ?", "Feel free to keep informed by completing this form !",
+        "Or by contacting us at the following address : ", "Name or Surname", "Email address", "We'll never share your email with anyone else.",
+        "Submit"
       ]
     }
   }

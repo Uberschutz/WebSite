@@ -41,11 +41,12 @@ class Header extends Component {
                                 </NavItem>
                                 <NavItem className="nav-item">
                                     {/*<NavLink className="nav-link uber-color" href="/Connexion">Connexion</NavLink>*/}
-                                    <Link className="nav-link uber-color" to="/Connexion" lang={this.props.lang}>Connexion</Link>
+                                    <Link className="nav-link uber-color" to="/Connexion">Connexion</Link>
                                 </NavItem>
                                 <NavItem className="nav-item">
                                     {/*<NavLink className="nav-link uber-color" href="/Contact+FAQ">Contact + FAQ</NavLink>*/}
-                                    <NavLink to="/Contact+FAQ" activeClassName="selected">Contact + FAQ</NavLink>
+                                    {/*<NavLink to="/Contact+FAQ" activeClassName="selected">Contact + FAQ</NavLink>*/}
+                                    <Link to="/Contact+FAQ" className="nav-link uber-color">Contact + FAQ</Link>
                                 </NavItem>
                                 <NavItem className="nav-item">
                                     <NavLink className="nav-link uber-color" href="/Profil">Profil</NavLink>

@@ -32,10 +32,10 @@ class App extends Component {
           <Header setLanguage={this.setLanguage}/>
           <Switch>
             <Route path={'/'} exact strict component={() => <HomePage lang={this.state.lang}/>}/>
-            <Route path={'/Connexion'} component={Connexion}/>
-            <Route path={'/Contact+FAQ'} component={Contact}/>
-            <Route path={'/Profil'} component={Profil}/>
-            <Route path={'/Parametres'} component={Parametres}/>
+            <Route path={'/Connexion'} component={() => <Connexion lang={this.state.lang}/>}/>
+            <Route path={'/Contact+FAQ'} component={() => <Contact lang={this.state.lang}/>}/>
+            <Route path={'/Profil'} component={() => <Profil lang={this.state.lang}/>}/>
+            <Route path={'/Parametres'} component={() => <Parametres lang={this.state.lang}/>}/>
           </Switch>
           <Footer/>
           </Router>
