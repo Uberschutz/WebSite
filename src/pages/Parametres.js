@@ -7,6 +7,7 @@ import Card from "reactstrap/es/Card";
 import CardText from "reactstrap/es/CardText";
 import CardTitle from "reactstrap/es/CardTitle";
 import CardFooter from "reactstrap/es/CardFooter";
+import {Icon} from 'antd';
 
 class Parametres extends Component {
 	constructor(props) {
@@ -150,14 +151,20 @@ class Parametres extends Component {
 								<CardTitle>{child.name}</CardTitle>
 								<CardText>{child.age}</CardText>
 								<CardFooter>
-									<Button className="btn-mod btn btn-danger" onClick={() => this.deleteChildren(child)}>Delete</Button>
-									<Button className="btn-mod btn btn-success" onClick={() => this.editChildren(child)}>Edit</Button>
+									<Button className="btn-mod btn btn-danger" onClick={() => this.deleteChildren(child)}>
+										Delete <Icon type="delete" className="size-icon"/>
+									</Button>
+									<Button className="btn-mod btn btn-success" onClick={() => this.editChildren(child)}>
+										Edit <Icon type="edit" className="size-icon" />
+									</Button>
 								</CardFooter>
 							</Card>
 						);
 					})
 				}
-				<Button className="btn btn-primary add-child" onClick={this.toggleModal}>New</Button>
+				<Button className="btn btn-primary add-child" onClick={this.toggleModal}>
+					New <Icon type="user-add" className="size-icon"/>
+				</Button>
             </div>
         )
     }
