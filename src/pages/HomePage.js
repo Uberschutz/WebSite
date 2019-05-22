@@ -45,7 +45,7 @@ class HomePage extends Component {
                     <br/> {this.displayContent(content.filter(obj => obj.lang === this.props.lang)[0].pages.home[i++])}
                 </span>
                 <div className="row responsive-image Home">
-                    <div className="img-intro">
+                    <div>
                         <br/><br/>
                         <img src={whois} alt="whois"/>
                     </div>
