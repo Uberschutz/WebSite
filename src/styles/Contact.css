@@ -15,6 +15,11 @@
     text-align: center;
 }
 
+.form-box {
+    width: 50%;
+    margin-left: 25%;
+}
+
 .uber-color2 {
     background-color: #1d2124;
     color: white!important;
@@ -31,12 +36,11 @@
     font-size: 120%;
 }
 
-.responsive-image {
-    position: relative;
-    max-width: 100%;
-}
-
 .question {
     font-weight: bold;
     font-size: 100%;
+}
+
+.button-footer {
+    margin: 15px;
 }
