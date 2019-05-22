@@ -1,13 +1,12 @@
 import React, { Component } from 'react';
+import '../styles/bootstrap.css';
+import '../styles/Parameters.css';
+
 import { Modal, Button } from 'reactstrap'
 import Card from "reactstrap/es/Card";
 import CardText from "reactstrap/es/CardText";
 import CardTitle from "reactstrap/es/CardTitle";
 import CardFooter from "reactstrap/es/CardFooter";
-
-import '../styles/bootstrap.css';
-import '../styles/Parameters.css';
-
 
 class Parametres extends Component {
 	constructor(props) {
