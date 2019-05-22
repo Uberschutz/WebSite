@@ -42,5 +42,10 @@
 }
 
 .button-footer {
-    margin: 15px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+.icon-size {
+    font-size: 20px;
 }

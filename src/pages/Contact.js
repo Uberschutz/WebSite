@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import '../styles/bootstrap.css';
 import '../styles/Contact.css';
 
+import {Icon} from 'antd';
+
 const content = require('../assets/text');
 
 class Contact extends Component {
@@ -85,14 +87,14 @@ class Faq extends Component {
                 </h4>
                 <div className="uber-color2 description-txt">
                     <h6 className="question">
-                        {this.props.displayContent(content.filter(obj => obj.lang === this.props.lang)[0].pages.faq[i++])}
+                        <Icon type="question-circle" theme="twoTone" className="icon-size"/> {this.props.displayContent(content.filter(obj => obj.lang === this.props.lang)[0].pages.faq[i++])}
                     </h6>
                     <h7>
                         {this.props.displayContent(content.filter(obj => obj.lang === this.props.lang)[0].pages.faq[i++])}<br/>
                         {this.props.displayContent(content.filter(obj => obj.lang === this.props.lang)[0].pages.faq[i++])}
                     </h7> <br/><br/>
                     <h6 className="question">
-                        {this.props.displayContent(content.filter(obj => obj.lang === this.props.lang)[0].pages.faq[i++])}
+                        <Icon type="question-circle" theme="twoTone" className="icon-size"/> {this.props.displayContent(content.filter(obj => obj.lang === this.props.lang)[0].pages.faq[i++])}
                     </h6>
                     <h7>
                         {this.props.displayContent(content.filter(obj => obj.lang === this.props.lang)[0].pages.faq[i++])}<br/>
@@ -101,7 +103,7 @@ class Faq extends Component {
                         {this.props.displayContent(content.filter(obj => obj.lang === this.props.lang)[0].pages.faq[i++])}
                     </h7> <br/><br/>
                     <h6 className="question">
-                        {this.props.displayContent(content.filter(obj => obj.lang === this.props.lang)[0].pages.faq[i++])}<h7 className="address">{this.props.displayContent(content.filter(obj => obj.lang === this.props.lang)[0].pages.faq[i++])}</h7> ?
+                        <Icon type="question-circle" theme="twoTone" className="icon-size"/> {this.props.displayContent(content.filter(obj => obj.lang === this.props.lang)[0].pages.faq[i++])}<h7 className="address">{this.props.displayContent(content.filter(obj => obj.lang === this.props.lang)[0].pages.faq[i++])}</h7> ?
                     </h6>
                     <h7>
                         {this.props.displayContent(content.filter(obj => obj.lang === this.props.lang)[0].pages.faq[i++])}<br/>
@@ -111,21 +113,21 @@ class Faq extends Component {
                         {this.props.displayContent(content.filter(obj => obj.lang === this.props.lang)[0].pages.faq[i++])}
                     </h7> <br/><br/>
                     <h6 className="question">
-                        {this.props.displayContent(content.filter(obj => obj.lang === this.props.lang)[0].pages.faq[i++])}
+                        <Icon type="question-circle" theme="twoTone" className="icon-size"/> {this.props.displayContent(content.filter(obj => obj.lang === this.props.lang)[0].pages.faq[i++])}
                     </h6>
                     <h7>
                         {this.props.displayContent(content.filter(obj => obj.lang === this.props.lang)[0].pages.faq[i++])}<br/>
                         {this.props.displayContent(content.filter(obj => obj.lang === this.props.lang)[0].pages.faq[i++])}<h7 className="address">{this.props.displayContent(content.filter(obj => obj.lang === this.props.lang)[0].pages.faq[i++])}</h7>{this.props.displayContent(content.filter(obj => obj.lang === this.props.lang)[0].pages.faq[i++])}<h7 className="address">uberschutz_2021@labeip.epitech.eu</h7>{this.props.displayContent(content.filter(obj => obj.lang === this.props.lang)[0].pages.faq[i++])}
                     </h7> <br/><br/>
                     <h6 className="question">
-                        {this.props.displayContent(content.filter(obj => obj.lang === this.props.lang)[0].pages.faq[i++])}<h7 className="address">{this.props.displayContent(content.filter(obj => obj.lang === this.props.lang)[0].pages.faq[i++])}</h7> ?
+                        <Icon type="question-circle" theme="twoTone" className="icon-size"/> {this.props.displayContent(content.filter(obj => obj.lang === this.props.lang)[0].pages.faq[i++])}<h7 className="address">{this.props.displayContent(content.filter(obj => obj.lang === this.props.lang)[0].pages.faq[i++])}</h7> ?
                     </h6>
                     <h7>
                         {this.props.displayContent(content.filter(obj => obj.lang === this.props.lang)[0].pages.faq[i++])}<h7 className="address">{this.props.displayContent(content.filter(obj => obj.lang === this.props.lang)[0].pages.faq[i++])}</h7>{this.props.displayContent(content.filter(obj => obj.lang === this.props.lang)[0].pages.faq[i++])}<br/>
                         {this.props.displayContent(content.filter(obj => obj.lang === this.props.lang)[0].pages.faq[i++])}<h7 className="address">{this.props.displayContent(content.filter(obj => obj.lang === this.props.lang)[0].pages.faq[i++])}</h7>
                     </h7> <br/><br/>
                     <h6 className="question">
-                        {this.props.displayContent(content.filter(obj => obj.lang === this.props.lang)[0].pages.faq[i++])}
+                        <Icon type="question-circle" theme="twoTone" className="icon-size"/> {this.props.displayContent(content.filter(obj => obj.lang === this.props.lang)[0].pages.faq[i++])}
                     </h6>
                     <h7>
                         {this.props.displayContent(content.filter(obj => obj.lang === this.props.lang)[0].pages.faq[i++])}<h7 className="address">{this.props.displayContent(content.filter(obj => obj.lang === this.props.lang)[0].pages.faq[i++])}</h7>{this.props.displayContent(content.filter(obj => obj.lang === this.props.lang)[0].pages.faq[i++])}<h7 className="address">{this.props.displayContent(content.filter(obj => obj.lang === this.props.lang)[0].pages.faq[i++])}.</h7> <br/>
@@ -176,7 +178,8 @@ class Form extends Component {
                         <small id="emailHelp" className="form-text text-muted col-sm-9">
                             {this.props.displayContent(content.filter(obj => obj.lang === this.props.lang)[0].pages.form[i++])}
                         </small>
-                    </div><button type="submit" className="btn btn-primary button-footer">{this.props.displayContent(content.filter(obj => obj.lang === this.props.lang)[0].pages.form[i++])}</button>
+                    </div>
+                    <button type="submit" className="btn btn-primary button-footer">{this.props.displayContent(content.filter(obj => obj.lang === this.props.lang)[0].pages.form[i++])}</button>
                 </form>
             </div>
         )
