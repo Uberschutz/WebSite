@@ -54,12 +54,15 @@ class Parametres extends Component {
 
 	toggleModal() {
 		if (this.state.showModal) {
-			this.setState({name: '', age: '', id: null, state: 'Create'});
+			this.setState({name: '', age: '', id: null, state: 'Create', alphaErr: false, numErr: false});
 		}
 		this.setState({showModal: !this.state.showModal});
 	}
 
 	createChildren() {
+		this.setState({alphaErr: this.state.name === '', numErr: this.state.age === ''});
+		if (this.state.name === '' || this.state.age === '')
+			return;
 		if (this.state.state === 'Create') {
 			console.log('Here call to the user account API', this.state.name, this.state.age);
 			const newChild = {name: this.state.name, age: this.state.age};
