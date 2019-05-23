@@ -28,9 +28,10 @@ class Parametres extends Component {
 	}
 
 	componentWillMount() {
-		const newChild = [{name: 'Thomas', age: '23'}, {name: 'Marianne', age: '21'}];
+		const options = [{name: 'Reports', enabled: true}, {name: 'Alerts', enabled: false}, {name: 'Uberschutz', enabled: true}];
+		const newChild = [{name: 'Thomas', age: '23', options: options}, {name: 'Marianne', age: '21', options: options}];
 
-		this.setState({childrens: newChild});
+		this.setState({childrens: newChild, options: options});
 		console.log('Here call to the user account API to load children'); // or in componentDidMount
 	}
 
@@ -52,10 +53,10 @@ class Parametres extends Component {
 	}
 
 	toggleModal() {
-		this.setState({showModal: !this.state.showModal});
-		if (!this.state.showModal) {
-			this.setState({name: '', age: ''});
+		if (this.state.showModal) {
+			this.setState({name: '', age: '', id: null, state: 'Create'});
 		}
+		this.setState({showModal: !this.state.showModal});
 	}
 
 	createChildren() {
@@ -69,7 +70,7 @@ class Parametres extends Component {
 		} else {
 			console.log('here', this.state.id);
 			let childrens = this.state.childrens;
-			childrens[this.state.id] = {name: this.state.name, age: this.state.age};
+			childrens[this.state.id + 1] = {name: this.state.name, age: this.state.age};
 			this.setState({childrens: childrens});
 			this.toggleModal();
 		}
@@ -81,7 +82,10 @@ class Parametres extends Component {
 
 	editChildren(children) {
 		console.log('Here call to the user account API to edit children', children);
-		this.setState({name: children.name, age: children.age, state: 'Save', id: this.state.childrens.indexOf(children)});
+		this.setState({name: children.name, age: children.age, state: 'Save', id: this.state.childrens.indexOf(children) - 1, options: children.options});
+		// console.log(this.state.name);
+		// this.setFirstName(children.name);
+		// this.setAge(children.age);
 		this.toggleModal();
 	}
 
@@ -113,26 +117,46 @@ class Parametres extends Component {
 		this.setState({age: age});
 	}
 
+	toggleOption(optionName) {
+		console.log(optionName);
+		var options = this.state.options;
+		const idx = optionName.indexOf(optionName);
+		options[idx].enabled = !options[idx].enabled;
+		this.setState({options: options});
+	}
+
 	render() {
         return (
             <div className="card align-card">
                 {/*<button onClick={this.toggleModal}>Ajouter un enfant</button>*/}
-	            <Modal isOpen={this.state.showModal} toggle={this.toggleModal} onClosed={() => this.setState({state: 'Created'})}>
+	            <Modal isOpen={this.state.showModal} toggle={this.toggleModal} onClosed={() => this.setState({state: 'Create'})}>
 					{/*<form onSubmit={() => this.createChildren()}>*/}
 					<form> <br/>
-					<div className="align-card">
-						<label className="child-field">
-							Name<br/>
-							{this.state.alphaErr ? <input className="child-field form-box-error form-control" type="text" value={this.state.name} onChange={(name) => this.setFirstName(name.target.value)}/> :
-							<input className="child-field" type="text" value={this.state.name} onChange={(name) => this.setFirstName(name.target.value)}/>}
-						</label>
+						<div className="align-card">
+							<label className="child-field">
+								Name<br/>
+								{this.state.alphaErr ? <input className="child-field form-box-error form-control" type="text" value={this.state.name} onChange={(name) => this.setFirstName(name.target.value)}/> :
+								<input className="child-field" type="text" value={this.state.name} onChange={(name) => this.setFirstName(name.target.value)}/>}
+							</label>
+							<br/>
+							<label className="child-field">
+								Age<br/>
+								{this.state.numErr ? <input className="child-field form-box-error form-control" type="text" value={this.state.age} onChange={(age) => this.setAge(age.target.value)}/> :
+								<input className="child-field" type="text" value={this.state.age} onChange={(age) => this.setAge(age.target.value)}/>}
+							</label>
+						</div>
 						<br/>
-						<label className="child-field">
-							Age<br/>
-							{this.state.numErr ? <input className="child-field form-box-error form-control" type="text" value={this.state.age} onChange={(age) => this.setAge(age.target.value)}/> :
-							<input className="child-field" type="text" value={this.state.age} onChange={(age) => this.setAge(age.target.value)}/>}
-						</label>
-					</div>
+						<div className="row">
+						{
+							this.state.options.map((o, key) => {
+								return (
+									<div key={key} className="col-2">
+										<input type="checkbox" onChange={() => this.toggleOption(o.name)}/>{" " + o.name}
+									</div>
+								)
+							})
+						}
+						</div>
 						<br/><br/>
 						<div className="align-card">
 							<Button className="save-child btn change-child" onClick={() => this.createChildren()}>{this.state.state}</Button>
@@ -148,8 +172,8 @@ class Parametres extends Component {
 						// console.log(child);
 						return (
 							<Card body inverse key={index} className="child-card">
-								<CardTitle>{child.name}</CardTitle>
-								<CardText>{child.age}</CardText>
+								<CardTitle>Name : {child.name}</CardTitle>
+								<CardText>Age : {child.age}</CardText>
 								<CardFooter>
 									<Button className="btn-mod btn btn-danger" onClick={() => this.deleteChildren(child)}>
 										Delete <Icon type="delete" className="size-icon"/>
