@@ -28,7 +28,7 @@ class Parametres extends Component {
 	}
 
 	componentWillMount() {
-		const options = [{name: 'Reports', enabled: true}, {name: 'Alerts', enabled: false}, {name: 'Uberschutz', enabled: true}];
+		const options = [{name: 'Reports', enabled: false}, {name: 'Alerts', enabled: false}, {name: 'Uberschutz', enabled: false}];
 		const newChild = [{name: 'Thomas', age: '23', options: options}, {name: 'Marianne', age: '21', options: options}];
 
 		this.setState({childrens: newChild, options: options});
@@ -54,7 +54,8 @@ class Parametres extends Component {
 
 	toggleModal() {
 		if (this.state.showModal) {
-			this.setState({name: '', age: '', id: null, state: 'Create', alphaErr: false, numErr: false});
+			const options = [{name: 'Reports', enabled: false}, {name: 'Alerts', enabled: false}, {name: 'Uberschutz', enabled: false}];
+			this.setState({name: '', age: '', id: null, state: 'Create', alphaErr: false, numErr: false, options: options});
 		}
 		this.setState({showModal: !this.state.showModal});
 	}
@@ -64,8 +65,9 @@ class Parametres extends Component {
 		if (this.state.name === '' || this.state.age === '')
 			return;
 		if (this.state.state === 'Create') {
+			console.log('create =>', this.state.options);
 			console.log('Here call to the user account API', this.state.name, this.state.age);
-			const newChild = {name: this.state.name, age: this.state.age};
+			const newChild = {name: this.state.name, age: this.state.age, options: this.state.options};
 			let list = this.state.childrens;
 			list.push(newChild);
 			this.setState({childrens: list});
@@ -73,7 +75,7 @@ class Parametres extends Component {
 		} else {
 			console.log('here', this.state.id);
 			let childrens = this.state.childrens;
-			childrens[this.state.id + 1] = {name: this.state.name, age: this.state.age};
+			childrens[this.state.id + 1] = {name: this.state.name, age: this.state.age, options: this.state.options};
 			this.setState({childrens: childrens});
 			this.toggleModal();
 		}
@@ -86,7 +88,7 @@ class Parametres extends Component {
 	editChildren(children) {
 		console.log('Here call to the user account API to edit children', children);
 		this.setState({name: children.name, age: children.age, state: 'Save', id: this.state.childrens.indexOf(children) - 1, options: children.options});
-		// console.log(this.state.name);
+		// console.log('name + options', this.state.name, this.state.options);
 		// this.setFirstName(children.name);
 		// this.setAge(children.age);
 		this.toggleModal();
@@ -123,9 +125,11 @@ class Parametres extends Component {
 	toggleOption(optionName) {
 		console.log(optionName);
 		var options = this.state.options;
-		const idx = optionName.indexOf(optionName);
+		const idx = options.findIndex(o => o.name === optionName);
+		console.log(idx);
 		options[idx].enabled = !options[idx].enabled;
 		this.setState({options: options});
+		console.log('toggle option =>', this.state.options);
 	}
 
 	render() {
@@ -154,7 +158,7 @@ class Parametres extends Component {
 							this.state.options.map((o, key) => {
 								return (
 									<div key={key} className="col-2">
-										<input type="checkbox" onChange={() => this.toggleOption(o.name)}/>{" " + o.name}
+										<input type="checkbox" checked={o.enabled} onChange={() => this.toggleOption(o.name)}/>{" " + o.name}
 									</div>
 								)
 							})
