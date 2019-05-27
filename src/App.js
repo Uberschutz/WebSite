@@ -27,7 +27,7 @@ class App extends Component {
 
 	render() {
     return (
-        <div>
+        <div className="App">
           <Router>
           <Header setLanguage={this.setLanguage} lang={this.state.lang}/>
           <Switch>

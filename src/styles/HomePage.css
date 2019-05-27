@@ -12,7 +12,7 @@
 }
 
 .uber-color2 {
-    background-color: #1d2124;
+    background-color: black;
     color: white!important;
 }
 
@@ -31,6 +31,11 @@
 
 .button-footer {
     margin: 15px;
+}
+
+.background_1 {
+    background-color: #1d2124;
+    color: white;
 }
 
 .italic-txt {
