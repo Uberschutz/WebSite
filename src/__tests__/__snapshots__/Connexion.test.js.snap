@@ -1,0 +1,70 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders without crashing 1`] = `
+<div>
+  <div>
+    <div
+      class="card text-white bg-dark box-center"
+    >
+      <div
+        class="card-body bg-dark item-align"
+      >
+        <h5
+          class="card-title text-align"
+        >
+          Authentication
+        </h5>
+        <p
+          class="card-text"
+        >
+          Please enter an email and a password to continue
+        </p>
+        <div
+          class="input-group mb-3"
+        >
+          <div
+            class="input-group-prepend"
+          >
+            <span
+              class="input-group-text"
+              id="inputGroup-sizing-default"
+            >
+              Email
+            </span>
+          </div>
+          <input
+            aria-label="Email"
+            class="form-control"
+            type="text"
+          />
+        </div>
+        <div
+          class="input-group mb-3"
+        >
+          <div
+            class="input-group-prepend"
+          >
+            <span
+              class="input-group-text"
+              id="inputGroup-sizing-default"
+            >
+              Password
+            </span>
+          </div>
+          <input
+            aria-label="Email"
+            class="form-control"
+            type="password"
+          />
+        </div>
+        <button
+          class="btn btn-light"
+          type="button"
+        >
+          Continue
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+`;

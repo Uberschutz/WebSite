@@ -1,0 +1,68 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders without crashing 1`] = `
+<div>
+  <div
+    class="form-align"
+  >
+    <h9
+      class="h9-font"
+    >
+      Vous êtes intéressés par notre solution ?
+    </h9>
+    <br />
+    <h11>
+      N'hésitez pas à vous tenir informés en remplissant ce formulaire !
+    </h11>
+    <br />
+    <h11>
+      Ou en nous contactant à l'adresse suivante : 
+      <h11
+        class="address"
+      >
+        uberschutz_2021@labeip.epitech.eu
+      </h11>
+    </h11>
+    <form>
+      <br />
+      <div
+        class="form-group"
+      >
+        <div
+          class="form-group form-align"
+        >
+          <label>
+            Name or Surname
+          </label>
+          <input
+            class="form-control form-box"
+            placeholder="Name or Surname"
+            type="text"
+          />
+        </div>
+        <label>
+          Email address
+        </label>
+        <input
+          aria-describedby="emailHelp"
+          class="form-control form-box"
+          placeholder="Enter email"
+          type="email"
+        />
+        <small
+          class="form-text text-muted col-sm-8"
+          id="emailHelp"
+        >
+          We'll never share your email with anyone else.
+        </small>
+      </div>
+      <button
+        class="btn btn-primary button-footer"
+        type="submit"
+      >
+        Submit
+      </button>
+    </form>
+  </div>
+</div>
+`;

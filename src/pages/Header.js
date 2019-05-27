@@ -3,8 +3,11 @@ import '../styles/bootstrap.css';
 import '../styles/HomePage.css';
 
 import logo from '../assets/Uberschutz-logo.png';
+import french from '../assets/french-flag.png';
+import english from '../assets/english-flag2.png';
 
 import {Navbar, NavbarBrand, NavbarToggler, Nav, Collapse, NavItem, NavLink} from 'reactstrap';
+import {Link} from "react-router-dom";
 
 class Header extends Component {
     constructor(props) {
@@ -23,6 +26,12 @@ class Header extends Component {
     }
 
     render () {
+
+        const frenchClass = "clickable-flag" + (this.props.lang === "fr" ? " touched" : "");
+        const EnglClass = "clickable-flag" + (this.props.lang === "en" ? " touched" : "");
+        console.log(frenchClass);
+        console.log(EnglClass);
+
         return (
             <div>
                 <Navbar className="navbar navbar-expand-md uber-color" light expand="md">
@@ -33,13 +42,17 @@ class Header extends Component {
                         <Nav className="ml-auto navbar  navbar-expand-md" navbar>
                             <React.Fragment>
                                 <NavItem className="nav-item">
-                                    <NavLink className="nav-link uber-color" href="/">Menu</NavLink>
+                                    {/*<NavLink className="nav-link uber-color" href="/" lang={this.props.lang}>Menu</NavLink>*/}
+                                    <Link className="nav-link uber-color" to="/">Menu</Link>
                                 </NavItem>
                                 <NavItem className="nav-item">
-                                    <NavLink className="nav-link uber-color" href="/Connexion">Connexion</NavLink>
+                                    {/*<NavLink className="nav-link uber-color" href="/Connexion">Connexion</NavLink>*/}
+                                    <Link className="nav-link uber-color" to="/Connexion">Connexion</Link>
                                 </NavItem>
                                 <NavItem className="nav-item">
-                                    <NavLink className="nav-link uber-color" href="/Contact+FAQ">Contact + FAQ</NavLink>
+                                    {/*<NavLink className="nav-link uber-color" href="/Contact+FAQ">Contact + FAQ</NavLink>*/}
+                                    {/*<NavLink to="/Contact+FAQ" activeClassName="selected">Contact + FAQ</NavLink>*/}
+                                    <Link to="/Contact+FAQ" className="nav-link uber-color">Contact + FAQ</Link>
                                 </NavItem>
                                 <NavItem className="nav-item">
                                     <NavLink className="nav-link uber-color" href="/Profil">Profil</NavLink>
@@ -50,6 +63,8 @@ class Header extends Component {
                             </React.Fragment>
                         </Nav>
                     </Collapse>
+	                <img src={french} className={frenchClass} alt="french" width="50" height="35" onClick={() => this.props.setLanguage('fr')}/>
+	                <img src={english} className={EnglClass} alt="english" width="35" height="33" onClick={() => this.props.setLanguage('en')}/>
                 </Navbar>
             </div>
         );

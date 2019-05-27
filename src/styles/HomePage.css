@@ -12,7 +12,7 @@
 }
 
 .uber-color2 {
-    background-color: #1d2124;
+    background-color: black;
     color: white!important;
 }
 
@@ -58,4 +58,12 @@
 
 .rappel-info {
     font-size: 150%;
+}
+
+.clickable-flag {
+    cursor: pointer;
+}
+
+.touched {
+    opacity: 0.8;
 }

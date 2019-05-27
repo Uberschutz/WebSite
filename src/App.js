@@ -11,17 +11,31 @@ import Profil from "./pages/Profil";
 import Parametres from "./pages/Parametres";
 
 class App extends Component {
-  render() {
+	constructor(props) {
+		super(props);
+		this.state = {
+			lang: 'fr'
+		};
+		this.setLanguage = this.setLanguage.bind(this);
+	}
+
+	setLanguage(lang) {
+		this.setState({
+			lang: lang
+		});
+	}
+
+	render() {
     return (
-        <div>
+        <div className="App">
           <Router>
-          <Header/>
+          <Header setLanguage={this.setLanguage} lang={this.state.lang}/>
           <Switch>
-            <Route path={'/'} exact strict component={HomePage}/>
-            <Route path={'/Connexion'} component={Connexion}/>
-            <Route path={'/Contact+FAQ'} component={Contact}/>
-            <Route path={'/Profil'} component={Profil}/>
-            <Route path={'/Parametres'} component={Parametres}/>
+            <Route path={'/'} exact strict component={() => <HomePage lang={this.state.lang}/>}/>
+            <Route path={'/Connexion'} component={() => <Connexion lang={this.state.lang}/>}/>
+            <Route path={'/Contact+FAQ'} component={() => <Contact lang={this.state.lang}/>}/>
+            <Route path={'/Profil'} component={() => <Profil lang={this.state.lang}/>}/>
+            <Route path={'/Parametres'} component={() => <Parametres lang={this.state.lang}/>}/>
           </Switch>
           <Footer/>
           </Router>
