@@ -8,6 +8,11 @@
         "En quelques mots :", "Un logiciel", "Non bloquant", "Non intrusif", "Pour protéger votre enfant et discuter avec lui lorsqu'une situation compliquée se présente.",
         "Pour protéger votre enfant et discuter avec lui lorsqu'une situation compliquée se présente."
       ],
+      "connexion": [
+        "Authentification", "Merci de rentrer votre email et votre mot de passe pour continuer", "Mot de passe", "Continuer",
+        "Merci de remplir ces champs pour continuer", "Nom", "Prénom", "Mot de passe", "Continuer",
+        "Nom ou prénom invalide"
+      ],
       "contact": [
         "Qui sommes nous ? Que faisons nous ?", "• Überschutz :", "Nous sommes un groupe de 7 étudiants d'Epitech de la promo 2021.",
         "Notre groupe a été créé en octobre 2018 (tout d'abord 3 personnes), lors de la Moonshot, puis s'est complété courant janvier 2019.",
@@ -52,6 +57,13 @@
         "Vous êtes intéressés par notre solution ?", "N'hésitez pas à vous tenir informés en remplissant ce formulaire !",
         "Ou en nous contactant à l'adresse suivante : ", "Nom ou Prénom", "Adresse email",
         "Nous ne partagerons jamais votre adresse email avec qui que ce soit.", "Soumettre"
+      ],
+      "profile": [
+        "Prénom", "Enfants protégés par Überschutz : X ", "Abonnement utilisé : Premium ", "Echéancier de paiement : ",
+        "Nom du prélèvement", "Payé ?"
+      ],
+      "parameters": [
+
       ]
     }
   },
@@ -62,6 +74,11 @@
         "Internet :", "are you aware of dangers", "your childrens encounter ?",
         "Our solution :", "For a healthy navigation, use Überschutz.", "This non-blocking software will warn you when your child is at risk on the Internet.", "Suicide, drugs, anorexia, harassment, pornographic content ... You can not imagine what he's facing.",
         "In a few words :", "A Software", "Non blocking", "Non intrusive", "To protect your child and discuss with him or her when a complicated situation arises."
+      ],
+      "connexion": [
+        "Authentication", "Please enter an email and a password to continue", "Password", "Continue",
+        "Please fill this fields to continue", "Name", "Firstname", "Password", "Continue",
+        "Invalid name or surname"
       ],
       "contact": [
         "Who are we ? What do we do ?", "• Überschutz :", "We are a group of 7 Epitech students from the 2021 promo.",
@@ -106,6 +123,12 @@
         "Are you interested in our solution ?", "Feel free to keep informed by completing this form !",
         "Or by contacting us at the following address : ", "Name or Surname", "Email address", "We'll never share your email with anyone else.",
         "Submit"
+      ],
+      "profile": [
+        "Firstname", "Child protected by Überschutz : X ", "Subscription used : Premium ", "Payment schedule : ", "Levy's name : ", "Payed ?"
+      ],
+      "parameters": [
+
       ]
     }
   }

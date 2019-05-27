@@ -3,24 +3,34 @@ import '../styles/bootstrap.css';
 
 import { Icon } from 'antd';
 
+const content = require('../assets/text');
+
 class Profil extends Component {
+
+    displayContent(content) {
+        // return(<div dangerouslySetInnerHTML={ {__html: content} }/>)
+        return(content)
+    }
+
     render() {
+        let i = 0;
         return (
             <div className="description-txt">
                 <h4 className="name-font">
-                    Prénom
+                    {/*Prénom*/}
+                    {this.displayContent(content.filter(obj => obj.lang === this.props.lang)[0].pages.profile[i++])}
                 </h4> <br/>
                 <h6>
-                    Enfants protégés par Überschutz : X <br/> <br/>
-                    Abonnement utilisé : Premium <br/> <br/>
-                    Echéancier de paiement : <br/>
+                    {this.displayContent(content.filter(obj => obj.lang === this.props.lang)[0].pages.profile[i++])}<br/> <br/>
+                    {this.displayContent(content.filter(obj => obj.lang === this.props.lang)[0].pages.profile[i++])}<br/> <br/>
+                    {this.displayContent(content.filter(obj => obj.lang === this.props.lang)[0].pages.profile[i++])}<br/>
                 </h6> <br/>
                 <table className="table">
                     <thead className="table-primary">
                     <tr>
                         <th scope="col">Date</th>
-                        <th scope="col">Nom du prélèvement</th>
-                        <th scope="col">Payé ?</th>
+                        <th scope="col">{this.displayContent(content.filter(obj => obj.lang === this.props.lang)[0].pages.profile[i++])}</th>
+                        <th scope="col">{this.displayContent(content.filter(obj => obj.lang === this.props.lang)[0].pages.profile[i++])}</th>
                     </tr>
                     </thead>
                     <tbody>
