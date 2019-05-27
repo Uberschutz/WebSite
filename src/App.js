@@ -13,7 +13,7 @@ import Parametres from "./pages/Parametres";
 class App extends Component {
   render() {
     return (
-        <div>
+        <div className="App">
           <Router>
           <Header/>
           <Switch>
