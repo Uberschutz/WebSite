@@ -9,6 +9,8 @@ import CardTitle from "reactstrap/es/CardTitle";
 import CardFooter from "reactstrap/es/CardFooter";
 import {Icon} from 'antd';
 
+const content = require('../assets/text');
+
 class Parametres extends Component {
 	constructor(props) {
 		super(props);
@@ -25,6 +27,11 @@ class Parametres extends Component {
 			numErr: false
 		};
 		this.toggleModal = this.toggleModal.bind(this);
+	}
+
+	displayContent(content) {
+		// return(<div dangerouslySetInnerHTML={ {__html: content} }/>)
+		return(content)
 	}
 
 	componentWillMount() {
@@ -123,24 +130,21 @@ class Parametres extends Component {
 		this.setState({age: age});
 	}
 
-	toggleOption(optionName) {
+	toggleOption(idx) {
 		let options = JSON.parse(JSON.stringify(this.state.options));
-		const idx = options.findIndex(o => o.name === optionName);
+		// const idx = options.findIndex(o => o.name === optionName);
 		options[idx].enabled = !options[idx].enabled;
 		this.setState({options: options});
 	}
 
 	render() {
-		// console.log('childrens -> ', this.state.childrens);
-        return (
+		return (
             <div className="card align-card">
-                {/*<button onClick={this.toggleModal}>Ajouter un enfant</button>*/}
 	            <Modal isOpen={this.state.showModal} toggle={this.toggleModal} onClosed={() => this.setState({state: 'Create'})}>
-					{/*<form onSubmit={() => this.createChildren()}>*/}
 					<form> <br/>
 						<div className="align-card">
 							<label className="child-field">
-								Name<br/>
+								{this.displayContent(content.filter(obj => obj.lang === this.props.lang)[0].pages.parameters[0])}<br/>
 								{this.state.alphaErr ? <input className="child-field form-box-error form-control" type="text" value={this.state.name} onChange={(name) => this.setFirstName(name.target.value)}/> :
 								<input className="child-field" type="text" value={this.state.name} onChange={(name) => this.setFirstName(name.target.value)}/>}
 							</label>
@@ -157,7 +161,7 @@ class Parametres extends Component {
 							this.state.options.map((o, key) => {
 								return (
 									<div key={key} className="col-2">
-										<input type="checkbox" checked={o.enabled} onChange={() => this.toggleOption(o.name)}/>{" " + o.name}
+										<input type="checkbox" checked={o.enabled} onChange={() => this.toggleOption(key)}/>{" " + content.filter(obj => obj.lang === this.props.lang)[0].pages.options[key]}
 									</div>
 								)
 							})
@@ -165,27 +169,28 @@ class Parametres extends Component {
 						</div>
 						<br/><br/>
 						<div className="align-card">
-							<Button className="save-child btn change-child" onClick={() => this.createChildren()}>{this.state.state}</Button>
-							<Button className="btn btn-danger change-child" onClick={this.toggleModal}>Annuler</Button>
+							<Button className="save-child btn change-child" onClick={() => this.createChildren()}>
+								{this.state.state === 'Create' ? this.displayContent(content.filter(obj => obj.lang === this.props.lang)[0].pages.parameters[6]) :
+									this.displayContent(content.filter(obj => obj.lang === this.props.lang)[0].pages.parameters[7])}
+							</Button>
+							<Button className="btn btn-danger change-child" onClick={this.toggleModal}>{this.displayContent(content.filter(obj => obj.lang === this.props.lang)[0].pages.parameters[1])}</Button>
 							<br/>
-							{this.state.alphaErr || this.state.numErr ? (<div><span className="address-params text-danger">Invalid name or age</span><br/><br/></div>) : null}
+							{this.state.alphaErr || this.state.numErr ? (<div><span className="address-params text-danger">{this.displayContent(content.filter(obj => obj.lang === this.props.lang)[0].pages.parameters[2])}</span><br/><br/></div>) : null}
 						</div>
-						{/*<input type="submit" value="Submit" />*/}
 					</form>
 	            </Modal>
 				{
 					this.state.childrens.map((child, index) => {
-						// console.log(child);
 						return (
 							<Card body inverse key={index} className="child-card">
-								<CardTitle>Name : {child.name}</CardTitle>
+								<CardTitle>{this.displayContent(content.filter(obj => obj.lang === this.props.lang)[0].pages.parameters[0])} : {child.name}</CardTitle>
 								<CardText>Age : {child.age}</CardText>
 								<CardFooter>
 									<Button className="btn-mod btn btn-danger" onClick={() => this.deleteChildren(child)}>
-										Delete <Icon type="delete" className="size-icon"/>
+										{this.displayContent(content.filter(obj => obj.lang === this.props.lang)[0].pages.parameters[3])} <Icon type="delete" className="size-icon"/>
 									</Button>
 									<Button className="btn-mod btn btn-success" onClick={() => this.editChildren(child)}>
-										Edit <Icon type="edit" className="size-icon" />
+										{this.displayContent(content.filter(obj => obj.lang === this.props.lang)[0].pages.parameters[4])} <Icon type="edit" className="size-icon" />
 									</Button>
 								</CardFooter>
 							</Card>
@@ -193,7 +198,7 @@ class Parametres extends Component {
 					})
 				}
 				<Button className="btn btn-primary add-child" onClick={this.toggleModal}>
-					New <Icon type="user-add" className="size-icon"/>
+					{this.displayContent(content.filter(obj => obj.lang === this.props.lang)[0].pages.parameters[5])} <Icon type="user-add" className="size-icon"/>
 				</Button>
             </div>
         )
