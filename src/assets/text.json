@@ -63,7 +63,10 @@
         "Nom du prélèvement", "Payé ?"
       ],
       "parameters": [
-
+        "Prénom", "Annuler","Prénom ou Age invalide", "Supprimer", "Éditer", "Nouveau", "Créer", "Sauvegarder"
+      ],
+      "options": [
+        "Rapports", "Uberschutz", "Alertes"
       ]
     }
   },
@@ -128,7 +131,10 @@
         "Firstname", "Child protected by Überschutz : X ", "Subscription used : Premium ", "Payment schedule : ", "Levy's name : ", "Payed ?"
       ],
       "parameters": [
-
+        "Name", "Cancel","Invalid Name or Age", "Delete", "Edit", "New", "Create", "Save"
+      ],
+      "options": [
+        "Reports", "Uberschutz", "Alerts"
       ]
     }
   }

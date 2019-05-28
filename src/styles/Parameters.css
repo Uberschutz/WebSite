@@ -1,0 +1,64 @@
+.align-card {
+    text-align: center;
+    align-items: center;
+    align-content: center;
+    justify-items: center;
+    justify-content: center;
+	outline: none!important;
+}
+
+.child-card {
+    background-color: #1d2124;
+    border-color: #1d2124;
+    width: 50%;
+    align-content: center;
+    align-self: center;
+    text-align: center;
+    margin-bottom: 13px;
+    margin-top: 13px;
+}
+
+.add-child {
+    width: 25%;
+    align-self: center;
+    background-color: #007bff;
+    border-top-color: #007bff;
+    margin-bottom: 13px;
+    outline: none;
+}
+
+.btn-mod {
+    margin : 5px;
+}
+
+.child-field {
+    margin-top: 10px;
+}
+
+.save-child {
+    background-color: #007bff;
+    border-color: #007bff;
+}
+
+.change-child {
+    margin-bottom: 10px;
+    outline: none;
+    margin-left: 5px;
+}
+
+.address-params {
+    font-style: italic;
+}
+
+.uber-color2 {
+    background-color: black;
+    color: white!important;
+}
+
+.form-box-error {
+    border: 2px solid red!important;
+}
+
+.size-icon {
+    font-size: 20px;
+}
