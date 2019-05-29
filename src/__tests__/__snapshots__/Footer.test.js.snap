@@ -5,19 +5,23 @@ exports[`renders without crashing 1`] = `
   <div
     class="uber-color2 form-align"
   >
-    <button
-      class="btn btn-light button-footer"
-      type="button"
+    <a
+      href="/Contact+FAQ"
     >
-      Contact
-    </button>
+      <button
+        class="btn btn-primary button-footer"
+        type="button"
+      >
+        Contact
+      </button>
+    </a>
     <br />
     <span>
       © 2019
     </span>
     <br />
     <span>
-      Created by Marianne LEVEE
+      Created by Marianne LEVEE & Thomas DEROTE-PARCELLIER
     </span>
   </div>
 </div>
