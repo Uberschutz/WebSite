@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`renders without crashing 1`] = `
+exports[`renders Footer without crashing 1`] = `
 <div>
   <div
     class="uber-color2 form-align"
