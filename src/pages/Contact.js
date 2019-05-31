@@ -186,4 +186,4 @@ class Form extends Component {
     }
 }
 
-export { Contact, Form, Faq };
+export default Contact;

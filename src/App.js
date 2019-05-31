@@ -6,7 +6,7 @@ import HomePage from "./pages/HomePage";
 import Header from "./pages/Header";
 import Footer from "./pages/Footer";
 import Connexion from "./pages/Connexion";
-import {Contact} from "./pages/Contact";
+import Contact from "./pages/Contact";
 import Profil from "./pages/Profil";
 import Parametres from "./pages/Parametres";
 

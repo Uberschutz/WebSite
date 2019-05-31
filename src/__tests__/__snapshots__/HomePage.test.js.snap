@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`renders without crashing 1`] = `
+exports[`renders Home without crashing 1`] = `
 <div>
   <div>
     <img
@@ -13,16 +13,16 @@ exports[`renders without crashing 1`] = `
     >
       Internet :
       <br />
-       êtes-vous conscients des dangers 
+       
+      êtes-vous conscients des dangers
       <br />
+       
       que rencontrent vos enfants ?
     </span>
     <div
       class="row responsive-image Home"
     >
-      <div
-        class="img-intro"
-      >
+      <div>
         <br />
         <br />
         <img
@@ -90,7 +90,134 @@ exports[`renders without crashing 1`] = `
             src="navigation.png"
           />
           <br />
+          <br />
+          <span
+            class="rappel-info"
+          >
+            Non bloquant
+          </span>
+        </div>
+        <div
+          class="col responsive-image"
+        >
+          <img
+            alt="bloquant"
+            src="bloquant.png"
+          />
+          <br />
            
+          <br />
+          <span
+            class="rappel-info"
+          >
+            Non intrusif
+          </span>
+        </div>
+      </div>
+      <br />
+      <h7
+        class="rappel-info"
+      >
+        Pour protéger votre enfant et discuter avec lui lorsqu'une situation compliquée se présente.
+      </h7>
+      <br />
+      <br />
+      <br />
+    </div>
+  </div>
+</div>
+`;
+
+exports[`renders without crashing 1`] = `
+<div>
+  <div>
+    <img
+      alt="canvas"
+      class="responsive-image"
+      src="canvas2.png"
+    />
+    <span
+      class="text-span"
+    >
+      Internet :
+      <br />
+       
+      êtes-vous conscients des dangers
+      <br />
+       
+      que rencontrent vos enfants ?
+    </span>
+    <div
+      class="row responsive-image Home"
+    >
+      <div>
+        <br />
+        <br />
+        <img
+          alt="whois"
+          src="CacherPseudo.jpg"
+        />
+      </div>
+      <div
+        class="txt-intro"
+      >
+        <h3
+          class="h7-font"
+        >
+          Notre solution :
+        </h3>
+        <h6
+          class="h6-font"
+        >
+          Pour une navigation saine, utilisez Überschutz.
+          <br />
+          Ce logiciel non bloquant vous préviendra lorsque votre enfant se met en danger sur Internet.
+        </h6>
+        <h8
+          class="italic-txt"
+        >
+          Suicide, drogue, anorexie, harcèlement, contenus pornographiques ... Vous n'imaginez pas à quoi il est confronté.
+        </h8>
+      </div>
+    </div>
+    <div
+      class="Home responsive-image"
+    >
+      <br />
+      <br />
+      <h5
+        class="rappel-info h7-font"
+      >
+        En quelques mots :
+      </h5>
+      <br />
+      <br />
+      <div
+        class="row responsive-image"
+      >
+        <div
+          class="col"
+        >
+          <img
+            alt="logiciel"
+            src="logiciel.png"
+          />
+          <br />
+          <br />
+          <span
+            class="rappel-info"
+          >
+            Un logiciel
+          </span>
+        </div>
+        <div
+          class="col responsive-image"
+        >
+          <img
+            alt="navigation"
+            src="navigation.png"
+          />
+          <br />
           <br />
           <span
             class="rappel-info"
