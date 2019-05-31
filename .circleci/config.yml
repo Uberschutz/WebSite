@@ -40,4 +40,4 @@ jobs:
           key: v1-dependencies-{{ checksum "package.json" }}
 
       # run tests!
-      - run: yarn test --forceExit --watchAll --passWithNoTests --all
+      - run: yarn test --forceExit --watchAll --passWithNoTests --all -u
