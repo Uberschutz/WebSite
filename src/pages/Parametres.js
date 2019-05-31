@@ -3,10 +3,7 @@ import '../styles/bootstrap.css';
 import '../styles/Parameters.css';
 
 import { Modal, Button } from 'reactstrap'
-import Card from "reactstrap/es/Card";
-import CardText from "reactstrap/es/CardText";
-import CardTitle from "reactstrap/es/CardTitle";
-import CardFooter from "reactstrap/es/CardFooter";
+import { Card, CardText, CardTitle, CardFooter } from "reactstrap";
 import {Icon} from 'antd';
 
 const content = require('../assets/text');

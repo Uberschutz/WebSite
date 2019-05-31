@@ -1,8 +1,10 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`renders without crashing 1`] = `
+exports[`renders whole without crashing 1`] = `
 <div>
-  <div>
+  <div
+    class="App"
+  >
     <div>
       <nav
         class="navbar navbar-expand-md uber-color navbar navbar-expand-md navbar-light"
@@ -35,7 +37,7 @@ exports[`renders without crashing 1`] = `
               class="nav-item nav-item"
             >
               <a
-                class="nav-link uber-color nav-link"
+                class="nav-link uber-color"
                 href="/"
               >
                 Menu
@@ -45,7 +47,7 @@ exports[`renders without crashing 1`] = `
               class="nav-item nav-item"
             >
               <a
-                class="nav-link uber-color nav-link"
+                class="nav-link uber-color"
                 href="/Connexion"
               >
                 Connexion
@@ -55,7 +57,7 @@ exports[`renders without crashing 1`] = `
               class="nav-item nav-item"
             >
               <a
-                class="nav-link uber-color nav-link"
+                class="nav-link uber-color"
                 href="/Contact+FAQ"
               >
                 Contact + FAQ
@@ -83,6 +85,20 @@ exports[`renders without crashing 1`] = `
             </li>
           </ul>
         </div>
+        <img
+          alt="french"
+          class="clickable-flag touched"
+          height="35"
+          src="french-flag.png"
+          width="50"
+        />
+        <img
+          alt="english"
+          class="clickable-flag"
+          height="33"
+          src="english-flag2.png"
+          width="35"
+        />
       </nav>
     </div>
     <div>
@@ -96,16 +112,16 @@ exports[`renders without crashing 1`] = `
       >
         Internet :
         <br />
-         êtes-vous conscients des dangers 
+         
+        êtes-vous conscients des dangers
         <br />
+         
         que rencontrent vos enfants ?
       </span>
       <div
         class="row responsive-image Home"
       >
-        <div
-          class="img-intro"
-        >
+        <div>
           <br />
           <br />
           <img
@@ -173,7 +189,6 @@ exports[`renders without crashing 1`] = `
               src="navigation.png"
             />
             <br />
-             
             <br />
             <span
               class="rappel-info"
@@ -212,19 +227,23 @@ exports[`renders without crashing 1`] = `
     <div
       class="uber-color2 form-align"
     >
-      <button
-        class="btn btn-light button-footer"
-        type="button"
+      <a
+        href="/Contact+FAQ"
       >
-        Contact
-      </button>
+        <button
+          class="btn btn-primary button-footer"
+          type="button"
+        >
+          Contact
+        </button>
+      </a>
       <br />
       <span>
         © 2019
       </span>
       <br />
       <span>
-        Created by Marianne LEVEE
+        Created by Marianne LEVEE & Thomas DEROTE-PARCELLIER
       </span>
     </div>
   </div>
