@@ -3,8 +3,10 @@ import '../styles/bootstrap.css';
 import '../styles/Parameters.css';
 
 import { Modal, Button } from 'reactstrap'
-import { Card, CardText, CardTitle, CardFooter } from "reactstrap";
+// import { Card, CardText, CardTitle, CardFooter } from "reactstrap";
 import {Icon} from 'antd';
+
+import DisplayChildrenList from '../components/ChildCards'
 
 const content = require('../assets/text');
 
@@ -24,6 +26,8 @@ class Parametres extends Component {
 			numErr: false
 		};
 		this.toggleModal = this.toggleModal.bind(this);
+		this.editChildren = this.editChildren.bind(this);
+		this.deleteChildren = this.deleteChildren.bind(this);
 	}
 
 	displayContent(content) {
@@ -176,7 +180,15 @@ class Parametres extends Component {
 						</div>
 					</form>
 	            </Modal>
-				{
+	            <DisplayChildrenList
+		            childrens={this.state.childrens}
+		            title={this.displayContent(content.filter(obj => obj.lang === this.props.lang)[0].pages.parameters[0])}
+		            delete={this.displayContent(content.filter(obj => obj.lang === this.props.lang)[0].pages.parameters[3])}
+		            edit={this.displayContent(content.filter(obj => obj.lang === this.props.lang)[0].pages.parameters[4])}
+		            editChildren={this.editChildren}
+		            deleteChildren={this.deleteChildren}
+	            />
+				{/*{
 					this.state.childrens.map((child, index) => {
 						return (
 							<Card body inverse key={index} className="child-card">
@@ -193,7 +205,7 @@ class Parametres extends Component {
 							</Card>
 						);
 					})
-				}
+				}*/}
 				<Button className="btn btn-primary add-child" onClick={this.toggleModal}>
 					{this.displayContent(content.filter(obj => obj.lang === this.props.lang)[0].pages.parameters[5])} <Icon type="user-add" className="size-icon"/>
 				</Button>
