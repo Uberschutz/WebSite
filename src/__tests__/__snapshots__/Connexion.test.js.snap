@@ -179,7 +179,7 @@ exports[`renders Connection without crashing 1`] = `
               />
             </div>
             <a
-              href="/Profile"
+              href="/Profil"
             >
               <button
                 class="btn btn-primary"

@@ -379,7 +379,7 @@ exports[`renders Contact without crashing 1`] = `
           <h7
             class="address"
           >
-            "Connection"
+            "Connexion"
           </h7>
            et remplissez les champs demandés dans 
           <h7

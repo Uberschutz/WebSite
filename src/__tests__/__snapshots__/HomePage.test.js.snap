@@ -71,7 +71,7 @@ exports[`renders Home without crashing 1`] = `
           class="col"
         >
           <img
-            alt="logiciel"
+            alt="software"
             src="logiciel.png"
           />
           <br />
@@ -101,7 +101,7 @@ exports[`renders Home without crashing 1`] = `
           class="col responsive-image"
         >
           <img
-            alt="bloquant"
+            alt="blocking"
             src="bloquant.png"
           />
           <br />
