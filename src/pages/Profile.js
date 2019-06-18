@@ -5,7 +5,7 @@ import { Icon } from 'antd';
 
 const content = require('../assets/text');
 
-class Profil extends Component {
+class Profile extends Component {
 
     displayContent(content) {
         // return(<div dangerouslySetInnerHTML={ {__html: content} }/>)
@@ -17,7 +17,6 @@ class Profil extends Component {
         return (
             <div className="description-txt">
                 <h4 className="name-font">
-                    {/*Prénom*/}
                     {this.displayContent(content.filter(obj => obj.lang === this.props.lang)[0].pages.profile[i++])}
                 </h4> <br/>
                 <h6>
@@ -59,4 +58,4 @@ class Profil extends Component {
     }
 }
 
-export default Profil;
+export default Profile;

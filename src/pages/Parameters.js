@@ -10,7 +10,7 @@ import DisplayChildrenList from '../components/ChildCards'
 
 const content = require('../assets/text');
 
-class Parametres extends Component {
+class Parameters extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
@@ -113,7 +113,7 @@ class Parametres extends Component {
 
 	setFirstName(name) {
 		console.log('Here set children name', name);
-		if (name && !Parametres.isAlpha(name)) {
+		if (name && !Parameters.isAlpha(name)) {
 			this.setState({alphaErr: true});
 		} else {
 			this.setState({alphaErr: false});
@@ -123,7 +123,7 @@ class Parametres extends Component {
 
 	setAge(age) {
 		console.log('Here set children age', age);
-		if (age && !Parametres.isNum(age)) {
+		if (age && !Parameters.isNum(age)) {
 			this.setState({numErr: true});
 		} else {
 			this.setState({numErr: false});
@@ -214,4 +214,4 @@ class Parametres extends Component {
     }
 }
 
-export default Parametres;
+export default Parameters;

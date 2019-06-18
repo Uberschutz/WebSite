@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`renders Connexion without crashing 1`] = `
+exports[`renders Connection without crashing 1`] = `
 <div>
   <div>
     <div
@@ -179,7 +179,7 @@ exports[`renders Connexion without crashing 1`] = `
               />
             </div>
             <a
-              href="/Profil"
+              href="/Profile"
             >
               <button
                 class="btn btn-primary"

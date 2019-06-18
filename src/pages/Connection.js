@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import '../styles/bootstrap.css';
-import '../styles/Connexion.css';
+import '../styles/Connection.css';
 
 import { Link } from 'react-router-dom';
 
 const content = require('../assets/text');
 
-class Connexion extends Component {
+class Connection extends Component {
 	constructor(props) {
         super(props);
         this.state = {
@@ -30,7 +30,7 @@ class Connexion extends Component {
     }
 
     onChangeName(name) {
-		if (name && !Connexion.isAlpha(name)) {
+		if (name && !Connection.isAlpha(name)) {
 			this.setState({alphaName: true});
 		} else {
 			this.setState({alphaName: false});
@@ -39,7 +39,7 @@ class Connexion extends Component {
     }
 
     onChangeSurname(surname) {
-		if (surname && !Connexion.isAlpha(surname)) {
+		if (surname && !Connection.isAlpha(surname)) {
 			this.setState({alphaSurname: true});
 		} else {
 			this.setState({alphaSurname: false});
@@ -144,4 +144,4 @@ class Connexion extends Component {
     }
 }
 
-export default Connexion;
+export default Connection;

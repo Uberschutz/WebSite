@@ -4,9 +4,9 @@ import '../styles/HomePage.css';
 
 import canvas from '../assets/canvas2.png';
 import whois from '../assets/CacherPseudo.jpg';
-import logiciel from '../assets/logiciel.png';
+import software from '../assets/logiciel.png';
 import navigation from '../assets/navigation.png';
-import bloquant from '../assets/bloquant.png';
+import blocking from '../assets/bloquant.png';
 
 const content = require('../assets/text');
 
@@ -71,7 +71,7 @@ class HomePage extends Component {
                     <br/><br/>
                     <div className="row responsive-image">
                         <div className="col">
-                            <img src={logiciel} alt="logiciel"/>
+                            <img src={software} alt="software"/>
                             <br/><br/>
                             <span className="rappel-info">
 			                    {this.displayContent(content.filter(obj => obj.lang === this.props.lang)[0].pages.home[i++])}
@@ -85,7 +85,7 @@ class HomePage extends Component {
 		                    </span>
                         </div>
                         <div className="col responsive-image">
-                            <img src={bloquant} alt="bloquant"/>
+                            <img src={blocking} alt="blocking"/>
                             <br/> <br/>
                             <span className="rappel-info">
         	                    {this.displayContent(content.filter(obj => obj.lang === this.props.lang)[0].pages.home[i++])}

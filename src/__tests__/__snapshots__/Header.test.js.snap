@@ -45,9 +45,9 @@ exports[`renders Header without crashing 1`] = `
           >
             <a
               class="nav-link uber-color"
-              href="/Connexion"
+              href="/Connection"
             >
-              Connexion
+              Connection
             </a>
           </li>
           <li
@@ -65,9 +65,9 @@ exports[`renders Header without crashing 1`] = `
           >
             <a
               class="nav-link uber-color nav-link"
-              href="/Profil"
+              href="/Profile"
             >
-              Profil
+              Profile
             </a>
           </li>
           <li
@@ -75,7 +75,7 @@ exports[`renders Header without crashing 1`] = `
           >
             <a
               class="nav-link uber-color nav-link"
-              href="/Parametres"
+              href="/Parameters"
             >
               Paramètres
             </a>

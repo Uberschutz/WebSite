@@ -5,10 +5,10 @@ import './styles/App.css';
 import HomePage from "./pages/HomePage";
 import Header from "./pages/Header";
 import Footer from "./pages/Footer";
-import Connexion from "./pages/Connexion";
+import Connection from "./pages/Connection";
 import Contact from "./pages/Contact";
-import Profil from "./pages/Profil";
-import Parametres from "./pages/Parametres";
+import Profile from "./pages/Profile";
+import Parameters from "./pages/Parameters";
 
 class App extends Component {
 	constructor(props) {
@@ -28,20 +28,19 @@ class App extends Component {
 	render() {
     return (
         <div className="App">
-          <Router>
-          <Header setLanguage={this.setLanguage} lang={this.state.lang}/>
-          <Switch>
-            <Route path={'/'} exact strict component={() => <HomePage lang={this.state.lang}/>}/>
-            <Route path={'/Connexion'} component={() => <Connexion lang={this.state.lang}/>}/>
-            <Route path={'/Contact+FAQ'} component={() => <Contact lang={this.state.lang}/>}/>
-            <Route path={'/Profil'} component={() => <Profil lang={this.state.lang}/>}/>
-            <Route path={'/Parametres'} component={() => <Parametres lang={this.state.lang}/>}/>
-          </Switch>
-          <Footer/>
-          </Router>
+            <Router>
+                <Header setLanguage={this.setLanguage} lang={this.state.lang}/>
+                <Switch>
+                    <Route path={'/'} exact strict component={() => <HomePage lang={this.state.lang}/>}/>
+                    <Route path={'/Connection'} component={() => <Connection lang={this.state.lang}/>}/>
+                    <Route path={'/Contact+FAQ'} component={() => <Contact lang={this.state.lang}/>}/>
+                    <Route path={'/Profile'} component={() => <Profile lang={this.state.lang}/>}/>
+                    <Route path={'/Parameters'} component={() => <Parameters lang={this.state.lang}/>}/>
+                </Switch>
+                <Footer/>
+            </Router>
         </div>
     );
-  }
+	}
 }
-
 export default App;

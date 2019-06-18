@@ -145,8 +145,6 @@ class Faq extends Component {
 Parler RGPD ??
  */
 
-
-
 class Form extends Component {
     constructor(props) {
         super(props);
