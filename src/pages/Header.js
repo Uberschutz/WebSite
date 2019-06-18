@@ -47,7 +47,7 @@ class Header extends Component {
                                 </NavItem>
                                 <NavItem className="nav-item">
                                     {/*<NavLink className="nav-link uber-color" href="/Connexion">Connexion</NavLink>*/}
-                                    <Link className="nav-link uber-color" to="/Connexion">Connexion</Link>
+                                    <Link className="nav-link uber-color" to="/Connection">Connexion</Link>
                                 </NavItem>
                                 <NavItem className="nav-item">
                                     {/*<NavLink className="nav-link uber-color" href="/Contact+FAQ">Contact + FAQ</NavLink>*/}
@@ -55,10 +55,10 @@ class Header extends Component {
                                     <Link to="/Contact+FAQ" className="nav-link uber-color">Contact + FAQ</Link>
                                 </NavItem>
                                 <NavItem className="nav-item">
-                                    <NavLink className="nav-link uber-color" href="/Profil">Profil</NavLink>
+                                    <NavLink className="nav-link uber-color" href="/Profile">Profil</NavLink>
                                 </NavItem>
                                 <NavItem className="nav-item">
-                                    <NavLink className="nav-link uber-color" href="/Parametres">Paramètres</NavLink>
+                                    <NavLink className="nav-link uber-color" href="/Parameters">Paramètres</NavLink>
                                 </NavItem>
                             </React.Fragment>
                         </Nav>

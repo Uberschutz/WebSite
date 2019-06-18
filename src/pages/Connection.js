@@ -96,7 +96,8 @@ class Connection extends Component {
                         <div className="card text-white bg-dark box-center">
                             <div className="card-body bg-dark item-align text-align">
                                 <h5 className="card-title text-align">
-                                    Inscription
+                                    {/*Inscription*/}
+                                    {this.displayContent(content.filter(obj => obj.lang === this.props.lang)[0].pages.connexion[i++])}
                                 </h5>
                                 <p className="card-text">
                                     {/*Merci de remplir ces champs pour continuer*/}
