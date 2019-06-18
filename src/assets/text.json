@@ -2,6 +2,9 @@
   {
     "lang": "fr",
     "pages": {
+      "navbar": [
+        "Connexion", "Profil", "Paramètres"
+      ],
       "home": [
         "Internet :", "êtes-vous conscients des dangers", "que rencontrent vos enfants ?",
         "Notre solution :", "Pour une navigation saine, utilisez Überschutz.", "Ce logiciel non bloquant vous préviendra lorsque votre enfant se met en danger sur Internet.", "Suicide, drogue, anorexie, harcèlement, contenus pornographiques ... Vous n'imaginez pas à quoi il est confronté.",
@@ -73,6 +76,9 @@
   {
     "lang": "en",
     "pages": {
+      "navbar": [
+        "Connection", "Profile", "Parameters"
+      ],
       "home": [
         "Internet :", "are you aware of dangers", "your childrens encounter ?",
         "Our solution :", "For a healthy navigation, use Überschutz.", "This non-blocking software will warn you when your child is at risk on the Internet.", "Suicide, drugs, anorexia, harassment, pornographic content ... You can not imagine what he's facing.",

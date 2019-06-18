@@ -9,6 +9,8 @@ import english from '../assets/english-flag2.png';
 import {Navbar, NavbarBrand, NavbarToggler, Nav, Collapse, NavItem, NavLink} from 'reactstrap';
 import {Link} from "react-router-dom";
 
+const content = require('../assets/text');
+
 class Header extends Component {
     constructor(props) {
         super(props);
@@ -25,12 +27,18 @@ class Header extends Component {
         });
     }
 
+    displayContent(content) {
+        // return(<div dangerouslySetInnerHTML={ {__html: content} }/>)
+        return(content)
+    }
+
     render () {
 
         const frenchClass = "clickable-flag" + (this.props.lang === "fr" ? " touched" : "");
         const EnglClass = "clickable-flag" + (this.props.lang === "en" ? " touched" : "");
         console.log(frenchClass);
         console.log(EnglClass);
+        let i = 0;
 
         return (
             <div>
@@ -42,23 +50,19 @@ class Header extends Component {
                         <Nav className="ml-auto navbar  navbar-expand-md" navbar>
                             <React.Fragment>
                                 <NavItem className="nav-item">
-                                    {/*<NavLink className="nav-link uber-color" href="/" lang={this.props.lang}>Menu</NavLink>*/}
                                     <Link className="nav-link uber-color" to="/">Menu</Link>
                                 </NavItem>
                                 <NavItem className="nav-item">
-                                    {/*<NavLink className="nav-link uber-color" href="/Connexion">Connexion</NavLink>*/}
-                                    <Link className="nav-link uber-color" to="/Connection">Connexion</Link>
+                                    <Link className="nav-link uber-color" to="/Connection">{/*Connexion*/} {this.displayContent(content.filter(obj => obj.lang === this.props.lang)[0].pages.navbar[i++])} </Link>
                                 </NavItem>
                                 <NavItem className="nav-item">
-                                    {/*<NavLink className="nav-link uber-color" href="/Contact+FAQ">Contact + FAQ</NavLink>*/}
-                                    {/*<NavLink to="/Contact+FAQ" activeClassName="selected">Contact + FAQ</NavLink>*/}
                                     <Link to="/Contact+FAQ" className="nav-link uber-color">Contact + FAQ</Link>
                                 </NavItem>
                                 <NavItem className="nav-item">
-                                    <NavLink className="nav-link uber-color" href="/Profile">Profil</NavLink>
+                                    <NavLink className="nav-link uber-color" href="/Profile">{/*Profil*/} {this.displayContent(content.filter(obj => obj.lang === this.props.lang)[0].pages.navbar[i++])} </NavLink>
                                 </NavItem>
                                 <NavItem className="nav-item">
-                                    <NavLink className="nav-link uber-color" href="/Parameters">Paramètres</NavLink>
+                                    <NavLink className="nav-link uber-color" href="/Parameters">{/*Paramètres*/} {this.displayContent(content.filter(obj => obj.lang === this.props.lang)[0].pages.navbar[i++])} </NavLink>
                                 </NavItem>
                             </React.Fragment>
                         </Nav>
