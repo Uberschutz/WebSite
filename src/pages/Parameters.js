@@ -166,17 +166,6 @@ class Parameters extends Component {
 							toggleOption={this.toggleOption.bind(this)}
 
 						/>
-						{/*<div className="row">
-						{
-							this.state.options.map((o, key) => {
-								return (
-									<div key={key} className="col-2">
-										<input type="checkbox" checked={o.enabled} onChange={() => this.toggleOption(key)}/>{" " + content.filter(obj => obj.lang === this.props.lang)[0].pages.options[key]}
-									</div>
-								)
-							})
-						}
-						</div>*/}
 						<br/><br/>
 						<div className="align-card">
 							<Button className="save-child btn change-child" onClick={() => this.createChildren()}>
@@ -197,24 +186,6 @@ class Parameters extends Component {
 		            editChildren={this.editChildren}
 		            deleteChildren={this.deleteChildren}
 	            />
-				{/*{
-					this.state.childrens.map((child, index) => {
-						return (
-							<Card body inverse key={index} className="child-card">
-								<CardTitle>{this.displayContent(content.filter(obj => obj.lang === this.props.lang)[0].pages.parameters[0])} : {child.name}</CardTitle>
-								<CardText>Age : {child.age}</CardText>
-								<CardFooter>
-									<Button className="btn-mod btn btn-danger" onClick={() => this.deleteChildren(child)}>
-										{this.displayContent(content.filter(obj => obj.lang === this.props.lang)[0].pages.parameters[3])} <Icon type="delete" className="size-icon"/>
-									</Button>
-									<Button className="btn-mod btn btn-success" onClick={() => this.editChildren(child)}>
-										{this.displayContent(content.filter(obj => obj.lang === this.props.lang)[0].pages.parameters[4])} <Icon type="edit" className="size-icon" />
-									</Button>
-								</CardFooter>
-							</Card>
-						);
-					})
-				}*/}
 				<Button className="btn btn-primary add-child" onClick={this.toggleModal}>
 					{this.displayContent(content.filter(obj => obj.lang === this.props.lang)[0].pages.parameters[5])} <Icon type="user-add" className="size-icon"/>
 				</Button>

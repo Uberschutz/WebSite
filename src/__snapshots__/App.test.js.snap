@@ -50,7 +50,9 @@ exports[`renders whole without crashing 1`] = `
                 class="nav-link uber-color"
                 href="/Connection"
               >
+                 
                 Connexion
+                 
               </a>
             </li>
             <li
@@ -70,7 +72,9 @@ exports[`renders whole without crashing 1`] = `
                 class="nav-link uber-color nav-link"
                 href="/Profile"
               >
+                 
                 Profil
+                 
               </a>
             </li>
             <li
@@ -80,7 +84,9 @@ exports[`renders whole without crashing 1`] = `
                 class="nav-link uber-color nav-link"
                 href="/Parameters"
               >
+                 
                 Paramètres
+                 
               </a>
             </li>
           </ul>
