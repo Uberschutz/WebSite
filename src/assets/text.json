@@ -69,7 +69,7 @@
         "Prénom", "Annuler","Prénom ou Age invalide", "Supprimer", "Éditer", "Nouveau", "Créer", "Sauvegarder"
       ],
       "options": [
-        "Rapports", "Uberschutz", "Alertes"
+        "Rapports", "Uberschutz", "Alertes", "Publicités"
       ]
     }
   },
@@ -140,7 +140,7 @@
         "Name", "Cancel","Invalid Name or Age", "Delete", "Edit", "New", "Create", "Save"
       ],
       "options": [
-        "Reports", "Uberschutz", "Alerts"
+        "Reports", "Uberschutz", "Alerts", "Adds"
       ]
     }
   }

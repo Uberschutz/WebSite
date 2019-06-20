@@ -7,6 +7,7 @@ import { Modal, Button } from 'reactstrap'
 import {Icon} from 'antd';
 
 import DisplayChildrenList from '../components/ChildCards'
+import OptionsList from '../components/OptionsList'
 
 const content = require('../assets/text');
 
@@ -36,7 +37,7 @@ class Parameters extends Component {
 	}
 
 	componentWillMount() {
-		const options = [{name: 'Reports', enabled: false}, {name: 'Alerts', enabled: false}, {name: 'Uberschutz', enabled: false}];
+		const options = [{name: 'Reports', enabled: false}, {name: 'Alerts', enabled: false}, {name: 'Uberschutz', enabled: false}, {name: 'Adds', enabled: false}];
 		const newChild = [{name: 'Thomas', age: '23', options: options}, {name: 'Marianne', age: '21', options: options}];
 
 		this.setState({childrens: newChild, options: options});
@@ -62,7 +63,7 @@ class Parameters extends Component {
 
 	toggleModal() {
 		if (this.state.showModal) {
-			const options = [{name: 'Reports', enabled: false}, {name: 'Alerts', enabled: false}, {name: 'Uberschutz', enabled: false}];
+			const options = [{name: 'Reports', enabled: false}, {name: 'Alerts', enabled: false}, {name: 'Uberschutz', enabled: false}, {name: 'Adds', enabled: false}];
 			this.setState({name: '', age: '', id: null, state: 'Create', alphaErr: false, numErr: false, options: options},
 				() => this.setState({showModal: !this.state.showModal}));
 		} else {
@@ -141,7 +142,7 @@ class Parameters extends Component {
 	render() {
 		return (
             <div className="card align-card">
-	            <Modal isOpen={this.state.showModal} toggle={this.toggleModal} onClosed={() => this.setState({state: 'Create'})}>
+	            <Modal isOpen={this.state.showModal} toggle={this.toggleModal} onClosed={() => this.setState({state: 'Create'})} size='lg'>
 					<form> <br/>
 						<div className="align-card">
 							<label className="child-field">
@@ -157,7 +158,15 @@ class Parameters extends Component {
 							</label>
 						</div>
 						<br/>
-						<div className="row">
+						<OptionsList
+							listClassName={'row'}
+							optionClassName={'col-4 align'}
+							options={this.state.options}
+							translations={content.filter(obj => obj.lang === this.props.lang)[0].pages.options}
+							toggleOption={this.toggleOption.bind(this)}
+
+						/>
+						{/*<div className="row">
 						{
 							this.state.options.map((o, key) => {
 								return (
@@ -167,7 +176,7 @@ class Parameters extends Component {
 								)
 							})
 						}
-						</div>
+						</div>*/}
 						<br/><br/>
 						<div className="align-card">
 							<Button className="save-child btn change-child" onClick={() => this.createChildren()}>

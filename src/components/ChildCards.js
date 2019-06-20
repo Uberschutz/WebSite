@@ -36,6 +36,7 @@ export default class DisplayChildrenList extends Component {
 			this.props.childrens.map((child, index) => {
 				return (
 					<DisplayChildrenCard
+						key={index}
 						title={this.props.title}
 						child={child}
 						delete={this.props.delete}
