@@ -9,6 +9,7 @@ import {Icon} from 'antd';
 import DisplayChildrenList from '../components/ChildCards';
 import OptionsList from '../components/OptionsList';
 import { displayContent } from '../utils/translationDisplay';
+import Unauthorized from "./Unauthorized";
 
 class Parameters extends Component {
 	constructor(props) {
@@ -134,57 +135,80 @@ class Parameters extends Component {
 	}
 
 	render() {
-		return (
-            <div className="card align-card">
-	            <Modal isOpen={this.state.showModal} toggle={this.toggleModal} onClosed={() => this.setState({state: 'Create'})} size='lg'>
-					<form> <br/>
-						<div className="align-card">
-							<label className="child-field">
-								{displayContent(this.props.lang, 0, 'parameters')}<br/>
-								{this.state.alphaErr ? <input className="child-field form-box-error form-control" type="text" value={this.state.name} onChange={(name) => this.setFirstName(name.target.value)}/> :
-								<input className="child-field" type="text" value={this.state.name} onChange={(name) => this.setFirstName(name.target.value)}/>}
-							</label>
+		if (this.props.logged) {
+			return (
+				<div className="card align-card">
+					<Modal isOpen={this.state.showModal} toggle={this.toggleModal}
+					       onClosed={() => this.setState({state: 'Create'})} size='lg'>
+						<form><br/>
+							<div className="align-card">
+								<label className="child-field">
+									{displayContent(this.props.lang, 0, 'parameters')}<br/>
+									{this.state.alphaErr ? <input
+											className="child-field form-box-error form-control"
+											type="text" value={this.state.name}
+											onChange={(name) => this.setFirstName(name.target.value)}/> :
+										<input className="child-field" type="text"
+										       value={this.state.name}
+										       onChange={(name) => this.setFirstName(name.target.value)}/>}
+								</label>
+								<br/>
+								<label className="child-field">
+									Age<br/>
+									{this.state.numErr ? <input
+											className="child-field form-box-error form-control"
+											type="text" value={this.state.age}
+											onChange={(age) => this.setAge(age.target.value)}/> :
+										<input className="child-field" type="text"
+										       value={this.state.age}
+										       onChange={(age) => this.setAge(age.target.value)}/>}
+								</label>
+							</div>
 							<br/>
-							<label className="child-field">
-								Age<br/>
-								{this.state.numErr ? <input className="child-field form-box-error form-control" type="text" value={this.state.age} onChange={(age) => this.setAge(age.target.value)}/> :
-								<input className="child-field" type="text" value={this.state.age} onChange={(age) => this.setAge(age.target.value)}/>}
-							</label>
-						</div>
-						<br/>
-						<OptionsList
-							listClassName={'row'}
-							optionClassName={'col-4 align'}
-							options={this.state.options}
-							translations={displayContent(this.props.lang, -1, 'options')}
-							toggleOption={this.toggleOption.bind(this)}
+							<OptionsList
+								listClassName={'row'}
+								optionClassName={'col-4 align'}
+								options={this.state.options}
+								translations={displayContent(this.props.lang, -1, 'options')}
+								toggleOption={this.toggleOption.bind(this)}
 
-						/>
-						<br/><br/>
-						<div className="align-card">
-							<Button className="save-child btn change-child" onClick={() => this.createChildren()}>
-								{this.state.state === 'Create' ? displayContent(this.props.lang, 6, 'parameters') :
-									displayContent(this.props.lang, 7, 'parameters')}
-							</Button>
-							<Button className="btn btn-danger change-child" onClick={this.toggleModal}>{displayContent(this.props.lang, 1, 'parameters')}</Button>
-							<br/>
-							{this.state.alphaErr || this.state.numErr ? (<div><span className="address-params text-danger">{displayContent(this.props.lang, 2, 'parameters')}</span><br/><br/></div>) : null}
-						</div>
-					</form>
-	            </Modal>
-	            <DisplayChildrenList
-		            childrens={this.state.childrens}
-		            title={displayContent(this.props.lang, 0, 'parameters')}
-		            delete={displayContent(this.props.lang, 3, 'parameters')}
-		            edit={displayContent(this.props.lang, 4, 'parameters')}
-		            editChildren={this.editChildren}
-		            deleteChildren={this.deleteChildren}
-	            />
-				<Button className="btn btn-primary add-child" onClick={this.toggleModal}>
-					{displayContent(this.props.lang, 5, 'parameters')} <Icon type="user-add" className="size-icon"/>
-				</Button>
-            </div>
-        )
+							/>
+							<br/><br/>
+							<div className="align-card">
+								<Button className="save-child btn change-child"
+								        onClick={() => this.createChildren()}>
+									{this.state.state === 'Create' ? displayContent(this.props.lang, 6, 'parameters') :
+										displayContent(this.props.lang, 7, 'parameters')}
+								</Button>
+								<Button className="btn btn-danger change-child"
+								        onClick={this.toggleModal}>{displayContent(this.props.lang, 1, 'parameters')}</Button>
+								<br/>
+								{this.state.alphaErr || this.state.numErr ? (<div><span
+									className="address-params text-danger">{displayContent(this.props.lang, 2, 'parameters')}</span><br/><br/>
+								</div>) : null}
+							</div>
+						</form>
+					</Modal>
+					<DisplayChildrenList
+						childrens={this.state.childrens}
+						title={displayContent(this.props.lang, 0, 'parameters')}
+						delete={displayContent(this.props.lang, 3, 'parameters')}
+						edit={displayContent(this.props.lang, 4, 'parameters')}
+						editChildren={this.editChildren}
+						deleteChildren={this.deleteChildren}
+					/>
+					<Button className="btn btn-primary add-child"
+					        onClick={this.toggleModal}>
+						{displayContent(this.props.lang, 5, 'parameters')} <Icon
+						type="user-add" className="size-icon"/>
+					</Button>
+				</div>
+			)
+		} else {
+			return (
+				<Unauthorized/>
+				)
+		}
     }
 }
 
