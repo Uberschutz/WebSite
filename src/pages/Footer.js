@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom';
 class Footer extends Component {
     render() {
         return (
-            <div className="uber-color2 form-align">
+            <div className="uber-color2 form-align footer">
                 <Link to ='/Contact+FAQ'>
                     <button type="button" className="btn btn-primary button-footer">Contact</button>
                 </Link>
