@@ -15,11 +15,9 @@ exports[`renders Profile without crashing 1`] = `
     <h6>
       Enfants protégés par Überschutz : X 
       <br />
-       
       <br />
       Abonnement utilisé : Premium 
       <br />
-       
       <br />
       Echéancier de paiement : 
       <br />

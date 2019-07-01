@@ -2,14 +2,13 @@ import React, { Component } from 'react';
 import '../styles/bootstrap.css';
 import '../styles/Parameters.css';
 
-import { Modal, Button } from 'reactstrap'
+import { Modal, Button } from 'reactstrap';
 // import { Card, CardText, CardTitle, CardFooter } from "reactstrap";
 import {Icon} from 'antd';
 
-import DisplayChildrenList from '../components/ChildCards'
-import OptionsList from '../components/OptionsList'
-
-const content = require('../assets/text');
+import DisplayChildrenList from '../components/ChildCards';
+import OptionsList from '../components/OptionsList';
+import { displayContent } from '../utils/translationDisplay';
 
 class Parameters extends Component {
 	constructor(props) {
@@ -29,11 +28,6 @@ class Parameters extends Component {
 		this.toggleModal = this.toggleModal.bind(this);
 		this.editChildren = this.editChildren.bind(this);
 		this.deleteChildren = this.deleteChildren.bind(this);
-	}
-
-	displayContent(content) {
-		// return(<div dangerouslySetInnerHTML={ {__html: content} }/>)
-		return(content)
 	}
 
 	componentWillMount() {
@@ -146,7 +140,7 @@ class Parameters extends Component {
 					<form> <br/>
 						<div className="align-card">
 							<label className="child-field">
-								{this.displayContent(content.filter(obj => obj.lang === this.props.lang)[0].pages.parameters[0])}<br/>
+								{displayContent(this.props.lang, 0, 'parameters')}<br/>
 								{this.state.alphaErr ? <input className="child-field form-box-error form-control" type="text" value={this.state.name} onChange={(name) => this.setFirstName(name.target.value)}/> :
 								<input className="child-field" type="text" value={this.state.name} onChange={(name) => this.setFirstName(name.target.value)}/>}
 							</label>
@@ -162,32 +156,32 @@ class Parameters extends Component {
 							listClassName={'row'}
 							optionClassName={'col-4 align'}
 							options={this.state.options}
-							translations={content.filter(obj => obj.lang === this.props.lang)[0].pages.options}
+							translations={displayContent(this.props.lang, -1, 'options')}
 							toggleOption={this.toggleOption.bind(this)}
 
 						/>
 						<br/><br/>
 						<div className="align-card">
 							<Button className="save-child btn change-child" onClick={() => this.createChildren()}>
-								{this.state.state === 'Create' ? this.displayContent(content.filter(obj => obj.lang === this.props.lang)[0].pages.parameters[6]) :
-									this.displayContent(content.filter(obj => obj.lang === this.props.lang)[0].pages.parameters[7])}
+								{this.state.state === 'Create' ? displayContent(this.props.lang, 6, 'parameters') :
+									displayContent(this.props.lang, 7, 'parameters')}
 							</Button>
-							<Button className="btn btn-danger change-child" onClick={this.toggleModal}>{this.displayContent(content.filter(obj => obj.lang === this.props.lang)[0].pages.parameters[1])}</Button>
+							<Button className="btn btn-danger change-child" onClick={this.toggleModal}>{displayContent(this.props.lang, 1, 'parameters')}</Button>
 							<br/>
-							{this.state.alphaErr || this.state.numErr ? (<div><span className="address-params text-danger">{this.displayContent(content.filter(obj => obj.lang === this.props.lang)[0].pages.parameters[2])}</span><br/><br/></div>) : null}
+							{this.state.alphaErr || this.state.numErr ? (<div><span className="address-params text-danger">{displayContent(this.props.lang, 2, 'parameters')}</span><br/><br/></div>) : null}
 						</div>
 					</form>
 	            </Modal>
 	            <DisplayChildrenList
 		            childrens={this.state.childrens}
-		            title={this.displayContent(content.filter(obj => obj.lang === this.props.lang)[0].pages.parameters[0])}
-		            delete={this.displayContent(content.filter(obj => obj.lang === this.props.lang)[0].pages.parameters[3])}
-		            edit={this.displayContent(content.filter(obj => obj.lang === this.props.lang)[0].pages.parameters[4])}
+		            title={displayContent(this.props.lang, 0, 'parameters')}
+		            delete={displayContent(this.props.lang, 3, 'parameters')}
+		            edit={displayContent(this.props.lang, 4, 'parameters')}
 		            editChildren={this.editChildren}
 		            deleteChildren={this.deleteChildren}
 	            />
 				<Button className="btn btn-primary add-child" onClick={this.toggleModal}>
-					{this.displayContent(content.filter(obj => obj.lang === this.props.lang)[0].pages.parameters[5])} <Icon type="user-add" className="size-icon"/>
+					{displayContent(this.props.lang, 5, 'parameters')} <Icon type="user-add" className="size-icon"/>
 				</Button>
             </div>
         )

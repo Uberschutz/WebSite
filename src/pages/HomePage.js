@@ -7,8 +7,7 @@ import whois from '../assets/CacherPseudo.jpg';
 import software from '../assets/logiciel.png';
 import navigation from '../assets/navigation.png';
 import blocking from '../assets/bloquant.png';
-
-const content = require('../assets/text');
+import { displayContent } from '../utils/translationDisplay';
 
 class HomePage extends Component {
 	constructor(props) {
@@ -29,20 +28,15 @@ class HomePage extends Component {
 		console.log(this.props.lang);
 	}
 
-	displayContent(content) {
-		// return(<div dangerouslySetInnerHTML={ {__html: content} }/>)
-		return(content)
-	}
-
 	render() {
 		let i = 0;
         return (
             <div>
                 <img src={canvas} alt="canvas" className="responsive-image"/>
                 <span className="text-span">
-	                {this.displayContent(content.filter(obj => obj.lang === this.props.lang)[0].pages.home[i++])}
-                    <br/> {this.displayContent(content.filter(obj => obj.lang === this.props.lang)[0].pages.home[i++])}
-                    <br/> {this.displayContent(content.filter(obj => obj.lang === this.props.lang)[0].pages.home[i++])}
+	                {displayContent(this.props.lang, i++, 'home')}
+                    <br/> {displayContent(this.props.lang, i++, 'home')}
+                    <br/> {displayContent(this.props.lang, i++, 'home')}
                 </span>
                 <div className="row responsive-image Home">
                     <div>
@@ -51,22 +45,22 @@ class HomePage extends Component {
                     </div>
                     <div className="txt-intro">
                         <h3 className="h7-font">
-	                        {this.displayContent(content.filter(obj => obj.lang === this.props.lang)[0].pages.home[i++])}
+	                        {displayContent(this.props.lang, i++, 'home')}
                         </h3>
                         <h6 className="h6-font">
-	                        {this.displayContent(content.filter(obj => obj.lang === this.props.lang)[0].pages.home[i++])}
+	                        {displayContent(this.props.lang, i++, 'home')}
                             <br/>
-	                        {this.displayContent(content.filter(obj => obj.lang === this.props.lang)[0].pages.home[i++])}
+	                        {displayContent(this.props.lang, i++, 'home')}
                         </h6>
                         <h8 className="italic-txt">
-	                        {this.displayContent(content.filter(obj => obj.lang === this.props.lang)[0].pages.home[i++])}
+	                        {displayContent(this.props.lang, i++, 'home')}
                         </h8>
                     </div>
                 </div>
                 <div className="Home responsive-image">
                     <br/><br/>
                     <h5 className="rappel-info h7-font">
-	                    {this.displayContent(content.filter(obj => obj.lang === this.props.lang)[0].pages.home[i++])}
+	                    {displayContent(this.props.lang, i++, 'home')}
                     </h5>
                     <br/><br/>
                     <div className="row responsive-image">
@@ -74,27 +68,27 @@ class HomePage extends Component {
                             <img src={software} alt="software"/>
                             <br/><br/>
                             <span className="rappel-info">
-			                    {this.displayContent(content.filter(obj => obj.lang === this.props.lang)[0].pages.home[i++])}
+			                    {displayContent(this.props.lang, i++, 'home')}
                             </span>
                         </div>
                         <div className="col responsive-image">
                             <img src={navigation} alt="navigation"/>
                             <br/><br/>
                             <span className="rappel-info">
-        	                    {this.displayContent(content.filter(obj => obj.lang === this.props.lang)[0].pages.home[i++])}
+        	                    {displayContent(this.props.lang, i++, 'home')}
 		                    </span>
                         </div>
                         <div className="col responsive-image">
                             <img src={blocking} alt="blocking"/>
                             <br/> <br/>
                             <span className="rappel-info">
-        	                    {this.displayContent(content.filter(obj => obj.lang === this.props.lang)[0].pages.home[i++])}
+        	                    {displayContent(this.props.lang, i++, 'home')}
 		                    </span>
                         </div>
                     </div>
                     <br/>
                     <h7 className="rappel-info">
-	                    {this.displayContent(content.filter(obj => obj.lang === this.props.lang)[0].pages.home[i])}
+	                    {displayContent(this.props.lang, i, 'home')}
                     </h7>
                     <br/><br/><br/>
                 </div>

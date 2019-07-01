@@ -8,8 +8,7 @@ import english from '../assets/english-flag2.png';
 
 import {Navbar, NavbarBrand, NavbarToggler, Nav, Collapse, NavItem, NavLink} from 'reactstrap';
 import {Link} from "react-router-dom";
-
-const content = require('../assets/text');
+import { displayContent } from '../utils/translationDisplay';
 
 class Header extends Component {
     constructor(props) {
@@ -25,11 +24,6 @@ class Header extends Component {
         this.setState({
             isOpen: !this.state.isOpen
         });
-    }
-
-    displayContent(content) {
-        // return(<div dangerouslySetInnerHTML={ {__html: content} }/>)
-        return(content)
     }
 
     render () {
@@ -53,16 +47,16 @@ class Header extends Component {
                                     <Link className="nav-link uber-color" to="/">Menu</Link>
                                 </NavItem>
                                 <NavItem className="nav-item">
-                                    <Link className="nav-link uber-color" to="/Connection">{/*Connexion*/} {this.displayContent(content.filter(obj => obj.lang === this.props.lang)[0].pages.navbar[i++])} </Link>
+                                    <Link className="nav-link uber-color" to="/Connection">{displayContent(this.props.lang, i++, 'navbar')} </Link>
                                 </NavItem>
                                 <NavItem className="nav-item">
                                     <Link to="/Contact+FAQ" className="nav-link uber-color">Contact + FAQ</Link>
                                 </NavItem>
                                 <NavItem className="nav-item">
-                                    <NavLink className="nav-link uber-color" href="/Profile">{/*Profil*/} {this.displayContent(content.filter(obj => obj.lang === this.props.lang)[0].pages.navbar[i++])} </NavLink>
+                                    <NavLink className="nav-link uber-color" href="/Profile">{displayContent(this.props.lang, i++, 'navbar')} </NavLink>
                                 </NavItem>
                                 <NavItem className="nav-item">
-                                    <NavLink className="nav-link uber-color" href="/Parameters">{/*Paramètres*/} {this.displayContent(content.filter(obj => obj.lang === this.props.lang)[0].pages.navbar[i++])} </NavLink>
+                                    <NavLink className="nav-link uber-color" href="/Parameters">{displayContent(this.props.lang, i, 'navbar')} </NavLink>
                                 </NavItem>
                             </React.Fragment>
                         </Nav>

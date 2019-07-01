@@ -13,7 +13,7 @@ class Footer extends Component {
                 </Link>
                 <br/>
                 <span>
-                    © 2019
+                    © 2018 - 2019
                 </span>
                 <br/>
                 <span>

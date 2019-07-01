@@ -3,7 +3,7 @@
 exports[`renders Footer without crashing 1`] = `
 <div>
   <div
-    class="uber-color2 form-align"
+    class="uber-color2 form-align footer"
   >
     <a
       href="/Contact+FAQ"
@@ -17,7 +17,7 @@ exports[`renders Footer without crashing 1`] = `
     </a>
     <br />
     <span>
-      © 2019
+      © 2018 - 2019
     </span>
     <br />
     <span>

@@ -3,8 +3,7 @@ import '../styles/bootstrap.css';
 import '../styles/Connection.css';
 
 import { Link } from 'react-router-dom';
-
-const content = require('../assets/text');
+import { displayContent } from '../utils/translationDisplay';
 
 class Connection extends Component {
 	constructor(props) {
@@ -17,11 +16,6 @@ class Connection extends Component {
 	        alphaName: false,
 	        alphaSurname: false
         };
-    }
-
-    displayContent(content) {
-        // return(<div dangerouslySetInnerHTML={ {__html: content} }/>)
-        return(content)
     }
 
     static isAlpha(char) {
@@ -66,11 +60,11 @@ class Connection extends Component {
                             <div className="card-body bg-dark item-align text-align">
                                 <h5 className="card-title text-align">
                                     {/*Authentication*/}
-                                    {this.displayContent(content.filter(obj => obj.lang === this.props.lang)[0].pages.connexion[i++])}
+                                    {displayContent(this.props.lang, i++, 'connexion')}
                                 </h5>
                                 <p className="card-text">
                                     {/*Please enter an email and a password to continue*/}
-                                    {this.displayContent(content.filter(obj => obj.lang === this.props.lang)[0].pages.connexion[i++])}
+                                    {displayContent(this.props.lang, i++, 'connexion')}
                                 </p>
                                 <div className="input-group mb-3">
                                     <div className="input-group-prepend">
@@ -80,12 +74,12 @@ class Connection extends Component {
                                 </div>
                                 <div className="input-group mb-3">
                                     <div className="input-group-prepend">
-                                        <span className="input-group-text" id="inputGroup-sizing-default">{this.displayContent(content.filter(obj => obj.lang === this.props.lang)[0].pages.connexion[i++])}</span>
+                                        <span className="input-group-text" id="inputGroup-sizing-default">{displayContent(this.props.lang, i++, 'connexion')}</span>
                                     </div>
                                     <input type="password" className="form-control" aria-label="Email"/>
                                 </div>
                                 <Link to ='/'>
-                                    <button type="button" className="btn btn-primary">{this.displayContent(content.filter(obj => obj.lang === this.props.lang)[0].pages.connexion[i++])}</button>
+                                    <button type="button" className="btn btn-primary">{displayContent(this.props.lang, i++, 'connexion')}</button>
                                 </Link>
                             </div>
                         </div>
@@ -97,22 +91,22 @@ class Connection extends Component {
                             <div className="card-body bg-dark item-align text-align">
                                 <h5 className="card-title text-align">
                                     {/*Inscription*/}
-                                    {this.displayContent(content.filter(obj => obj.lang === this.props.lang)[0].pages.connexion[i++])}
+                                    {displayContent(this.props.lang, i++, 'connexion')}
                                 </h5>
                                 <p className="card-text">
                                     {/*Merci de remplir ces champs pour continuer*/}
-                                    {this.displayContent(content.filter(obj => obj.lang === this.props.lang)[0].pages.connexion[i++])}
+                                    {displayContent(this.props.lang, i++, 'connexion')}
                                 </p>
                                 <div className="input-group mb-3">
                                     <div className="input-group-prepend">
-                                        <span className="input-group-text" id="inputGroup-sizing-default">{this.displayContent(content.filter(obj => obj.lang === this.props.lang)[0].pages.connexion[i++])}</span>
+                                        <span className="input-group-text" id="inputGroup-sizing-default">{displayContent(this.props.lang, i++, 'connexion')}</span>
                                     </div>
 	                                {this.state.alphaName ? <input value={this.state.name} onChange={(name) => this.onChangeName(name.target.value)} type="text" className="form-control form-box-error" aria-label="Nom"/> :
                                     <input value={this.state.name} onChange={(name) => this.onChangeName(name.target.value)} type="text" className="form-control" aria-label="Nom"/>}
                                 </div>
                                 <div className="input-group mb-3">
                                     <div className="input-group-prepend">
-                                        <span className="input-group-text" id="inputGroup-sizing-default">{this.displayContent(content.filter(obj => obj.lang === this.props.lang)[0].pages.connexion[i++])}</span>
+                                        <span className="input-group-text" id="inputGroup-sizing-default">{displayContent(this.props.lang, i++, 'connexion')}</span>
                                     </div>
 	                                {this.state.alphaSurname ? <input value={this.state.value} onChange={(surname) => this.onChangeSurname(surname.target.value)} type="text" className="form-control form-box-error" aria-label="Prénom"/> :
                                     <input value={this.state.value} onChange={(surname) => this.onChangeSurname(surname.target.value)} type="text" className="form-control" aria-label="Prénom"/>}
@@ -125,16 +119,16 @@ class Connection extends Component {
                                 </div>
                                 <div className="input-group mb-3">
                                     <div className="input-group-prepend">
-                                        <span className="input-group-text" id="inputGroup-sizing-default">{this.displayContent(content.filter(obj => obj.lang === this.props.lang)[0].pages.connexion[i++])}</span>
+                                        <span className="input-group-text" id="inputGroup-sizing-default">{displayContent(this.props.lang, i++, 'connexion')}</span>
                                     </div>
                                     <input value={this.state.password} onChange={(password) => this.onChangePass(password.target.value)} type="password" className="form-control" aria-label="Email"/>
                                 </div>
                                 <Link to ='/Profil'>
-                                    <button type="button" className="btn btn-primary">{this.displayContent(content.filter(obj => obj.lang === this.props.lang)[0].pages.connexion[i++])}</button>
+                                    <button type="button" className="btn btn-primary">{displayContent(this.props.lang, i++, 'connexion')}</button>
                                 </Link>
 	                            <br/>
 	                            {this.state.alphaSurname || this.state.alphaName ?
-		                            <span className="address text-danger">{this.displayContent(content.filter(obj => obj.lang === this.props.lang)[0].pages.connexion[i++])}</span> : null}
+		                            <span className="address text-danger">{displayContent(this.props.lang, i, 'connexion')}</span> : null}
                             </div>
                         </div>
                         <br/>

@@ -3,33 +3,27 @@ import '../styles/bootstrap.css';
 
 import { Icon } from 'antd';
 
-const content = require('../assets/text');
+import {displayContent} from '../utils/translationDisplay';
 
 class Profile extends Component {
-
-    displayContent(content) {
-        // return(<div dangerouslySetInnerHTML={ {__html: content} }/>)
-        return(content)
-    }
-
     render() {
         let i = 0;
         return (
             <div className="description-txt">
                 <h4 className="name-font">
-                    {this.displayContent(content.filter(obj => obj.lang === this.props.lang)[0].pages.profile[i++])}
+                    {displayContent(this.props.lang, i++, 'profile')}
                 </h4> <br/>
                 <h6>
-                    {this.displayContent(content.filter(obj => obj.lang === this.props.lang)[0].pages.profile[i++])}<br/> <br/>
-                    {this.displayContent(content.filter(obj => obj.lang === this.props.lang)[0].pages.profile[i++])}<br/> <br/>
-                    {this.displayContent(content.filter(obj => obj.lang === this.props.lang)[0].pages.profile[i++])}<br/>
+                    {displayContent(this.props.lang, i++, 'profile')}<br/><br/>
+                    {displayContent(this.props.lang, i++, 'profile')}<br/><br/>
+                    {displayContent(this.props.lang, i++, 'profile')}<br/>
                 </h6> <br/>
                 <table className="table">
                     <thead className="table-primary">
                     <tr>
                         <th scope="col">Date</th>
-                        <th scope="col">{this.displayContent(content.filter(obj => obj.lang === this.props.lang)[0].pages.profile[i++])}</th>
-                        <th scope="col">{this.displayContent(content.filter(obj => obj.lang === this.props.lang)[0].pages.profile[i++])}</th>
+                        <th scope="col">{displayContent(this.props.lang, i++, 'profile')}</th>
+                        <th scope="col">{displayContent(this.props.lang, i++, 'profile')}</th>
                     </tr>
                     </thead>
                     <tbody>

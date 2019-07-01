@@ -50,7 +50,6 @@ exports[`renders whole without crashing 1`] = `
                 class="nav-link uber-color"
                 href="/Connection"
               >
-                 
                 Connexion
                  
               </a>
@@ -72,7 +71,6 @@ exports[`renders whole without crashing 1`] = `
                 class="nav-link uber-color nav-link"
                 href="/Profile"
               >
-                 
                 Profil
                  
               </a>
@@ -84,7 +82,6 @@ exports[`renders whole without crashing 1`] = `
                 class="nav-link uber-color nav-link"
                 href="/Parameters"
               >
-                 
                 Paramètres
                  
               </a>
@@ -231,7 +228,7 @@ exports[`renders whole without crashing 1`] = `
       </div>
     </div>
     <div
-      class="uber-color2 form-align"
+      class="uber-color2 form-align footer"
     >
       <a
         href="/Contact+FAQ"
@@ -245,7 +242,7 @@ exports[`renders whole without crashing 1`] = `
       </a>
       <br />
       <span>
-        © 2019
+        © 2018 - 2019
       </span>
       <br />
       <span>
