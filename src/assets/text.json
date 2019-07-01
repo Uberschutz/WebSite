@@ -16,6 +16,9 @@
         "Merci de remplir ces champs pour continuer", "Nom", "Prénom", "Mot de passe", "Continuer",
         "Nom ou prénom invalide"
       ],
+      "registration": [
+        "Inscription", "Merci de remplir ces champs pour continuer", "Nom", "Prénom", "Mot de passe", "Continuer", "Nom ou prénom invalide"
+      ],
       "contact": [
         "Qui sommes nous ? Que faisons nous ?", "• Überschutz :", "Nous sommes un groupe de 7 étudiants d'Epitech de la promo 2021.",
         "Notre groupe a été créé en octobre 2018 (tout d'abord 3 personnes), lors de la Moonshot, puis s'est complété courant janvier 2019.",
@@ -88,6 +91,9 @@
         "Authentication", "Please enter an email and a password to continue", "Password", "Continue", "Registration",
         "Please fill this fields to continue", "Name", "Firstname", "Password", "Continue",
         "Invalid name or surname"
+      ],
+      "registration": [
+        "Registration", "Please fill this fields to continue", "Name", "Firstname", "Password", "Continue", "Invalid name or surname"
       ],
       "contact": [
         "Who are we ? What do we do ?", "• Überschutz :", "We are a group of 7 Epitech students from the 2021 promo.",
