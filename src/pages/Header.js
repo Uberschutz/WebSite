@@ -7,6 +7,7 @@ import french from '../assets/french-flag.png';
 import english from '../assets/english-flag2.png';
 
 import {Navbar, NavbarBrand, NavbarToggler, Nav, Collapse, NavItem, NavLink} from 'reactstrap';
+import {DropdownItem, DropdownMenu, DropdownToggle, ButtonDropdown} from 'reactstrap'
 import {Link} from "react-router-dom";
 import { displayContent } from '../utils/translationDisplay';
 
@@ -63,8 +64,19 @@ class Header extends Component {
                             </React.Fragment>
                         </Nav>
                     </Collapse>
-	                <img src={french} className={frenchClass} alt="french" width="50" height="35" onClick={() => this.props.setLanguage('fr')}/>
-	                <img src={english} className={EnglClass} alt="english" width="35" height="33" onClick={() => this.props.setLanguage('en')}/>
+	                <ButtonDropdown isOpen={this.state.isOpen} toggle={this.toggle} size="sm">
+		                <DropdownToggle caret color="primary">
+			                <img src={french} className={frenchClass} alt="french" width="35" height="35" onClick={() => this.props.setLanguage('fr')}/>
+		                </DropdownToggle>
+		                <DropdownMenu className="drop">
+			                <div className="drop">
+				                <img src={french} className={frenchClass} alt="french" width="20" height="35" onClick={() => this.props.setLanguage('fr')}/>
+			                </div>
+			                <div className="drop">
+				                <img src={english} className={EnglClass} alt="english" width="20" height="33" onClick={() => this.props.setLanguage('en')}/>
+			                </div>
+		                </DropdownMenu>
+	                </ButtonDropdown>
                 </Navbar>
             </div>
         );
