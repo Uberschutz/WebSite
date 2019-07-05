@@ -19,6 +19,8 @@ class Header extends Component {
         this.state = {
             isOpen: false
         };
+        this.frenchClass = "clickable-flag" + (this.props.lang === "fr" ? " touched" : "");
+        this.EnglClass = "clickable-flag" + (this.props.lang === "en" ? " touched" : "");
     }
 
     toggle() {
@@ -27,12 +29,20 @@ class Header extends Component {
         });
     }
 
-    render () {
+    getFlag()  {
+        switch (this.props.lang) {
+            case 'fr':
+                return (<img src={french} className={this.frenchClass} alt="french" width="35" height="35" onClick={() => this.props.setLanguage('fr')}/>);
+            case 'en':
+                return (<img src={english} className={this.EnglClass} alt="english" width="35" height="33" onClick={() => this.props.setLanguage('en')}/>)
+            default:
+                return (<img src={french} className={this.frenchClass} alt="french" width="35" height="35" onClick={() => this.props.setLanguage('fr')}/>)
+        }
+    }
 
-        const frenchClass = "clickable-flag" + (this.props.lang === "fr" ? " touched" : "");
-        const EnglClass = "clickable-flag" + (this.props.lang === "en" ? " touched" : "");
-        console.log(frenchClass);
-        console.log(EnglClass);
+    render () {
+        console.log(this.frenchClass);
+        console.log(this.EnglClass);
         let i = 0;
 
         return (
@@ -66,14 +76,15 @@ class Header extends Component {
                     </Collapse>
 	                <ButtonDropdown isOpen={this.state.isOpen} toggle={this.toggle} size="sm">
 		                <DropdownToggle caret color="primary">
-			                <img src={french} className={frenchClass} alt="french" width="35" height="35" onClick={() => this.props.setLanguage('fr')}/>
+                            {this.getFlag()}
+			                {/*<img src={french} className={frenchClass} alt="french" width="35" height="35" onClick={() => this.props.setLanguage('fr')}/>*/}
 		                </DropdownToggle>
-		                <DropdownMenu className="drop">
-			                <div className="drop">
-				                <img src={french} className={frenchClass} alt="french" width="20" height="35" onClick={() => this.props.setLanguage('fr')}/>
+		                <DropdownMenu className="drop btn">
+			                <div>
+				                <img src={french} className={this.frenchClass} alt="french" width="35" height="35" onClick={() => this.props.setLanguage('fr')}/>
 			                </div>
-			                <div className="drop">
-				                <img src={english} className={EnglClass} alt="english" width="20" height="33" onClick={() => this.props.setLanguage('en')}/>
+			                <div>
+				                <img src={english} className={this.EnglClass} alt="english" width="35" height="33" onClick={() => this.props.setLanguage('en')}/>
 			                </div>
 		                </DropdownMenu>
 	                </ButtonDropdown>

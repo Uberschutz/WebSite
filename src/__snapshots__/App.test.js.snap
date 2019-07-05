@@ -68,40 +68,67 @@ exports[`renders whole without crashing 1`] = `
               class="nav-item nav-item"
             >
               <a
-                class="nav-link uber-color nav-link"
+                class="nav-link uber-color"
                 href="/Profile"
               >
                 Profil
-                 
               </a>
             </li>
             <li
               class="nav-item nav-item"
             >
               <a
-                class="nav-link uber-color nav-link"
+                class="nav-link uber-color"
                 href="/Parameters"
               >
                 Paramètres
-                 
               </a>
             </li>
           </ul>
         </div>
-        <img
-          alt="french"
-          class="clickable-flag touched"
-          height="35"
-          src="french-flag.png"
-          width="50"
-        />
-        <img
-          alt="english"
-          class="clickable-flag"
-          height="33"
-          src="english-flag2.png"
-          width="35"
-        />
+        <div
+          class="btn-group btn-group-sm"
+        >
+          <button
+            aria-expanded="false"
+            aria-haspopup="true"
+            class="dropdown-toggle btn btn-primary"
+            type="button"
+          >
+            <img
+              alt="french"
+              class="clickable-flag touched"
+              height="35"
+              src="french-flag.png"
+              width="35"
+            />
+          </button>
+          <div
+            aria-hidden="true"
+            class="drop btn dropdown-menu"
+            role="menu"
+            tabindex="-1"
+          >
+            <div>
+              <img
+                alt="french"
+                class="clickable-flag touched"
+                height="35"
+                src="french-flag.png"
+                width="35"
+              />
+            </div>
+            <div>
+              <img
+                alt="english"
+                class="clickable-flag"
+                height="33"
+                src="english-flag2.png"
+                width="35"
+              />
+            </div>
+          </div>
+        </div>
       </nav>
     </div>
     <div>

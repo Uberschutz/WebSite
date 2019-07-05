@@ -76,5 +76,6 @@
 }
 
 .drop {
-	width: 20px!important;
+	/*width: 20px!important;*/
+    min-width: 0!important;
 }
