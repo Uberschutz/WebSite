@@ -1,68 +1,197 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`renders without crashing 1`] = `
+exports[`renders Connection without crashing 1`] = `
 <div>
   <div>
     <div
-      class="card text-white bg-dark box-center"
+      class="row responsive-image"
     >
       <div
-        class="card-body bg-dark item-align"
+        class="col"
       >
-        <h5
-          class="card-title text-align"
-        >
-          Authentication
-        </h5>
-        <p
-          class="card-text"
-        >
-          Please enter an email and a password to continue
-        </p>
+        <br />
         <div
-          class="input-group mb-3"
+          class="card text-white bg-dark box-center"
         >
           <div
-            class="input-group-prepend"
+            class="card-body bg-dark item-align text-align"
           >
-            <span
-              class="input-group-text"
-              id="inputGroup-sizing-default"
+            <h5
+              class="card-title text-align"
             >
-              Email
-            </span>
+              Authentification
+            </h5>
+            <p
+              class="card-text"
+            >
+              Merci de rentrer votre email et votre mot de passe pour continuer
+            </p>
+            <div
+              class="input-group mb-3"
+            >
+              <div
+                class="input-group-prepend"
+              >
+                <span
+                  class="input-group-text"
+                  id="inputGroup-sizing-default"
+                >
+                  Email
+                </span>
+              </div>
+              <input
+                aria-label="Email"
+                class="form-control"
+                type="text"
+              />
+            </div>
+            <div
+              class="input-group mb-3"
+            >
+              <div
+                class="input-group-prepend"
+              >
+                <span
+                  class="input-group-text"
+                  id="inputGroup-sizing-default"
+                >
+                  Mot de passe
+                </span>
+              </div>
+              <input
+                aria-label="Email"
+                class="form-control"
+                type="password"
+              />
+            </div>
+            <a
+              href="/"
+            >
+              <button
+                class="btn btn-primary"
+                type="button"
+              >
+                Continuer
+              </button>
+            </a>
           </div>
-          <input
-            aria-label="Email"
-            class="form-control"
-            type="text"
-          />
         </div>
+        <br />
+      </div>
+      <div
+        class="col"
+      >
+        <br />
         <div
-          class="input-group mb-3"
+          class="card text-white bg-dark box-center"
         >
           <div
-            class="input-group-prepend"
+            class="card-body bg-dark item-align text-align"
           >
-            <span
-              class="input-group-text"
-              id="inputGroup-sizing-default"
+            <h5
+              class="card-title text-align"
             >
-              Password
-            </span>
+              Inscription
+            </h5>
+            <p
+              class="card-text"
+            >
+              Merci de remplir ces champs pour continuer
+            </p>
+            <div
+              class="input-group mb-3"
+            >
+              <div
+                class="input-group-prepend"
+              >
+                <span
+                  class="input-group-text"
+                  id="inputGroup-sizing-default"
+                >
+                  Nom
+                </span>
+              </div>
+              <input
+                aria-label="Nom"
+                class="form-control"
+                type="text"
+                value=""
+              />
+            </div>
+            <div
+              class="input-group mb-3"
+            >
+              <div
+                class="input-group-prepend"
+              >
+                <span
+                  class="input-group-text"
+                  id="inputGroup-sizing-default"
+                >
+                  Prénom
+                </span>
+              </div>
+              <input
+                aria-label="Prénom"
+                class="form-control"
+                type="text"
+                value=""
+              />
+            </div>
+            <div
+              class="input-group mb-3"
+            >
+              <div
+                class="input-group-prepend"
+              >
+                <span
+                  class="input-group-text"
+                  id="inputGroup-sizing-default"
+                >
+                  Email
+                </span>
+              </div>
+              <input
+                aria-label="Email"
+                class="form-control"
+                type="text"
+                value=""
+              />
+            </div>
+            <div
+              class="input-group mb-3"
+            >
+              <div
+                class="input-group-prepend"
+              >
+                <span
+                  class="input-group-text"
+                  id="inputGroup-sizing-default"
+                >
+                  Mot de passe
+                </span>
+              </div>
+              <input
+                aria-label="Email"
+                class="form-control"
+                type="password"
+                value=""
+              />
+            </div>
+            <a
+              href="/Profile"
+            >
+              <button
+                class="btn btn-primary"
+                type="button"
+              >
+                Continuer
+              </button>
+            </a>
+            <br />
           </div>
-          <input
-            aria-label="Email"
-            class="form-control"
-            type="password"
-          />
         </div>
-        <button
-          class="btn btn-light"
-          type="button"
-        >
-          Continue
-        </button>
+        <br />
       </div>
     </div>
   </div>

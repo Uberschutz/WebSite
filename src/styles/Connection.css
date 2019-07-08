@@ -1,0 +1,39 @@
+.box-center {
+    align-items: center;
+    justify-content: center;
+    margin-left: 10%;
+    margin-right: 10%;
+}
+
+.text-align {
+    text-align: center;
+}
+
+.item-align {
+    align-items: center;
+    align-content: center;
+    justify-items: center;
+    justify-content: center;
+}
+
+.form-box {
+    width: 50%;
+    margin-left: 25%;
+}
+
+.responsive-image {
+    position: relative;
+    max-width: 100%;
+}
+
+.form-box-error {
+	border: 2px solid red!important;
+}
+
+.address {
+	font-style: italic;
+}
+
+.forbidden {
+    margin-top: 7%;
+}

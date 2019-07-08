@@ -4,70 +4,91 @@ import '../styles/HomePage.css';
 
 import canvas from '../assets/canvas2.png';
 import whois from '../assets/CacherPseudo.jpg';
-import logiciel from '../assets/logiciel.png';
+import software from '../assets/logiciel.png';
 import navigation from '../assets/navigation.png';
-import bloquant from '../assets/bloquant.png';
+import blocking from '../assets/bloquant.png';
+import { displayContent } from '../utils/translationDisplay';
 
 class HomePage extends Component {
-    render() {
+	constructor(props) {
+		super(props);
+
+		this.state = {
+			lang: 'fr'
+		};
+	}
+
+	componentDidMount() {
+		this.setState({
+			lang: this.props.lang
+		})
+	}
+
+	componentDidUpdate(prevProps, prevState, snapshot) {
+		console.log(this.props.lang);
+	}
+
+	render() {
+		let i = 0;
         return (
             <div>
                 <img src={canvas} alt="canvas" className="responsive-image"/>
                 <span className="text-span">
-                    Internet :
-                    <br/> êtes-vous conscients des dangers <br/>que rencontrent vos enfants ?
+	                {displayContent(this.props.lang, i++, 'home')}
+                    <br/> {displayContent(this.props.lang, i++, 'home')}
+                    <br/> {displayContent(this.props.lang, i++, 'home')}
                 </span>
                 <div className="row responsive-image Home">
-                    <div className="img-intro">
+                    <div>
                         <br/><br/>
                         <img src={whois} alt="whois"/>
                     </div>
                     <div className="txt-intro">
                         <h3 className="h7-font">
-                            Notre solution :
+	                        {displayContent(this.props.lang, i++, 'home')}
                         </h3>
                         <h6 className="h6-font">
-                            Pour une navigation saine, utilisez Überschutz.
+	                        {displayContent(this.props.lang, i++, 'home')}
                             <br/>
-                            Ce logiciel non bloquant vous préviendra lorsque votre enfant se met en danger sur Internet.
+	                        {displayContent(this.props.lang, i++, 'home')}
                         </h6>
                         <h8 className="italic-txt">
-                            Suicide, drogue, anorexie, harcèlement, contenus pornographiques ... Vous n'imaginez pas à quoi il est confronté.
+	                        {displayContent(this.props.lang, i++, 'home')}
                         </h8>
                     </div>
                 </div>
                 <div className="Home responsive-image">
                     <br/><br/>
                     <h5 className="rappel-info h7-font">
-                        En quelques mots :
+	                    {displayContent(this.props.lang, i++, 'home')}
                     </h5>
                     <br/><br/>
                     <div className="row responsive-image">
                         <div className="col">
-                            <img src={logiciel} alt="logiciel"/>
+                            <img src={software} alt="software"/>
                             <br/><br/>
                             <span className="rappel-info">
-                                Un logiciel
+			                    {displayContent(this.props.lang, i++, 'home')}
                             </span>
                         </div>
                         <div className="col responsive-image">
                             <img src={navigation} alt="navigation"/>
-                            <br/> <br/>
+                            <br/><br/>
                             <span className="rappel-info">
-                                Non bloquant
-                            </span>
+        	                    {displayContent(this.props.lang, i++, 'home')}
+		                    </span>
                         </div>
                         <div className="col responsive-image">
-                            <img src={bloquant} alt="bloquant"/>
+                            <img src={blocking} alt="blocking"/>
                             <br/> <br/>
                             <span className="rappel-info">
-                                Non intrusif
-                            </span>
+        	                    {displayContent(this.props.lang, i++, 'home')}
+		                    </span>
                         </div>
                     </div>
                     <br/>
                     <h7 className="rappel-info">
-                        Pour protéger votre enfant et discuter avec lui lorsqu'une situation compliquée se présente.
+	                    {displayContent(this.props.lang, i, 'home')}
                     </h7>
                     <br/><br/><br/>
                 </div>

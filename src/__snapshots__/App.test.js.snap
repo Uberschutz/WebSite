@@ -1,8 +1,10 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`renders without crashing 1`] = `
+exports[`renders whole without crashing 1`] = `
 <div>
-  <div>
+  <div
+    class="App"
+  >
     <div>
       <nav
         class="navbar navbar-expand-md uber-color navbar navbar-expand-md navbar-light"
@@ -35,7 +37,7 @@ exports[`renders without crashing 1`] = `
               class="nav-item nav-item"
             >
               <a
-                class="nav-link uber-color nav-link"
+                class="nav-link uber-color"
                 href="/"
               >
                 Menu
@@ -45,17 +47,18 @@ exports[`renders without crashing 1`] = `
               class="nav-item nav-item"
             >
               <a
-                class="nav-link uber-color nav-link"
-                href="/Connexion"
+                class="nav-link uber-color"
+                href="/Connection"
               >
                 Connexion
+                 
               </a>
             </li>
             <li
               class="nav-item nav-item"
             >
               <a
-                class="nav-link uber-color nav-link"
+                class="nav-link uber-color"
                 href="/Contact+FAQ"
               >
                 Contact + FAQ
@@ -65,8 +68,8 @@ exports[`renders without crashing 1`] = `
               class="nav-item nav-item"
             >
               <a
-                class="nav-link uber-color nav-link"
-                href="/Profil"
+                class="nav-link uber-color"
+                href="/Profile"
               >
                 Profil
               </a>
@@ -75,13 +78,56 @@ exports[`renders without crashing 1`] = `
               class="nav-item nav-item"
             >
               <a
-                class="nav-link uber-color nav-link"
-                href="/Parametres"
+                class="nav-link uber-color"
+                href="/Parameters"
               >
                 Paramètres
               </a>
             </li>
           </ul>
+        </div>
+        <div
+          class="btn-group btn-group-sm"
+        >
+          <button
+            aria-expanded="false"
+            aria-haspopup="true"
+            class="dropdown-toggle btn btn-primary"
+            type="button"
+          >
+            <img
+              alt="french"
+              class="clickable-flag touched"
+              height="35"
+              src="french-flag.png"
+              width="35"
+            />
+          </button>
+          <div
+            aria-hidden="true"
+            class="drop btn dropdown-menu"
+            role="menu"
+            tabindex="-1"
+          >
+            <div>
+              <img
+                alt="french"
+                class="clickable-flag touched"
+                height="35"
+                src="french-flag.png"
+                width="35"
+              />
+            </div>
+            <div>
+              <img
+                alt="english"
+                class="clickable-flag"
+                height="33"
+                src="english-flag2.png"
+                width="35"
+              />
+            </div>
+          </div>
         </div>
       </nav>
     </div>
@@ -96,16 +142,16 @@ exports[`renders without crashing 1`] = `
       >
         Internet :
         <br />
-         êtes-vous conscients des dangers 
+         
+        êtes-vous conscients des dangers
         <br />
+         
         que rencontrent vos enfants ?
       </span>
       <div
         class="row responsive-image Home"
       >
-        <div
-          class="img-intro"
-        >
+        <div>
           <br />
           <br />
           <img
@@ -154,7 +200,7 @@ exports[`renders without crashing 1`] = `
             class="col"
           >
             <img
-              alt="logiciel"
+              alt="software"
               src="logiciel.png"
             />
             <br />
@@ -173,7 +219,6 @@ exports[`renders without crashing 1`] = `
               src="navigation.png"
             />
             <br />
-             
             <br />
             <span
               class="rappel-info"
@@ -185,7 +230,7 @@ exports[`renders without crashing 1`] = `
             class="col responsive-image"
           >
             <img
-              alt="bloquant"
+              alt="blocking"
               src="bloquant.png"
             />
             <br />
@@ -210,21 +255,25 @@ exports[`renders without crashing 1`] = `
       </div>
     </div>
     <div
-      class="uber-color2 form-align"
+      class="uber-color2 form-align footer"
     >
-      <button
-        class="btn btn-light button-footer"
-        type="button"
+      <a
+        href="/Contact+FAQ"
       >
-        Contact
-      </button>
+        <button
+          class="btn btn-primary button-footer"
+          type="button"
+        >
+          Contact
+        </button>
+      </a>
       <br />
       <span>
-        © 2019
+        © 2018 - 2019
       </span>
       <br />
       <span>
-        Created by Marianne LEVEE
+        Created by Marianne LEVEE & Thomas DEROTE-PARCELLIER
       </span>
     </div>
   </div>

@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`renders without crashing 1`] = `
+exports[`renders Home without crashing 1`] = `
 <div>
   <div>
     <img
@@ -13,16 +13,16 @@ exports[`renders without crashing 1`] = `
     >
       Internet :
       <br />
-       êtes-vous conscients des dangers 
+       
+      êtes-vous conscients des dangers
       <br />
+       
       que rencontrent vos enfants ?
     </span>
     <div
       class="row responsive-image Home"
     >
-      <div
-        class="img-intro"
-      >
+      <div>
         <br />
         <br />
         <img
@@ -71,7 +71,7 @@ exports[`renders without crashing 1`] = `
           class="col"
         >
           <img
-            alt="logiciel"
+            alt="software"
             src="logiciel.png"
           />
           <br />
@@ -90,7 +90,6 @@ exports[`renders without crashing 1`] = `
             src="navigation.png"
           />
           <br />
-           
           <br />
           <span
             class="rappel-info"
@@ -102,7 +101,7 @@ exports[`renders without crashing 1`] = `
           class="col responsive-image"
         >
           <img
-            alt="bloquant"
+            alt="blocking"
             src="bloquant.png"
           />
           <br />
