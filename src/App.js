@@ -9,6 +9,7 @@ import Connection from "./pages/Connection";
 import Contact from "./pages/Contact";
 import Profile from "./pages/Profile";
 import Parameters from "./pages/Parameters";
+import Report from "./pages/Report";
 
 class App extends Component {
 	constructor(props) {
@@ -41,6 +42,7 @@ class App extends Component {
                     <Route path={'/Connection'} exact component={() => <Connection lang={this.state.lang}/>}/>
                     <Route path={'/Contact+FAQ'} exact component={() => <Contact lang={this.state.lang}/>}/>
                     <Route path={'/Profile'} exact component={() => <Profile lang={this.state.lang}/>} logged={this.state.logged}/>
+                    <Route path={'/Report'} exact component={() => <Report lang={this.state.lang}/>} logged={this.state.logged}/>
                     <Route path={'/Parameters'} exact component={() => <Parameters lang={this.state.lang} logged={this.state.logged}/>}/>
                 </Switch>
                 <Footer/>

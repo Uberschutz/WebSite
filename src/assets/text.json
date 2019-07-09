@@ -3,7 +3,7 @@
     "lang": "fr",
     "pages": {
       "navbar": [
-        "Connexion", "Profil", "Paramètres"
+        "Connexion", "Profil", "Rapport", "Paramètres"
       ],
       "home": [
         "Internet :", "êtes-vous conscients des dangers", "que rencontrent vos enfants ?",
@@ -80,7 +80,7 @@
     "lang": "en",
     "pages": {
       "navbar": [
-        "Connection", "Profile", "Parameters"
+        "Connection", "Profile", "Report", "Parameters"
       ],
       "home": [
         "Internet :", "are you aware of dangers", "your childrens encounter ?",
