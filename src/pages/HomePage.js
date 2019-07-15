@@ -19,9 +19,11 @@ class HomePage extends Component {
 	}
 
 	componentDidMount() {
-		this.setState({
-			lang: this.props.lang
-		})
+        const { base: { language }} = this.props;
+        console.log(this.props);
+        // this.setState({
+		// 	lang: language
+		// })
 	}
 
 	componentDidUpdate(prevProps, prevState, snapshot) {
@@ -34,9 +36,9 @@ class HomePage extends Component {
             <div>
                 <img src={canvas} alt="canvas" className="responsive-image"/>
                 <span className="text-span">
-	                {displayContent(this.props.lang, i++, 'home')}
-                    <br/> {displayContent(this.props.lang, i++, 'home')}
-                    <br/> {displayContent(this.props.lang, i++, 'home')}
+	                {displayContent(this.state.lang, i++, 'home')}
+                    <br/> {displayContent(this.state.lang, i++, 'home')}
+                    <br/> {displayContent(this.state.lang, i++, 'home')}
                 </span>
                 <div className="row responsive-image Home">
                     <div>
@@ -45,22 +47,22 @@ class HomePage extends Component {
                     </div>
                     <div className="txt-intro">
                         <h3 className="h7-font">
-	                        {displayContent(this.props.lang, i++, 'home')}
+	                        {displayContent(this.state.lang, i++, 'home')}
                         </h3>
                         <h6 className="h6-font">
-	                        {displayContent(this.props.lang, i++, 'home')}
+	                        {displayContent(this.state.lang, i++, 'home')}
                             <br/>
-	                        {displayContent(this.props.lang, i++, 'home')}
+	                        {displayContent(this.state.lang, i++, 'home')}
                         </h6>
                         <h8 className="italic-txt">
-	                        {displayContent(this.props.lang, i++, 'home')}
+	                        {displayContent(this.state.lang, i++, 'home')}
                         </h8>
                     </div>
                 </div>
                 <div className="Home responsive-image">
                     <br/><br/>
                     <h5 className="rappel-info h7-font">
-	                    {displayContent(this.props.lang, i++, 'home')}
+	                    {displayContent(this.state.lang, i++, 'home')}
                     </h5>
                     <br/><br/>
                     <div className="row responsive-image">
@@ -68,27 +70,27 @@ class HomePage extends Component {
                             <img src={software} alt="software"/>
                             <br/><br/>
                             <span className="rappel-info">
-			                    {displayContent(this.props.lang, i++, 'home')}
+			                    {displayContent(this.state.lang, i++, 'home')}
                             </span>
                         </div>
                         <div className="col responsive-image">
                             <img src={navigation} alt="navigation"/>
                             <br/><br/>
                             <span className="rappel-info">
-        	                    {displayContent(this.props.lang, i++, 'home')}
+        	                    {displayContent(this.state.lang, i++, 'home')}
 		                    </span>
                         </div>
                         <div className="col responsive-image">
                             <img src={blocking} alt="blocking"/>
                             <br/> <br/>
                             <span className="rappel-info">
-        	                    {displayContent(this.props.lang, i++, 'home')}
+        	                    {displayContent(this.state.lang, i++, 'home')}
 		                    </span>
                         </div>
                     </div>
                     <br/>
                     <h7 className="rappel-info">
-	                    {displayContent(this.props.lang, i, 'home')}
+	                    {displayContent(this.state.lang, i, 'home')}
                     </h7>
                     <br/><br/><br/>
                 </div>

@@ -17,10 +17,18 @@ class Header extends Component {
 
         this.toggle = this.toggle.bind(this);
         this.state = {
-            isOpen: false
+            isOpen: false,
+            lang: undefined
         };
-        this.frenchClass = "clickable-flag" + (this.props.lang === "fr" ? " touched" : "");
-        this.EnglClass = "clickable-flag" + (this.props.lang === "en" ? " touched" : "");
+
+        this.frenchClass = "clickable-flag" + (this.state.lang === "fr" ? " touched" : "");
+        this.EnglClass = "clickable-flag" + (this.state.lang === "en" ? " touched" : "");
+    }
+
+    componentDidMount() {
+        const { state: { language }} = this.props;
+        this.setState({lang: language});
+        console.log(language);
     }
 
     toggle() {
@@ -30,7 +38,7 @@ class Header extends Component {
     }
 
     getFlag()  {
-        switch (this.props.lang) {
+        switch (this.state.lang) {
             case 'fr':
                 return (<img src={french} className={this.frenchClass} alt="french" width="35" height="35" onClick={() => this.props.setLanguage('fr')}/>);
             case 'en':
@@ -58,18 +66,18 @@ class Header extends Component {
                                     <Link className="nav-link uber-color" to="/">Menu</Link>
                                 </NavItem>
                                 <NavItem className="nav-item">
-                                    <Link className="nav-link uber-color" to="/Connection">{displayContent(this.props.lang, i++, 'navbar')} </Link>
+                                    <Link className="nav-link uber-color" to="/Connection">{displayContent(this.state.lang, i++, 'navbar')} </Link>
                                 </NavItem>
                                 <NavItem className="nav-item">
                                     <Link to="/Contact+FAQ" className="nav-link uber-color">Contact + FAQ</Link>
                                 </NavItem>
                                 <NavItem className="nav-item">
-	                                <Link to="/Profile" className="nav-link uber-color">{displayContent(this.props.lang, i++, 'navbar')}</Link>
-                                    {/*<NavLink className="nav-link uber-color" href="/Profile">{displayContent(this.props.lang, i++, 'navbar')} </NavLink>*/}
+	                                <Link to="/Profile" className="nav-link uber-color">{displayContent(this.state.lang, i++, 'navbar')}</Link>
+                                    {/*<NavLink className="nav-link uber-color" href="/Profile">{displayContent(this.state.lang, i++, 'navbar')} </NavLink>*/}
                                 </NavItem>
                                 <NavItem className="nav-item">
-	                                <Link to="/Parameters" className="nav-link uber-color">{displayContent(this.props.lang, i, 'navbar')}</Link>
-                                    {/*<NavLink className="nav-link uber-color" href="/Parameters">{displayContent(this.props.lang, i, 'navbar')} </NavLink>*/}
+	                                <Link to="/Parameters" className="nav-link uber-color">{displayContent(this.state.lang, i, 'navbar')}</Link>
+                                    {/*<NavLink className="nav-link uber-color" href="/Parameters">{displayContent(this.state.lang, i, 'navbar')} </NavLink>*/}
                                 </NavItem>
                             </React.Fragment>
                         </Nav>
