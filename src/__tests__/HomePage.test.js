@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import HomePage from '../pages/HomePage';
+import HomePage from '../pages/HomePage/HomePage';
 
 it('renders Home without crashing', () => {
     const div = document.createElement('div');

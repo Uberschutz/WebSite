@@ -9,8 +9,10 @@ import { persistStore, persistReducer } from 'redux-persist'
 import storage from 'redux-persist/lib/storage'
 import { PersistGate } from 'redux-persist/integration/react'
 import mainReducer from './combineReducers'
-
+import base from './reducer'
 import * as serviceWorker from './serviceWorker';
+import {BrowserRouter as Router, Route, Switch, withRouter} from "react-router-dom";
+
 
 const persistConfig = {
     key: 'root',
@@ -19,19 +21,22 @@ const persistConfig = {
 
 const persistedReducer = persistReducer(persistConfig, mainReducer);
 
-const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
-export const store = createStore(
-    persistedReducer,
-    composeEnhancers(applyMiddleware(thunkMiddleware))
-);
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
+// export const store = createStore(
+//     persistedReducer,
+    // composeEnhancers(applyMiddleware(thunkMiddleware))
+// );
+const store = createStore(mainReducer);
 
 let persistor = persistStore(store);
 
 ReactDOM.render(
     <Provider store={store}>
-        <PersistGate persistor={persistor}>
-            <App />
-        </PersistGate>
+        {/*<PersistGate persistor={persistor}>*/}
+            <Router>
+                <App />
+            </Router>
+        {/*</PersistGate>*/}
     </Provider>, document.getElementById('root')
 );
 

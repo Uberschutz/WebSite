@@ -1,13 +1,15 @@
 const initialState = {
-    token: undefined,
-    email: undefined,
-    username: undefined,
     language: 'fr',
-    logged: false
+    logged: false,
+    // token: undefined,
+    // email: undefined,
+    // username: undefined
 };
 
 const base = (state = initialState, action) => {
     switch (action.type) {
+        case 'TEST':
+            return { ...state, email: 'test' };
         case 'SAVE_AUTH_TOKEN':
             const { token } = action.payload;
             return { ...state, token };

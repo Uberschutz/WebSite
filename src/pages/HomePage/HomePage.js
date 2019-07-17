@@ -1,25 +1,28 @@
 import React, { Component } from 'react';
-import '../styles/bootstrap.css';
-import '../styles/HomePage.css';
+import '../../styles/bootstrap.css';
+import '../../styles/HomePage.css';
 
-import canvas from '../assets/canvas2.png';
-import whois from '../assets/CacherPseudo.jpg';
-import software from '../assets/logiciel.png';
-import navigation from '../assets/navigation.png';
-import blocking from '../assets/bloquant.png';
-import { displayContent } from '../utils/translationDisplay';
+import canvas from '../../assets/canvas2.png';
+import whois from '../../assets/CacherPseudo.jpg';
+import software from '../../assets/logiciel.png';
+import navigation from '../../assets/navigation.png';
+import blocking from '../../assets/bloquant.png';
+import { displayContent } from '../../utils/translationDisplay';
 
 class HomePage extends Component {
-	constructor(props) {
-		super(props);
-
-		this.state = {
-			lang: 'fr'
-		};
-	}
+	// constructor(props) {
+	// 	super(props);
+    //
+	// 	this.state = {
+	// 		lang: 'fr'
+	// 	};
+	// }
+    state = {
+        lang: 'fr'
+    };
 
 	componentDidMount() {
-        const { base: { language }} = this.props;
+        // const { base: { language }} = this.props;
         console.log(this.props);
         // this.setState({
 		// 	lang: language
