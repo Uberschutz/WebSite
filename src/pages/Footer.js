@@ -17,7 +17,7 @@ class Footer extends Component {
                 </span>
                 <br/>
                 <span>
-                    Created by Marianne LEVEE & Thomas DEROTE-PARCELLIER
+                    Created by Marianne LEVEE & Thomas DEROTE-PARCELLIER <br/> App icon by <a href="https://icones8.fr">icons8</a> <br/>
                 </span>
             </div>
         )

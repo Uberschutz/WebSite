@@ -4,9 +4,12 @@ import '../styles/HomePage.css';
 
 import canvas from '../assets/canvas2.png';
 import whois from '../assets/CacherPseudo.jpg';
-import software from '../assets/logiciel.png';
-import navigation from '../assets/navigation.png';
-import blocking from '../assets/bloquant.png';
+//import software from '../assets/logiciel.png';
+import software from '../assets/icons8-boite-à-logiciel-64.png'
+//import navigation from '../assets/navigation.png';
+import navigation from '../assets/icons8-carte-au-trésor-150.png'
+//import blocking from '../assets/bloquant.png';
+import blocking from '../assets/icons8-cadenas-100.png'
 import { displayContent } from '../utils/translationDisplay';
 
 class HomePage extends Component {
@@ -66,21 +69,21 @@ class HomePage extends Component {
                     <div className="row responsive-image">
                         <div className="col">
                             <img src={software} alt="software"/>
-                            <br/><br/>
+                            <br/>
                             <span className="rappel-info">
 			                    {displayContent(this.props.lang, i++, 'home')}
                             </span>
                         </div>
                         <div className="col responsive-image">
                             <img src={navigation} alt="navigation"/>
-                            <br/><br/>
+                            <br/>
                             <span className="rappel-info">
         	                    {displayContent(this.props.lang, i++, 'home')}
 		                    </span>
                         </div>
                         <div className="col responsive-image">
                             <img src={blocking} alt="blocking"/>
-                            <br/> <br/>
+                            <br/>
                             <span className="rappel-info">
         	                    {displayContent(this.props.lang, i++, 'home')}
 		                    </span>

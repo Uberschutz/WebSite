@@ -3,11 +3,13 @@ import '../styles/bootstrap.css';
 import '../styles/HomePage.css';
 
 import logo from '../assets/Uberschutz-logo.png';
-import french from '../assets/french-flag.png';
-import english from '../assets/english-flag2.png';
+//import french from '../assets/french-flag.png';
+import french from '../assets/icons8-france-96.png'
+import english from '../assets/icons8-grande-bretagne-48.png'
+//import english from '../assets/english-flag2.png';
 
 import {Navbar, NavbarBrand, NavbarToggler, Nav, Collapse, NavItem} from 'reactstrap';
-import {DropdownItem, DropdownMenu, DropdownToggle, ButtonDropdown} from 'reactstrap'
+import {DropdownMenu, DropdownToggle, ButtonDropdown} from 'reactstrap'
 import {Link} from "react-router-dom";
 import { displayContent } from '../utils/translationDisplay';
 
@@ -65,14 +67,12 @@ class Header extends Component {
                                 </NavItem>
                                 <NavItem className="nav-item">
 	                                <Link to="/Profile" className="nav-link uber-color">{displayContent(this.props.lang, i++, 'navbar')}</Link>
-                                    {/*<NavLink className="nav-link uber-color" href="/Profile">{displayContent(this.props.lang, i++, 'navbar')} </NavLink>*/}
                                 </NavItem>
                                 <NavItem className="nav-item">
                                     <Link to="/Report" className="nav-link uber-color">{displayContent(this.props.lang, i++, 'navbar')}</Link>
                                 </NavItem>
                                 <NavItem className="nav-item">
 	                                <Link to="/Parameters" className="nav-link uber-color">{displayContent(this.props.lang, i, 'navbar')}</Link>
-                                    {/*<NavLink className="nav-link uber-color" href="/Parameters">{displayContent(this.props.lang, i, 'navbar')} </NavLink>*/}
                                 </NavItem>
                             </React.Fragment>
                         </Nav>

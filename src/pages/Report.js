@@ -12,8 +12,11 @@ class Report extends Component {
                 </div>
             )
         } else {
+
             return (
-                <Unauthorized/>
+                <div>
+                    <Unauthorized/>
+                </div>
             )
         }
     }

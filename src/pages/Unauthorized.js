@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 
 import '../styles/Connection.css';
-import forbidden from '../assets/403-error.png';
+//import forbidden from '../assets/403-error.png';
+import forbidden from '../assets/fogg-no-comments.png'
 
 export default class Unauthorized extends Component {
 	render() {
