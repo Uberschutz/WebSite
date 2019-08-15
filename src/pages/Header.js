@@ -3,10 +3,8 @@ import '../styles/bootstrap.css';
 import '../styles/HomePage.css';
 
 import logo from '../assets/Uberschutz-logo.png';
-//import french from '../assets/french-flag.png';
 import french from '../assets/icons8-france-96.png'
 import english from '../assets/icons8-grande-bretagne-48.png'
-//import english from '../assets/english-flag2.png';
 
 import {Navbar, NavbarBrand, NavbarToggler, Nav, Collapse, NavItem} from 'reactstrap';
 import {DropdownMenu, DropdownToggle, ButtonDropdown} from 'reactstrap'
@@ -80,7 +78,6 @@ class Header extends Component {
 	                <ButtonDropdown isOpen={this.state.isOpen} toggle={this.toggle} size="sm">
 		                <DropdownToggle caret color="primary">
                             {this.getFlag()}
-			                {/*<img src={french} className={frenchClass} alt="french" width="35" height="35" onClick={() => this.props.setLanguage('fr')}/>*/}
 		                </DropdownToggle>
 		                <DropdownMenu className="drop btn">
 			                <div>
