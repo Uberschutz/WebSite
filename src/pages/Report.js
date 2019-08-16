@@ -10,7 +10,8 @@ class Report extends Component {
 
         this.toggle = this.toggle.bind(this);
         this.state = {
-            isOpen: false
+            isOpen: false,
+	        selectedChild: 'Enfants'
         };
     }
 
@@ -20,6 +21,10 @@ class Report extends Component {
         });
     }
 
+    changeChild(name) {
+    	this.setState({selectedChild: name, isOpen: false});
+    }
+
     render() {
         //if (this.props.logged) {
             //let i = 0;
@@ -27,17 +32,17 @@ class Report extends Component {
                 <div>
                     <ButtonDropdown isOpen={this.state.isOpen} toggle={this.toggle} size="lg">
                         <DropdownToggle color="info">
-                            Enfants
+	                        {this.state.selectedChild}
                         </DropdownToggle>
                         <DropdownMenu className="drop btn">
                             <div>
-                                <p>Thomas</p>
+                                <div onClick={() => {this.changeChild('Thomas')}}>Thomas</div>
                             </div>
                             <div>
-                                <p>Théo</p>
+                                <div onClick={() => {this.changeChild('Theo')}}>Théo</div>
                             </div>
                             <div>
-                                <p>Philippe</p>
+                                <div onClick={() => {this.changeChild('Philippe')}}>Philippe</div>
                             </div>
                         </DropdownMenu>
                     </ButtonDropdown>
