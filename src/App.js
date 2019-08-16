@@ -39,7 +39,7 @@ const App = props => {
         return (
             <div className="App">
                 {/*<Router>*/}
-                    {/*<Header setLanguage={this.setLanguage}/>*/}
+                    <Header/>
                     <Switch>
                         <Route path='/' exact strict component={HomePage}/>
                         {/*<Route path={'/Connection'} exact component={() => <Connection/>}/>*/}

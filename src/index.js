@@ -9,7 +9,7 @@ import { persistStore, persistReducer } from 'redux-persist'
 import storage from 'redux-persist/lib/storage'
 import { PersistGate } from 'redux-persist/integration/react'
 import mainReducer from './combineReducers'
-import base from './reducer'
+import reducer from './reducer'
 import * as serviceWorker from './serviceWorker';
 import {BrowserRouter as Router, Route, Switch, withRouter} from "react-router-dom";
 
@@ -26,7 +26,8 @@ const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
 //     persistedReducer,
     // composeEnhancers(applyMiddleware(thunkMiddleware))
 // );
-const store = createStore(mainReducer);
+const store = createStore(reducer);
+// const store = createStore(mainReducer);
 
 let persistor = persistStore(store);
 

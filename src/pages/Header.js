@@ -10,6 +10,7 @@ import {Navbar, NavbarBrand, NavbarToggler, Nav, Collapse, NavItem, NavLink} fro
 import {DropdownItem, DropdownMenu, DropdownToggle, ButtonDropdown} from 'reactstrap'
 import {Link} from "react-router-dom";
 import { displayContent } from '../utils/translationDisplay';
+import { connect } from 'react-redux';
 
 class Header extends Component {
     constructor(props) {
@@ -18,7 +19,8 @@ class Header extends Component {
         this.toggle = this.toggle.bind(this);
         this.state = {
             isOpen: false,
-            lang: undefined
+            // lang: undefined
+            lang: 'fr'
         };
 
         this.frenchClass = "clickable-flag" + (this.state.lang === "fr" ? " touched" : "");
@@ -26,9 +28,10 @@ class Header extends Component {
     }
 
     componentDidMount() {
-        const { state: { language }} = this.props;
-        this.setState({lang: language});
-        console.log(language);
+    	console.log(this.props);
+        // const { state: { language }} = this.props;
+        // this.setState({lang: language});
+        // console.log(language);
     }
 
     toggle() {
@@ -102,4 +105,16 @@ class Header extends Component {
     }
 }
 
-export default Header;
+const mapStateToProps = (state) => {
+	return {
+		lang: state.lang
+	}
+};
+
+const mapDispatchToProps = (dispatch) => {
+	return {
+		setLanguage: () => dispatch({type: 'SET_LANGUAGE'})
+	}
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Header);
