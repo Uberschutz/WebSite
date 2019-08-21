@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import '../styles/bootstrap.css';
 import {ButtonDropdown, DropdownMenu, DropdownToggle} from "reactstrap";
 import ReactApexChart from "react-apexcharts";
+import {ProgressBar} from "react-bootstrap";
 
 class Report extends Component {
 
@@ -46,12 +47,18 @@ class Report extends Component {
                             </div>
                         </DropdownMenu>
                     </ButtonDropdown>
-                    <BarChart/>
+	                {/*<BarChart/>*/}
                     <div className="uber-color2">
                         <span>Blablabla c'est pas bien</span>
                     </div>
+	                <br/>
+	                <div style={{width: '50%'}} className="btn">
+		                <text style={{float: "left", marginRight: 10, verticalAlign: "text-top"}}>Toxicity</text><ProgressBar  animated striped variant="success" now={40} label="40%"/><br/>
+		                <text style={{float: "left", marginRight: 10}}>Obsenity</text><ProgressBar animated striped variant="info" now={20} /><br/>
+		                <text style={{float: "left", marginRight: 10}}>Racism</text><ProgressBar animated striped variant="warning" now={60} /><br/>
+	                </div>
                 </div>
-            )
+            );
         } /*else {
             return (
                 <div>
@@ -79,6 +86,9 @@ class BarChart extends React.Component {
                         },
                     }
                 },
+	            legend: {
+		            show: false
+	            },
                 colors: ['#33b2df', '#546E7A', '#d4526e', '#13d8aa', '#A5978B', '#2b908f', '#f9a3a4', '#90ee7e'
                 ],
                 dataLabels: {
@@ -93,9 +103,8 @@ class BarChart extends React.Component {
                     offsetX: 0,
                     dropShadow: {
                         enabled: true
-                    }
+                    },
                 },
-
                 stroke: {
                     width: 1,
                     colors: ['#fff']
@@ -104,10 +113,21 @@ class BarChart extends React.Component {
                     categories: ['South Korea', 'Canada', 'United Kingdom', 'Netherlands', 'Italy', 'France', 'Japan',
                         'United States'
                     ],
+	                labels: {
+		                show: true
+	                },
+	                /*axisTicks: {
+		                show: false
+	                },*/
+	                tickAmount: undefined,
+	                tickPlacement: 'on',
+	                min: 0,
+	                max: 100,
+	                //type: 'numeric'
                 },
                 yaxis: {
                     labels: {
-                        show: false
+                        show: true
                     }
                 },
                 title: {
@@ -122,7 +142,7 @@ class BarChart extends React.Component {
                 tooltip: {
                     theme: 'dark',
                     x: {
-                        show: false
+                        show: true
                     },
                     y: {
                         title: {
@@ -134,7 +154,7 @@ class BarChart extends React.Component {
                 }
             },
             series: [{
-                data: [70, 30, 48, 12, 26, 5, 90, 33]
+                data: [70, 30, 48, 12, 26, 5, 86, 33]
             }],
         }
     }
