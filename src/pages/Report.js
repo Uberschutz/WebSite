@@ -53,9 +53,15 @@ class Report extends Component {
                     </div>
 	                <br/>
 	                <div style={{width: '50%'}} className="btn">
-		                <text style={{float: "left", marginRight: 10, verticalAlign: "text-top"}}>Toxicity</text><ProgressBar  animated striped variant="success" now={40} label="40%"/><br/>
-		                <text style={{float: "left", marginRight: 10}}>Obsenity</text><ProgressBar animated striped variant="info" now={20} /><br/>
-		                <text style={{float: "left", marginRight: 10}}>Racism</text><ProgressBar animated striped variant="warning" now={60} /><br/>
+		                <div style={{height: 32, margin: 10}}>
+		                    <text style={{float: "left", marginRight: 10, width: 100, textAlign: 'right'}}>Toxicity</text><ProgressBar style={{height: 24, fontSize: 15}} animated striped variant="success" now={40} label="40%"/>
+		                </div>
+		                <div style={{height: 32, margin: 10}}>
+		                    <text style={{float: "left", marginRight: 10, width: 100, textAlign: 'right'}}>Obsenity</text><ProgressBar style={{height: 24}} animated striped variant="info" now={20} label="20%"/>
+		                </div>
+		                <div style={{height: 32, margin: 10}}>
+		                    <text style={{float: "left", marginRight: 10, width: 100, textAlign: 'right'}}>Racism</text><ProgressBar style={{height: 24}} animated striped variant="warning" now={60} label="60%"/>
+		                </div>
 	                </div>
                 </div>
             );
