@@ -15,7 +15,7 @@
       ],
       "contact": [
         "Qui sommes nous ? Que faisons nous ?", "• Überschutz :", "Nous sommes un groupe de 7 étudiants d'Epitech de la promo 2021.",
-        "Notre groupe a été créé en octobre 2018 (tout d'abord 3 personnes), lors de la Moonshot, puis s'est complété courant janvier 2019.",
+        "Notre groupe a été créé en octobre 2018 (tout d'abord 3 personnes) lors de la Moonshot, puis s'est complété courant janvier 2019.",
         "• Notre but :", "Nous voulons qu'Internet soit un lieu de partage, de détente et de recherche.",
         "Beaucoup trop de personnes et d'enfants sont harcelés, arnaqués ou confrontés à du contenu inapproprié.",
         "Ainsi, nous souhaitons guider les plus jeunes afin qu'ils apprennent à utiliser Internet de la meilleure manière possible pour eux selon l'éducation que leurs parents veulent leurs donner.",
@@ -49,9 +49,8 @@
         "Choisissez le type de restriction que vous voulez ", "(bloquer, limiter, avertir).",
         "Comment initialiser Überschutz sur les appareils de vos enfants ?",
         "Lors de votre 1ere visite, allez sur la page ", "\"Connexion\"", " et remplissez les champs demandés dans ", "\"Inscription\"",
-        "Sur l'appareil fourni lors de l'achat de Überschutz, un numéro de série est présent. C'est celui-ci qu'il faut renseigner dans la partie ",
-        "\"Numéro de série\".", "Vous serez ensuite redirigés vers votre profil où vous pourrez ajouter et paramétrer les options que vous voulez attribuer à la navigation Internet de votre enfant.",
-        "Branchez votre boîtier et ils seront automatiquement associés à ses appareils."
+        "Renseignez le code d'activation de la license obtenu lors de l'achat de Überschutz dans : ",
+        "\"Code d'activation\".", "Vous serez ensuite redirigés vers votre profil où vous pourrez ajouter et paramétrer les options que vous voulez attribuer à la navigation Internet de votre enfant."
       ],
       "form": [
         "Vous êtes intéressés par notre solution ?", "N'hésitez pas à vous tenir informés en remplissant ce formulaire !",
@@ -85,7 +84,7 @@
       ],
       "contact": [
         "Who are we ? What do we do ?", "• Überschutz :", "We are a group of 7 Epitech students from the 2021 promo.",
-        "Our group was created in October 2018 (first 3 people), during the Moonshot, then completed in January 2019.",
+        "Our group was created in October 2018 (first 3 people) during the Moonshot, then completed in January 2019.",
         "• Our goal :", "We want the Internet to be a place of sharing, relaxation and research.",
         "Too many people and children are harassed, scammed or confronted with inappropriate content.",
         "Thus, we want to guide the youngest to learn to use the Internet in the best possible way for them according to the education that their parents want to give them.",
@@ -118,9 +117,8 @@
         "Choose the type of restriction you want ", "(block, limit, warn).",
         "How to initialize Überschutz on the devices of your children?",
         "During your first visit, go to the page ", "\"Login\"", " and fill in the required fields in ", "\"Registration\"",
-        "On the device supplied with the purchase of Überschutz, a serial number is present which must be entered in the part ",
-        "\"Serial number\".", "You will then be redirected to your profile where you can add and set the options you want to assign to your child's Internet browsing.",
-        "Plug in your case and they will automatically associate with its devices."
+        "Enter the activation code of the license obtained when you purchase Überschutz in: ",
+        "\"Activation code\".", "You will then be redirected to your profile where you can add and set the options you want to assign to your child's Internet browsing."
       ],
       "form": [
         "Are you interested in our solution ?", "Feel free to keep informed by completing this form !",
