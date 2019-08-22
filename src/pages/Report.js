@@ -37,7 +37,7 @@ class Report extends Component {
             //let i = 0;
             return (
                 <div>
-                    <ButtonDropdown isOpen={this.state.isOpen} toggle={this.toggle} size="lg">
+                    <ButtonDropdown className="mrg-begin" isOpen={this.state.isOpen} toggle={this.toggle} size="lg">
                         <DropdownToggle color="info">
 	                        {this.state.selectedChild}
                         </DropdownToggle>
@@ -54,10 +54,7 @@ class Report extends Component {
                         </DropdownMenu>
                     </ButtonDropdown>
 	                {/*<BarChart/>*/}
-                    <div className="uber-color2">
-                        <span>Blablabla c'est pas bien</span>
-                    </div>
-	                <br/>
+	                <br/> <br/>
 	                <div style={{width: '50%'}} className="btn">
 		                <div style={{height: 32, margin: 10}}>
 		                    <text style={{float: "left", marginRight: 10, width: 100, textAlign: 'right'}}>Toxicity</text><ProgressBar style={{height: 24, fontSize: 15}} animated striped variant="success" now={40} label="40%"/>
@@ -69,6 +66,8 @@ class Report extends Component {
 		                    <text style={{float: "left", marginRight: 10, width: 100, textAlign: 'right'}}>Racism</text><ProgressBar style={{height: 24}} animated striped variant="warning" now={60} label="60%"/>
 		                </div>
 	                </div>
+                    <h5>La navigation Internet de votre enfant est à X % saine</h5>
+                    <Smiley/>
                 </div>
             );
         } /*else {

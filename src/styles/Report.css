@@ -3,18 +3,8 @@
     color: white!important;
 }
 
-.testABX {
-    position: center;
-    vertical-align: middle;
-    text-align: center;
-    align-items: center;
-    align-content: center;
-    justify-items: center;
-    justify-content: center;
-}
-
-.mrg-display {
-
+.mrg-begin {
+    margin-top: 2%;
 }
 
 /*.bar {
