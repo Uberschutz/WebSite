@@ -1,8 +1,14 @@
 import React, { Component } from 'react';
 import '../styles/bootstrap.css';
+import '../styles/Report.css';
+
 import {ButtonDropdown, DropdownMenu, DropdownToggle} from "reactstrap";
 import ReactApexChart from "react-apexcharts";
 import {ProgressBar} from "react-bootstrap";
+
+import bad from '../assets/icons8-triste-80.png'
+import neutral from '../assets/icons8-neutre-80.png'
+import good from '../assets/icons8-content-80.png'
 
 class Report extends Component {
 
@@ -73,6 +79,18 @@ class Report extends Component {
             )
         }*/
     //}
+}
+
+class Smiley extends Component {
+    render() {
+        return(
+            <div>
+                <img src={bad} alt="bad"/>
+                <img src={neutral} alt="neutral"/>
+                <img src={good} alt="good"/>
+            </div>
+        )
+    }
 }
 
 class BarChart extends React.Component {
