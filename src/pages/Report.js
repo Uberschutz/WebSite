@@ -62,6 +62,7 @@ class Report extends Component {
 			//let i = 0;
 			return (
 				<div>
+                    <br/>
 					<ButtonDropdown isOpen={this.state.isOpen} toggle={this.toggle} size="lg">
 						<DropdownToggle color="info">
 							{this.state.selectedChild}
@@ -79,9 +80,6 @@ class Report extends Component {
 						</DropdownMenu>
 					</ButtonDropdown>
 					{/*<BarChart/>*/}
-					<div className="uber-color2">
-						<span>Blablabla c'est pas bien</span>
-					</div>
 					<br/>
 					<div style={{width: '50%'}} className="btn">
 						{
@@ -118,8 +116,7 @@ class Report extends Component {
 							<text style={{float: "left", marginRight: 10, width: 100, textAlign: 'right'}}>Racism</text><ProgressBar style={{height: 24}} animated striped variant="warning" now={60} label="60%"/>
 						</div>*/}
 					</div>
-					<h5>La navigation Internet de votre enfant est à X % saine</h5>
-					<Smiley/>
+					<Summary child={this.state.selectedChild} safe={this.state.childData.length > 0 ? Math.round(this.state.childData.find(c => c.name === 'Safe').value) : -1}/>
 				</div>
 			);
 		} /*else {
@@ -132,15 +129,28 @@ class Report extends Component {
 	//}
 }
 
-class Smiley extends Component {
-	render() {
-		return (
-			<div>
-				<img src={bad} alt="bad"/>
-				<img src={neutral} alt="neutral"/>
-				<img src={good} alt="good"/>
-			</div>
-		)
+class Summary extends Component {
+
+    componentDidMount() {
+        console.log("CACA", this.props.safe);
+    }
+
+    render() {
+	    if (this.props.child && this.props.child !== 'Enfants' && this.props.safe > 0) {
+	        return(
+                <div>
+                    <h5>La navigation Internet de {this.props.child} est à {this.props.safe}% saine</h5>
+                    <br/>
+                    <img src={bad} alt="bad"/>
+                    <img src={neutral} alt="neutral"/>
+                    <img src={good} alt="good"/>
+                </div>
+            )
+        } else {
+	        return(
+	            null
+            )
+        }
 	}
 }
 
