@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import {BrowserRouter as Router, Route, Switch, withRouter} from "react-router-dom";
 import './styles/App.css';
 
-import HomePage from "./pages/HomePage/HomePage";
+import HomePage from "./pages/HomePage";
 import Header from "./pages/Header";
 import Footer from "./pages/Footer";
 import Connection from "./pages/Connection";
@@ -35,11 +35,15 @@ import { connect } from 'react-redux';
 
 	// render() {
 const App = props => {
-    console.log(props);
+	const {
+		location: { pathname }
+	} = props;
+	const path = pathname.split("/")[1];
+	console.log(props);
         return (
             <div className="App">
                 {/*<Router>*/}
-                    <Header/>
+                    {/*<Header/>*/}
                     <Switch>
                         <Route path='/' exact strict component={HomePage}/>
                         {/*<Route path={'/Connection'} exact component={() => <Connection/>}/>*/}

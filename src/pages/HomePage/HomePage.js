@@ -8,30 +8,33 @@ import software from '../../assets/logiciel.png';
 import navigation from '../../assets/navigation.png';
 import blocking from '../../assets/bloquant.png';
 import { displayContent } from '../../utils/translationDisplay';
+import {connect} from "react-redux";
+import {bindActionCreators} from "redux";
+import * as actions from "../../actions";
 
 class HomePage extends Component {
 	// constructor(props) {
 	// 	super(props);
-    //
-	// 	this.state = {
-	// 		lang: 'fr'
-	// 	};
+
+		// this.state = {
+		// 	lang: 'fr'
+		// };
 	// }
     state = {
         lang: 'fr'
     };
 
 	componentDidMount() {
-        // const { base: { language }} = this.props;
-        console.log(this.props);
-        // this.setState({
+        console.log(this.props, 'in home');
+		// const { base: { token }} = this.props;
+		// this.setState({
 		// 	lang: language
 		// })
 	}
 
-	componentDidUpdate(prevProps, prevState, snapshot) {
-		console.log(this.props.lang);
-	}
+	// componentDidUpdate(prevProps, prevState, snapshot) {
+	// 	console.log(this.props.lang);
+	// }
 
 	render() {
 		let i = 0;
@@ -101,5 +104,21 @@ class HomePage extends Component {
         )
     }
 }
+
+// const mapDispatchToProps = dispatch => ({
+// 	getServiceData: bindActionCreators(actions.getServiceData, dispatch),
+// 	sendServiceData: bindActionCreators(actions.sendServiceData, dispatch),
+// 	saveAuthToken: bindActionCreators(actions.saveAuthToken, dispatch),
+// 	subscribeToService: bindActionCreators(actions.subscribeToService, dispatch),
+// 	updateFill: bindActionCreators(actions.updateFill, dispatch),
+// 	updateActionFill: bindActionCreators(actions.updateActionFill, dispatch),
+// 	toggleAREA: bindActionCreators(actions.toggleAREA, dispatch),
+// })
+//
+// const mapStateToProps = state => ({
+// 	base: state.base,
+// })
+//
+// export default HomePage = connect(mapStateToProps, mapDispatchToProps)(HomePage);
 
 export default HomePage;
