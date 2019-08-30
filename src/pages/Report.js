@@ -137,19 +137,25 @@ class Summary extends Component {
 
     render() {
 	    if (this.props.child && this.props.child !== 'Enfants' && this.props.safe > 0) {
-	        return(
+	        return (
                 <div>
                     <h5>La navigation Internet de {this.props.child} est à {this.props.safe}% saine</h5>
                     <br/>
-                    <img src={bad} alt="bad"/>
-                    <img src={neutral} alt="neutral"/>
-                    <img src={good} alt="good"/>
+	                {this.props.safe >= 0 && this.props.safe < 33 && <img src={bad} alt="bad"/>}
+	                {this.props.safe >= 33 && this.props.safe < 66 && <img src={neutral} alt="neutral"/>}
+	                {this.props.safe >= 66 && this.props.safe <= 100 && <img src={good} alt="good"/>}
+                    {/*<img src={neutral} alt="neutral"/>*/}
+                    {/*<img src={good} alt="good"/>*/}
                 </div>
             )
-        } else {
-	        return(
-	            null
-            )
+        } else if (this.props.safe === -1) {
+	    	return (
+	    		<div>
+				    <h5>Les données Internet de {this.props.child} n'ont pas pu être récupérées</h5>
+			    </div>
+		    )
+	    } else {
+	        return null
         }
 	}
 }
