@@ -9,7 +9,9 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-	setLanguage: bindActionCreators(actions.setLanguage, dispatch)
+	setLanguage: bindActionCreators(actions.setLanguage, dispatch),
+	setLogged: bindActionCreators(actions.setLogged, dispatch),
+	setUser: bindActionCreators(actions.setUser, dispatch)
 })
 
 const ConnectionContainer = connect(mapStateToProps, mapDispatchToProps)(Connection)

@@ -19,12 +19,13 @@ const base = (state = initialState, action) => {
 	    	console.log('here', action.payload);
 		    const { language } = action.payload;
 		    return { ...state, language };
-        /*case 'SET_LOGGED':
+        case 'SET_LOGGED':
+        	console.log('logged', action.payload);
             const { logged } = action.payload;
             return { ...state, logged };
         case 'SET_USER':
             const { email, username } = action.payload;
-            return { ...state, email, username };*/
+            return { ...state, email, username };
         default:
         	console.log('here default', state);
             return state;

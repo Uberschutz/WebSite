@@ -65,6 +65,13 @@ class Connection extends Component {
 		this.setState({password: pass});
 	}
 
+	connect() {
+		if (this.state.email && this.state.email === 'hello.there@uberschutz.com' && this.state.password === 'general.kenobi') {
+			this.props.setLogged(true);
+			this.props.setUser(this.state.email, null);
+		}
+	}
+
     render() {
 	    let i = 0;
         return (
@@ -84,16 +91,18 @@ class Connection extends Component {
                                     <div className="input-group-prepend">
                                         <span className="input-group-text" id="inputGroup-sizing-default">Email</span>
                                     </div>
-                                    <input type="text" className="form-control" aria-label="Email"/>
+	                                <input value={this.state.email} onChange={(email) => this.onChangeEmail(email.target.value)} type="text" className="form-control" aria-label="Email"/>
+	                                {/*<input type="text" className="form-control" aria-label="Email"/>*/}
                                 </div>
                                 <div className="input-group mb-3">
                                     <div className="input-group-prepend">
                                         <span className="input-group-text" id="inputGroup-sizing-default">{displayContent(this.state.lang, i++, 'connexion')}</span>
                                     </div>
-                                    <input type="password" className="form-control" aria-label="Email"/>
+	                                <input value={this.state.password} onChange={(password) => this.onChangePass(password.target.value)} type="password" className="form-control" aria-label="Email"/>
+                                    {/*<input type="password" className="form-control" aria-label="Email"/>*/}
                                 </div>
                                 <Link to ='/'>
-                                    <button type="button" className="btn btn-primary">{displayContent(this.state.lang, i++, 'connexion')}</button>
+                                    <button onClick={() => this.connect()} type="button" className="btn btn-primary">{displayContent(this.state.lang, i++, 'connexion')}</button>
                                 </Link>
                             </div>
                         </div>

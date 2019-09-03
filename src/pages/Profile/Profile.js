@@ -31,7 +31,8 @@ class Profile extends Component {
 	}
 
     render() {
-    	if (this.props.logged) {
+    	const { base: { logged }} = this.props;
+		if (logged) {
 		    let i = 0;
 		    return (
 			    <div className="description-txt">

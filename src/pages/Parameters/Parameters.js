@@ -145,7 +145,8 @@ class Parameters extends Component {
 	}
 
 	render() {
-		if (this.props.logged) {
+		const { base: { logged }} = this.props;
+		if (logged) {
 			return (
 				<div className="card align-card">
 					<Modal isOpen={this.state.showModal} toggle={this.toggleModal}

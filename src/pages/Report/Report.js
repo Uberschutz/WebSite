@@ -9,6 +9,7 @@ import { displayContent } from '../../utils/translationDisplay';
 import bad from '../../assets/icons8-triste-80.png'
 import neutral from '../../assets/icons8-neutre-80.png'
 import good from '../../assets/icons8-content-80.png'
+import Unauthorized from "../Unauthorized";
 
 class Report extends Component {
 
@@ -81,7 +82,8 @@ class Report extends Component {
 	}
 
 	render() {
-		//if (this.props.logged) {
+		const { base: { logged }} = this.props;
+		if (logged) {
 			return (
 				<div>
                     <br/>
@@ -133,14 +135,14 @@ class Report extends Component {
 					<Summary lang={this.state.lang} child={this.state.selectedChild} safe={this.state.childData.length > 0 ? Math.round(this.state.childData.find(c => c.name === 'Safe').value) : -1}/>
 				</div>
 			);
-		} /*else {
+		} else {
 			return (
 				<div>
 					<Unauthorized/>
 				</div>
 			)
-		}*/
-	//}
+		}
+	}
 }
 
 class Summary extends Component {
