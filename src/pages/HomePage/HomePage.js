@@ -13,31 +13,42 @@ import {bindActionCreators} from "redux";
 import * as actions from "../../actions";
 
 class HomePage extends Component {
-	// constructor(props) {
-	// 	super(props);
+	constructor(props) {
+		super(props);
 
-		// this.state = {
-		// 	lang: 'fr'
-		// };
+		this.state = {
+			lang: 'fr'
+		};
 	// }
-    state = {
-        lang: 'fr'
+    // state = {
+    //     lang: 'fr'
     };
 
 	componentDidMount() {
-        console.log(this.props, 'in home');
+		console.log('mount');
+		const {base: { language }} = this.props;
+        // console.log(this.props, 'in home');
 		// const { base: { token }} = this.props;
-		// this.setState({
-		// 	lang: language
-		// })
+		if (this.state.lang !== language) {
+			this.setState({
+				lang: language
+			})
+		}
 	}
 
-	// componentDidUpdate(prevProps, prevState, snapshot) {
-	// 	console.log(this.props.lang);
+	componentDidUpdate(prevProps, prevState, snapshot) {
+		// console.log(prevProps, this.props);
+		this.props.base.language !== prevProps.base.language && this.setState({lang: this.props.base.language}, () => console.log('re'));
+	}
+
+	// shouldComponentUpdate(nextProps, nextState, nextContext) {
+	// 	console.log('next', nextProps)
+	// 	return (this.props === nextProps);
 	// }
 
 	render() {
 		let i = 0;
+		console.log('render');
         return (
             <div>
                 <img src={canvas} alt="canvas" className="responsive-image"/>

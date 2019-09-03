@@ -2,16 +2,16 @@ import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 
 import * as actions from '../../actions'
-import HomePage from './HomePage'
+import Header from './Header'
 
 const mapStateToProps = state => ({
 	base: state.base,
 })
 
 const mapDispatchToProps = dispatch => ({
-	// getServiceData: bindActionCreators(actions.getServiceData, dispatch),
+	setLanguage: bindActionCreators(actions.setLanguage, dispatch)
 })
 
-const HomePageContainer = connect(mapStateToProps, mapDispatchToProps)(HomePage)
+const HeaderContainer = connect(mapStateToProps, mapDispatchToProps)(Header)
 
-export default HomePageContainer
+export default HeaderContainer

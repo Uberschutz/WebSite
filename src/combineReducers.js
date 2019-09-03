@@ -20,9 +20,9 @@ import { routerReducer } from 'react-router-redux'
 import base from './reducer'
 
 const reducers = {
-	base,
+	base: base,
 	routing: routerReducer,
-}
+};
 
 const mainReducer = combineReducers(reducers)
 

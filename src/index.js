@@ -15,7 +15,7 @@ import mainReducer from './combineReducers'
 import './index.css';
 
 const persistConfig = {
-    key: 'root',
+    key: 'primary',
     storage,
 };
 
@@ -26,6 +26,7 @@ export const store = createStore(
     persistedReducer,
     composeEnhancers(applyMiddleware(thunkMiddleware))
 );
+console.log(store.getState());
 // const store = createStore(reducer);
 // const store = createStore(mainReducer);
 

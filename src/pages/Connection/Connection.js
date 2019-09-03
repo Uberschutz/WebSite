@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import '../styles/bootstrap.css';
-import '../styles/Connection.css';
+import '../../styles/bootstrap.css';
+import '../../styles/Connection.css';
 
 import { Link } from 'react-router-dom';
-import { displayContent } from '../utils/translationDisplay';
+import { displayContent } from '../../utils/translationDisplay';
 
 class Connection extends Component {
 	constructor(props) {
@@ -14,9 +14,25 @@ class Connection extends Component {
 	        email: '',
 	        password: '',
 	        alphaName: false,
-	        alphaSurname: false
+	        alphaSurname: false,
+	        lang: 'fr'
         };
     }
+
+	componentDidMount() {
+		const {base: { language }} = this.props;
+		console.log(language, this.state.lang, 'kek')
+		if (this.state.lang !== language) {
+			this.setState({
+				lang: language
+			})
+		}
+	}
+
+	componentDidUpdate(prevProps, prevState, snapshot) {
+		// console.log(prevProps, this.props);
+		this.props.base.language !== prevProps.base.language && this.setState({lang: this.props.base.language}, () => console.log('re'));
+	}
 
     static isAlpha(char) {
         const re = /^[a-zA-Z]+$/g;
@@ -59,10 +75,10 @@ class Connection extends Component {
                         <div className="card text-white bg-dark box-center">
                             <div className="card-body bg-dark item-align text-align">
                                 <h5 className="card-title text-align">
-                                    {displayContent(this.props.lang, i++, 'connexion')}
+                                    {displayContent(this.state.lang, i++, 'connexion')}
                                 </h5>
                                 <p className="card-text">
-                                    {displayContent(this.props.lang, i++, 'connexion')}
+                                    {displayContent(this.state.lang, i++, 'connexion')}
                                 </p>
                                 <div className="input-group mb-3">
                                     <div className="input-group-prepend">
@@ -72,18 +88,18 @@ class Connection extends Component {
                                 </div>
                                 <div className="input-group mb-3">
                                     <div className="input-group-prepend">
-                                        <span className="input-group-text" id="inputGroup-sizing-default">{displayContent(this.props.lang, i++, 'connexion')}</span>
+                                        <span className="input-group-text" id="inputGroup-sizing-default">{displayContent(this.state.lang, i++, 'connexion')}</span>
                                     </div>
                                     <input type="password" className="form-control" aria-label="Email"/>
                                 </div>
                                 <Link to ='/'>
-                                    <button type="button" className="btn btn-primary">{displayContent(this.props.lang, i++, 'connexion')}</button>
+                                    <button type="button" className="btn btn-primary">{displayContent(this.state.lang, i++, 'connexion')}</button>
                                 </Link>
                             </div>
                         </div>
                         <br/>
                     </div>
-                    <Registration lang={this.props.lang}/>
+                    <Registration lang={this.state.lang}/>
                 </div>
             </div>
         )

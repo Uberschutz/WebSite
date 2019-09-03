@@ -1,15 +1,15 @@
 import React, { Component } from 'react';
-import '../styles/bootstrap.css';
-import '../styles/HomePage.css';
+import '../../styles/bootstrap.css';
+import '../../styles/HomePage.css';
 
-import logo from '../assets/Uberschutz-logo.png';
-import french from '../assets/french-flag.png';
-import english from '../assets/english-flag2.png';
+import logo from '../../assets/Uberschutz-logo.png';
+import french from '../../assets/french-flag.png';
+import english from '../../assets/english-flag2.png';
 
 import {Navbar, NavbarBrand, NavbarToggler, Nav, Collapse, NavItem, NavLink} from 'reactstrap';
 import {DropdownItem, DropdownMenu, DropdownToggle, ButtonDropdown} from 'reactstrap'
 import {Link} from "react-router-dom";
-import { displayContent } from '../utils/translationDisplay';
+import { displayContent } from '../../utils/translationDisplay';
 import { connect } from 'react-redux';
 
 class Header extends Component {
@@ -28,9 +28,13 @@ class Header extends Component {
     }
 
     componentDidMount() {
-    	console.log(this.props);
-        // const { state: { language }} = this.props;
-        // this.setState({lang: language});
+    	// console.log(this.props);
+	    const { base: { language }} = this.props;
+	    // console.log(language);
+	    // this.props.setLanguage('en');
+	    // console.log(language);
+	    // const { state: { language }} = this.props;
+        this.setState({lang: language});
         // console.log(language);
     }
 
@@ -43,17 +47,22 @@ class Header extends Component {
     getFlag()  {
         switch (this.state.lang) {
             case 'fr':
-                return (<img src={french} className={this.frenchClass} alt="french" width="35" height="35" onClick={() => this.props.setLanguage('fr')}/>);
+                return (<img src={french} className={this.frenchClass} alt="french" width="35" height="35" /*onClick={() => this.props.setLanguage('fr')}*//>);
             case 'en':
-                return (<img src={english} className={this.EnglClass} alt="english" width="35" height="33" onClick={() => this.props.setLanguage('en')}/>)
+                return (<img src={english} className={this.EnglClass} alt="english" width="35" height="33" /*onClick={() => this.props.setLanguage('en')}*//>)
             default:
-                return (<img src={french} className={this.frenchClass} alt="french" width="35" height="35" onClick={() => this.props.setLanguage('fr')}/>)
+                return (<img src={french} className={this.frenchClass} alt="french" width="35" height="35" /*onClick={() => this.props.setLanguage('fr')}*//>)
         }
     }
 
+    setLanguage(lang) {
+    	this.props.setLanguage(lang);
+    	this.setState({lang, isOpen: !this.state.isOpen});
+    }
+
     render () {
-        console.log(this.frenchClass);
-        console.log(this.EnglClass);
+        // console.log(this.frenchClass);
+        // console.log(this.EnglClass);
         let i = 0;
 
         return (
@@ -61,8 +70,9 @@ class Header extends Component {
                 <Navbar className="navbar navbar-expand-md uber-color" light expand="md">
                     <img src={logo} alt="logo"/>
                     <NavbarBrand className="navbar-brand uber-color button-footer" href="/"> Überschutz</NavbarBrand>
-                    <NavbarToggler className="navbar-toggler" onClick={this.toggle}/>
-                    <Collapse className="collapse navbar-collapse" isOpen={this.state.isOpen} navbar>
+                    {/*<NavbarToggler className="navbar-toggler" onClick={this.toggle}/>
+                    <Collapse className="collapse navbar-collapse" isOpen={this.state.isOpen} navbar>*/}
+                    <Collapse className="collapse navbar-collapse" isOpen={true} navbar>
                         <Nav className="ml-auto navbar  navbar-expand-md" navbar>
                             <React.Fragment>
                                 <NavItem className="nav-item">
@@ -92,10 +102,10 @@ class Header extends Component {
 		                </DropdownToggle>
 		                <DropdownMenu className="drop btn">
 			                <div>
-				                <img src={french} className={this.frenchClass} alt="french" width="35" height="35" onClick={() => this.props.setLanguage('fr')}/>
+				                <img src={french} className={this.frenchClass} alt="french" width="35" height="35" onClick={() => this.setLanguage('fr')}/>
 			                </div>
 			                <div>
-				                <img src={english} className={this.EnglClass} alt="english" width="35" height="33" onClick={() => this.props.setLanguage('en')}/>
+				                <img src={english} className={this.EnglClass} alt="english" width="35" height="33" onClick={() => this.setLanguage('en')}/>
 			                </div>
 		                </DropdownMenu>
 	                </ButtonDropdown>
@@ -105,16 +115,17 @@ class Header extends Component {
     }
 }
 
-const mapStateToProps = (state) => {
-	return {
-		lang: state.lang
-	}
-};
+// const mapStateToProps = (state) => {
+// 	return {
+// 		lang: state.lang
+// 	}
+// };
+//
+// const mapDispatchToProps = (dispatch) => {
+// 	return {
+// 		setLanguage: () => dispatch({type: 'SET_LANGUAGE'})
+// 	}
+// };
 
-const mapDispatchToProps = (dispatch) => {
-	return {
-		setLanguage: () => dispatch({type: 'SET_LANGUAGE'})
-	}
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(Header);
+// export default connect(mapStateToProps, mapDispatchToProps)(Header);
+export default Header;

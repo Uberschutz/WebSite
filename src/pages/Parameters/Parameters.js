@@ -1,15 +1,15 @@
 import React, { Component } from 'react';
-import '../styles/bootstrap.css';
-import '../styles/Parameters.css';
+import '../../styles/bootstrap.css';
+import '../../styles/Parameters.css';
 
 import { Modal, Button } from 'reactstrap';
 // import { Card, CardText, CardTitle, CardFooter } from "reactstrap";
 import {Icon} from 'antd';
 
-import DisplayChildrenList from '../components/ChildCards';
-import OptionsList from '../components/OptionsList';
-import { displayContent } from '../utils/translationDisplay';
-import Unauthorized from "./Unauthorized";
+import DisplayChildrenList from '../../components/ChildCards';
+import OptionsList from '../../components/OptionsList';
+import { displayContent } from '../../utils/translationDisplay';
+import Unauthorized from ".././Unauthorized";
 
 class Parameters extends Component {
 	constructor(props) {
@@ -24,27 +24,37 @@ class Parameters extends Component {
 			id: null,
 			state: 'Create',
 			alphaErr: false,
-			numErr: false
+			numErr: false,
+			lang: 'fr'
 		};
 		this.toggleModal = this.toggleModal.bind(this);
 		this.editChildren = this.editChildren.bind(this);
 		this.deleteChildren = this.deleteChildren.bind(this);
 	}
 
-	componentWillMount() {
+	// componentWillMount() {
+	// }
+
+	componentDidMount() {
 		const options = [{name: 'Reports', enabled: false}, {name: 'Alerts', enabled: false}, {name: 'Uberschutz', enabled: false}, {name: 'Adds', enabled: false}];
 		const newChild = [{name: 'Thomas', age: '23', options: options}, {name: 'Marianne', age: '21', options: options}];
 
-		this.setState({childrens: newChild, options: options});
 		console.log('Here call to the user account API to load children'); // or in componentDidMount
+		const {base: { language }} = this.props;
+		console.log(language, this.state.lang, 'kek')
+		if (this.state.lang !== language) {
+			this.setState({
+				lang: language,
+				childrens: newChild,
+				options: options
+			})
+		}
 	}
 
-	// componentDidMount() {
-	// 	const newChild = [{name: 'Thomas', age: '23'}];
-	//
-	// 	this.setState({childrens: newChild})
-	// 	console.log('Here call to the user account API to load children'); // or in componentDidMount
-	// }
+	componentDidUpdate(prevProps, prevState, snapshot) {
+		// console.log(prevProps, this.props);
+		this.props.base.language !== prevProps.base.language && this.setState({lang: this.props.base.language}, () => console.log('re'));
+	}
 
 	static isAlpha(char) {
 		const re = /^[a-zA-Z]+$/g;
@@ -143,7 +153,7 @@ class Parameters extends Component {
 						<form><br/>
 							<div className="align-card">
 								<label className="child-field">
-									{displayContent(this.props.lang, 0, 'parameters')}<br/>
+									{displayContent(this.state.lang, 0, 'parameters')}<br/>
 									{this.state.alphaErr ? <input
 											className="child-field form-box-error form-control"
 											type="text" value={this.state.name}
@@ -169,7 +179,7 @@ class Parameters extends Component {
 								listClassName={'row'}
 								optionClassName={'col-4 align'}
 								options={this.state.options}
-								translations={displayContent(this.props.lang, -1, 'options')}
+								translations={displayContent(this.state.lang, -1, 'options')}
 								toggleOption={this.toggleOption.bind(this)}
 
 							/>
@@ -177,29 +187,29 @@ class Parameters extends Component {
 							<div className="align-card">
 								<Button className="save-child btn change-child"
 								        onClick={() => this.createChildren()}>
-									{this.state.state === 'Create' ? displayContent(this.props.lang, 6, 'parameters') :
-										displayContent(this.props.lang, 7, 'parameters')}
+									{this.state.state === 'Create' ? displayContent(this.state.lang, 6, 'parameters') :
+										displayContent(this.state.lang, 7, 'parameters')}
 								</Button>
 								<Button className="btn btn-danger change-child"
-								        onClick={this.toggleModal}>{displayContent(this.props.lang, 1, 'parameters')}</Button>
+								        onClick={this.toggleModal}>{displayContent(this.state.lang, 1, 'parameters')}</Button>
 								<br/>
 								{this.state.alphaErr || this.state.numErr ? (<div><span
-									className="address-params text-danger">{displayContent(this.props.lang, 2, 'parameters')}</span><br/><br/>
+									className="address-params text-danger">{displayContent(this.state.lang, 2, 'parameters')}</span><br/><br/>
 								</div>) : null}
 							</div>
 						</form>
 					</Modal>
 					<DisplayChildrenList
 						childrens={this.state.childrens}
-						title={displayContent(this.props.lang, 0, 'parameters')}
-						delete={displayContent(this.props.lang, 3, 'parameters')}
-						edit={displayContent(this.props.lang, 4, 'parameters')}
+						title={displayContent(this.state.lang, 0, 'parameters')}
+						delete={displayContent(this.state.lang, 3, 'parameters')}
+						edit={displayContent(this.state.lang, 4, 'parameters')}
 						editChildren={this.editChildren}
 						deleteChildren={this.deleteChildren}
 					/>
 					<Button className="btn btn-primary add-child"
 					        onClick={this.toggleModal}>
-						{displayContent(this.props.lang, 5, 'parameters')} <Icon
+						{displayContent(this.state.lang, 5, 'parameters')} <Icon
 						type="user-add" className="size-icon"/>
 					</Button>
 				</div>

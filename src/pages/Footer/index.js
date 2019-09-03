@@ -2,16 +2,16 @@ import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 
 import * as actions from '../../actions'
-import HomePage from './HomePage'
+import Footer from './Footer'
 
 const mapStateToProps = state => ({
 	base: state.base,
 })
 
 const mapDispatchToProps = dispatch => ({
-	// getServiceData: bindActionCreators(actions.getServiceData, dispatch),
+	setLanguage: bindActionCreators(actions.setLanguage, dispatch)
 })
 
-const HomePageContainer = connect(mapStateToProps, mapDispatchToProps)(HomePage)
+const FooterContainer = connect(mapStateToProps, mapDispatchToProps)(Footer)
 
-export default HomePageContainer
+export default FooterContainer

@@ -42,17 +42,17 @@ const App = props => {
 	console.log(props);
         return (
             <div className="App">
-                {/*<Router>*/}
-                    {/*<Header/>*/}
+                <Router>
+                    <Header/>
                     <Switch>
                         <Route path='/' exact strict component={HomePage}/>
-                        {/*<Route path={'/Connection'} exact component={() => <Connection/>}/>*/}
-                        {/*<Route path={'/Contact+FAQ'} exact component={() => <Contact/>}/>*/}
-                        {/*<Route path={'/Profile'} exact component={() => <Profile/>} logged={this.state.logged}/>*/}
-                        {/*<Route path={'/Parameters'} exact component={() => <Parameters logged={this.state.logged}/>}/>*/}
+                        <Route path={'/Connection'} exact component={Connection}/>
+                        <Route path={'/Contact+FAQ'} exact component={Contact}/>
+                        <Route path={'/Profile'} exact component={Profile}/>
+                        <Route path={'/Parameters'} exact component={Parameters}/>
                     </Switch>
                     <Footer/>
-                {/*</Router>*/}
+                </Router>
             </div>
         );
 	// }
