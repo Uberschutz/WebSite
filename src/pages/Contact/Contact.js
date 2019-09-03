@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import '../styles/bootstrap.css';
-import '../styles/Contact.css';
+import '../../styles/bootstrap.css';
+import '../../styles/Contact.css';
 
 import {Icon} from 'antd';
-import { displayContent } from '../utils/translationDisplay';
+import { displayContent } from '../../utils/translationDisplay';
 
 
 class Contact extends Component {
@@ -15,10 +15,20 @@ class Contact extends Component {
         }
     }
 
-    componentDidMount() {
-        this.setState({lang: this.props.lang});
-        console.log(this.props.lang);
-    }
+	componentDidMount() {
+		const {base: { language }} = this.props;
+		console.log(language, this.state.lang, 'kek')
+		if (this.state.lang !== language) {
+			this.setState({
+				lang: language
+			})
+		}
+	}
+
+	componentDidUpdate(prevProps, prevState, snapshot) {
+		// console.log(prevProps, this.props);
+		this.props.base.language !== prevProps.base.language && this.setState({lang: this.props.base.language}, () => console.log('re'));
+	}
 
     render() {
         let i = 0;
@@ -26,40 +36,40 @@ class Contact extends Component {
             <div className="form-align">
                 <div> <br/>
                 <h9 className="h9-font">
-                    {displayContent(this.props.lang, i++, 'contact')}
+                    {displayContent(this.state.lang, i++, 'contact')}
                 </h9> <br/> <br/>
                     <div className="description-txt">
                         <h6 className="title-bold">
-                            {displayContent(this.props.lang, i++, 'contact')}
+                            {displayContent(this.state.lang, i++, 'contact')}
                         </h6>
                             <h7>
-                                {displayContent(this.props.lang, i++, 'contact')}<br/>
-                                {displayContent(this.props.lang, i++, 'contact')}
+                                {displayContent(this.state.lang, i++, 'contact')}<br/>
+                                {displayContent(this.state.lang, i++, 'contact')}
                             </h7> <br/> <br/>
                             <h6 className="title-bold">
-                                {displayContent(this.props.lang, i++, 'contact')}
+                                {displayContent(this.state.lang, i++, 'contact')}
                             </h6>
                             <h7>
-                                {displayContent(this.props.lang, i++, 'contact')}<br/>
-                                {displayContent(this.props.lang, i++, 'contact')}<br/>
-                                {displayContent(this.props.lang, i++, 'contact')}
+                                {displayContent(this.state.lang, i++, 'contact')}<br/>
+                                {displayContent(this.state.lang, i++, 'contact')}<br/>
+                                {displayContent(this.state.lang, i++, 'contact')}
                             </h7> <br/> <br/>
                             <h6 className="title-bold">
-                                {displayContent(this.props.lang, i++, 'contact')}
+                                {displayContent(this.state.lang, i++, 'contact')}
                             </h6>
                             <h7>
-                                {displayContent(this.props.lang, i++, 'contact')}<br/>
-                                {displayContent(this.props.lang, i++, 'contact')}<br/>
-                                {displayContent(this.props.lang, i++, 'contact')}<br/>
-                                {displayContent(this.props.lang, i++, 'contact')}<br/>
-                                {displayContent(this.props.lang, i++, 'contact')}<br/>
-                                {displayContent(this.props.lang, i, 'contact')}
+                                {displayContent(this.state.lang, i++, 'contact')}<br/>
+                                {displayContent(this.state.lang, i++, 'contact')}<br/>
+                                {displayContent(this.state.lang, i++, 'contact')}<br/>
+                                {displayContent(this.state.lang, i++, 'contact')}<br/>
+                                {displayContent(this.state.lang, i++, 'contact')}<br/>
+                                {displayContent(this.state.lang, i, 'contact')}
                             </h7> <br/>
                         <br/>
                     </div>
                 </div>
-                <Faq lang={this.props.lang}/>
-                <Form lang={this.props.lang}/>
+                <Faq lang={this.state.lang}/>
+                <Form lang={this.state.lang}/>
             </div>
         )
     }
