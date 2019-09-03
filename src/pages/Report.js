@@ -3,8 +3,8 @@ import '../styles/bootstrap.css';
 import '../styles/Report.css';
 
 import {ButtonDropdown, DropdownMenu, DropdownToggle} from "reactstrap";
-import ReactApexChart from "react-apexcharts";
 import {ProgressBar} from "react-bootstrap";
+import { displayContent } from '../utils/translationDisplay';
 
 import bad from '../assets/icons8-triste-80.png'
 import neutral from '../assets/icons8-neutre-80.png'
@@ -18,9 +18,10 @@ class Report extends Component {
 		this.toggle = this.toggle.bind(this);
 		this.state = {
 			isOpen: false,
-			selectedChild: 'Enfants',
+			selectedChild: "",
 			childData: []
 		};
+		this.i = 0;
 	}
 
 	toggle() {
@@ -31,6 +32,7 @@ class Report extends Component {
 
 	componentDidMount() {
 		console.log('whut');
+		this.setState({selectedChild: displayContent(this.props.lang, this.i++, 'report')})
 	}
 
 	changeChild(name) {
@@ -43,23 +45,22 @@ class Report extends Component {
 		const min = 0;
 		const max = 100;
 		return [
-			{name: 'Safe', value: min + Math.random() * (max - min)},
-			{name: 'Toxicity', value: min + Math.random() * (max - min)},
-			{name: 'Obscenity', value: min + Math.random() * (max - min)},
-			{name: 'Racism', value: min + Math.random() * (max - min)},
-			{name: 'Insult', value: min + Math.random() * (max - min)},
-			{name: 'Threat', value: min + Math.random() * (max - min)},
-			{name: 'Truly toxic', value: min + Math.random() * (max - min)},
-			{name: 'Profanity', value: min + Math.random() * (max - min)},
-			{name: 'Inflammatory', value: min + Math.random() * (max - min)},
-			{name: 'Identity Attack', value: min + Math.random() * (max - min)},
-			{name: 'Hating', value: min + Math.random() * (max - min)},
+			{name: "Safe", value: min + Math.random() * (max - min)},
+			{name: "Toxicity", value: min + Math.random() * (max - min)},
+			{name: "Obscenity", value: min + Math.random() * (max - min)},
+			{name: "Racism", value: min + Math.random() * (max - min)},
+			{name: "Insult", value: min + Math.random() * (max - min)},
+			{name: "Threat", value: min + Math.random() * (max - min)},
+			{name: "Truly toxic", value: min + Math.random() * (max - min)},
+			{name: "Profanity", value: min + Math.random() * (max - min)},
+			{name: "Inflammatory", value: min + Math.random() * (max - min)},
+			{name: "Identity Attack", value: min + Math.random() * (max - min)},
+			{name: "Hating", value: min + Math.random() * (max - min)},
 		];
 	}
 
 	render() {
 		//if (this.props.logged) {
-			//let i = 0;
 			return (
 				<div>
                     <br/>
@@ -79,15 +80,15 @@ class Report extends Component {
 							</div>
 						</DropdownMenu>
 					</ButtonDropdown>
-					{/*<BarChart/>*/}
 					<br/>
 					<div style={{width: '50%'}} className="btn">
 						{
-							this.state.childData.map(d => {
+							this.state.childData.map((d, idx) => {
+								console.log("ICI", idx);
 								if (d.name === 'Safe') {
 									return (
 										<div style={{height: 32, margin: 10}}>
-											<text style={{float: "left", marginRight: 10, width: 150, textAlign: 'right'}}>{d.name}</text><ProgressBar style={{height: 24, fontSize: 15}} animated striped variant="success" now={Math.round(d.value)} label={`${Math.round(d.value)}%`}/>
+											<text style={{float: "left", marginRight: 10, width: 150, textAlign: 'right'}}>{displayContent(this.props.lang, idx + 1, 'report')}</text><ProgressBar style={{height: 24, fontSize: 15}} animated striped variant="success" now={Math.round(d.value)} label={`${Math.round(d.value)}%`}/>
 										</div>
 									);
 								} else {
@@ -100,23 +101,14 @@ class Report extends Component {
 										color = "danger";
 									return (
 										<div style={{height: 32, margin: 10}}>
-											<text style={{float: "left", marginRight: 10, width: 150, textAlign: 'right'}}>{d.name}</text><ProgressBar style={{height: 24, fontSize: 15}} animated striped variant={color} now={Math.round(d.value)} label={`${Math.round(d.value)}%`}/>
+											<text style={{float: "left", marginRight: 10, width: 150, textAlign: 'right'}}>{displayContent(this.props.lang, idx + 1, 'report')}</text><ProgressBar style={{height: 24, fontSize: 15}} animated striped variant={color} now={Math.round(d.value)} label={`${Math.round(d.value)}%`}/>
 										</div>
 									);
 								}
 							})
 						}
-						{/*<div style={{height: 32, margin: 10}}>
-							<text style={{float: "left", marginRight: 10, width: 100, textAlign: 'right'}}>Toxicity</text><ProgressBar style={{height: 24, fontSize: 15}} animated striped variant="success" now={40} label="40%"/>
-						</div>
-						<div style={{height: 32, margin: 10}}>
-							<text style={{float: "left", marginRight: 10, width: 100, textAlign: 'right'}}>Obsenity</text><ProgressBar style={{height: 24}} animated striped variant="info" now={20} label="20%"/>
-						</div>
-						<div style={{height: 32, margin: 10}}>
-							<text style={{float: "left", marginRight: 10, width: 100, textAlign: 'right'}}>Racism</text><ProgressBar style={{height: 24}} animated striped variant="warning" now={60} label="60%"/>
-						</div>*/}
 					</div>
-					<Summary child={this.state.selectedChild} safe={this.state.childData.length > 0 ? Math.round(this.state.childData.find(c => c.name === 'Safe').value) : -1}/>
+					<Summary lang={this.props.lang} child={this.state.selectedChild} safe={this.state.childData.length > 0 ? Math.round(this.state.childData.find(c => c.name === 'Safe').value) : -1}/>
 				</div>
 			);
 		} /*else {
@@ -136,126 +128,27 @@ class Summary extends Component {
     }
 
     render() {
+    	let i = 0;
 	    if (this.props.child && this.props.child !== 'Enfants' && this.props.safe > 0) {
 	        return (
                 <div>
-                    <h5>La navigation Internet de {this.props.child} est à {this.props.safe}% saine</h5>
+                    <h5> {displayContent(this.props.lang, i++, 'summary')} {this.props.child} {displayContent(this.props.lang, i++, 'summary')} {this.props.safe} {displayContent(this.props.lang, i++, 'summary')}</h5>
                     <br/>
 	                {this.props.safe >= 0 && this.props.safe < 33 && <img src={bad} alt="bad"/>}
 	                {this.props.safe >= 33 && this.props.safe < 66 && <img src={neutral} alt="neutral"/>}
 	                {this.props.safe >= 66 && this.props.safe <= 100 && <img src={good} alt="good"/>}
-                    {/*<img src={neutral} alt="neutral"/>*/}
-                    {/*<img src={good} alt="good"/>*/}
                 </div>
             )
         } else if (this.props.safe === -1) {
+	    	i = 3;
 	    	return (
 	    		<div>
-				    <h5>Les données Internet de {this.props.child} n'ont pas pu être récupérées</h5>
+					<h5>{displayContent(this.props.lang, i++, 'summary')} {this.props.child} {displayContent(this.props.lang, i++, 'summary')}</h5>
 			    </div>
 		    )
 	    } else {
 	        return null
         }
-	}
-}
-
-class BarChart extends React.Component {
-
-	constructor(props) {
-		super(props);
-
-		this.state = {
-			options: {
-				plotOptions: {
-					bar: {
-						barHeight: '100%',
-						distributed: true,
-						horizontal: true,
-						dataLabels: {
-							position: 'bottom'
-						},
-					}
-				},
-				legend: {
-					show: false
-				},
-				colors: ['#33b2df', '#546E7A', '#d4526e', '#13d8aa', '#A5978B', '#2b908f', '#f9a3a4', '#90ee7e'
-				],
-				dataLabels: {
-					enabled: true,
-					textAnchor: 'start',
-					style: {
-						colors: ['#000']
-					},
-					formatter: function (val, opt) {
-						return opt.w.globals.labels[opt.dataPointIndex] + ":  " + val
-					},
-					offsetX: 0,
-					dropShadow: {
-						enabled: true
-					},
-				},
-				stroke: {
-					width: 1,
-					colors: ['#fff']
-				},
-				xaxis: {
-					categories: ['South Korea', 'Canada', 'United Kingdom', 'Netherlands', 'Italy', 'France', 'Japan',
-						'United States'
-					],
-					labels: {
-						show: true
-					},
-					/*axisTicks: {
-						show: false
-					},*/
-					tickAmount: undefined,
-					tickPlacement: 'on',
-					min: 0,
-					max: 100,
-					//type: 'numeric'
-				},
-				yaxis: {
-					labels: {
-						show: true
-					}
-				},
-				title: {
-					text: 'Custom DataLabels',
-					align: 'center',
-					floating: true,
-				},
-				subtitle: {
-					text: 'Category Names as DataLabels inside bars',
-					align: 'center',
-				},
-				tooltip: {
-					theme: 'dark',
-					x: {
-						show: true
-					},
-					y: {
-						title: {
-							formatter: function () {
-								return ''
-							}
-						}
-					}
-				}
-			},
-			series: [{
-				data: [70, 30, 48, 12, 26, 5, 86, 33]
-			}],
-		}
-	}
-
-	render() {
-		return (
-			<div id="chart">
-				<ReactApexChart options={this.state.options} series={this.state.series} type="bar" height="350"/>
-			</div>
-		)
 	}
 }
 

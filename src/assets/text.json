@@ -68,6 +68,12 @@
         "Prénom", "Enfants protégés par Überschutz : X ", "Abonnement utilisé : Premium ", "Echéancier de paiement : ",
         "Nom du prélèvement", "Payé ?"
       ],
+      "report": [
+        "Enfants", "Sain", "Toxicité", "Obscénité", "Racisme", "Insulte", "Menace", "Vraiment toxique", "Vulgarité", "Inflammatoire", "Attaque d'identité", "Haine"
+        ],
+      "summary": [
+        "La navigation Internet de ", "est à ", "% saine", "Les données Internet de ", "n'ont pas pu être récupérées"
+      ],
       "parameters": [
         "Prénom", "Annuler","Prénom ou Age invalide", "Supprimer", "Éditer", "Nouveau", "Créer", "Sauvegarder"
       ],
@@ -141,6 +147,12 @@
       ],
       "profile": [
         "Firstname", "Child protected by Überschutz : X ", "Subscription used : Premium ", "Payment schedule : ", "Levy's name : ", "Payed ?"
+      ],
+      "report": [
+        "Kids", "Safe", "Toxicity", "Obscenity", "Racism", "Insult", "Threat", "Truly toxic", "Profanity", "Inflammatory", "Identity Attack", "Hating"
+        ],
+      "summary" : [
+        "Internet browsing of ", "is at ", "% safe", "Internet data of ", "could not be recovered"
       ],
       "parameters": [
         "Name", "Cancel","Invalid Name or Age", "Delete", "Edit", "New", "Create", "Save"
