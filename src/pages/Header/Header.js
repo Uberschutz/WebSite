@@ -3,8 +3,8 @@ import '../../styles/bootstrap.css';
 import '../../styles/HomePage.css';
 
 import logo from '../../assets/Uberschutz-logo.png';
-import french from '../../assets/french-flag.png';
-import english from '../../assets/english-flag2.png';
+import french from '../../assets/icons8-france-96.png';
+import english from '../../assets/icons8-grande-bretagne-48.png';
 
 import {Navbar, NavbarBrand, NavbarToggler, Nav, Collapse, NavItem} from 'reactstrap';
 import {DropdownMenu, DropdownToggle, ButtonDropdown} from 'reactstrap'
@@ -87,7 +87,6 @@ class Header extends Component {
                                 <NavItem className="nav-item">
 	                                <Link to="/Profile" className="nav-link uber-color">{displayContent(this.state.lang, i++, 'navbar')}</Link>
                                     {/*<NavLink className="nav-link uber-color" href="/Profile">{displayContent(this.state.lang, i++, 'navbar')} </NavLink>*/}
-	                                <Link to="/Profile" className="nav-link uber-color">{displayContent(this.state.lang, i++, 'navbar')}</Link>
                                 </NavItem>
                                 <NavItem className="nav-item">
                                     <Link to="/Report" className="nav-link uber-color">{displayContent(this.state.lang, i++, 'navbar')}</Link>
@@ -95,7 +94,6 @@ class Header extends Component {
                                 <NavItem className="nav-item">
 	                                <Link to="/Parameters" className="nav-link uber-color">{displayContent(this.state.lang, i, 'navbar')}</Link>
                                     {/*<NavLink className="nav-link uber-color" href="/Parameters">{displayContent(this.state.lang, i, 'navbar')} </NavLink>*/}
-	                                <Link to="/Parameters" className="nav-link uber-color">{displayContent(this.state.lang, i, 'navbar')}</Link>
                                 </NavItem>
                             </React.Fragment>
                         </Nav>

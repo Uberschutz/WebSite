@@ -4,9 +4,10 @@ import '../../styles/HomePage.css';
 
 import canvas from '../../assets/canvas2.png';
 import whois from '../../assets/CacherPseudo.jpg';
-import software from '../../assets/logiciel.png';
-import navigation from '../../assets/navigation.png';
-import blocking from '../../assets/bloquant.png';
+import software from '../../assets/icons8-boite-à-logiciel-64.png'
+import navigation from '../../assets/icons8-carte-au-trésor-150.png'
+import blocking from '../../assets/icons8-cadenas-100.png'
+
 import { displayContent } from '../../utils/translationDisplay';
 import {connect} from "react-redux";
 import {bindActionCreators} from "redux";

@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
-import '../styles/bootstrap.css';
-import '../styles/Report.css';
+import '../../styles/bootstrap.css';
+import '../../styles/Report.css';
 
 import {ButtonDropdown, DropdownMenu, DropdownToggle} from "reactstrap";
 import {ProgressBar} from "react-bootstrap";
-import { displayContent } from '../utils/translationDisplay';
+import { displayContent } from '../../utils/translationDisplay';
 
-import bad from '../assets/icons8-triste-80.png'
-import neutral from '../assets/icons8-neutre-80.png'
-import good from '../assets/icons8-content-80.png'
+import bad from '../../assets/icons8-triste-80.png'
+import neutral from '../../assets/icons8-neutre-80.png'
+import good from '../../assets/icons8-content-80.png'
 
 class Report extends Component {
 
@@ -18,10 +18,31 @@ class Report extends Component {
 		this.toggle = this.toggle.bind(this);
 		this.state = {
 			isOpen: false,
-			selectedChild: "",
-			childData: []
+			selectedChild: undefined,
+			childData: [],
+			lang: 'fr'
 		};
-		this.i = 0;
+		this.i = 1;
+	}
+
+	componentDidMount() {
+		console.log('mount');
+		const {base: { language }} = this.props;
+		// console.log(this.props, 'in home');
+		// const { base: { token }} = this.props;
+		if (this.state.lang !== language) {
+			this.setState({
+				lang: language,
+				// selectedChild: displayContent(language, this.i++, 'report')
+			})
+		}
+	}
+
+	componentDidUpdate(prevProps, prevState, snapshot) {
+		// console.log(prevProps, this.props);
+		if (this.props.base.language !== prevProps.base.language) {
+			this.setState({lang: this.props.base.language}, () => console.log('re'));
+		}
 	}
 
 	toggle() {
@@ -30,10 +51,10 @@ class Report extends Component {
 		});
 	}
 
-	componentDidMount() {
-		console.log('whut');
-		this.setState({selectedChild: displayContent(this.props.lang, this.i++, 'report')})
-	}
+	// componentDidMount() {
+	// 	console.log('whut');
+	// 	this.setState({selectedChild: displayContent(this.props.lang, this.i++, 'report')})
+	// }
 
 	changeChild(name) {
 		const datas = this.getChildData(name);
@@ -66,7 +87,8 @@ class Report extends Component {
                     <br/>
 					<ButtonDropdown isOpen={this.state.isOpen} toggle={this.toggle} size="lg">
 						<DropdownToggle color="info">
-							{this.state.selectedChild}
+							{/*{this.state.selectedChild}*/}
+							{this.state.selectedChild ? this.state.selectedChild : displayContent(this.state.lang, 0, 'report')}
 						</DropdownToggle>
 						<DropdownMenu className="drop btn">
 							<div>
@@ -88,7 +110,7 @@ class Report extends Component {
 								if (d.name === 'Safe') {
 									return (
 										<div style={{height: 32, margin: 10}}>
-											<text style={{float: "left", marginRight: 10, width: 150, textAlign: 'right'}}>{displayContent(this.props.lang, idx + 1, 'report')}</text><ProgressBar style={{height: 24, fontSize: 15}} animated striped variant="success" now={Math.round(d.value)} label={`${Math.round(d.value)}%`}/>
+											<text style={{float: "left", marginRight: 10, width: 150, textAlign: 'right'}}>{displayContent(this.state.lang, idx + 1, 'report')}</text><ProgressBar style={{height: 24, fontSize: 15}} animated striped variant="success" now={Math.round(d.value)} label={`${Math.round(d.value)}%`}/>
 										</div>
 									);
 								} else {
@@ -101,14 +123,14 @@ class Report extends Component {
 										color = "danger";
 									return (
 										<div style={{height: 32, margin: 10}}>
-											<text style={{float: "left", marginRight: 10, width: 150, textAlign: 'right'}}>{displayContent(this.props.lang, idx + 1, 'report')}</text><ProgressBar style={{height: 24, fontSize: 15}} animated striped variant={color} now={Math.round(d.value)} label={`${Math.round(d.value)}%`}/>
+											<text style={{float: "left", marginRight: 10, width: 150, textAlign: 'right'}}>{displayContent(this.state.lang, idx + 1, 'report')}</text><ProgressBar style={{height: 24, fontSize: 15}} animated striped variant={color} now={Math.round(d.value)} label={`${Math.round(d.value)}%`}/>
 										</div>
 									);
 								}
 							})
 						}
 					</div>
-					<Summary lang={this.props.lang} child={this.state.selectedChild} safe={this.state.childData.length > 0 ? Math.round(this.state.childData.find(c => c.name === 'Safe').value) : -1}/>
+					<Summary lang={this.state.lang} child={this.state.selectedChild} safe={this.state.childData.length > 0 ? Math.round(this.state.childData.find(c => c.name === 'Safe').value) : -1}/>
 				</div>
 			);
 		} /*else {
@@ -129,7 +151,7 @@ class Summary extends Component {
 
     render() {
     	let i = 0;
-	    if (this.props.child && this.props.child !== 'Enfants' && this.props.safe > 0) {
+	    if (this.props.child  && this.props.safe > 0) {
 	        return (
                 <div>
                     <h5> {displayContent(this.props.lang, i++, 'summary')} {this.props.child} {displayContent(this.props.lang, i++, 'summary')} {this.props.safe} {displayContent(this.props.lang, i++, 'summary')}</h5>
@@ -139,7 +161,7 @@ class Summary extends Component {
 	                {this.props.safe >= 66 && this.props.safe <= 100 && <img src={good} alt="good"/>}
                 </div>
             )
-        } else if (this.props.safe === -1) {
+        } else if (this.props.safe === -1 && this.props.child) {
 	    	i = 3;
 	    	return (
 	    		<div>
