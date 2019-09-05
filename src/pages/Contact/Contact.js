@@ -4,6 +4,7 @@ import '../../styles/Contact.css';
 
 import {Icon} from 'antd';
 import { displayContent } from '../../utils/translationDisplay';
+import axios from 'axios';
 
 
 class Contact extends Component {
@@ -151,6 +152,20 @@ Parler RGPD ??
 class Form extends Component {
     constructor(props) {
         super(props);
+
+        this.state = {
+        	email: ''
+        }
+    }
+
+    onChangeEmail(email) {
+    	this.setState({email});
+    }
+
+    registerNews() {
+	    axios.post('http://localhost:3000/newsletter', {
+	    	email: this.state.email
+	    }).then(response => console.log(response)).catch(err => console.log(err));
     }
 
     render() {
@@ -175,12 +190,12 @@ class Form extends Component {
                             <input type="text" className="form-control form-box" placeholder={displayContent(this.props.lang, i++,'form')}/>
                         </div>
                         <label>{displayContent(this.props.lang, i,'form')}</label>
-                        <input type="email" className="form-control form-box" aria-describedby="emailHelp" placeholder={displayContent(this.props.lang, i++,'form')}/>
+                        <input type="email" className="form-control form-box" aria-describedby="emailHelp" placeholder={displayContent(this.props.lang, i++,'form')} value={this.state.email} onChange={(email) => this.onChangeEmail(email.target.value)}/>
                         <small id="emailHelp" className="form-text text-muted col-sm-9">
                             {displayContent(this.props.lang, i++,'form')}
                         </small>
                     </div>
-                    <button type="submit" className="btn btn-primary button-footer">{displayContent(this.props.lang, i,'form')}</button>
+                    <button type="button" className="btn btn-primary button-footer" onClick={() => this.registerNews()}>{displayContent(this.props.lang, i,'form')}</button>
                 </form>
             </div>
         )
