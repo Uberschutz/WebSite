@@ -78,6 +78,9 @@
       ],
       "options": [
         "Rapports", "Uberschutz", "Alertes", "Publicités"
+      ],
+      "footer": [
+        "Créé par Marianne LEVEE & Thomas DEROTE-PARCELLIER ", "Icônes de l'application par "
       ]
     }
   },
@@ -157,6 +160,9 @@
       ],
       "options": [
         "Reports", "Uberschutz", "Alerts", "Adds"
+      ],
+      "footer": [
+        "Created by Marianne LEVEE & Thomas DEROTE-PARCELLIER ", "App icon by "
       ]
     }
   }

@@ -3,6 +3,7 @@ import '../../styles/bootstrap.css';
 import '../../styles/HomePage.css';
 
 import { Link } from 'react-router-dom';
+import {displayContent} from "../../utils/translationDisplay";
 
 class Footer extends Component {
 	constructor(props) {
@@ -29,6 +30,7 @@ class Footer extends Component {
 	}
 
     render() {
+		let i = 0;
         return (
             <div className="uber-color2 form-align footer">
                 <Link to ='/Contact+FAQ'>
@@ -40,7 +42,7 @@ class Footer extends Component {
                 </span>
                 <br/>
                 <span>
-                    Created by Marianne LEVEE & Thomas DEROTE-PARCELLIER <br/> App icon by <a href="https://icones8.fr">icons8</a> <br/>
+                    {displayContent(this.state.lang, i++, 'footer')}<br/>{displayContent(this.state.lang, i++, 'footer')}<a href="https://icones8.fr">icons8</a> <br/>
                 </span>
             </div>
         )
