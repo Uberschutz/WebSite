@@ -5,8 +5,6 @@ import '../../styles/Contact.css';
 import {Icon} from 'antd';
 import { displayContent } from '../../utils/translationDisplay';
 import axios from 'axios';
-import newsletter from '../../assets/mirage-message-sent.png';
-
 
 class Contact extends Component {
     constructor(props) {
@@ -183,8 +181,6 @@ class Form extends Component {
     	if (this.state.name !== '' && this.state.email !== '') {
 		    axios.post('http://localhost:3000/newsletter', {
 			    email: this.state.email,
-			    text: '<p>Thank you for subscribing to Uberschutz newsletter</p><br/>',
-			    image: newsletter,
 			    name: this.state.name
 		    }).then(response => console.log(response)).catch(err => console.log(err));
 	    } else {
