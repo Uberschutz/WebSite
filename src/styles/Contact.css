@@ -18,6 +18,16 @@
 .form-box {
     width: 50%;
     margin-left: 25%;
+	/*outline: none!important;*/
+	/*box-shadow: none!important;*/
+	/*border: 2px solid red;*/
+	/*border-radius: 4px;*/
+	/*border-color: red;*/
+	/*border-top-color: green;*/
+}
+
+.form-box-error {
+	border-color: red;
 }
 
 .uber-color2 {

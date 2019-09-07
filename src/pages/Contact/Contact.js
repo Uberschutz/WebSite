@@ -5,6 +5,7 @@ import '../../styles/Contact.css';
 import {Icon} from 'antd';
 import { displayContent } from '../../utils/translationDisplay';
 import axios from 'axios';
+import newsletter from '../../assets/mirage-message-sent.png';
 
 
 class Contact extends Component {
@@ -154,18 +155,46 @@ class Form extends Component {
         super(props);
 
         this.state = {
-        	email: ''
+        	email: '',
+	        name: '',
+	        nameError: '',
+	        emailError: ''
         }
     }
 
     onChangeEmail(email) {
+    	console.log(email);
+	    if (email !== '' && this.state.emailError) {
+		    this.setState({emailError: false});
+	    }
     	this.setState({email});
     }
 
+    onChangeName(name) {
+	    // console.log(name);
+    	if (name !== '' && this.state.nameError) {
+    		this.setState({nameError: false});
+	    }
+    	this.setState({name});
+    }
+
     registerNews() {
-	    axios.post('http://localhost:3000/newsletter', {
-	    	email: this.state.email
-	    }).then(response => console.log(response)).catch(err => console.log(err));
+		// console.log(`[${this.state.name}]`,`[${this.state.email}]`);
+    	if (this.state.name !== '' && this.state.email !== '') {
+		    axios.post('http://localhost:3000/newsletter', {
+			    email: this.state.email,
+			    text: '<p>Thank you for subscribing to Uberschutz newsletter</p><br/>',
+			    image: newsletter,
+			    name: this.state.name
+		    }).then(response => console.log(response)).catch(err => console.log(err));
+	    } else {
+    		if (this.state.name === '') {
+    			this.setState({nameError: true});
+		    }
+    		if (this.state.email === '') {
+    			this.setState({emailError: true});
+		    }
+	    }
     }
 
     render() {
@@ -187,10 +216,22 @@ class Form extends Component {
                     <div className="form-group">
                         <div className="form-group form-align">
                             <label>{displayContent(this.props.lang, i,'form')}</label>
-                            <input type="text" className="form-control form-box" placeholder={displayContent(this.props.lang, i++,'form')}/>
+	                        {
+	                        	this.state.nameError ?
+			                        <input type="text" onChange={(name) => this.onChangeName(name.target.value)} className="form-control form-box form-box-error" placeholder={displayContent(this.props.lang, i++,'form')}/>
+			                        :
+			                        <input type="text" onChange={(name) => this.onChangeName(name.target.value)} className="form-control form-box" placeholder={displayContent(this.props.lang, i++,'form')}/>
+	                        }
+                            {/*<input type="text" className="form-control form-box" placeholder={displayContent(this.props.lang, i++,'form')}/>*/}
                         </div>
                         <label>{displayContent(this.props.lang, i,'form')}</label>
-                        <input type="email" className="form-control form-box" aria-describedby="emailHelp" placeholder={displayContent(this.props.lang, i++,'form')} value={this.state.email} onChange={(email) => this.onChangeEmail(email.target.value)}/>
+	                    {
+	                    	this.state.emailError ?
+			                    <input type="email" className="form-control form-box form-box-error" aria-describedby="emailHelp" placeholder={displayContent(this.props.lang, i++,'form')} value={this.state.email} onChange={(email) => this.onChangeEmail(email.target.value)}/>
+			                    :
+			                    <input type="email" className="form-control form-box" aria-describedby="emailHelp" placeholder={displayContent(this.props.lang, i++,'form')} value={this.state.email} onChange={(email) => this.onChangeEmail(email.target.value)}/>
+	                    }
+                        {/*<input type="email" className="form-control form-box" aria-describedby="emailHelp" placeholder={displayContent(this.props.lang, i++,'form')} value={this.state.email} onChange={(email) => this.onChangeEmail(email.target.value)}/>*/}
                         <small id="emailHelp" className="form-text text-muted col-sm-9">
                             {displayContent(this.props.lang, i++,'form')}
                         </small>
