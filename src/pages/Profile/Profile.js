@@ -11,17 +11,21 @@ class Profile extends Component {
 		super(props);
 
 		this.state = {
-			lang: 'fr'
+			lang: 'fr',
+			logged: false
 		}
 	}
 
 	componentDidMount() {
-		const {base: { language }} = this.props;
-		console.log(language, this.state.lang, 'kek')
-		if (this.state.lang !== language) {
-			this.setState({
-				lang: language
-			})
+		if (this.props.base) {
+			const { base: { language, logged } } = this.props;
+			console.log(language, this.state.lang, 'kek')
+			if (this.state.lang !== language) {
+				this.setState({
+					lang: language,
+					logged
+				})
+			}
 		}
 	}
 
@@ -31,8 +35,7 @@ class Profile extends Component {
 	}
 
     render() {
-    	const { base: { logged }} = this.props;
-		if (logged) {
+		if (this.state.logged) {
 		    let i = 0;
 		    return (
 			    <div className="description-txt">

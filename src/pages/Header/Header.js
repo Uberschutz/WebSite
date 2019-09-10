@@ -19,7 +19,8 @@ class Header extends Component {
         this.toggle = this.toggle.bind(this);
         this.state = {
             isOpen: false,
-            // lang: undefined
+            logged: false,
+	        email: undefined,
             lang: 'fr'
         };
 
@@ -28,17 +29,31 @@ class Header extends Component {
     }
 
     componentDidMount() {
+    	console.log('header mounted');
     	// console.log(this.props);
-	    const { base: { language }} = this.props;
-	    // console.log(language);
-	    // this.props.setLanguage('en');
-	    // console.log(language);
-	    // const { state: { language }} = this.props;
-        this.setState({lang: language});
-        // console.log(language);
+	    if (this.props.base) {
+		    const { base: { language, logged, email } } = this.props;
+		    // console.log(language);
+		    // this.props.setLanguage('en');
+		    // console.log(language);
+		    // const { state: { language }} = this.props;
+		    this.setState({
+			    lang: language,
+			    logged,
+			    email
+		    });
+		    // console.log(language);
+	    }
     }
 
-    toggle() {
+    componentDidUpdate(prevProps, prevState, snapshot) {
+    	console.log('header update');
+	    if (this.props.base.logged !== prevProps.base.logged) {
+		    this.setState({logged: this.props.base.logged, email: this.props.base.logged ? this.props.base.email : undefined}, () => console.log('re'));
+	    }
+    }
+
+	toggle() {
         this.setState({
             isOpen: !this.state.isOpen
         });
@@ -63,23 +78,23 @@ class Header extends Component {
     disconnect() {
     	this.props.setLogged(false);
     	this.props.setUser(undefined, undefined);
+    	this.setState({logged: false});
     }
 
     render () {
+    	console.log('redux', this.props)
+	    console.log('states', this.state.logged);
         // console.log(this.frenchClass);
         // console.log(this.EnglClass);
         let i = 0;
-
-        const { base: { logged, email } } = this.props;
-        console.log(logged);
 
         return (
             <div>
                 <Navbar className="navbar navbar-expand-md uber-color" light expand="md">
                     <img src={logo} alt="logo"/>
                     <NavbarBrand className="navbar-brand uber-color button-footer" href="/"> Überschutz</NavbarBrand>
-	                {logged ? <text className="navbar-brand uber-color button-footer">Welcome {email} !</text> : null}
-	                {logged ? <button onClick={() => this.disconnect()}>Disconnect</button> : null}
+	                {this.state.logged ? <text className="navbar-brand uber-color button-footer">{displayContent(this.state.lang, i++, 'navbar')} {this.state.email} !</text> : null}
+	                {this.state.logged ? <button onClick={() => this.disconnect()}>{displayContent(this.state.lang, i++, 'navbar')}</button> : null}
 	                {/*<NavbarToggler className="navbar-toggler" onClick={this.toggle}/>
                     <Collapse className="collapse navbar-collapse" isOpen={this.state.isOpen} navbar>*/}
                     <Collapse className="collapse navbar-collapse" isOpen={true} navbar>

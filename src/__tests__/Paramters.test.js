@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Parameters from '../pages/Parameters';
+import Parameters from '../pages/Parameters/Parameters';
 
 it('renders Parameters without crashing', () => {
     const div = document.createElement('div');

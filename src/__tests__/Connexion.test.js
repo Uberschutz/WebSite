@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Connection from '../pages/Connection';
+import Connection from '../pages/Connection/Connection';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 it('renders Connection without crashing', () => {

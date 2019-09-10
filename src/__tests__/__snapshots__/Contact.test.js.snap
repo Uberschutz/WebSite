@@ -28,7 +28,7 @@ exports[`renders Contact without crashing 1`] = `
         <h7>
           Nous sommes un groupe de 7 étudiants d'Epitech de la promo 2021.
           <br />
-          Notre groupe a été créé en octobre 2018 (tout d'abord 3 personnes), lors de la Moonshot, puis s'est complété courant janvier 2019.
+          Notre groupe a été créé en octobre 2018 (tout d'abord 3 personnes) lors de la Moonshot, puis s'est complété courant janvier 2019.
         </h7>
          
         <br />
@@ -390,17 +390,16 @@ exports[`renders Contact without crashing 1`] = `
           </h7>
            
           <br />
-          Sur l'appareil fourni lors de l'achat de Überschutz, un numéro de série est présent. C'est celui-ci qu'il faut renseigner dans la partie 
+          Renseignez le code d'activation de la license obtenu lors de l'achat de Überschutz dans : 
           <h7
             class="address"
           >
-            "Numéro de série".
+            "Code d'activation".
           </h7>
            
           <br />
           Vous serez ensuite redirigés vers votre profil où vous pourrez ajouter et paramétrer les options que vous voulez attribuer à la navigation Internet de votre enfant.
           <br />
-          Branchez votre boîtier et ils seront automatiquement associés à ses appareils.
         </h7>
          
         <br />
@@ -453,6 +452,7 @@ exports[`renders Contact without crashing 1`] = `
             class="form-control form-box"
             placeholder="Adresse email"
             type="email"
+            value=""
           />
           <small
             class="form-text text-muted col-sm-9"
@@ -463,7 +463,7 @@ exports[`renders Contact without crashing 1`] = `
         </div>
         <button
           class="btn btn-primary button-footer"
-          type="submit"
+          type="button"
         >
           Soumettre
         </button>

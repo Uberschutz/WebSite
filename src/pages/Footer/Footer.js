@@ -15,12 +15,14 @@ class Footer extends Component {
 	}
 
 	componentDidMount() {
-		const {base: { language }} = this.props;
-		console.log(language, this.state.lang, 'kek')
-		if (this.state.lang !== language) {
-			this.setState({
-				lang: language
-			})
+		if (this.props.base) {
+			const {base: {language}} = this.props;
+			console.log(language, this.state.lang, 'kek')
+			if (this.state.lang !== language) {
+				this.setState({
+					lang: language
+				})
+			}
 		}
 	}
 

@@ -11,7 +11,7 @@ exports[`renders Profile without crashing 1`] = `
     <br />
     <img
       alt="forbidden"
-      src="403-error.png"
+      src="fogg-no-comments.png"
     />
   </div>
 </div>

@@ -43,6 +43,7 @@ exports[`renders Connection without crashing 1`] = `
                 aria-label="Email"
                 class="form-control"
                 type="text"
+                value=""
               />
             </div>
             <div
@@ -62,6 +63,7 @@ exports[`renders Connection without crashing 1`] = `
                 aria-label="Email"
                 class="form-control"
                 type="password"
+                value=""
               />
             </div>
             <a

@@ -16,16 +16,8 @@ exports[`renders Header without crashing 1`] = `
       >
          Überschutz
       </a>
-      <button
-        class="navbar-toggler navbar-toggler"
-        type="button"
-      >
-        <span
-          class="navbar-toggler-icon"
-        />
-      </button>
       <div
-        class="collapse navbar-collapse collapse navbar-collapse"
+        class="collapse navbar-collapse collapse show navbar-collapse"
       >
         <ul
           class="ml-auto navbar  navbar-expand-md navbar-nav"
@@ -47,7 +39,7 @@ exports[`renders Header without crashing 1`] = `
               class="nav-link uber-color"
               href="/Connection"
             >
-              Connexion
+              Bonjour
                
             </a>
           </li>
@@ -68,7 +60,17 @@ exports[`renders Header without crashing 1`] = `
               class="nav-link uber-color"
               href="/Profile"
             >
-              Profil
+              Déconnexion
+            </a>
+          </li>
+          <li
+            class="nav-item nav-item"
+          >
+            <a
+              class="nav-link uber-color"
+              href="/Report"
+            >
+              Connexion
             </a>
           </li>
           <li
@@ -78,7 +80,7 @@ exports[`renders Header without crashing 1`] = `
               class="nav-link uber-color"
               href="/Parameters"
             >
-              Paramètres
+              Profil
             </a>
           </li>
         </ul>
@@ -96,7 +98,7 @@ exports[`renders Header without crashing 1`] = `
             alt="french"
             class="clickable-flag touched"
             height="35"
-            src="french-flag.png"
+            src="icons8-france-96.png"
             width="35"
           />
         </button>
@@ -111,7 +113,7 @@ exports[`renders Header without crashing 1`] = `
               alt="french"
               class="clickable-flag touched"
               height="35"
-              src="french-flag.png"
+              src="icons8-france-96.png"
               width="35"
             />
           </div>
@@ -120,7 +122,7 @@ exports[`renders Header without crashing 1`] = `
               alt="english"
               class="clickable-flag"
               height="33"
-              src="english-flag2.png"
+              src="icons8-grande-bretagne-48.png"
               width="35"
             />
           </div>

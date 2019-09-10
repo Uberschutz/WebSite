@@ -10,7 +10,34 @@ import Contact from "./pages/Contact";
 import Profile from "./pages/Profile";
 import Parameters from "./pages/Parameters";
 import Report from "./pages/Report";
-import { connect } from 'react-redux';
+
+import {Provider} from 'react-redux';
+import { createStore, applyMiddleware, compose } from 'redux'
+import thunkMiddleware from 'redux-thunk'
+import { persistStore, persistReducer } from 'redux-persist'
+import storage from 'redux-persist/lib/storage'
+import { PersistGate } from 'redux-persist/integration/react'
+import mainReducer from './combineReducers'
+
+
+const persistConfig = {
+	key: 'primary',
+	storage,
+};
+
+const persistedReducer = persistReducer(persistConfig, mainReducer);
+
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
+export const store = createStore(
+	persistedReducer,
+	composeEnhancers(applyMiddleware(thunkMiddleware))
+);
+// console.log(store.getState());
+// const store = createStore(reducer);
+// const store = createStore(mainReducer);
+
+let persistor = persistStore(store);
+
 
 // class App extends Component {
 	// constructor(props) {
@@ -36,29 +63,33 @@ import { connect } from 'react-redux';
 
 	// render() {
 const App = props => {
-	const {
-		location: { pathname }
-	} = props;
-	const path = pathname.split("/")[1];
+	// const {
+	// 	location: { pathname }
+	// } = props;
+	// const path = pathname.split("/")[1];
 	console.log(props);
         return (
-            <div className="App">
-                <Router>
-                    <Header/>
-                    <Switch>
-                        <Route path='/' exact strict component={HomePage}/>
-                        <Route path={'/Connection'} exact component={Connection}/>
-                        <Route path={'/Contact+FAQ'} exact component={Contact}/>
-                        <Route path={'/Profile'} exact component={Profile}/>
-                        <Route path={'/Parameters'} exact component={Parameters}/>
-	                    <Route path={'/Report'} exact component={Report}/>
-                    </Switch>
-                    <Footer/>
-                </Router>
-            </div>
+	        <Provider store={store}>
+		        <PersistGate persistor={persistor}>
+			        <div className="App">
+		                <Router>
+		                    <Header/>
+		                    <Switch>
+		                        <Route path='/' exact strict component={HomePage}/>
+		                        <Route path={'/Connection'} exact component={Connection}/>
+		                        <Route path={'/Contact+FAQ'} exact component={Contact}/>
+		                        <Route path={'/Profile'} exact component={Profile}/>
+		                        <Route path={'/Parameters'} exact component={Parameters}/>
+			                    <Route path={'/Report'} exact component={Report}/>
+		                    </Switch>
+		                    <Footer/>
+		                </Router>
+	                </div>
+		        </PersistGate>
+	        </Provider>
         );
 	// }
 };
-export default withRouter(App);
-// export default App;
+// export default withRouter(App);
+export default App;
 // export default connect()(App);

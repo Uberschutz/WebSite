@@ -72,7 +72,7 @@ exports[`renders Home without crashing 1`] = `
         >
           <img
             alt="software"
-            src="logiciel.png"
+            src="icons8-boite-à-logiciel-64.png"
           />
           <br />
           <br />
@@ -87,7 +87,7 @@ exports[`renders Home without crashing 1`] = `
         >
           <img
             alt="navigation"
-            src="navigation.png"
+            src="icons8-carte-au-trésor-150.png"
           />
           <br />
           <br />
@@ -102,7 +102,7 @@ exports[`renders Home without crashing 1`] = `
         >
           <img
             alt="blocking"
-            src="bloquant.png"
+            src="icons8-cadenas-100.png"
           />
           <br />
            

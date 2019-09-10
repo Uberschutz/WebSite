@@ -21,7 +21,16 @@ exports[`renders Footer without crashing 1`] = `
     </span>
     <br />
     <span>
-      Created by Marianne LEVEE & Thomas DEROTE-PARCELLIER
+      Créé par Marianne LEVEE & Thomas DEROTE-PARCELLIER 
+      <br />
+      Icônes de l'application par 
+      <a
+        href="https://icones8.fr"
+      >
+        icons8
+      </a>
+       
+      <br />
     </span>
   </div>
 </div>

@@ -26,20 +26,14 @@ export const store = createStore(
     persistedReducer,
     composeEnhancers(applyMiddleware(thunkMiddleware))
 );
-console.log(store.getState());
+// console.log(store.getState());
 // const store = createStore(reducer);
 // const store = createStore(mainReducer);
 
 let persistor = persistStore(store);
 
 ReactDOM.render(
-    <Provider store={store}>
-        <PersistGate persistor={persistor}>
-            <Router>
-                <App />
-            </Router>
-        </PersistGate>
-    </Provider>, document.getElementById('root')
+    <App />, document.getElementById('root')
 );
 
 // If you want your app to work offline and load faster, you can change

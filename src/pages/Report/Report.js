@@ -21,21 +21,25 @@ class Report extends Component {
 			isOpen: false,
 			selectedChild: undefined,
 			childData: [],
-			lang: 'fr'
+			lang: 'fr',
+			logged: false
 		};
 		this.i = 1;
 	}
 
 	componentDidMount() {
 		console.log('mount');
-		const {base: { language }} = this.props;
-		// console.log(this.props, 'in home');
-		// const { base: { token }} = this.props;
-		if (this.state.lang !== language) {
-			this.setState({
-				lang: language,
-				// selectedChild: displayContent(language, this.i++, 'report')
-			})
+		if (this.props.base) {
+			const { base: { language, logged } } = this.props;
+			// console.log(this.props, 'in home');
+			// const { base: { token }} = this.props;
+			if (this.state.lang !== language) {
+				this.setState({
+					lang: language,
+					logged
+					// selectedChild: displayContent(language, this.i++, 'report')
+				})
+			}
 		}
 	}
 
@@ -82,8 +86,7 @@ class Report extends Component {
 	}
 
 	render() {
-		const { base: { logged }} = this.props;
-		if (logged) {
+		if (this.state.logged) {
 			return (
 				<div>
                     <br/>

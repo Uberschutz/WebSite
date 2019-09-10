@@ -27,13 +27,15 @@ class HomePage extends Component {
 
 	componentDidMount() {
 		console.log('mount');
-		const {base: { language }} = this.props;
-        // console.log(this.props, 'in home');
-		// const { base: { token }} = this.props;
-		if (this.state.lang !== language) {
-			this.setState({
-				lang: language
-			})
+		if (this.props.base) {
+			const {base: {language}} = this.props;
+			// console.log(this.props, 'in home');
+			// const { base: { token }} = this.props;
+			if (this.state.lang !== language) {
+				this.setState({
+					lang: language
+				})
+			}
 		}
 	}
 

@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Profile from '../pages/Profile';
+import Profile from '../pages/Profile/Profile';
 
 it('renders Profile without crashing', () => {
     const div = document.createElement('div');

@@ -25,7 +25,8 @@ class Parameters extends Component {
 			state: 'Create',
 			alphaErr: false,
 			numErr: false,
-			lang: 'fr'
+			lang: 'fr',
+			logged: false
 		};
 		this.toggleModal = this.toggleModal.bind(this);
 		this.editChildren = this.editChildren.bind(this);
@@ -40,14 +41,17 @@ class Parameters extends Component {
 		const newChild = [{name: 'Thomas', age: '23', options: options}, {name: 'Marianne', age: '21', options: options}];
 
 		console.log('Here call to the user account API to load children'); // or in componentDidMount
-		const {base: { language }} = this.props;
-		console.log(language, this.state.lang, 'kek')
-		if (this.state.lang !== language) {
-			this.setState({
-				lang: language,
-				childrens: newChild,
-				options: options
-			})
+		if (this.props.base) {
+			const { base: { language, logged } } = this.props;
+			console.log(language, this.state.lang, 'kek')
+			if (this.state.lang !== language) {
+				this.setState({
+					lang: language,
+					childrens: newChild,
+					options: options,
+					logged: logged
+				})
+			}
 		}
 	}
 
@@ -145,8 +149,7 @@ class Parameters extends Component {
 	}
 
 	render() {
-		const { base: { logged }} = this.props;
-		if (logged) {
+		if (this.state.logged) {
 			return (
 				<div className="card align-card">
 					<Modal isOpen={this.state.showModal} toggle={this.toggleModal}
