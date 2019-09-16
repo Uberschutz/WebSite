@@ -8,9 +8,9 @@ WORKDIR /home/node/app
 
 USER node
 
-RUN npm install
-
 COPY --chown=node:node . .
+
+RUN npm install
 
 EXPOSE 8080
 
