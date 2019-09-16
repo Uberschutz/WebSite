@@ -86,15 +86,15 @@ class Header extends Component {
 	    console.log('states', this.state.logged);
         // console.log(this.frenchClass);
         // console.log(this.EnglClass);
-        let i = 0;
+        let i = 2;
 
         return (
             <div>
                 <Navbar className="navbar navbar-expand-md uber-color" light expand="md">
                     <img src={logo} alt="logo"/>
                     <NavbarBrand className="navbar-brand uber-color button-footer" href="/"> Überschutz</NavbarBrand>
-	                {this.state.logged ? <text className="navbar-brand uber-color button-footer">{displayContent(this.state.lang, i++, 'navbar')} {this.state.email} !</text> : null}
-	                {this.state.logged ? <button onClick={() => this.disconnect()}>{displayContent(this.state.lang, i++, 'navbar')}</button> : null}
+	                {this.state.logged ? <text className="navbar-brand uber-color button-footer">{displayContent(this.state.lang, 0, 'navbar')} {this.state.email} !</text> : null}
+	                {this.state.logged ? <button onClick={() => this.disconnect()}>{displayContent(this.state.lang, 1, 'navbar')}</button> : null}
 	                {/*<NavbarToggler className="navbar-toggler" onClick={this.toggle}/>
                     <Collapse className="collapse navbar-collapse" isOpen={this.state.isOpen} navbar>*/}
                     <Collapse className="collapse navbar-collapse" isOpen={true} navbar>
