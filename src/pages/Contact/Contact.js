@@ -181,7 +181,7 @@ class Form extends Component {
     registerNews() {
 		// console.log(`[${this.state.name}]`,`[${this.state.email}]`);
     	if (this.state.name !== '' && this.state.email !== '') {
-		    axios.post('http://user_server:8083/subscribe_newsletter', {
+		    axios.post('/subscribe_newsletter', {
 			    email: this.state.email,
 			    name: this.state.name
 		    }).then(response => console.log(response)).catch(err => console.log(err));
