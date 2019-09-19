@@ -6,10 +6,12 @@ const path = require('path')
 
 const app = express();
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
 app.use( express.static(path.resolve( __dirname, "./build" ) ) );
 
 app.post('/subscribe_newsletter', (req, res) => {
-	axios.post('http://mail_server:8082/subscribe_newsletter', {
+	// console.log(req.body, req.data);
+	axios.post('http://user_server:8083/subscribe_newsletter', {
 		email: req.body.email,
 		name: req.body.name
 	}).then(response => {
@@ -21,9 +23,9 @@ app.post('/subscribe_newsletter', (req, res) => {
 	});
 });
 
-// app.get('*', (req, res) => {
-// 	res.send();
-// });
+app.get('*', (req, res) => {
+	res.sendFile(path.resolve( __dirname, "./build/index.html" ));
+});
 
 app.listen(8080, () =>
 	console.log('Proxy server running on 8081')
