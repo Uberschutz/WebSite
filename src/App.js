@@ -10,6 +10,7 @@ import Contact from "./pages/Contact";
 import Profile from "./pages/Profile";
 import Parameters from "./pages/Parameters";
 import Report from "./pages/Report";
+import Confirm from "./pages/Confirm";
 
 import {Provider} from 'react-redux';
 import { createStore, applyMiddleware, compose } from 'redux'
@@ -81,6 +82,7 @@ const App = props => {
 		                        <Route path={'/Profile'} exact component={Profile}/>
 		                        <Route path={'/Parameters'} exact component={Parameters}/>
 			                    <Route path={'/Report'} exact component={Report}/>
+			                    <Route path={'/Confirm/:id'} exact component={Confirm}/>
 		                    </Switch>
 		                    <Footer/>
 		                </Router>

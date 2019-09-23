@@ -4,6 +4,7 @@ import '../../styles/Connection.css';
 
 import { Link } from 'react-router-dom';
 import { displayContent } from '../../utils/translationDisplay';
+import axios from 'axios';
 
 class Connection extends Component {
 	constructor(props) {
@@ -162,6 +163,18 @@ class Registration extends Component {
         this.setState({password: pass});
     }
 
+    register() {
+        if (this.state.email !== '' && this.state.passwd !== '' && this.state.name !== '') {
+            axios.post('/register', {
+                email: this.state.email,
+                passwd: this.state.pass,
+                name: this.state.name
+            }).then(response => console.log(response)).catch(err => console.log(err));
+        } else {
+
+        }
+    }
+
     render() {
         let i = 0;
         return (
@@ -201,9 +214,7 @@ class Registration extends Component {
                             </div>
                             <input value={this.state.password} onChange={(password) => this.onChangePass(password.target.value)} type="password" className="form-control" aria-label="Email"/>
                         </div>
-                        <Link to ='/Profile'>
-                            <button type="button" className="btn btn-primary">{displayContent(this.props.lang, i++, 'registration')}</button>
-                        </Link>
+                        <button type="button" className="btn btn-primary" onClick={() => this.register()}>{displayContent(this.props.lang, i++, 'registration')}</button>
                         <br/>
                         {this.state.alphaSurname || this.state.alphaName ?
                             <span className="address text-danger">{displayContent(this.props.lang, i, 'registration')}</span> : null}
