@@ -126,7 +126,7 @@ class Registration extends Component {
             name: '',
             surname: '',
             email: '',
-            password: '',
+            passwd: '',
             alphaName: false,
             alphaSurname: false
         };
@@ -160,7 +160,7 @@ class Registration extends Component {
     }
 
     onChangePass(pass) {
-        this.setState({password: pass});
+        this.setState({passwd: pass});
     }
 
     register() {
