@@ -69,9 +69,17 @@ class Connection extends Component {
 	}
 
 	connect() {
-		if (this.state.email && this.state.email === 'hello.there@uberschutz.com' && this.state.password === 'general.kenobi') {
-			this.props.setLogged(true);
-			this.props.setUser(this.state.email, null);
+		if (this.state.email && this.state.email !== '' && this.state.password !== '') {
+		    axios.post('/connect', {
+		        email: this.state.email,
+                password: this.state.password
+            }).then(response => {
+                console.log(response);
+                this.props.setLogged(true);
+                this.props.setUser(this.state.email, null);
+            }).catch(err => {
+                console.log(err);
+            });
 		}
 	}
 

@@ -49,6 +49,18 @@ app.post('/verifyaccount', (req, res) => {
 	});
 });
 
+app.post('/connect', (req, res) => {
+	axios.post('http://user_server:8083/connect', {
+		email: req.body.email,
+		passwd: req.body.passwd
+	}).then(response => {
+		console.log(response);
+		res.send(response);
+	}).catch(err => {
+		console.log(err);
+		res.send(err);
+	});
+});
 
 app.get('*', (req, res) => {
 	res.sendFile(path.resolve( __dirname, "./build/index.html" ));
