@@ -2,13 +2,21 @@ import React, { Component } from 'react';
 import '../../styles/bootstrap.css';
 
 import axios from 'axios';
+import signup from '../../assets/signup-4.png';
+import mailerror from '../../assets/mirage-unsubscribe.png';
+const querystring = require("query-string");
 
 class Confirm extends Component {
+
+    constructor(props) {
+        super(props);
+        this.id = querystring.parse(props.location.search).id;
+    }
 
     componentDidMount() {
         console.log(this.props.match.params.id);
         axios.post('/verifyaccount', {
-            id: this.props.match.params.id.id
+            id: this.id
         }).then(response => {
             console.log(response);
             setTimeout(() => this.props.history.push('/'), 5000);
@@ -20,7 +28,12 @@ class Confirm extends Component {
     render() {
         return (
             <div>
-                <span>Votre compte a bien été confirmé ! Merci !</span>
+                <br/>
+                <h5>Votre compte a bien été confirmé !<br/> Merci !</h5><br/>
+                <img src={signup} alt="signup"/> <br/>
+
+                {/*<img src={mailerror} alt="mailerror"/>*/}
+
             </div>
         )
     }
