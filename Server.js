@@ -55,7 +55,7 @@ app.post('/connect', (req, res) => {
 		passwd: req.body.passwd
 	}).then(response => {
 		console.log(response);
-		res.send(response);
+		res.send(response.data);
 	}).catch(err => {
 		console.log(err);
 		res.send(err);

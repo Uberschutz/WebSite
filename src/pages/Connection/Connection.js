@@ -72,7 +72,7 @@ class Connection extends Component {
 		if (this.state.email && this.state.email !== '' && this.state.password !== '') {
 		    axios.post('/connect', {
 		        email: this.state.email,
-                password: this.state.password
+                passwd: this.state.password
             }).then(response => {
                 console.log(response);
                 this.props.setLogged(true);
