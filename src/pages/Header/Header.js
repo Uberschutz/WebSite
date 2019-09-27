@@ -48,7 +48,7 @@ class Header extends Component {
 
     componentDidUpdate(prevProps, prevState, snapshot) {
     	console.log('header update');
-	    if (this.props.base.logged !== prevProps.base.logged) {
+	    if (this.props.base !== prevProps.base) {
 		    this.setState({logged: this.props.base.logged, email: this.props.base.logged ? this.props.base.email : undefined}, () => console.log('re'));
 	    }
     }

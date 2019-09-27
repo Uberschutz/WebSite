@@ -19,19 +19,17 @@ class Profile extends Component {
 	componentDidMount() {
 		if (this.props.base) {
 			const { base: { language, logged } } = this.props;
-			console.log(language, this.state.lang, 'kek')
-			if (this.state.lang !== language) {
+			console.log(language, logged, this.state.lang, 'kek')
 				this.setState({
 					lang: language,
-					logged
+					logged : logged
 				})
-			}
 		}
 	}
 
 	componentDidUpdate(prevProps, prevState, snapshot) {
 		// console.log(prevProps, this.props);
-		this.props.base.language !== prevProps.base.language && this.setState({lang: this.props.base.language}, () => console.log('re'));
+		this.props.base !== prevProps.base && this.setState({lang: this.props.base.language, logged: this.props.base.logged}, () => console.log('re'));
 	}
 
     render() {

@@ -33,20 +33,18 @@ class Report extends Component {
 			const { base: { language, logged } } = this.props;
 			// console.log(this.props, 'in home');
 			// const { base: { token }} = this.props;
-			if (this.state.lang !== language) {
 				this.setState({
 					lang: language,
 					logged
 					// selectedChild: displayContent(language, this.i++, 'report')
 				})
-			}
 		}
 	}
 
 	componentDidUpdate(prevProps, prevState, snapshot) {
 		// console.log(prevProps, this.props);
-		if (this.props.base.language !== prevProps.base.language) {
-			this.setState({lang: this.props.base.language}, () => console.log('re'));
+		if (this.props.base !== prevProps.base) {
+			this.setState({lang: this.props.base.language, logged: this.props.base.logged}, () => console.log('re'));
 		}
 	}
 

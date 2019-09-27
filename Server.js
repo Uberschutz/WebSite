@@ -19,7 +19,7 @@ app.post('/subscribe_newsletter', (req, res) => {
 		res.send(response);
 	}).catch(err => {
 		console.log(err);
-		res.send(err);
+		res.status(500).send(err);
 	});
 });
 
@@ -33,7 +33,7 @@ app.post('/register', (req, res) => {
 		res.send(response);
 	}).catch(err => {
 		console.log(err);
-		res.send(err);
+		res.status(500).send(err);
 	});
 })
 
@@ -45,7 +45,7 @@ app.post('/verifyaccount', (req, res) => {
 		res.send(response);
 	}).catch(err => {
 		console.log(err);
-		res.send(err);
+		res.status(500).send(err);
 	});
 });
 
@@ -58,7 +58,7 @@ app.post('/connect', (req, res) => {
 		res.send(response.data);
 	}).catch(err => {
 		console.log(err);
-		res.send(err);
+		res.status(500).send(err);
 	});
 });
 

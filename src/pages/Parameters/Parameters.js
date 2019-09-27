@@ -44,20 +44,18 @@ class Parameters extends Component {
 		if (this.props.base) {
 			const { base: { language, logged } } = this.props;
 			console.log(language, this.state.lang, 'kek')
-			if (this.state.lang !== language) {
 				this.setState({
 					lang: language,
 					childrens: newChild,
 					options: options,
 					logged: logged
 				})
-			}
 		}
 	}
 
 	componentDidUpdate(prevProps, prevState, snapshot) {
 		// console.log(prevProps, this.props);
-		this.props.base.language !== prevProps.base.language && this.setState({lang: this.props.base.language}, () => console.log('re'));
+		this.props.base !== prevProps.base && this.setState({lang: this.props.base.language, logged: this.props.base.logged}, () => console.log('re'));
 	}
 
 	static isAlpha(char) {
