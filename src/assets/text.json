@@ -12,9 +12,8 @@
         "Pour protéger votre enfant et discuter avec lui lorsqu'une situation compliquée se présente."
       ],
       "connexion": [
-        "Authentification", "Merci de rentrer votre email et votre mot de passe pour continuer", "Mot de passe", "Continuer", "Inscription",
-        "Merci de remplir ces champs pour continuer", "Nom", "Prénom", "Mot de passe", "Continuer",
-        "Nom ou prénom invalide"
+        "Authentification", "Merci de rentrer votre email et votre mot de passe pour continuer", "Mot de passe", "Continuer",
+        "Vous n'avez pas de compte ?", "Créer un compte"
       ],
       "registration": [
         "Inscription", "Merci de remplir ces champs pour continuer", "Nom", "Prénom", "Mot de passe", "Continuer", "Nom ou prénom invalide"
@@ -96,9 +95,8 @@
         "In a few words :", "A Software", "Non blocking", "Non intrusive", "To protect your child and discuss with him or her when a complicated situation arises."
       ],
       "connexion": [
-        "Authentication", "Please enter an email and a password to continue", "Password", "Continue", "Registration",
-        "Please fill this fields to continue", "Name", "Firstname", "Password", "Continue",
-        "Invalid name or surname"
+        "Authentication", "Please enter an email and a password to continue", "Password", "Continue",
+        "You don't have an account ?", "Create an account"
       ],
       "registration": [
         "Registration", "Please fill this fields to continue", "Name", "Firstname", "Password", "Continue", "Invalid name or surname"
