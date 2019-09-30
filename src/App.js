@@ -6,6 +6,7 @@ import HomePage from "./pages/HomePage";
 import Header from "./pages/Header";
 import Footer from "./pages/Footer";
 import Connection from "./pages/Connection";
+import Registration from "./pages/Registration";
 import Contact from "./pages/Contact";
 import Profile from "./pages/Profile";
 import Parameters from "./pages/Parameters";
@@ -78,6 +79,7 @@ const App = props => {
 		                    <Switch>
 		                        <Route path='/' exact strict component={HomePage}/>
 		                        <Route path={'/Connection'} exact component={Connection}/>
+		                        <Route path={'/Registration'} exact component={Registration}/>
 		                        <Route path={'/Contact+FAQ'} exact component={Contact}/>
 		                        <Route path={'/Profile'} exact component={Profile}/>
 		                        <Route path={'/Parameters'} exact component={Parameters}/>
