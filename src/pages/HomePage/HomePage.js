@@ -41,7 +41,11 @@ class HomePage extends Component {
 
 	componentDidUpdate(prevProps, prevState, snapshot) {
 		// console.log(prevProps, this.props);
-		this.props.base.language !== prevProps.base.language && this.setState({lang: this.props.base.language}, () => console.log('re'));
+		// this.props.base.language !== prevProps.base.language && this.setState({lang: this.props.base.language}, () => console.log('re'));
+		if (prevState.lang !== this.state.lang && this.props.base.language !== this.state.lang) {
+			// this.props.base.language !== prevState.language && this.setState({lang: this.props.base.language}, () => console.log('re'));
+			this.setState({lang: this.props.base.language}, () => console.log('re'))
+		}
 	}
 
 	// shouldComponentUpdate(nextProps, nextState, nextContext) {

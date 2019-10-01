@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`renders Connection without crashing 1`] = `
+exports[`renders Report without crashing 1`] = `
 <div>
   <div>
     <div>
