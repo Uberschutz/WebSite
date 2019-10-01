@@ -10,19 +10,23 @@ class Confirm extends Component {
 
     constructor(props) {
         super(props);
-        this.id = querystring.parse(props.location.search).id;
+        if (props && props.location && props.location.search) {
+	        this.id = querystring.parse(props.location.search).id;
+        }
     }
 
     componentDidMount() {
-        console.log(this.props.match.params.id);
-        axios.post('/verifyaccount', {
-            id: this.id
-        }).then(response => {
-            console.log(response);
-            setTimeout(() => this.props.history.push('/'), 5000);
-        }).catch(err => {
-            console.log(err);
-        });
+    	if (this.id) {
+		    console.log(this.props.match.params.id);
+		    axios.post('/verifyaccount', {
+			    id: this.id
+		    }).then(response => {
+			    console.log(response);
+			    setTimeout(() => this.props.history.push('/'), 5000);
+		    }).catch(err => {
+			    console.log(err);
+		    });
+	    }
     }
 
     render() {

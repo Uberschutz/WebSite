@@ -1,0 +1,41 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders Confirm without crashing 1`] = `
+<div>
+  <div>
+    <br />
+    <h5>
+      Votre compte a bien été confirmé !
+      <br />
+       Merci !
+    </h5>
+    <br />
+    <img
+      alt="signup"
+      src="signup-4.png"
+    />
+     
+    <br />
+  </div>
+</div>
+`;
+
+exports[`renders Connection without crashing 1`] = `
+<div>
+  <div>
+    <br />
+    <h5>
+      Votre compte a bien été confirmé !
+      <br />
+       Merci !
+    </h5>
+    <br />
+    <img
+      alt="signup"
+      src="signup-4.png"
+    />
+     
+    <br />
+  </div>
+</div>
+`;

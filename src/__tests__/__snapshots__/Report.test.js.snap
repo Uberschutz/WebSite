@@ -1,0 +1,20 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders Connection without crashing 1`] = `
+<div>
+  <div>
+    <div>
+      <h1
+        class="text-xl-center forbidden"
+      >
+        403 Forbidden
+      </h1>
+      <br />
+      <img
+        alt="forbidden"
+        src="fogg-no-comments.png"
+      />
+    </div>
+  </div>
+</div>
+`;
