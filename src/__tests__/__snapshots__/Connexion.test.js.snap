@@ -3,199 +3,87 @@
 exports[`renders Connection without crashing 1`] = `
 <div>
   <div>
+    <br />
     <div
-      class="row responsive-image"
+      class="card text-white bg-dark box-center"
     >
       <div
-        class="col"
+        class="card-body bg-dark item-align text-align"
       >
-        <br />
+        <h5
+          class="card-title text-align"
+        >
+          Authentification
+        </h5>
+        <p
+          class="card-text"
+        >
+          Merci de rentrer votre email et votre mot de passe pour continuer
+        </p>
         <div
-          class="card text-white bg-dark box-center"
+          class="input-group mb-3"
         >
           <div
-            class="card-body bg-dark item-align text-align"
+            class="input-group-prepend"
           >
-            <h5
-              class="card-title text-align"
+            <span
+              class="input-group-text"
+              id="inputGroup-sizing-default"
             >
-              Authentification
-            </h5>
-            <p
-              class="card-text"
-            >
-              Merci de rentrer votre email et votre mot de passe pour continuer
-            </p>
-            <div
-              class="input-group mb-3"
-            >
-              <div
-                class="input-group-prepend"
-              >
-                <span
-                  class="input-group-text"
-                  id="inputGroup-sizing-default"
-                >
-                  Email
-                </span>
-              </div>
-              <input
-                aria-label="Email"
-                class="form-control"
-                type="text"
-                value=""
-              />
-            </div>
-            <div
-              class="input-group mb-3"
-            >
-              <div
-                class="input-group-prepend"
-              >
-                <span
-                  class="input-group-text"
-                  id="inputGroup-sizing-default"
-                >
-                  Mot de passe
-                </span>
-              </div>
-              <input
-                aria-label="Email"
-                class="form-control"
-                type="password"
-                value=""
-              />
-            </div>
-            <a
-              href="/"
-            >
-              <button
-                class="btn btn-primary"
-                type="button"
-              >
-                Continuer
-              </button>
-            </a>
+              Email
+            </span>
           </div>
+          <input
+            aria-label="Email"
+            class="form-control"
+            type="text"
+            value=""
+          />
         </div>
-        <br />
-      </div>
-      <div
-        class="col"
-      >
-        <br />
         <div
-          class="card text-white bg-dark box-center"
+          class="input-group mb-3"
         >
           <div
-            class="card-body bg-dark item-align text-align"
+            class="input-group-prepend"
           >
-            <h5
-              class="card-title text-align"
+            <span
+              class="input-group-text"
+              id="inputGroup-sizing-default"
             >
-              Inscription
-            </h5>
-            <p
-              class="card-text"
-            >
-              Merci de remplir ces champs pour continuer
-            </p>
-            <div
-              class="input-group mb-3"
-            >
-              <div
-                class="input-group-prepend"
-              >
-                <span
-                  class="input-group-text"
-                  id="inputGroup-sizing-default"
-                >
-                  Nom
-                </span>
-              </div>
-              <input
-                aria-label="Nom"
-                class="form-control"
-                type="text"
-                value=""
-              />
-            </div>
-            <div
-              class="input-group mb-3"
-            >
-              <div
-                class="input-group-prepend"
-              >
-                <span
-                  class="input-group-text"
-                  id="inputGroup-sizing-default"
-                >
-                  Prénom
-                </span>
-              </div>
-              <input
-                aria-label="Prénom"
-                class="form-control"
-                type="text"
-                value=""
-              />
-            </div>
-            <div
-              class="input-group mb-3"
-            >
-              <div
-                class="input-group-prepend"
-              >
-                <span
-                  class="input-group-text"
-                  id="inputGroup-sizing-default"
-                >
-                  Email
-                </span>
-              </div>
-              <input
-                aria-label="Email"
-                class="form-control"
-                type="text"
-                value=""
-              />
-            </div>
-            <div
-              class="input-group mb-3"
-            >
-              <div
-                class="input-group-prepend"
-              >
-                <span
-                  class="input-group-text"
-                  id="inputGroup-sizing-default"
-                >
-                  Mot de passe
-                </span>
-              </div>
-              <input
-                aria-label="Email"
-                class="form-control"
-                type="password"
-                value=""
-              />
-            </div>
-            <a
-              href="/Profile"
-            >
-              <button
-                class="btn btn-primary"
-                type="button"
-              >
-                Continuer
-              </button>
-            </a>
-            <br />
+              Mot de passe
+            </span>
           </div>
+          <input
+            aria-label="Email"
+            class="form-control"
+            type="password"
+            value=""
+          />
         </div>
-        <br />
+        <button
+          class="btn btn-primary"
+          type="button"
+        >
+          Continuer
+        </button>
       </div>
     </div>
+    <br />
+    <span>
+      Vous n'avez pas de compte ?
+    </span>
+     
+    <br />
+    <a
+      href="/Registration"
+    >
+      <button
+        class="btn btn-primary"
+        type="button"
+      >
+        Créer un compte
+      </button>
+    </a>
   </div>
 </div>
 `;
