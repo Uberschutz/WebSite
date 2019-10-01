@@ -5,6 +5,7 @@ import '../../styles/Report.css';
 import {ButtonDropdown, DropdownMenu, DropdownToggle} from "reactstrap";
 import {ProgressBar} from "react-bootstrap";
 import { displayContent } from '../../utils/translationDisplay';
+import axios from 'axios';
 
 import bad from '../../assets/icons8-triste-80.png'
 import neutral from '../../assets/icons8-neutre-80.png'
@@ -60,8 +61,16 @@ class Report extends Component {
 	// }
 
 	changeChild(name) {
-		const datas = this.getChildData(name);
-		this.setState({selectedChild: name, isOpen: false, childData: datas});
+		if (name === 'general') {
+			axios.post('/get_data').then(response => {
+				console.log(response);
+			}).catch(err => {
+				console.log(err);
+			})
+		} else {
+			const datas = this.getChildData(name);
+			this.setState({selectedChild: name, isOpen: false, childData: datas});
+		}
 	}
 
 	getChildData(name) {
@@ -102,6 +111,9 @@ class Report extends Component {
 							</div>
 							<div>
 								<div onClick={() => {this.changeChild('Philippe')}}>Philippe</div>
+							</div>
+							<div>
+								<div onClick={() => {this.changeChild('general')}}>General</div>
 							</div>
 						</DropdownMenu>
 					</ButtonDropdown>
