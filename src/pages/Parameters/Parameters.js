@@ -54,8 +54,10 @@ class Parameters extends Component {
 	}
 
 	componentDidUpdate(prevProps, prevState, snapshot) {
-		// console.log(prevProps, this.props);
-		this.props.base !== prevProps.base && this.setState({lang: this.props.base.language, logged: this.props.base.logged}, () => console.log('re'));
+		if (this.props.base && (this.props.base.language !== this.state.lang || this.props.base.logged !== this.state.logged)) {
+			// console.log(prevProps, this.props);
+			this.setState({lang: this.props.base.language, logged: this.props.base.logged}, () => console.log('re'));
+		}
 	}
 
 	static isAlpha(char) {

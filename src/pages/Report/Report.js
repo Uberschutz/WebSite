@@ -36,7 +36,7 @@ class Report extends Component {
 			// const { base: { token }} = this.props;
 				this.setState({
 					lang: language,
-					logged
+					logged: logged
 					// selectedChild: displayContent(language, this.i++, 'report')
 				})
 		}

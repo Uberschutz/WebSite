@@ -9,6 +9,7 @@ jobs:
       only:
         - master
         - develop
+#        - unit-tests
 #        - frontend
 #        - backend
     docker:

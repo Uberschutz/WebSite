@@ -42,7 +42,7 @@ class HomePage extends Component {
 	componentDidUpdate(prevProps, prevState, snapshot) {
 		// console.log(prevProps, this.props);
 		// this.props.base.language !== prevProps.base.language && this.setState({lang: this.props.base.language}, () => console.log('re'));
-		if (prevState.lang !== this.state.lang && this.props.base.language !== this.state.lang) {
+		if (this.props.base && this.props.base.language !== this.state.lang) {
 			// this.props.base.language !== prevState.language && this.setState({lang: this.props.base.language}, () => console.log('re'));
 			this.setState({lang: this.props.base.language}, () => console.log('re'))
 		}
@@ -122,21 +122,5 @@ class HomePage extends Component {
         )
     }
 }
-
-// const mapDispatchToProps = dispatch => ({
-// 	getServiceData: bindActionCreators(actions.getServiceData, dispatch),
-// 	sendServiceData: bindActionCreators(actions.sendServiceData, dispatch),
-// 	saveAuthToken: bindActionCreators(actions.saveAuthToken, dispatch),
-// 	subscribeToService: bindActionCreators(actions.subscribeToService, dispatch),
-// 	updateFill: bindActionCreators(actions.updateFill, dispatch),
-// 	updateActionFill: bindActionCreators(actions.updateActionFill, dispatch),
-// 	toggleAREA: bindActionCreators(actions.toggleAREA, dispatch),
-// })
-//
-// const mapStateToProps = state => ({
-// 	base: state.base,
-// })
-//
-// export default HomePage = connect(mapStateToProps, mapDispatchToProps)(HomePage);
 
 export default HomePage;
