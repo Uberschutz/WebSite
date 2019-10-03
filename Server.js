@@ -15,7 +15,6 @@ app.post('/get_data', (req, res) => {
 			'Content-Type': 'application/x-www-form-urlencoded'
 		}
 	}).then(response => {
-		console.log(response);
 		res.send(response.data.flagsPercentage);
 	}).catch(err => {
 		console.log(err);
