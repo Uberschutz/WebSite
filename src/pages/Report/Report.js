@@ -55,6 +55,10 @@ class Report extends Component {
 		});
 	}
 
+	capitalize = function(str) {
+		return str.charAt(0).toUpperCase() + str.slice(1);
+	};
+
 	// componentDidMount() {
 	// 	console.log('whut');
 	// 	this.setState({selectedChild: displayContent(this.props.lang, this.i++, 'report')})
@@ -64,6 +68,11 @@ class Report extends Component {
 		if (name === 'general') {
 			axios.post('/get_data').then(response => {
 				console.log(response);
+				const data = response.data.map(obj => {
+					return {name: this.capitalize(obj.key.toLowerCase()), value: obj.value};
+				});
+				console.log(data);
+				this.setState({selectedChild: name, isOpen: false, childData: data});
 			}).catch(err => {
 				console.log(err);
 			})
@@ -121,7 +130,7 @@ class Report extends Component {
 					<div style={{width: '50%'}} className="btn">
 						{
 							this.state.childData.map((d, idx) => {
-								console.log("ICI", idx);
+								console.log("ICI", idx, d);
 								if (d.name === 'Safe') {
 									return (
 										<div style={{height: 32, margin: 10}}>
