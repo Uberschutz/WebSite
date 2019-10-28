@@ -1,6 +1,110 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`renders Report without crashing 1`] = `
+exports[`render Report being logged in english 1`] = `
+<div>
+  <div>
+    <br />
+    <div
+      class="btn-group btn-group-lg"
+    >
+      <button
+        aria-expanded="false"
+        aria-haspopup="true"
+        class="btn btn-info"
+        type="button"
+      >
+        Kids
+      </button>
+      <div
+        aria-hidden="true"
+        class="drop btn dropdown-menu"
+        role="menu"
+        tabindex="-1"
+      >
+        <div>
+          <div>
+            Thomas
+          </div>
+        </div>
+        <div>
+          <div>
+            Théo
+          </div>
+        </div>
+        <div>
+          <div>
+            Philippe
+          </div>
+        </div>
+        <div>
+          <div>
+            General
+          </div>
+        </div>
+      </div>
+    </div>
+    <br />
+    <div
+      class="btn"
+      style="width: 50%;"
+    />
+  </div>
+</div>
+`;
+
+exports[`render Report being logged in french 1`] = `
+<div>
+  <div>
+    <br />
+    <div
+      class="btn-group btn-group-lg"
+    >
+      <button
+        aria-expanded="false"
+        aria-haspopup="true"
+        class="btn btn-info"
+        type="button"
+      >
+        Enfants
+      </button>
+      <div
+        aria-hidden="true"
+        class="drop btn dropdown-menu"
+        role="menu"
+        tabindex="-1"
+      >
+        <div>
+          <div>
+            Thomas
+          </div>
+        </div>
+        <div>
+          <div>
+            Théo
+          </div>
+        </div>
+        <div>
+          <div>
+            Philippe
+          </div>
+        </div>
+        <div>
+          <div>
+            General
+          </div>
+        </div>
+      </div>
+    </div>
+    <br />
+    <div
+      class="btn"
+      style="width: 50%;"
+    />
+  </div>
+</div>
+`;
+
+exports[`renders Report without crashing (not connected) in any language 1`] = `
 <div>
   <div>
     <div>

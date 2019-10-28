@@ -17,9 +17,9 @@ it('renders Home without crashing', () => {
 it('renders Home in english', function () {
 	const div = document.createElement('div');
 	const homeComponent = shallow(<HomePage/>);
-	homeComponent.setProps({base: { language: 'fr'}});
-	// homeComponent.update();
-	homeComponent.setState({ lang: 'en' });
+	homeComponent.setProps({base: { language: 'en'}});
+	//homeComponent.setState({ lang: 'en' });
+	//homeComponent.update();
 	ReactDOM.render(homeComponent, div);
 	expect(div).toMatchSnapshot();
 	ReactDOM.unmountComponentAtNode(div);
