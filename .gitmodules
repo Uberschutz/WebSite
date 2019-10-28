@@ -1,0 +1,6 @@
+[submodule "UberMail"]
+	path = UberMail
+	url = https://github.com/Uberschutz/UberMail.git
+[submodule "UberUsers"]
+	path = UberUsers
+	url = https://github.com/Uberschutz/UberUsers.git

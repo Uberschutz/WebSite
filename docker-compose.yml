@@ -1,0 +1,27 @@
+version: "3"
+services:
+    mail_server:
+        build: ./UberMail/
+        ports:
+          - "8082:8082"
+    user_server:
+        build: ./UberUsers/
+        ports:
+          - "8081:8081"
+         depends_on:
+           - user_db
+    client_web:
+        build: .
+        ports:
+          - "8080:8080"
+        depends_on:
+          - mail_server
+          - user_server
+          - user_db
+    user_db:
+        image: 'mongo:3.4.1'
+        command: mongod --port 27117
+        ports:
+          - '27117:27117'
+    volumes:
+      - ../user_database/data:/data/db
