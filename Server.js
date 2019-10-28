@@ -29,10 +29,10 @@ app.post('/subscribe_newsletter', (req, res) => {
 		name: req.body.name
 	}).then(response => {
 		console.log(response);
-		res.send(response);
+		res.send(response.data);
 	}).catch(err => {
 		console.log(err);
-		res.status(500).send(err);
+		res.status(500).send('User already registered in newsletter', err);
 	});
 });
 
@@ -43,12 +43,12 @@ app.post('/register', (req, res) => {
 		name: req.body.name
 	}).then(response => {
 		console.log(response);
-		res.send(response);
+		res.send(response.data);
 	}).catch(err => {
 		console.log(err);
-		res.status(500).send(err);
+		res.status(500).send('User already registered', err);
 	});
-})
+});
 
 app.post('/verifyaccount', (req, res) => {
 	axios.post('http://user_server:8083/verifyaccount', {
