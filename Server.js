@@ -24,7 +24,7 @@ app.post('/get_data', (req, res) => {
 
 app.post('/subscribe_newsletter', (req, res) => {
 	// console.log(req.body, req.data);
-	axios.post('http://user_server:8083/subscribe_newsletter', {
+	axios.post('http://user_server:8081/subscribe_newsletter', {
 		email: req.body.email,
 		name: req.body.name
 	}).then(response => {
@@ -37,7 +37,7 @@ app.post('/subscribe_newsletter', (req, res) => {
 });
 
 app.post('/register', (req, res) => {
-	axios.post('http://user_server:8083/register', {
+	axios.post('http://user_server:8081/register', {
 		email: req.body.email,
 		passwd: req.body.passwd,
 		name: req.body.name
@@ -51,7 +51,7 @@ app.post('/register', (req, res) => {
 });
 
 app.post('/verifyaccount', (req, res) => {
-	axios.post('http://user_server:8083/verifyaccount', {
+	axios.post('http://user_server:8081/verifyaccount', {
 		id: req.body.id
 	}).then(response => {
 		console.log(response);
@@ -63,7 +63,7 @@ app.post('/verifyaccount', (req, res) => {
 });
 
 app.post('/connect', (req, res) => {
-	axios.post('http://user_server:8083/connect', {
+	axios.post('http://user_server:8081/connect', {
 		email: req.body.email,
 		passwd: req.body.passwd
 	}).then(response => {
@@ -80,5 +80,5 @@ app.get('*', (req, res) => {
 });
 
 app.listen(8080, () =>
-	console.log('Proxy server running on 8081')
+	console.log('Server listening on 8080')
 );
