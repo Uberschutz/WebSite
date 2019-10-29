@@ -75,6 +75,24 @@ app.post('/connect', (req, res) => {
 	});
 });
 
+app.post('/children', (req, res) => {
+	axios.post('http://user_server:8081/children', {
+		action: req.body.action,
+		name: req.body.name,
+		age: req.body.age
+	}, {
+		headers: {
+			'x-access-token': req.body.token
+		}
+	}).then(response => {
+		console.log(response.data);
+		res.send(response.data);
+	}).catch(err => {
+		console.log(err);
+		res.status(500).send('An error occurred', err);
+	})
+});
+
 app.get('*', (req, res) => {
 	res.sendFile(path.resolve( __dirname, "./build/index.html" ));
 });

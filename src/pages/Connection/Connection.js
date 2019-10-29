@@ -76,7 +76,7 @@ class Connection extends Component {
             }).then(response => {
                 console.log(response);
                 this.props.setLogged(true);
-                this.props.setUser(this.state.email, null);
+                this.props.setUser(this.state.email, null, response.data);
                 this.props.history.push('/');
             }).catch(err => {
                 console.log(err);

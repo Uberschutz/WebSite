@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import '../../styles/bootstrap.css';
 import '../../styles/Parameters.css';
+import axios from 'axios';
 
 import { Modal, Button } from 'reactstrap';
 // import { Card, CardText, CardTitle, CardFooter } from "reactstrap";
@@ -26,7 +27,8 @@ class Parameters extends Component {
 			alphaErr: false,
 			numErr: false,
 			lang: 'fr',
-			logged: false
+			logged: false,
+			token: ''
 		};
 		this.toggleModal = this.toggleModal.bind(this);
 		this.editChildren = this.editChildren.bind(this);
@@ -42,13 +44,14 @@ class Parameters extends Component {
 
 		console.log('Here call to the user account API to load children'); // or in componentDidMount
 		if (this.props.base) {
-			const { base: { language, logged } } = this.props;
+			const { base: { language, logged, token } } = this.props;
 			console.log(language, this.state.lang, 'kek')
 				this.setState({
 					lang: language,
 					childrens: newChild,
 					options: options,
-					logged: logged
+					logged: logged,
+					token
 				})
 		}
 	}
@@ -89,6 +92,20 @@ class Parameters extends Component {
 			const newChild = {name: this.state.name, age: this.state.age, options: this.state.options};
 			let list = this.state.childrens;
 			list.push(newChild);
+			axios.post('/children', {
+				action: 'add',
+				name: this.state.name,
+				age: this.state.age,
+				options: []
+			}, {
+				headers: {
+					'x-access-token': this.state.token
+				}
+			}).then(response => {
+				console.log(response);
+			}).catch(err => {
+				console.log(err);
+			});
 			this.setState({childrens: list}, () => this.toggleModal());
 		} else {
 			console.log('Here call to the user account edition API', this.state.name, this.state.age);

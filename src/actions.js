@@ -13,11 +13,12 @@ export function saveAuthToken(token, email, username) {
     }
 }
 
-export const setUser = (email, username) => ({
+export const setUser = (email, username, token) => ({
     type: 'SET_USER',
     payload: {
         email,
-        username
+        username,
+	    token
     }
 });
 
