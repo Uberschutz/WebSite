@@ -55,7 +55,7 @@ app.post('/verifyaccount', (req, res) => {
 		id: req.body.id
 	}).then(response => {
 		console.log(response);
-		res.send(response);
+		res.send(response.data);
 	}).catch(err => {
 		console.log(err);
 		res.status(500).send(err);
