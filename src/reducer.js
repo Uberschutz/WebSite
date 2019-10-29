@@ -11,10 +11,10 @@ const base = (state = initialState, action) => {
         case 'TEST':
         	console.log('test');
             return { ...state, email: 'test' };
-        case 'SAVE_AUTH_TOKEN':
-        	console.log('save auth')
-            const { token } = action.payload;
-            return { ...state, token };
+        // case 'SAVE_AUTH_TOKEN':
+        // 	console.log('save auth')
+        //     const { token } = action.payload;
+        //     return { ...state, token };
 	    case 'SET_LANGUAGE':
 	    	console.log('here', action.payload);
 		    const { language } = action.payload;
@@ -24,8 +24,8 @@ const base = (state = initialState, action) => {
             const { logged } = action.payload;
             return { ...state, logged };
         case 'SET_USER':
-            const { email, username } = action.payload;
-            return { ...state, email, username };
+            const { email, username, token } = action.payload;
+            return { ...state, email, username, token };
         default:
         	console.log('here default', state);
             return state;
