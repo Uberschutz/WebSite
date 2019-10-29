@@ -82,7 +82,7 @@ app.post('/children', (req, res) => {
 		age: req.body.age
 	}, {
 		headers: {
-			'x-access-token': req.body.token
+			'x-access-token': req.headers['x-access-token']
 		}
 	}).then(response => {
 		console.log(response.data);
