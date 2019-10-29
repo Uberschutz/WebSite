@@ -45,7 +45,7 @@ class Parameters extends Component {
 		console.log('Here call to the user account API to load children'); // or in componentDidMount
 		if (this.props.base) {
 			const { base: { language, logged, token } } = this.props;
-			console.log(language, this.state.lang, 'kek')
+			console.log(language, this.state.lang, 'kek', this.props)
 				this.setState({
 					lang: language,
 					childrens: newChild,
@@ -88,7 +88,7 @@ class Parameters extends Component {
 		if (this.state.name === '' || this.state.age === '')
 			return;
 		if (this.state.state === 'Create') {
-			console.log('Here call to the user account creation API', this.state.name, this.state.age);
+			console.log('Here call to the user account creation API', this.state.name, this.state.age, this.state.token);
 			const newChild = {name: this.state.name, age: this.state.age, options: this.state.options};
 			let list = this.state.childrens;
 			list.push(newChild);

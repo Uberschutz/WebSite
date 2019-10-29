@@ -14,10 +14,10 @@ exports[`renders Home in english 1`] = `
       Internet :
       <br />
        
-      êtes-vous conscients des dangers
+      are you aware of dangers
       <br />
        
-      que rencontrent vos enfants ?
+      your childrens encounter ?
     </span>
     <div
       class="row responsive-image Home"
@@ -36,19 +36,19 @@ exports[`renders Home in english 1`] = `
         <h3
           class="h7-font"
         >
-          Notre solution :
+          Our solution :
         </h3>
         <h6
           class="h6-font"
         >
-          Pour une navigation saine, utilisez Überschutz.
+          For a healthy navigation, use Überschutz.
           <br />
-          Ce logiciel non bloquant vous préviendra lorsque votre enfant se met en danger sur Internet.
+          This non-blocking software will warn you when your child is at risk on the Internet.
         </h6>
         <h8
           class="italic-txt"
         >
-          Suicide, drogue, anorexie, harcèlement, contenus pornographiques ... Vous n'imaginez pas à quoi il est confronté.
+          Suicide, drugs, anorexia, harassment, pornographic content ... You can not imagine what he's facing.
         </h8>
       </div>
     </div>
@@ -60,7 +60,7 @@ exports[`renders Home in english 1`] = `
       <h5
         class="rappel-info h7-font"
       >
-        En quelques mots :
+        In a few words :
       </h5>
       <br />
       <br />
@@ -79,7 +79,7 @@ exports[`renders Home in english 1`] = `
           <span
             class="rappel-info"
           >
-            Un logiciel
+            A Software
           </span>
         </div>
         <div
@@ -94,7 +94,7 @@ exports[`renders Home in english 1`] = `
           <span
             class="rappel-info"
           >
-            Non bloquant
+            Non blocking
           </span>
         </div>
         <div
@@ -110,7 +110,7 @@ exports[`renders Home in english 1`] = `
           <span
             class="rappel-info"
           >
-            Non intrusif
+            Non intrusive
           </span>
         </div>
       </div>
@@ -118,7 +118,7 @@ exports[`renders Home in english 1`] = `
       <h7
         class="rappel-info"
       >
-        Pour protéger votre enfant et discuter avec lui lorsqu'une situation compliquée se présente.
+        To protect your child and discuss with him or her when a complicated situation arises.
       </h7>
       <br />
       <br />

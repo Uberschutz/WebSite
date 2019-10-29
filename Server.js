@@ -89,7 +89,7 @@ app.post('/children', (req, res) => {
 		res.send(response.data);
 	}).catch(err => {
 		console.log(err);
-		res.status(500).send('An error occurred', err);
+		res.status(500).send('An error occurred');
 	})
 });
 
