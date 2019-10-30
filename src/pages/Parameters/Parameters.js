@@ -130,7 +130,9 @@ class Parameters extends Component {
 				newName: this.state.name,
 				age: childrens[this.state.id + 1].age,
 			}, {
-				'x-access-token': this.state.token
+				headers: {
+					'x-access-token': this.state.token
+				}
 			}).then(response => {
 				console.log(response.data);
 				childrens[this.state.id + 1] = {name: this.state.name, age: this.state.age, options: this.state.options};
@@ -164,7 +166,9 @@ class Parameters extends Component {
 			action: 'delete',
 			name: children.name
 		}, {
-			'x-access-token': this.state.token
+			headers: {
+				'x-access-token': this.state.token
+			}
 		}).then(response => {
 			console.log(response.data);
 			list.splice(idx, 1);
