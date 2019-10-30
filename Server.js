@@ -79,7 +79,8 @@ app.post('/children', (req, res) => {
 	axios.post('http://user_server:8081/children', {
 		action: req.body.action,
 		name: req.body.name,
-		age: req.body.age
+		age: req.body.age,
+		options: req.body.options
 	}, {
 		headers: {
 			'x-access-token': req.headers['x-access-token']
