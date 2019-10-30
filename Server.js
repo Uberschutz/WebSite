@@ -79,6 +79,7 @@ app.post('/children', (req, res) => {
 	axios.post('http://user_server:8081/children', {
 		action: req.body.action,
 		name: req.body.name,
+		newName: (req.body.newName ? req.body.newName : ''),
 		age: req.body.age,
 		options: req.body.options
 	}, {

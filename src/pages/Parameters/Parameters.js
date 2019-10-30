@@ -40,18 +40,32 @@ class Parameters extends Component {
 
 	componentDidMount() {
 		const options = [{name: 'Reports', enabled: false}, {name: 'Alerts', enabled: false}, {name: 'Uberschutz', enabled: false}, {name: 'Adds', enabled: false}];
-		const newChild = [{name: 'Thomas', age: '23', options: options}, {name: 'Marianne', age: '21', options: options}];
-
+		// const newChild = [{name: 'Thomas', age: '23', options: options}, {name: 'Marianne', age: '21', options: options}];
 		console.log('Here call to the user account API to load children'); // or in componentDidMount
 		if (this.props.base) {
 			const { base: { language, logged, token } } = this.props;
-			console.log(language, this.state.lang, 'kek', this.props)
+			console.log(language, this.state.lang, 'kek', this.props);
 				this.setState({
 					lang: language,
-					childrens: newChild,
+					// childrens: newChild,
 					options: options,
 					logged: logged,
 					token
+				}, () => {
+					axios.post('/children', {
+						action: 'list'
+					}, {
+						headers: {
+							'x-access-token': this.state.token
+						}
+					}).then(response => {
+						console.log(response.data);
+						this.setState({
+							childrens: response.data
+						});
+					}).catch(err => {
+						console.log(err);
+					});
 				})
 		}
 	}
@@ -102,16 +116,28 @@ class Parameters extends Component {
 					'x-access-token': this.state.token
 				}
 			}).then(response => {
-				console.log(response);
+				console.log(response.data);
+				this.setState({childrens: list}, () => this.toggleModal());
 			}).catch(err => {
 				console.log(err);
 			});
-			this.setState({childrens: list}, () => this.toggleModal());
 		} else {
 			console.log('Here call to the user account edition API', this.state.name, this.state.age);
 			let childrens = this.state.childrens;
-			childrens[this.state.id + 1] = {name: this.state.name, age: this.state.age, options: this.state.options};
-			this.setState({childrens: childrens}, () => this.toggleModal());
+			axios.post('/children', {
+				action: 'edit',
+				name: childrens[this.state.id + 1].name,
+				newName: this.state.name,
+				age: childrens[this.state.id + 1].age,
+			}, {
+				'x-access-token': this.state.token
+			}).then(response => {
+				console.log(response.data);
+				childrens[this.state.id + 1] = {name: this.state.name, age: this.state.age, options: this.state.options};
+				this.setState({childrens: childrens}, () => this.toggleModal());
+			}).catch(err => {
+				console.log(err);
+			})
 		}
 	}
 
@@ -134,8 +160,18 @@ class Parameters extends Component {
 		console.log('Here call to the user account API to delete children', children);
 		let list = this.state.childrens;
 		const idx = list.indexOf(children);
-		list.splice(idx, 1);
-		this.setState({childrens: list});
+		axios.post('/children', {
+			action: 'delete',
+			name: children.name
+		}, {
+			'x-access-token': this.state.token
+		}).then(response => {
+			console.log(response.data);
+			list.splice(idx, 1);
+			this.setState({childrens: list});
+		}).catch(err => {
+			console.log(err);
+		});
 	}
 
 	setFirstName(name) {
