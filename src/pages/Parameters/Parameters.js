@@ -103,9 +103,9 @@ class Parameters extends Component {
 			return;
 		if (this.state.state === 'Create') {
 			console.log('Here call to the user account creation API', this.state.name, this.state.age, this.state.token);
-			const newChild = {name: this.state.name, age: this.state.age, options: this.state.options};
-			let list = this.state.childrens;
-			list.push(newChild);
+			// const newChild = {name: this.state.name, age: this.state.age, options: this.state.options};
+			// let list = this.state.childrens;
+			// list.push(newChild);
 			axios.post('/children', {
 				action: 'add',
 				name: this.state.name,
@@ -117,26 +117,26 @@ class Parameters extends Component {
 				}
 			}).then(response => {
 				console.log(response.data);
-				this.setState({childrens: list}, () => this.toggleModal());
+				this.setState({childrens: response.data}, () => this.toggleModal());
 			}).catch(err => {
 				console.log(err);
 			});
 		} else {
 			console.log('Here call to the user account edition API', this.state.name, this.state.age);
-			let childrens = this.state.childrens;
+			// let childrens = this.state.childrens;
 			axios.post('/children', {
 				action: 'edit',
-				name: childrens[this.state.id + 1].name,
+				name: this.state.childrens[this.state.id + 1].name,
 				newName: this.state.name,
-				age: childrens[this.state.id + 1].age,
+				age: this.state.childrens[this.state.id + 1].age,
 			}, {
 				headers: {
 					'x-access-token': this.state.token
 				}
 			}).then(response => {
 				console.log(response.data);
-				childrens[this.state.id + 1] = {name: this.state.name, age: this.state.age, options: this.state.options};
-				this.setState({childrens: childrens}, () => this.toggleModal());
+				// childrens[this.state.id + 1] = {name: this.state.name, age: this.state.age, options: this.state.options};
+				this.setState({childrens: response.data}, () => this.toggleModal());
 			}).catch(err => {
 				console.log(err);
 			})
@@ -160,8 +160,8 @@ class Parameters extends Component {
 
 	deleteChildren(children) {
 		console.log('Here call to the user account API to delete children', children);
-		let list = this.state.childrens;
-		const idx = list.indexOf(children);
+		// let list = this.state.childrens;
+		// const idx = list.indexOf(children);
 		axios.post('/children', {
 			action: 'delete',
 			name: children.name
@@ -171,8 +171,8 @@ class Parameters extends Component {
 			}
 		}).then(response => {
 			console.log(response.data);
-			list.splice(idx, 1);
-			this.setState({childrens: list});
+			// list.splice(idx, 1);
+			this.setState({childrens: response.data});
 		}).catch(err => {
 			console.log(err);
 		});
