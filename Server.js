@@ -28,7 +28,7 @@ app.post('/subscribe_newsletter', (req, res) => {
 		email: req.body.email,
 		name: req.body.name
 	}).then(response => {
-		console.log(response);
+		console.log(response.data);
 		res.send(response.data);
 	}).catch(err => {
 		console.log(err);
@@ -42,7 +42,7 @@ app.post('/register', (req, res) => {
 		passwd: req.body.passwd,
 		name: req.body.name
 	}).then(response => {
-		console.log(response);
+		console.log(response.data);
 		res.send(response.data);
 	}).catch(err => {
 		console.log(err);
@@ -54,7 +54,7 @@ app.post('/verifyaccount', (req, res) => {
 	axios.post('http://user_server:8081/verifyaccount', {
 		id: req.body.id
 	}).then(response => {
-		console.log(response);
+		console.log(response.data);
 		res.send(response.data);
 	}).catch(err => {
 		console.log(err);
@@ -67,7 +67,7 @@ app.post('/connect', (req, res) => {
 		email: req.body.email,
 		passwd: req.body.passwd
 	}).then(response => {
-		console.log(response);
+		console.log(response.data);
 		res.send(response.data);
 	}).catch(err => {
 		console.log(err);
