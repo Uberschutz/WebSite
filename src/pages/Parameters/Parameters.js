@@ -89,8 +89,10 @@ class Parameters extends Component {
 
 	toggleModal() {
 		if (this.state.showModal) {
-			const options = [{name: 'Reports', enabled: false}, {name: 'Alerts', enabled: false}, {name: 'Uberschutz', enabled: false}, {name: 'Adds', enabled: false}];
-			this.setState({name: '', age: '', id: null, state: 'Create', alphaErr: false, numErr: false, options: options},
+			// console.log('IM HERE')
+			// const options = [{name: 'Reports', enabled: false}, {name: 'Alerts', enabled: false}, {name: 'Uberschutz', enabled: false}, {name: 'Adds', enabled: false}];
+			this.setState({name: '', age: '', id: null, state: 'Create', alphaErr: false, numErr: false},
+			// this.setState({name: '', age: '', id: null, state: 'Create', alphaErr: false, numErr: false, options: options},
 				() => this.setState({showModal: !this.state.showModal}));
 		} else {
 			this.setState({showModal: !this.state.showModal});
@@ -110,7 +112,7 @@ class Parameters extends Component {
 				action: 'add',
 				name: this.state.name,
 				age: this.state.age,
-				options: []
+				options: this.state.options
 			}, {
 				headers: {
 					'x-access-token': this.state.token
@@ -129,6 +131,7 @@ class Parameters extends Component {
 				name: this.state.childrens[this.state.id + 1].name,
 				newName: this.state.name,
 				age: this.state.childrens[this.state.id + 1].age,
+				options: this.state.options
 			}, {
 				headers: {
 					'x-access-token': this.state.token
