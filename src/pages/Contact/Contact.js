@@ -3,6 +3,7 @@ import '../../styles/bootstrap.css';
 import '../../styles/Contact.css';
 
 import {Icon} from 'antd';
+import { Alert } from 'reactstrap';
 import { displayContent } from '../../utils/translationDisplay';
 import axios from 'axios';
 
@@ -158,7 +159,8 @@ class Form extends Component {
         	email: '',
 	        name: '',
 	        nameError: '',
-	        emailError: ''
+	        emailError: false,
+            emailSent: false
         }
     }
 
@@ -178,13 +180,22 @@ class Form extends Component {
     	this.setState({name});
     }
 
+    onChangeSent() {
+        if (this.state.emailError === false) {
+            this.setState({emailSent: true}, () => {
+                setTimeout(() => {this.setState({emailSent: false})}, 10000);
+            });
+        }
+    }
+
     registerNews() {
 		// console.log(`[${this.state.name}]`,`[${this.state.email}]`);
     	if (this.state.name !== '' && this.state.email !== '') {
 		    axios.post('/subscribe_newsletter', {
 			    email: this.state.email,
 			    name: this.state.name
-		    }).then(response => console.log(response)).catch(err => console.log(err));
+		    }).then(response => { console.log(response);
+                this.onChangeSent()}).catch(err => console.log(err))
 	    } else {
     		if (this.state.name === '') {
     			this.setState({nameError: true});
@@ -236,6 +247,11 @@ class Form extends Component {
                     </div>
                     <button type="button" className="btn btn-primary button-footer" onClick={() => this.registerNews()}>{displayContent(this.props.lang, i,'form')}</button>
                 </form>
+                {
+                    this.state.emailSent ?
+                    <Alert color="success"> Vous êtes maintenant inscrit à la newsletter, merci !</Alert>
+                        : null
+                }
             </div>
         )
     }
