@@ -103,23 +103,27 @@ class Header extends Component {
                                 <NavItem className="nav-item">
                                     <Link className="nav-link uber-color" to="/">Menu</Link>
                                 </NavItem>
+	                            { !this.state.logged ?
                                 <NavItem className="nav-item">
                                     <Link className="nav-link uber-color" to="/Connection">{displayContent(this.state.lang, i++, 'navbar')} </Link>
-                                </NavItem>
+                                </NavItem> : null }
                                 <NavItem className="nav-item">
                                     <Link to="/Contact+FAQ" className="nav-link uber-color">Contact + FAQ</Link>
                                 </NavItem>
+	                            { this.state.logged ?
                                 <NavItem className="nav-item">
 	                                <Link to="/Profile" className="nav-link uber-color">{displayContent(this.state.lang, i++, 'navbar')}</Link>
                                     {/*<NavLink className="nav-link uber-color" href="/Profile">{displayContent(this.state.lang, i++, 'navbar')} </NavLink>*/}
-                                </NavItem>
-                                <NavItem className="nav-item">
+                                </NavItem> : null }
+	                            {this.state.logged ?
+	                            <NavItem className="nav-item">
                                     <Link to="/Report" className="nav-link uber-color">{displayContent(this.state.lang, i++, 'navbar')}</Link>
-                                </NavItem>
+                                </NavItem> : null }
+	                            {this.state.logged ?
                                 <NavItem className="nav-item">
 	                                <Link to="/Parameters" className="nav-link uber-color">{displayContent(this.state.lang, i, 'navbar')}</Link>
                                     {/*<NavLink className="nav-link uber-color" href="/Parameters">{displayContent(this.state.lang, i, 'navbar')} </NavLink>*/}
-                                </NavItem>
+                                </NavItem> : null }
                             </React.Fragment>
                         </Nav>
                     </Collapse>

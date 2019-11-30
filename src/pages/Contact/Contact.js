@@ -160,12 +160,12 @@ class Form extends Component {
 	        name: '',
 	        nameError: '',
 	        emailError: false,
-            emailSent: false
+            emailSent: false,
+	        status: ''
         }
     }
 
     onChangeEmail(email) {
-    	console.log(email);
 	    if (email !== '' && this.state.emailError) {
 		    this.setState({emailError: false});
 	    }
@@ -173,7 +173,6 @@ class Form extends Component {
     }
 
     onChangeName(name) {
-	    // console.log(name);
     	if (name !== '' && this.state.nameError) {
     		this.setState({nameError: false});
 	    }
@@ -182,20 +181,25 @@ class Form extends Component {
 
     onChangeSent() {
         if (this.state.emailError === false) {
-            this.setState({emailSent: true}, () => {
+            this.setState({emailSent: true, status: 'Vous êtes maintenant inscrit à la newsletter, merci !'}, () => {
                 setTimeout(() => {this.setState({emailSent: false})}, 10000);
             });
         }
     }
 
+    onSubscribeFailure(error) {
+    	this.setState({emailSent: true, status: `An error occurred: ${error.statusText}`}, () => {
+		    setTimeout(() => {this.setState({emailSent: false})}, 10000);
+	    });
+    }
+
     registerNews() {
-		// console.log(`[${this.state.name}]`,`[${this.state.email}]`);
     	if (this.state.name !== '' && this.state.email !== '') {
 		    axios.post('/subscribe_newsletter', {
 			    email: this.state.email,
 			    name: this.state.name
 		    }).then(response => { console.log(response);
-                this.onChangeSent()}).catch(err => console.log(err))
+                this.onChangeSent()}).catch(err => {console.log(err); this.onSubscribeFailure(err.response)})
 	    } else {
     		if (this.state.name === '') {
     			this.setState({nameError: true});
@@ -249,7 +253,7 @@ class Form extends Component {
                 </form>
                 {
                     this.state.emailSent ?
-                    <Alert color="success"> Vous êtes maintenant inscrit à la newsletter, merci !</Alert>
+                    <Alert color="success"> {this.state.status}</Alert>
                         : null
                 }
             </div>
