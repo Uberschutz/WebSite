@@ -161,6 +161,7 @@ class Form extends Component {
 	        nameError: '',
 	        emailError: false,
             emailSent: false,
+	        statusErr: false,
 	        status: ''
         }
     }
@@ -181,14 +182,14 @@ class Form extends Component {
 
     onChangeSent() {
         if (this.state.emailError === false) {
-            this.setState({emailSent: true, status: 'Vous êtes maintenant inscrit à la newsletter, merci !'}, () => {
+            this.setState({emailSent: true, status: 'Vous êtes maintenant inscrit à la newsletter, merci !', statusErr: false}, () => {
                 setTimeout(() => {this.setState({emailSent: false})}, 10000);
             });
         }
     }
 
     onSubscribeFailure(error) {
-    	this.setState({emailSent: true, status: `An error occurred: ${error.statusText}`}, () => {
+    	this.setState({emailSent: true, status: `An error occurred: ${error.statusText}`, statusErr: true}, () => {
 		    setTimeout(() => {this.setState({emailSent: false})}, 10000);
 	    });
     }
@@ -253,7 +254,7 @@ class Form extends Component {
                 </form>
                 {
                     this.state.emailSent ?
-                    <Alert color="success"> {this.state.status}</Alert>
+                    <Alert color={this.state.statusErr ? "danger" : "success"}> {this.state.status}</Alert>
                         : null
                 }
             </div>

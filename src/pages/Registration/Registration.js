@@ -4,6 +4,7 @@ import '../../styles/Connection.css';
 
 import axios from "axios";
 import {displayContent} from "../../utils/translationDisplay";
+import {Alert} from "reactstrap";
 
 class Registration extends Component {
 
@@ -16,7 +17,10 @@ class Registration extends Component {
             passwd: '',
             alphaName: false,
             alphaSurname: false,
-            lang: "fr"
+            lang: "fr",
+	        status: '',
+	        statusErr: false,
+	        emailSent: false
         };
     }
 
@@ -69,7 +73,25 @@ class Registration extends Component {
                 email: this.state.email,
                 passwd: this.state.passwd,
                 name: this.state.name
-            }).then(response => console.log(response)).catch(err => console.log(err));
+            }).then(response => {
+            	console.log(response);
+	            this.setState({
+		            emailSent: true,
+		            statusErr: false,
+		            status: 'Un email pour finaliser votre inscription vous a été envoyé sur votre adresse email'
+	            }, () => {
+	            	setTimeout(() => {this.setState({emailSent: false})}, 10000);
+	            });
+            }).catch(err => {
+            	console.log(err);
+	            this.setState({
+		            emailSent: true,
+		            statusErr: true,
+		            status: `An error occurred: ${err.response.statusText}`
+	            }, () => {
+		            setTimeout(() => {this.setState({emailSent: false})}, 10000);
+	            });
+            });
         } else {
 
         }
@@ -120,7 +142,11 @@ class Registration extends Component {
                             <span className="address text-danger">{displayContent(this.state.lang, i, 'registration')}</span> : null}
                     </div>
                 </div>
-                <br/>
+	            {
+		            this.state.emailSent ?
+			            <Alert color={this.state.statusErr ? "danger" : "success"}> {this.state.status}</Alert>
+			            : null
+	            }
             </div>
         )
     }
