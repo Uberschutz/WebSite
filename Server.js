@@ -32,7 +32,7 @@ app.post('/subscribe_newsletter', (req, res) => {
 		res.send(response.data);
 	}).catch(err => {
 		console.log(err);
-		res.status(500).send('User already registered in newsletter', err);
+		res.status(500).send(err.response.statusText);
 	});
 });
 
@@ -46,7 +46,7 @@ app.post('/register', (req, res) => {
 		res.send(response.data);
 	}).catch(err => {
 		console.log(err);
-		res.status(500).send('User already registered', err);
+		res.status(500).send(err.response.statusText);
 	});
 });
 
@@ -91,7 +91,7 @@ app.post('/children', (req, res) => {
 		res.send(response.data);
 	}).catch(err => {
 		console.log(err);
-		res.status(500).send('An error occurred');
+		res.status(500).send(`An error occurred: ${err.response.statusText}`);
 	})
 });
 
