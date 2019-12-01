@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import '../../styles/bootstrap.css';
 import '../../styles/HomePage.css';
 
-import logo from '../../assets/Uberschutz-logo.png';
+import logo from '../../assets/Uberschutz-Icon.png';
 import french from '../../assets/icons8-france-96.png';
 import english from '../../assets/icons8-grande-bretagne-48.png';
 
@@ -90,8 +90,8 @@ class Header extends Component {
 
         return (
             <div>
-                <Navbar className="navbar navbar-expand-md uber-color" light expand="md">
-                    <img src={logo} alt="logo"/>
+                <Navbar className="navbar navbar-expand-sm uber-color" light expand="md">
+                    <img src={logo} alt="logo" width={65} height={70}/>
                     <NavbarBrand className="navbar-brand uber-color button-footer" href="/"> Überschutz</NavbarBrand>
 	                {this.state.logged ? <text className="navbar-brand uber-color button-footer">{displayContent(this.state.lang, 0, 'navbar')} {this.state.email} !</text> : null}
 	                {this.state.logged ? <button onClick={() => this.disconnect()}>{displayContent(this.state.lang, 1, 'navbar')}</button> : null}
