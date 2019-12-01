@@ -189,7 +189,7 @@ class Form extends Component {
     }
 
     onSubscribeFailure(error) {
-    	this.setState({emailSent: true, status: error.hasOwnProperty('response') ? `An error occurred: ${error.statusText}` : 'An unknown error occurred', statusErr: true}, () => {
+    	this.setState({emailSent: true, status: error.hasOwnProperty('response') ? `An error occurred: ${error.reponse.statusText}` : 'An unknown error occurred', statusErr: true}, () => {
 		    setTimeout(() => {this.setState({emailSent: false})}, 10000);
 	    });
     }

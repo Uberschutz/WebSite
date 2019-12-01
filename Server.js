@@ -32,9 +32,9 @@ app.post('/subscribe_newsletter', (req, res) => {
 		res.send(response.data);
 	}).catch(err => {
 		console.log(err);
-		if (err.hasOwnProperty('data'))
+		if (err.response && err.response.hasOwnProperty('data'))
 			res.status(500).send(err.response.data);
-		else if (err.hasOwnProperty('statusText'))
+		else if (err.response && err.response.hasOwnProperty('statusText'))
 			res.status(500).send(err.response.statusText);
 		else
 			res.status(500).send('Internal error');
@@ -51,9 +51,9 @@ app.post('/register', (req, res) => {
 		res.send(response.data);
 	}).catch(err => {
 		console.log(err);
-		if (err.hasOwnProperty('data'))
+		if (err.response && err.response.hasOwnProperty('data'))
 			res.status(500).send(err.response.data);
-		else if (err.hasOwnProperty('statusText'))
+		else if (err.response && err.response.hasOwnProperty('statusText'))
 			res.status(500).send(err.response.statusText);
 		else
 			res.status(500).send('Internal error');
