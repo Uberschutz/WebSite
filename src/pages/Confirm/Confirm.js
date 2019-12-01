@@ -31,9 +31,9 @@ class Confirm extends Component {
 			    console.log(response);
 			    setTimeout(() => this.props.history.push('/'), 5000);
 		    }).catch(err => {
-		        if (err.response.statusText && err.response.statusText === 'Unknown user') {
+		        if (err.response && err.response.data === 'Unknown user') {
 		            this.setState({status: 'expired'});
-                } else if (err.response.statusText && err.response.statusText === 'Account has been already confirmed') {
+                } else if (err.response && err.response.data === 'Account has been already confirmed') {
 		            this.setState({status: 'confirmed'});
                 }
 			    console.log(err);
