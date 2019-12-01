@@ -42,7 +42,7 @@ class Confirm extends Component {
     }
 
     render() {
-        if (this.status === 'verified') {
+        if (this.state.status === 'verified') {
             return (
                 <div>
                     <br/>
@@ -50,7 +50,7 @@ class Confirm extends Component {
                     <img src={signup} alt="signup"/> <br/>
                 </div>
             )
-        } else if (this.status === 'expired') {
+        } else if (this.state.status === 'expired') {
             return (
                 <Expired/>
             )
