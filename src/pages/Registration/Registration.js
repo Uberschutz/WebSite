@@ -87,7 +87,7 @@ class Registration extends Component {
 	            this.setState({
 		            emailSent: true,
 		            statusErr: true,
-		            status: `An error occurred: ${err.response.statusText}`
+		            status: err.hasOwnProperty('response') ? `An error occurred: ${err.response.statusText}` : 'An unknown error occurred'
 	            }, () => {
 		            setTimeout(() => {this.setState({emailSent: false})}, 10000);
 	            });

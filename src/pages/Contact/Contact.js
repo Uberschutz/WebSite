@@ -189,7 +189,7 @@ class Form extends Component {
     }
 
     onSubscribeFailure(error) {
-    	this.setState({emailSent: true, status: `An error occurred: ${error.statusText}`, statusErr: true}, () => {
+    	this.setState({emailSent: true, status: error.hasOwnProperty('response') ? `An error occurred: ${error.statusText}` : 'An unknown error occurred', statusErr: true}, () => {
 		    setTimeout(() => {this.setState({emailSent: false})}, 10000);
 	    });
     }
@@ -200,7 +200,7 @@ class Form extends Component {
 			    email: this.state.email,
 			    name: this.state.name
 		    }).then(response => { console.log(response);
-                this.onChangeSent()}).catch(err => {console.log(err); this.onSubscribeFailure(err.response)})
+                this.onChangeSent()}).catch(err => {console.log(err); this.onSubscribeFailure(err)})
 	    } else {
     		if (this.state.name === '') {
     			this.setState({nameError: true});
