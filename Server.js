@@ -32,7 +32,12 @@ app.post('/subscribe_newsletter', (req, res) => {
 		res.send(response.data);
 	}).catch(err => {
 		console.log(err);
-		res.status(500).send(err.response.statusText);
+		if (err.hasOwnProperty('data'))
+			res.status(500).send(err.response.data);
+		else if (err.hasOwnProperty('statusText'))
+			res.status(500).send(err.response.statusText);
+		else
+			res.status(500).send('Internal error');
 	});
 });
 
@@ -46,7 +51,12 @@ app.post('/register', (req, res) => {
 		res.send(response.data);
 	}).catch(err => {
 		console.log(err);
-		res.status(500).send(err.response.statusText);
+		if (err.hasOwnProperty('data'))
+			res.status(500).send(err.response.data);
+		else if (err.hasOwnProperty('statusText'))
+			res.status(500).send(err.response.statusText);
+		else
+			res.status(500).send('Internal error');
 	});
 });
 
