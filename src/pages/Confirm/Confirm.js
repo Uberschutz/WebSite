@@ -5,6 +5,7 @@ import axios from 'axios';
 import signup from '../../assets/signup-4.png';
 import mailerror from '../../assets/mirage-unsubscribe.png';
 import alreadyverified from '../../assets/mirage-list-is-empty.png';
+import {displayContent} from "../../utils/translationDisplay";
 const querystring = require("query-string");
 
 class Confirm extends Component {
@@ -49,12 +50,13 @@ class Confirm extends Component {
     }
 
     render() {
+    	let i = 0;
 	    if (!this.error && this.state.status !== 'error') {
 		    if (this.state.status === 'verified') {
 			    return (
 				    <div>
 					    <br/>
-					    <h5>Votre compte a bien été confirmé !<br/> Merci !</h5><br/>
+					    <h5>{displayContent(this.props.lang, i,'confirm')}  {/*Votre compte a bien été confirmé !*/}<br/> {displayContent(this.props.lang, i,'confirm')} {/* Merci !*/}</h5><br/>
 					    <img src={signup} alt="signup"/> <br/>
 				    </div>
 			    )
@@ -77,10 +79,11 @@ class Confirm extends Component {
 
 class AlreadyConfirmed extends Component {
     render() {
+    	let i = 3;
         return (
             <div>
                 <br/>
-                <h5>Votre compte est déjà confirmé</h5> <br/>
+                <h5> {displayContent(this.props.lang, i,'confirm')} {/*Votre compte est déjà confirmé*/}</h5> <br/>
                 <img src={alreadyverified} alt="alreadyverify"/>
             </div>
         )
@@ -89,9 +92,10 @@ class AlreadyConfirmed extends Component {
 
 class Expired extends Component {
     render() {
+    	let i = 4;
         return (
             <div>
-                <h5>Ce lien est expiré, veuillez vous inscrire à nouveau</h5> <br/>
+                <h5> {displayContent(this.props.lang, i,'confirm')} {/*Ce lien est expiré, veuillez vous inscrire à nouveau*/}</h5> <br/>
                 <img src={mailerror} alt="mailerror"/>
             </div>
         )

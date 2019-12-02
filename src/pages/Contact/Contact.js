@@ -262,19 +262,19 @@ class Form extends Component {
             return (
                 <div className="button-footer">
                     <h5 className="button-footer title-bold">
-                        N'hésitez pas à vous tenir informés en activant cette option pour vous inscrire à la Newsletter :
+                        {displayContent(this.props.lang, 8,'form')}
                     </h5>
                     <input type="radio" aria-label="Radio button for following option"/>
-                    <span> Inscrit à la Newsletter</span> <br/>
+                    <span>{displayContent(this.props.lang, 9,'form')}</span> <br/>
                     <img className="button-footer" src={newsletter} alt="newsletter"/>
                 </div>
             )
         } else {
             return (
                 <div className="button-footer">
-                    <span className="question">Vous voulez vous désinscrire de la Newsletter ?</span><br/>
-                    <span>Rendez vous sur votre</span>
-                    <button className="btn btn-info button-footer" onClick={() => this.props.redirectProfile()}>Profil</button>
+                    <span className="question">{displayContent(this.props.lang, 10,'form')}</span><br/>
+                    <span>{displayContent(this.props.lang, 11,'form')}</span>
+                    <button className="btn btn-info button-footer" onClick={() => this.props.redirectProfile()}>{displayContent(this.props.lang, 12,'form')}</button>
                 </div>
             )
         }

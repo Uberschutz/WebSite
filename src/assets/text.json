@@ -60,7 +60,9 @@
       "form": [
         "Vous êtes intéressés par notre solution ?", "N'hésitez pas à vous tenir informés en remplissant ce formulaire !",
         "Ou en nous contactant à l'adresse suivante : ", "Nom ou Prénom", "Adresse email",
-        "Nous ne partagerons jamais votre adresse email avec qui que ce soit.", "Soumettre"
+        "Nous ne partagerons jamais votre adresse email avec qui que ce soit.", "Soumettre",
+        "N'hésitez pas à vous tenir informés en activant cette option pour vous inscrire à la Newsletter :", " Inscrit à la Newsletter",
+        "Vous voulez vous désinscrire de la Newsletter ?", "Rendez vous sur votre", "Profil"
       ],
       "profile": [
         "Prénom", "Enfants protégés par Überschutz : X ", "Abonnement utilisé : Premium ", "Echéancier de paiement : ",
@@ -77,6 +79,11 @@
       ],
       "options": [
         "Rapports", "Uberschutz", "Alertes", "Publicités"
+      ],
+      "confirm": [
+        "Votre compte a bien été confirmé !", " Merci !",
+        "Votre compte est déjà confirmé",
+        "Ce lien est expiré, veuillez vous inscrire à nouveau"
       ],
       "footer": [
         "Créé par Marianne LEVEE & Thomas DEROTE-PARCELLIER ", "Icônes de l'application par "
@@ -142,7 +149,9 @@
       "form": [
         "Are you interested in our solution ?", "Feel free to keep informed by completing this form !",
         "Or by contacting us at the following address : ", "Name or Surname", "Email address", "We'll never share your email with anyone else.",
-        "Submit"
+        "Submit",
+        "Do not hesitate to keep yourself informed by activating this option to subscribe to the Newsletter:", "Subscribe to the Newsletter",
+        "Do you want to unsubscribe from the newsletter?", "Go on your", "Profile"
       ],
       "profile": [
         "Firstname", "Child protected by Überschutz : X ", "Subscription used : Premium ", "Payment schedule : ", "Levy's name : ", "Payed ?"
@@ -158,6 +167,11 @@
       ],
       "options": [
         "Reports", "Uberschutz", "Alerts", "Adds"
+      ],
+      "confirm": [
+        "Your account has been confirmed!", "Thank you!",
+        "Your account is already confirmed",
+        "This link is expired, please register again"
       ],
       "footer": [
         "Created by Marianne LEVEE & Thomas DEROTE-PARCELLIER ", "App icon by "
