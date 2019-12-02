@@ -7,6 +7,8 @@ import { Alert } from 'reactstrap';
 import { displayContent } from '../../utils/translationDisplay';
 import axios from 'axios';
 
+import newsletter from '../../assets/icons8-email-100.png';
+
 class Contact extends Component {
     constructor(props) {
         super(props);
@@ -34,6 +36,10 @@ class Contact extends Component {
 		// console.log(prevProps, this.props);
 		this.props.base.language !== prevProps.base.language && this.setState({lang: this.props.base.language}, () => console.log('re'));
 	}
+
+    redirectProfile() {
+        this.props.history.push("/Profile");
+    }
 
     render() {
         let i = 0;
@@ -74,7 +80,7 @@ class Contact extends Component {
                     </div>
                 </div>
                 <Faq lang={this.state.lang}/>
-                <Form lang={this.state.lang} connected={this.state.connected} subscribed={this.state.subscribed}/>
+                <Form lang={this.state.lang} connected={this.state.connected} subscribed={this.state.subscribed} redirectProfile={this.redirectProfile.bind(this)}/>
             </div>
         )
     }
@@ -254,18 +260,21 @@ class Form extends Component {
             )
         } else if (this.props.connected && !this.props.subscribed) {
             return (
-                <div>
-                    <input type="radio" aria-label="Radio button for following text input"/>
-                    <span>Newsletter</span>
-                    {/* bandeau check box pour inscrire */}
+                <div className="button-footer">
+                    <h5 className="button-footer title-bold">
+                        N'hésitez pas à vous tenir informés en activant cette option pour vous inscrire à la Newsletter :
+                    </h5>
+                    <input type="radio" aria-label="Radio button for following option"/>
+                    <span> Inscrit à la Newsletter</span> <br/>
+                    <img className="button-footer" src={newsletter} alt="newsletter"/>
                 </div>
             )
         } else {
             return (
-                <div>
-                    <span>Vous voulez vous désinscrire de la Newsletter ? Rendez vous sur votre profil</span>
-                    <button className="btn btn-info">Profil</button>
-                    {/*bandeau et lien redirection Profil pour désinscrire */}
+                <div className="button-footer">
+                    <span className="question">Vous voulez vous désinscrire de la Newsletter ?</span><br/>
+                    <span>Rendez vous sur votre</span>
+                    <button className="btn btn-info button-footer" onClick={() => this.props.redirectProfile()}>Profil</button>
                 </div>
             )
         }
