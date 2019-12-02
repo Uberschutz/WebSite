@@ -43,6 +43,10 @@ class Contact extends Component {
         this.props.history.push("/Profile");
     }
 
+    updateNewsletter(state) {
+        this.props.setSubscribed(state);
+    }
+
     render() {
         let i = 0;
         return (
@@ -82,7 +86,7 @@ class Contact extends Component {
                     </div>
                 </div>
                 <Faq lang={this.state.lang}/>
-                <Form lang={this.state.lang} connected={this.state.connected} subscribed={this.state.subscribed} redirectProfile={this.redirectProfile.bind(this)} name={this.state.name} email={this.state.email}/>
+                <Form lang={this.state.lang} connected={this.state.connected} subscribed={this.state.subscribed} redirectProfile={this.redirectProfile.bind(this)} name={this.state.name} email={this.state.email} updateNewsletter={this.updateNewsletter.bind(this)}/>
             </div>
         )
     }
@@ -220,7 +224,8 @@ class Form extends Component {
                 email: this.props.email,
                 name: this.props.name
             }).then(response => { console.log(response);
-            this.setState({subscribed: true})}).catch(err => {console.log(err); this.onSubscribeFailure(err)})
+            this.setState({subscribed: true});
+            this.props.updateNewsletter(true)}).catch(err => {console.log(err); this.onSubscribeFailure(err)})
         }
     }
 
