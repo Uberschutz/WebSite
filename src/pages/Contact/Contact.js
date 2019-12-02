@@ -162,8 +162,17 @@ class Form extends Component {
 	        emailError: false,
             emailSent: false,
 	        statusErr: false,
-	        status: ''
+	        status: '',
+            connected: this.props.connected,
+            subscribed: this.props.subscribed
         }
+    }
+
+    static getDerivedStateFromProps(props, state) {
+        if (props.connected !== state.connected || props.subscribed !== state.subscribed) {
+            return { ...state, connected: props.connected, subscribed: props.subscribed}
+        }
+        return null;
     }
 
     onChangeEmail(email) {
@@ -213,7 +222,7 @@ class Form extends Component {
 
     render() {
         let i = 0;
-        if (!this.props.connected) {
+        if (!this.state.connected) {
             return (
                 <div>
                     <br/>
@@ -258,7 +267,7 @@ class Form extends Component {
                     }
                 </div>
             )
-        } else if (this.props.connected && !this.props.subscribed) {
+        } else if (this.state.connected && !this.state.subscribed) {
             return (
                 <div>
                     <input type="radio" aria-label="Radio button for following text input">Newsletter</input>
