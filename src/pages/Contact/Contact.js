@@ -295,6 +295,14 @@ class Form extends Component {
                     <img className="button-footer" src={newsletter} alt="newsletter"/>
                 </div>
             )
+        } else {
+	        return (
+		        <div className="button-footer">
+			        <span className="question">{displayContent(this.props.lang, 9,'form')}</span><br/>
+			        <span>{displayContent(this.props.lang, 10,'form')}</span>
+			        <button className="btn btn-info button-footer" onClick={() => this.props.redirectProfile()}>{displayContent(this.props.lang, 11,'form')}</button>
+		        </div>
+	        )
         }
     }
 }
