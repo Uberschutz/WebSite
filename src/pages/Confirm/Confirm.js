@@ -79,7 +79,7 @@ class Confirm extends Component {
 
 class AlreadyConfirmed extends Component {
     render() {
-    	let i = 3;
+    	let i = 2;
         return (
             <div>
                 <br/>
@@ -92,7 +92,7 @@ class AlreadyConfirmed extends Component {
 
 class Expired extends Component {
     render() {
-    	let i = 4;
+    	let i = 3;
         return (
             <div>
                 <h5> {displayContent(this.props.lang, i,'confirm')} {/*Ce lien est expiré, veuillez vous inscrire à nouveau*/}</h5> <br/>

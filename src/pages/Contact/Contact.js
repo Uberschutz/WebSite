@@ -22,12 +22,14 @@ class Contact extends Component {
 
 	componentDidMount() {
     	if (this.props.base) {
-		    const {base: {language, logged, subscribed}} = this.props;
+		    const {base: {language, logged, subscribed, name, email}} = this.props;
 		    console.log(language, this.state.lang, 'kek')
             this.setState({
 			    lang: language,
                 connected: logged,
-                subscribed: subscribed
+                subscribed: subscribed,
+                name: name,
+                email: email
 			})
 	    }
 	}
@@ -80,7 +82,7 @@ class Contact extends Component {
                     </div>
                 </div>
                 <Faq lang={this.state.lang}/>
-                <Form lang={this.state.lang} connected={this.state.connected} subscribed={this.state.subscribed} redirectProfile={this.redirectProfile.bind(this)}/>
+                <Form lang={this.state.lang} connected={this.state.connected} subscribed={this.state.subscribed} redirectProfile={this.redirectProfile.bind(this)} name={this.state.name} email={this.state.email}/>
             </div>
         )
     }
@@ -162,7 +164,8 @@ class Form extends Component {
 	        emailError: false,
             emailSent: false,
 	        statusErr: false,
-	        status: ''
+	        status: '',
+            subscribed: false
         }
     }
 
@@ -209,6 +212,16 @@ class Form extends Component {
     			this.setState({emailError: true});
 		    }
 	    }
+    }
+
+    subscribe() {
+        if (this.props.name !== '' && this.props.email !== '') {
+            axios.post('/subscribe_newsletter', {
+                email: this.props.email,
+                name: this.props.name
+            }).then(response => { console.log(response);
+            this.setState({subscribed: true})}).catch(err => {console.log(err); this.onSubscribeFailure(err)})
+        }
     }
 
     render() {
@@ -262,19 +275,19 @@ class Form extends Component {
             return (
                 <div className="button-footer">
                     <h5 className="button-footer title-bold">
-                        {displayContent(this.props.lang, 8,'form')}
+                        {displayContent(this.props.lang, 7,'form')}
                     </h5>
-                    <input type="radio" aria-label="Radio button for following option"/>
-                    <span>{displayContent(this.props.lang, 9,'form')}</span> <br/>
+                    <input type="radio" onClick={() => this.subscribe()} aria-label="Radio button for following option"/>
+                    <span>{displayContent(this.props.lang, 8,'form')}</span> <br/>
                     <img className="button-footer" src={newsletter} alt="newsletter"/>
                 </div>
             )
-        } else {
+        } else if (this.state.subscribed === true) {
             return (
                 <div className="button-footer">
-                    <span className="question">{displayContent(this.props.lang, 10,'form')}</span><br/>
-                    <span>{displayContent(this.props.lang, 11,'form')}</span>
-                    <button className="btn btn-info button-footer" onClick={() => this.props.redirectProfile()}>{displayContent(this.props.lang, 12,'form')}</button>
+                    <span className="question">{displayContent(this.props.lang, 9,'form')}</span><br/>
+                    <span>{displayContent(this.props.lang, 10,'form')}</span>
+                    <button className="btn btn-info button-footer" onClick={() => this.props.redirectProfile()}>{displayContent(this.props.lang, 11,'form')}</button>
                 </div>
             )
         }
