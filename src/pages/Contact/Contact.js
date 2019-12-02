@@ -28,7 +28,7 @@ class Contact extends Component {
 			    lang: language,
                 connected: logged,
                 subscribed: subscribed,
-                name: '',
+                name: 'default',
                 email: email
 			})
 	    }
