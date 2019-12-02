@@ -12,23 +12,21 @@ class Contact extends Component {
         super(props);
 
         this.state = {
-            lang: 'fr'
+            lang: 'fr',
+            connected: false,
+            subscribed: false
         };
-        this.connected = false;
-        this.subscribed = false;
     }
 
 	componentDidMount() {
     	if (this.props.base) {
 		    const {base: {language, logged, subscribed}} = this.props;
-		    this.connected = logged;
-		    this.subscribed = subscribed;
 		    console.log(language, this.state.lang, 'kek')
-		    if (this.state.lang !== language) {
-			    this.setState({
-				    lang: language
-			    })
-		    }
+            this.setState({
+			    lang: language,
+                connected: logged,
+                subscribed: subscribed
+			})
 	    }
 	}
 
@@ -76,7 +74,7 @@ class Contact extends Component {
                     </div>
                 </div>
                 <Faq lang={this.state.lang}/>
-                <Form lang={this.state.lang} connected={this.connected} subscribed={this.subscribed}/>
+                <Form lang={this.state.lang} connected={this.state.connected} subscribed={this.state.subscribed}/>
             </div>
         )
     }
@@ -162,17 +160,8 @@ class Form extends Component {
 	        emailError: false,
             emailSent: false,
 	        statusErr: false,
-	        status: '',
-            connected: this.props.connected,
-            subscribed: this.props.subscribed
+	        status: ''
         }
-    }
-
-    static getDerivedStateFromProps(props, state) {
-        if (props.connected !== state.connected || props.subscribed !== state.subscribed) {
-            return { ...state, connected: props.connected, subscribed: props.subscribed}
-        }
-        return null;
     }
 
     onChangeEmail(email) {
@@ -222,7 +211,7 @@ class Form extends Component {
 
     render() {
         let i = 0;
-        if (!this.state.connected) {
+        if (!this.props.connected) {
             return (
                 <div>
                     <br/>
@@ -267,7 +256,7 @@ class Form extends Component {
                     }
                 </div>
             )
-        } else if (this.state.connected && !this.state.subscribed) {
+        } else if (this.props.connected && !this.props.subscribed) {
             return (
                 <div>
                     <input type="radio" aria-label="Radio button for following text input">Newsletter</input>
