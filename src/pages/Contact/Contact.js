@@ -259,7 +259,8 @@ class Form extends Component {
         } else if (this.props.connected && !this.props.subscribed) {
             return (
                 <div>
-                    <input type="radio" aria-label="Radio button for following text input">Newsletter</input>
+                    <input type="radio" aria-label="Radio button for following text input"/>
+                    <span>Newsletter</span>
                     {/* bandeau check box pour inscrire */}
                 </div>
             )
