@@ -1,7 +1,4 @@
 import { connect } from 'react-redux'
-import { bindActionCreators } from 'redux'
-
-import * as actions from '../../actions'
 import HomePage from './HomePage'
 
 const mapStateToProps = state => ({
@@ -9,7 +6,6 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-	// getServiceData: bindActionCreators(actions.getServiceData, dispatch),
 })
 
 const HomePageContainer = connect(mapStateToProps, mapDispatchToProps)(HomePage)

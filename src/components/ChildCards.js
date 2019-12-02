@@ -3,10 +3,6 @@ import {Button, Card, CardFooter, CardText, CardTitle} from "reactstrap";
 import {Icon} from "antd";
 
 export class DisplayChildrenCard extends Component {
-	constructor(props) {
-		super(props);
-	}
-
 	render() {
 		return (
 			<Card body inverse className="child-card">
@@ -27,10 +23,6 @@ export class DisplayChildrenCard extends Component {
 }
 
 export default class DisplayChildrenList extends Component {
-	constructor(props) {
-		super(props);
-	}
-
 	render() {
 		return (
 			this.props.childrens.map((child, index) => {

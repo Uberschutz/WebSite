@@ -9,7 +9,7 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-	setLanguage: bindActionCreators(actions.setLanguage, dispatch)
+	setSubscribed: bindActionCreators(actions.setSubscribed, dispatch)
 })
 
 const ContactContainer = connect(mapStateToProps, mapDispatchToProps)(Contact)

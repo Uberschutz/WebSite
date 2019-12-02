@@ -9,7 +9,7 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-	setLanguage: bindActionCreators(actions.setLanguage, dispatch)
+
 })
 
 const ReportContainer = connect(mapStateToProps, mapDispatchToProps)(Report)

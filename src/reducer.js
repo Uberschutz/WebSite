@@ -16,11 +16,9 @@ const base = (state = initialState, action) => {
         //     const { token } = action.payload;
         //     return { ...state, token };
 	    case 'SET_LANGUAGE':
-	    	console.log('here', action.payload);
 		    const { language } = action.payload;
 		    return { ...state, language };
         case 'SET_LOGGED':
-        	console.log('logged', action.payload);
             const { logged } = action.payload;
             return { ...state, logged };
         case 'SET_USER':
@@ -30,38 +28,8 @@ const base = (state = initialState, action) => {
             const { subscribed } = action.payload;
             return { ...state, subscribed };
         default:
-        	console.log('here default', state);
             return state;
     }
 };
 
 export default base;
-
-// const initialState = {
-// 	email: '',
-// 	token: undefined,
-// 	services: undefined,
-// }
-//
-// const base = (state = initialState, action) => {
-// 	switch (action.type) {
-// 		case 'TEST':
-// 			return { ...state, email: 'test' }
-//
-// 		case 'BASE_SAVE_AUTH_TOKEN':
-// 			const { token, email } = action.payload
-//
-// 			return { ...state, token, email }
-//
-// 		case 'BASE_SAVE_SERVICES_DATA':
-// 			const { data } = action.payload
-// 			const { services } = data
-//
-// 			return { ...state, services }
-//
-// 		default:
-// 			return state
-// 	}
-// }
-//
-// export default base

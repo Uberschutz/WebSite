@@ -6,11 +6,10 @@ import logo from '../../assets/Uberschutz-Icon.png';
 import french from '../../assets/icons8-france-96.png';
 import english from '../../assets/icons8-grande-bretagne-48.png';
 
-import {Navbar, NavbarBrand, NavbarToggler, Nav, Collapse, NavItem} from 'reactstrap';
+import {Navbar, NavbarBrand, Nav, Collapse, NavItem} from 'reactstrap';
 import {DropdownMenu, DropdownToggle, ButtonDropdown} from 'reactstrap'
 import {Link} from "react-router-dom";
 import { displayContent } from '../../utils/translationDisplay';
-import { connect } from 'react-redux';
 
 class Header extends Component {
     constructor(props) {

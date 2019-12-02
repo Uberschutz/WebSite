@@ -17,13 +17,18 @@ class Confirm extends Component {
         };
 
         if (props && props.location && props.location.search) {
-	        this.id = querystring.parse(props.location.search).id;
+        	if (querystring.parse(props.location.search).id) {
+		        this.id = querystring.parse(props.location.search).id;
+	        } else {
+        		this.error = true;
+	        }
+        } else {
+        	this.error = true;
         }
     }
 
     componentDidMount() {
     	if (this.id) {
-		    console.log(this.props.match.params.id);
 		    axios.post('/verifyaccount', {
 			    id: this.id
 		    }).then(response => {
@@ -35,31 +40,39 @@ class Confirm extends Component {
 		            this.setState({status: 'expired'});
                 } else if (err.response && err.response.data === 'Account has been already confirmed') {
 		            this.setState({status: 'confirmed'});
-                }
+                } else {
+		        	this.setState({status: 'error'});
+		        }
 			    console.log(err);
 		    });
 	    }
     }
 
     render() {
-        if (this.state.status === 'verified') {
-            return (
-                <div>
-                    <br/>
-                    <h5>Votre compte a bien été confirmé !<br/> Merci !</h5><br/>
-                    <img src={signup} alt="signup"/> <br/>
-                </div>
-            )
-        } else if (this.state.status === 'expired') {
-            return (
-                <Expired/>
-            )
-        } else {
-            return (
-                <AlreadyConfirmed/>
-            )
-        }
+	    if (!this.error && this.state.status !== 'error') {
+		    if (this.state.status === 'verified') {
+			    return (
+				    <div>
+					    <br/>
+					    <h5>Votre compte a bien été confirmé !<br/> Merci !</h5><br/>
+					    <img src={signup} alt="signup"/> <br/>
+				    </div>
+			    )
+		    } else if (this.state.status === 'expired') {
+			    return (
+				    <Expired/>
+			    )
+		    } else {
+			    return (
+				    <AlreadyConfirmed/>
+			    )
+		    }
+	    } else {
+		    return (
+			    <div/>
+		    );
     }
+}
 }
 
 class AlreadyConfirmed extends Component {

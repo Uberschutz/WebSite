@@ -81,10 +81,6 @@ class Contact extends Component {
 }
 
 class Faq extends Component {
-    constructor(props) {
-        super(props);
-    }
-
     render() {
         let i = 0;
         return (

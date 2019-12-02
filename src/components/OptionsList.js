@@ -2,10 +2,6 @@ import React, {Component} from "react";
 import '../styles/Parameters.css';
 
 export class Option extends Component {
-    constructor(props) {
-        super(props);
-    }
-
     render() {
         return (
             <div className={this.props.className}>
@@ -16,10 +12,6 @@ export class Option extends Component {
 }
 
 export default class OptionsList extends Component {
-    constructor(props) {
-        super(props);
-    }
-
     render() {
         return (
             <div className={this.props.listClassName}>

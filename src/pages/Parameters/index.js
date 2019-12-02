@@ -9,7 +9,6 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-	setLanguage: bindActionCreators(actions.setLanguage, dispatch)
 })
 
 const ParametersContainer = connect(mapStateToProps, mapDispatchToProps)(Parameters)

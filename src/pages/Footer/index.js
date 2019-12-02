@@ -1,7 +1,4 @@
 import { connect } from 'react-redux'
-import { bindActionCreators } from 'redux'
-
-import * as actions from '../../actions'
 import Footer from './Footer'
 
 const mapStateToProps = state => ({
@@ -9,7 +6,7 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-	setLanguage: bindActionCreators(actions.setLanguage, dispatch)
+
 })
 
 const FooterContainer = connect(mapStateToProps, mapDispatchToProps)(Footer)

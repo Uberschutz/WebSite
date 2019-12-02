@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import {BrowserRouter as Router, Route, Switch, withRouter} from "react-router-dom";
+import React from 'react';
+import {BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import './styles/App.css';
 
 import HomePage from "./pages/HomePage";
@@ -34,42 +34,11 @@ export const store = createStore(
 	persistedReducer,
 	composeEnhancers(applyMiddleware(thunkMiddleware))
 );
-// console.log(store.getState());
-// const store = createStore(reducer);
-// const store = createStore(mainReducer);
 
 let persistor = persistStore(store);
 
 
-// class App extends Component {
-	// constructor(props) {
-	// 	super(props);
-	// 	this.state = {
-	// 		// lang: 'fr',
-	// 		// logged: false
-	// 	};
-	// 	// this.setLanguage = this.setLanguage.bind(this);
-	// 	// this.setLogged = this.setLogged.bind(this);
-	// }
-
-	// setLogged() {
-	// 	this.setState({logged: !this.state.logged});
-	// }
-
-	// setLanguage(lang) {
-	// 	this.props.setLanguage(lang)
-	// 	// this.setState({
-	// 	// 	lang: lang
-	// 	// });
-	// }
-
-	// render() {
 const App = props => {
-	// const {
-	// 	location: { pathname }
-	// } = props;
-	// const path = pathname.split("/")[1];
-	console.log(props);
         return (
 	        <Provider store={store}>
 		        <PersistGate persistor={persistor}>
@@ -94,6 +63,5 @@ const App = props => {
         );
 	// }
 };
-// export default withRouter(App);
+
 export default App;
-// export default connect()(App);

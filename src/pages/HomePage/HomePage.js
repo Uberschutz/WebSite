@@ -9,9 +9,6 @@ import navigation from '../../assets/icons8-carte-au-trésor-150.png'
 import blocking from '../../assets/icons8-cadenas-100.png'
 
 import { displayContent } from '../../utils/translationDisplay';
-import {connect} from "react-redux";
-import {bindActionCreators} from "redux";
-import * as actions from "../../actions";
 
 class HomePage extends Component {
 	constructor(props) {
