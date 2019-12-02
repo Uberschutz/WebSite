@@ -106,7 +106,7 @@ class Header extends Component {
 	                            { !this.state.logged ?
                                 <NavItem className="nav-item">
                                     <Link className="nav-link uber-color" to="/Connection">{displayContent(this.state.lang, i++, 'navbar')} </Link>
-                                </NavItem> : () => {i++; return null} }
+                                </NavItem> : null && i++ }
                                 <NavItem className="nav-item">
                                     <Link to="/Contact+FAQ" className="nav-link uber-color">Contact + FAQ</Link>
                                 </NavItem>

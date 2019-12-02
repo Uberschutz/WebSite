@@ -76,7 +76,8 @@ class Connection extends Component {
             }).then(response => {
                 console.log(response);
                 this.props.setLogged(true);
-                this.props.setUser(this.state.email, null, response.data);
+                this.props.setUser(this.state.email, null, response.data.token);
+                this.props.setSubscribed(response.data.subscribed);
                 this.props.history.push('/');
             }).catch(err => {
                 console.log(err);
@@ -109,9 +110,7 @@ class Connection extends Component {
                             </div>
                             <input value={this.state.password} onChange={(password) => this.onChangePass(password.target.value)} type="password" className="form-control" aria-label="Email"/>
                         </div>
-                                {/*<Link to ='/'>*/}
-                                <button onClick={() => this.connect()} type="button" className="btn btn-primary">{displayContent(this.state.lang, i++, 'connexion')}</button>
-                                {/*</Link>*/}
+                        <button onClick={() => this.connect()} type="button" className="btn btn-primary">{displayContent(this.state.lang, i++, 'connexion')}</button>
                     </div>
                 </div>
                 <br/>

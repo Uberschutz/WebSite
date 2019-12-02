@@ -13,12 +13,16 @@ class Contact extends Component {
 
         this.state = {
             lang: 'fr'
-        }
+        };
+        this.connected = false;
+        this.subscribed = false;
     }
 
 	componentDidMount() {
     	if (this.props.base) {
-		    const {base: {language}} = this.props;
+		    const {base: {language, logged, subscribed}} = this.props;
+		    this.connected = logged;
+		    this.subscribed = subscribed;
 		    console.log(language, this.state.lang, 'kek')
 		    if (this.state.lang !== language) {
 			    this.setState({
@@ -72,7 +76,7 @@ class Contact extends Component {
                     </div>
                 </div>
                 <Faq lang={this.state.lang}/>
-                <Form lang={this.state.lang}/>
+                <Form lang={this.state.lang} connected={this.connected} subscribed={this.subscribed}/>
             </div>
         )
     }
@@ -147,10 +151,6 @@ class Faq extends Component {
     }
 }
 
-/*
-Parler RGPD ??
- */
-
 class Form extends Component {
     constructor(props) {
         super(props);
@@ -213,52 +213,67 @@ class Form extends Component {
 
     render() {
         let i = 0;
-        return (
-            <div>
-                <br/>
-                <h9 className="h9-font">
-                    {displayContent(this.props.lang, i++,'form')}
-                </h9><br/>
-                <h11>
-                    {displayContent(this.props.lang, i++,'form')}
-                </h11><br/>
-                <h11>
-                    {displayContent(this.props.lang, i++,'form')}<h11 className="address">
-                    uberschutz_2021@labeip.epitech.eu</h11>
-                </h11>
-                <form><br/>
-                    <div className="form-group">
-                        <div className="form-group form-align">
+        if (!this.props.connected) {
+            return (
+                <div>
+                    <br/>
+                    <h9 className="h9-font">
+                        {displayContent(this.props.lang, i++,'form')}
+                    </h9><br/>
+                    <h11>
+                        {displayContent(this.props.lang, i++,'form')}
+                    </h11><br/>
+                    <h11>
+                        {displayContent(this.props.lang, i++,'form')}<h11 className="address">
+                        uberschutz_2021@labeip.epitech.eu</h11>
+                    </h11>
+                    <form><br/>
+                        <div className="form-group">
+                            <div className="form-group form-align">
+                                <label>{displayContent(this.props.lang, i,'form')}</label>
+                                {
+                                    this.state.nameError ?
+                                        <input type="text" onChange={(name) => this.onChangeName(name.target.value)} className="form-control form-box form-box-error" placeholder={displayContent(this.props.lang, i++,'form')}/>
+                                        :
+                                        <input type="text" onChange={(name) => this.onChangeName(name.target.value)} className="form-control form-box" placeholder={displayContent(this.props.lang, i++,'form')}/>
+                                }
+                            </div>
                             <label>{displayContent(this.props.lang, i,'form')}</label>
-	                        {
-	                        	this.state.nameError ?
-			                        <input type="text" onChange={(name) => this.onChangeName(name.target.value)} className="form-control form-box form-box-error" placeholder={displayContent(this.props.lang, i++,'form')}/>
-			                        :
-			                        <input type="text" onChange={(name) => this.onChangeName(name.target.value)} className="form-control form-box" placeholder={displayContent(this.props.lang, i++,'form')}/>
-	                        }
-                            {/*<input type="text" className="form-control form-box" placeholder={displayContent(this.props.lang, i++,'form')}/>*/}
+                            {
+                                this.state.emailError ?
+                                    <input type="email" className="form-control form-box form-box-error" aria-describedby="emailHelp" placeholder={displayContent(this.props.lang, i++,'form')} value={this.state.email} onChange={(email) => this.onChangeEmail(email.target.value)}/>
+                                    :
+                                    <input type="email" className="form-control form-box" aria-describedby="emailHelp" placeholder={displayContent(this.props.lang, i++,'form')} value={this.state.email} onChange={(email) => this.onChangeEmail(email.target.value)}/>
+                            }
+                            <small id="emailHelp" className="form-text text-muted col-sm-9">
+                                {displayContent(this.props.lang, i++,'form')}
+                            </small>
                         </div>
-                        <label>{displayContent(this.props.lang, i,'form')}</label>
-	                    {
-	                    	this.state.emailError ?
-			                    <input type="email" className="form-control form-box form-box-error" aria-describedby="emailHelp" placeholder={displayContent(this.props.lang, i++,'form')} value={this.state.email} onChange={(email) => this.onChangeEmail(email.target.value)}/>
-			                    :
-			                    <input type="email" className="form-control form-box" aria-describedby="emailHelp" placeholder={displayContent(this.props.lang, i++,'form')} value={this.state.email} onChange={(email) => this.onChangeEmail(email.target.value)}/>
-	                    }
-                        {/*<input type="email" className="form-control form-box" aria-describedby="emailHelp" placeholder={displayContent(this.props.lang, i++,'form')} value={this.state.email} onChange={(email) => this.onChangeEmail(email.target.value)}/>*/}
-                        <small id="emailHelp" className="form-text text-muted col-sm-9">
-                            {displayContent(this.props.lang, i++,'form')}
-                        </small>
-                    </div>
-                    <button type="button" className="btn btn-primary button-footer" onClick={() => this.registerNews()}>{displayContent(this.props.lang, i,'form')}</button>
-                </form>
-                {
-                    this.state.emailSent ?
-                    <Alert color={this.state.statusErr ? "danger" : "success"}> {this.state.status}</Alert>
-                        : null
-                }
-            </div>
-        )
+                        <button type="button" className="btn btn-primary button-footer" onClick={() => this.registerNews()}>{displayContent(this.props.lang, i,'form')}</button>
+                    </form>
+                    {
+                        this.state.emailSent ?
+                            <Alert color={this.state.statusErr ? "danger" : "success"}> {this.state.status}</Alert>
+                            : null
+                    }
+                </div>
+            )
+        } else if (this.props.connected && !this.props.subscribed) {
+            return (
+                <div>
+                    <input type="radio" aria-label="Radio button for following text input">Newsletter</input>
+                    {/* bandeau check box pour inscrire */}
+                </div>
+            )
+        } else {
+            return (
+                <div>
+                    <span>Vous voulez vous désinscrire de la Newsletter ? Rendez vous sur votre profil</span>
+                    <button className="btn btn-info">Profil</button>
+                    {/*bandeau et lien redirection Profil pour désinscrire */}
+                </div>
+            )
+        }
     }
 }
 

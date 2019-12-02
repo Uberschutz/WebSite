@@ -35,6 +35,14 @@ export const setLanguage = (language) => ({
        language
    }
 });
+
+export const setSubscribed = (subscribed) => ({
+   type: 'SET_SUBSCRIBED',
+   payload: {
+       subscribed
+   }
+});
+
 /*
 import axios from 'axios'
 

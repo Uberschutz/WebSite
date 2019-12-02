@@ -26,6 +26,9 @@ const base = (state = initialState, action) => {
         case 'SET_USER':
             const { email, username, token } = action.payload;
             return { ...state, email, username, token };
+        case 'SET_SUBSCRIBED':
+            const { subscribed } = action.payload;
+            return { ...state, subscribed };
         default:
         	console.log('here default', state);
             return state;
