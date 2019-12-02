@@ -23,21 +23,35 @@ class Report extends Component {
 			selectedChild: undefined,
 			childData: [],
 			lang: 'fr',
-			logged: false
+			logged: false,
+			token: '',
+			childrens: []
 		};
 		this.i = 1;
 	}
 
 	componentDidMount() {
-		console.log('mount');
 		if (this.props.base) {
-			const { base: { language, logged } } = this.props;
-			// console.log(this.props, 'in home');
-			// const { base: { token }} = this.props;
+			const { base: { language, logged, token } } = this.props;
 				this.setState({
 					lang: language,
-					logged: logged
-					// selectedChild: displayContent(language, this.i++, 'report')
+					logged: logged,
+					token
+				}, () => {
+					axios.post('/children', {
+						action: 'list'
+					}, {
+						headers: {
+							'x-access-token': this.state.token
+						}
+					}).then(response => {
+						console.log(response.data);
+						this.setState({
+							childrens: response.data
+						});
+					}).catch(err => {
+						console.log(err);
+					});
 				})
 		}
 	}
@@ -64,41 +78,54 @@ class Report extends Component {
 	// 	this.setState({selectedChild: displayContent(this.props.lang, this.i++, 'report')})
 	// }
 
-	changeChild(name) {
-		if (name === 'general') {
+	changeChild(child) {
+		if (child.name === 'general') {
 			axios.post('/get_data').then(response => {
 				console.log(response);
 				const data = response.data.map(obj => {
 					return {name: this.capitalize(obj.key.toLowerCase()), value: obj.value};
 				});
 				console.log(data);
-				this.setState({selectedChild: name, isOpen: false, childData: data});
+				this.setState({selectedChild: 'general', isOpen: false, childData: data});
 			}).catch(err => {
 				console.log(err);
 			})
 		} else {
-			const datas = this.getChildData(name);
-			this.setState({selectedChild: name, isOpen: false, childData: datas});
+			this.getChildData(child)
+			// const datas = this.getChildData(name);
+			// this.setState({selectedChild: name, isOpen: false, childData: datas});
 		}
 	}
 
-	getChildData(name) {
+	getChildData(child) {
 		/* Here call Christian API */
-		const min = 0;
-		const max = 100;
-		return [
-			{name: "Safe", value: min + Math.random() * (max - min)},
-			{name: "Toxicity", value: min + Math.random() * (max - min)},
-			{name: "Obscenity", value: min + Math.random() * (max - min)},
-			{name: "Racism", value: min + Math.random() * (max - min)},
-			{name: "Insult", value: min + Math.random() * (max - min)},
-			{name: "Threat", value: min + Math.random() * (max - min)},
-			{name: "Truly toxic", value: min + Math.random() * (max - min)},
-			{name: "Profanity", value: min + Math.random() * (max - min)},
-			{name: "Inflammatory", value: min + Math.random() * (max - min)},
-			{name: "Identity Attack", value: min + Math.random() * (max - min)},
-			{name: "Hating", value: min + Math.random() * (max - min)},
-		];
+		// const min = 0;
+		// const max = 100;
+		// return [
+		// 	{name: "Safe", value: min + Math.random() * (max - min)},
+		// 	{name: "Toxicity", value: min + Math.random() * (max - min)},
+		// 	{name: "Obscenity", value: min + Math.random() * (max - min)},
+		// 	{name: "Racism", value: min + Math.random() * (max - min)},
+		// 	{name: "Insult", value: min + Math.random() * (max - min)},
+		// 	{name: "Threat", value: min + Math.random() * (max - min)},
+		// 	{name: "Truly toxic", value: min + Math.random() * (max - min)},
+		// 	{name: "Profanity", value: min + Math.random() * (max - min)},
+		// 	{name: "Inflammatory", value: min + Math.random() * (max - min)},
+		// 	{name: "Identity Attack", value: min + Math.random() * (max - min)},
+		// 	{name: "Hating", value: min + Math.random() * (max - min)},
+		// ];
+		axios.post('/get_data', {
+			id: child.discordId
+		}).then(response => {
+			console.log(response);
+			const data = response.data.map(obj => {
+				return {name: this.capitalize(obj.key.toLowerCase()), value: obj.value};
+			});
+			console.log(data);
+			this.setState({selectedChild: child.name, isOpen: false, childData: data});
+		}).catch(err => {
+			console.log(err);
+		})
 	}
 
 	render() {
@@ -112,7 +139,16 @@ class Report extends Component {
 							{this.state.selectedChild ? this.state.selectedChild : displayContent(this.state.lang, 0, 'report')}
 						</DropdownToggle>
 						<DropdownMenu className="drop btn">
-							<div>
+							{
+								this.state.childrens.map((d, idx) => {
+									return (
+										<div>
+											<div onClick={() => {this.changeChild(d)}}>{d.name}</div>
+										</div>
+									)
+								})
+							}
+							{/*<div>
 								<div onClick={() => {this.changeChild('Thomas')}}>Thomas</div>
 							</div>
 							<div>
@@ -120,7 +156,7 @@ class Report extends Component {
 							</div>
 							<div>
 								<div onClick={() => {this.changeChild('Philippe')}}>Philippe</div>
-							</div>
+							</div>*/}
 							<div>
 								<div onClick={() => {this.changeChild('general')}}>General</div>
 							</div>

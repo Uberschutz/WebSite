@@ -10,16 +10,29 @@ app.use(bodyParser.json());
 app.use( express.static(path.resolve( __dirname, "./build" ) ) );
 
 app.post('/get_data', (req, res) => {
-	axios.post('http://93.118.34.39:5412/collect', "token=EEB4D392E3564E922BC6479EFCE49&type=text", {
-		headers: {
-			'Content-Type': 'application/x-www-form-urlencoded'
-		}
-	}).then(response => {
-		res.send(response.data.flagsPercentage);
-	}).catch(err => {
-		console.log(err);
-		res.status(500).send('ko');
-	})
+	if (req.body.id) {
+		axios.post('http://93.118.34.39:5412/collect', `token=EEB4D392E3564E922BC6479EFCE49&type=text&id=${req.body.id}`, {
+			headers: {
+				'Content-Type': 'application/x-www-form-urlencoded'
+			}
+		}).then(response => {
+			res.send(response.data.flagsPercentage);
+		}).catch(err => {
+			console.log(err);
+			res.status(500).send('ko');
+		})
+	} else {
+		axios.post('http://93.118.34.39:5412/collect', "token=EEB4D392E3564E922BC6479EFCE49&type=text", {
+			headers: {
+				'Content-Type': 'application/x-www-form-urlencoded'
+			}
+		}).then(response => {
+			res.send(response.data.flagsPercentage);
+		}).catch(err => {
+			console.log(err);
+			res.status(500).send('ko');
+		})
+	}
 });
 
 app.post('/subscribe_newsletter', (req, res) => {

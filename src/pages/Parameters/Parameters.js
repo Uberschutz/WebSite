@@ -28,12 +28,13 @@ class Parameters extends Component {
 			numErr: false,
 			lang: 'fr',
 			logged: false,
-			token: ''
+			token: '',
+			discordId: ''
 		};
 		this.toggleModal = this.toggleModal.bind(this);
 		this.editChildren = this.editChildren.bind(this);
 		this.deleteChildren = this.deleteChildren.bind(this);
-		this.options = [{name: 'Reports', enabled: false}, {name: 'Alerts', enabled: false}, {name: 'Uberschutz', enabled: false}, {name: 'Adds', enabled: false}];
+		this.options = [{name: 'Reports', enabled: false}, {name: 'Uberschutz', enabled: false}, {name: 'Alerts', enabled: false}, {name: 'Adds', enabled: false}];
 	}
 
 	componentDidMount() {
@@ -98,7 +99,8 @@ class Parameters extends Component {
 				action: 'add',
 				name: this.state.name,
 				age: this.state.age,
-				options: this.state.options
+				options: this.state.options,
+				discordId: this.state.discordId
 			}, {
 				headers: {
 					'x-access-token': this.state.token
@@ -112,10 +114,11 @@ class Parameters extends Component {
 		} else {
 			axios.post('/children', {
 				action: 'edit',
-				name: this.state.childrens[this.state.id + 1].name,
+				name: this.state.childrens[this.state.id].name,
 				newName: this.state.name,
-				age: this.state.childrens[this.state.id + 1].age,
-				options: this.state.options
+				age: this.state.age,
+				options: this.state.options,
+				discordId: this.state.discordId
 			}, {
 				headers: {
 					'x-access-token': this.state.token
@@ -131,12 +134,13 @@ class Parameters extends Component {
 
 	editChildren(children) {
 		this.setState({
-				name: children.name,
-				age: children.age,
-				state: 'Save',
-				id: this.state.childrens.indexOf(children) - 1,
-				options: children.options
-			}, () => this.toggleModal());
+			name: children.name,
+			age: children.age,
+			state: 'Save',
+			id: this.state.childrens.indexOf(children),
+			options: children.options,
+			discordId: children.discordId
+		}, () => this.toggleModal());
 	}
 
 	deleteChildren(children) {
@@ -173,6 +177,12 @@ class Parameters extends Component {
 			this.setState({numErr: false});
 		}
 		this.setState({age: age});
+	}
+
+	setDiscordId(id) {
+		if (id) {
+			this.setState({discordId: id});
+		}
 	}
 
 	toggleOption(idx) {
@@ -219,8 +229,11 @@ class Parameters extends Component {
 								options={this.state.options}
 								translations={displayContent(this.state.lang, -1, 'options')}
 								toggleOption={this.toggleOption.bind(this)}
-
 							/>
+							Discord ID <br/>
+							<input className="child-field" type="text"
+							       value={this.state.discordId}
+							       onChange={(id) => this.setDiscordId(id.target.value)}/>
 							<br/><br/>
 							<div className="align-card">
 								<Button className="save-child btn change-child"
