@@ -10,6 +10,9 @@ services:
           - "8081:8081"
         depends_on:
            - user_db
+        environment:
+          - uz_user=${uz_user}
+          - uz_password=${uz_password}
     client_web:
         build: .
         ports:
@@ -26,6 +29,7 @@ services:
         environment:
           - MONGO_INITDB_ROOT_USERNAME=${UZ_root_user}
           - MONGO_INITDB_ROOT_PASSWORD=${UZ_root_password}
+          - MONGO_INITDB_DATABASE=users
         restart: on-failure
         volumes:
           - ./init-mongo.js:/docker-entrypoint-initdb.d/mongo-init.js:ro
