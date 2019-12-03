@@ -20,7 +20,7 @@ services:
           - user_db
     user_db:
         image: 'mongo:latest'
-        command: mongod --port 27117
+        command: mongod --port 27117 --auth
         ports:
           - '27117:27117'
         environment:
