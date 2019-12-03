@@ -37,30 +37,18 @@ class Connection extends Component {
 		this.props.base.language !== prevProps.base.language && this.setState({lang: this.props.base.language}, () => console.log('re'));
 	}
 
+	_handleKeyPressed(e) {
+		if (e.key === 'Enter') {
+			this.connect();
+		}
+	}
+
     static isAlpha(char) {
         const re = /^[a-zA-Z]+$/g;
         return re.test(char);
     }
 
-    onChangeName(name) {
-		if (name && !Connection.isAlpha(name)) {
-			this.setState({alphaName: true});
-		} else {
-			this.setState({alphaName: false});
-		}
-	    this.setState({name: name});
-    }
-
-    onChangeSurname(surname) {
-		if (surname && !Connection.isAlpha(surname)) {
-			this.setState({alphaSurname: true});
-		} else {
-			this.setState({alphaSurname: false});
-		}
-	    this.setState({surname: surname});
-    }
-
-	onChangeEmail(email) {
+    onChangeEmail(email) {
 		this.setState({email: email});
 	}
 
@@ -76,7 +64,7 @@ class Connection extends Component {
             }).then(response => {
                 console.log(response);
                 this.props.setLogged(true);
-                this.props.setUser(this.state.email, null, response.data.token);
+                this.props.setUser(this.state.email, response.data.name, response.data.token);
                 this.props.setSubscribed(response.data.subscribed);
                 this.props.history.push('/');
             }).catch(err => {
@@ -102,13 +90,13 @@ class Connection extends Component {
                             <div className="input-group-prepend">
                                 <span className="input-group-text" id="inputGroup-sizing-default">Email</span>
                             </div>
-                            <input value={this.state.email} onChange={(email) => this.onChangeEmail(email.target.value)} type="text" className="form-control" aria-label="Email"/>
+                            <input value={this.state.email} onChange={(email) => this.onChangeEmail(email.target.value)} onKeyPress={(event) => {this._handleKeyPressed(event)}} type="text" className="form-control" aria-label="Email"/>
                         </div>
                         <div className="input-group mb-3">
                             <div className="input-group-prepend">
                                 <span className="input-group-text" id="inputGroup-sizing-default">{displayContent(this.state.lang, i++, 'connexion')}</span>
                             </div>
-                            <input value={this.state.password} onChange={(password) => this.onChangePass(password.target.value)} type="password" className="form-control" aria-label="Email"/>
+                            <input value={this.state.password} onChange={(password) => this.onChangePass(password.target.value)} onKeyPress={(event) => {this._handleKeyPressed(event)}} type="password" className="form-control" aria-label="Email"/>
                         </div>
                         <button onClick={() => this.connect()} type="button" className="btn btn-primary">{displayContent(this.state.lang, i++, 'connexion')}</button>
                     </div>

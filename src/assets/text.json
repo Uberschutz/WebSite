@@ -106,7 +106,7 @@
         "You don't have an account ?", "Create an account"
       ],
       "registration": [
-        "Registration", "Please fill this fields to continue", "Name", "Firstname", "Password", "Continue", "Invalid name or surname"
+        "Registration", "Please fill these fields to continue", "Lastname", "Firstname", "Password", "Continue", "Invalid lastname or surname"
       ],
       "contact": [
         "Who are we ? What do we do ?", "• Überschutz :", "We are a group of 7 Epitech students from the 2021 promo.",

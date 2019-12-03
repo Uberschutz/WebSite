@@ -58,7 +58,8 @@ app.post('/register', (req, res) => {
 	axios.post('http://user_server:8081/register', {
 		email: req.body.email,
 		passwd: req.body.passwd,
-		name: req.body.name
+		lastname: req.body.lastname,
+		firstname: req.body.firstname
 	}).then(response => {
 		console.log(response.data);
 		res.send(response.data);

@@ -22,13 +22,13 @@ class Contact extends Component {
 
 	componentDidMount() {
     	if (this.props.base) {
-		    const {base: {language, logged, subscribed, name, email}} = this.props;
+		    const {base: {language, logged, subscribed, username, email}} = this.props;
 		    console.log(language, this.state.lang, 'kek')
             this.setState({
 			    lang: language,
                 connected: logged,
                 subscribed: subscribed,
-                name: 'default',
+                name: username,
                 email: email
 			})
 	    }
@@ -173,6 +173,12 @@ class Form extends Component {
         }
     }
 
+	_handleKeyPressed(e) {
+		if (e.key === 'Enter') {
+			this.registerNews();
+		}
+	}
+
     onChangeEmail(email) {
 	    if (email !== '' && this.state.emailError) {
 		    this.setState({emailError: false});
@@ -251,17 +257,17 @@ class Form extends Component {
                                 <label>{displayContent(this.props.lang, i,'form')}</label>
                                 {
                                     this.state.nameError ?
-                                        <input type="text" onChange={(name) => this.onChangeName(name.target.value)} className="form-control form-box form-box-error" placeholder={displayContent(this.props.lang, i++,'form')}/>
+                                        <input type="text" onChange={(name) => this.onChangeName(name.target.value)} className="form-control form-box form-box-error" placeholder={displayContent(this.props.lang, i++,'form')} onKeyPress={(event) => {this._handleKeyPressed(event)}}/>
                                         :
-                                        <input type="text" onChange={(name) => this.onChangeName(name.target.value)} className="form-control form-box" placeholder={displayContent(this.props.lang, i++,'form')}/>
+                                        <input type="text" onChange={(name) => this.onChangeName(name.target.value)} className="form-control form-box" placeholder={displayContent(this.props.lang, i++,'form')} onKeyPress={(event) => {this._handleKeyPressed(event)}}/>
                                 }
                             </div>
                             <label>{displayContent(this.props.lang, i,'form')}</label>
                             {
                                 this.state.emailError ?
-                                    <input type="email" className="form-control form-box form-box-error" aria-describedby="emailHelp" placeholder={displayContent(this.props.lang, i++,'form')} value={this.state.email} onChange={(email) => this.onChangeEmail(email.target.value)}/>
+                                    <input type="email" className="form-control form-box form-box-error" aria-describedby="emailHelp" placeholder={displayContent(this.props.lang, i++,'form')} value={this.state.email} onChange={(email) => this.onChangeEmail(email.target.value)} onKeyPress={(event) => {this._handleKeyPressed(event)}}/>
                                     :
-                                    <input type="email" className="form-control form-box" aria-describedby="emailHelp" placeholder={displayContent(this.props.lang, i++,'form')} value={this.state.email} onChange={(email) => this.onChangeEmail(email.target.value)}/>
+                                    <input type="email" className="form-control form-box" aria-describedby="emailHelp" placeholder={displayContent(this.props.lang, i++,'form')} value={this.state.email} onChange={(email) => this.onChangeEmail(email.target.value)} onKeyPress={(event) => {this._handleKeyPressed(event)}}/>
                             }
                             <small id="emailHelp" className="form-text text-muted col-sm-9">
                                 {displayContent(this.props.lang, i++,'form')}

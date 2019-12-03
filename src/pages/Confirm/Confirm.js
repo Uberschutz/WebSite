@@ -6,7 +6,8 @@ import axios from 'axios';
 import signup from '../../assets/signup-4.png';
 import mailerror from '../../assets/mirage-unsubscribe.png';
 import alreadyverified from '../../assets/mirage-list-is-empty.png';
-import notFound from '../../assets/fogg-page-not-found.png';
+
+import NotFound from "../NotFound";
 
 import {displayContent} from "../../utils/translationDisplay";
 const querystring = require("query-string");
@@ -77,12 +78,7 @@ class Confirm extends Component {
 		    }
 	    } else {
 		    return (
-			    <div>
-					<h1 className="text-xl-center forbidden">
-						404 Not Found
-					</h1> <br/>
-					<img src={notFound} alt="notFound"/>
-				</div>
+			    <NotFound/>
 		    );
     }
 }

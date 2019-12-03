@@ -20,6 +20,7 @@ import { persistStore, persistReducer } from 'redux-persist'
 import storage from 'redux-persist/lib/storage'
 import { PersistGate } from 'redux-persist/integration/react'
 import mainReducer from './combineReducers'
+import NotFound from "./pages/NotFound";
 
 
 const persistConfig = {
@@ -54,6 +55,7 @@ const App = props => {
 		                        <Route path={'/Parameters'} exact component={Parameters}/>
 			                    <Route path={'/Report'} exact component={Report}/>
 			                    <Route path={'/Confirm'} component={Confirm}/>
+			                    <Route path={'*'} component={NotFound}/>
 		                    </Switch>
 		                    <Footer/>
 		                </Router>
