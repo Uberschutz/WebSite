@@ -36,7 +36,7 @@ class Contact extends Component {
 
 	componentDidUpdate(prevProps, prevState, snapshot) {
 		// console.log(prevProps, this.props);
-		this.props.base.language !== prevProps.base.language && this.setState({lang: this.props.base.language}, () => console.log('re'));
+		this.props.base !== prevProps.base && this.setState({lang: this.props.base.language, connected: this.props.base.logged}, () => console.log('re'));
 	}
 
     redirectProfile() {
