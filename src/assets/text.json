@@ -65,8 +65,9 @@
         "Vous voulez vous désinscrire de la Newsletter ?", "Rendez vous sur votre", "Profil"
       ],
       "profile": [
-        "Prénom", "Enfants protégés par Überschutz : X ", "Abonnement utilisé : Premium ", "Echéancier de paiement : ",
-        "Nom du prélèvement", "Payé ?"
+        "Nom de famille : ", "Prénom : ", "Enfants protégés par Überschutz : X ", "Abonnement utilisé : Premium ", "Echéancier de paiement : ",
+        "Nom du prélèvement", "Payé ?",
+        "Récupérer mes informations", "Supprimer mon compte"
       ],
       "report": [
         "Enfants", "Sain", "Toxicité", "Toxicité Sévère", "Vulgarité", "Obscénité", "Insulte", "Menace", "Inflammatoire", "Attaque d'identité", "Haine", "Racisme"
@@ -154,7 +155,9 @@
         "Do you want to unsubscribe from the newsletter?", "Go on your", "Profile"
       ],
       "profile": [
-        "Firstname", "Child protected by Überschutz : X ", "Subscription used : Premium ", "Payment schedule : ", "Levy's name : ", "Payed ?"
+        "Last name: ", "First name: ", "Child protected by Überschutz : X ", "Subscription used : Premium ", "Payment schedule : ",
+        "Levy's name : ", "Payed ?",
+        "Recover my information", "Delete my account"
       ],
       "report": [
         "Kids", "Safe", "Toxicity", "Severe toxicity", "Profanity", "Obscene", "Insult", "Threat", "Inflammatory", "Identity Attack", "Hating", "Racism"

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import '../../styles/bootstrap.css';
+import '../../styles/Profile.css';
 
 import { Icon } from 'antd';
 
@@ -15,6 +16,7 @@ class Profile extends Component {
 		this.state = {
 			lang: 'fr',
 			logged: false,
+			email: '',
 			firstname: '',
 			lastname: '',
 			newsletter: false,
@@ -26,7 +28,7 @@ class Profile extends Component {
 
 	componentDidMount() {
 		if (this.props.base) {
-			const { base: { language, logged, newsletter, lastname, firstname, token } } = this.props;
+			const { base: { language, logged, newsletter, email, lastname, firstname, token } } = this.props;
 			axios.get('/get_subscription', {
 				headers: {
 					'x-access-token': token
@@ -37,6 +39,7 @@ class Profile extends Component {
 					logged : logged,
 					token,
 					newsletter,
+					email,
 					lastname,
 					firstname,
 					subscription: response.data.subscription,
@@ -49,6 +52,7 @@ class Profile extends Component {
 					logged : logged,
 					token,
 					newsletter,
+					email,
 					lastname,
 					firstname
 				});
@@ -70,9 +74,9 @@ class Profile extends Component {
 				'x-access-token': this.state.token
 			}
 		}).then(response => {
-
+			this.props.setUser(this.state.email, this.state.lastname, this.state.firstname, this.state.token);
 		}).catch(err => {
-
+			console.log(err, "Error");
 		})
 	}
 
@@ -85,9 +89,9 @@ class Profile extends Component {
 				'x-access-token': this.state.token
 			}
 		}).then(response => {
-
+			this.props.setUser(this.state.email, this.state.lastname, this.state.firstname, this.state.token);
 		}).catch(err => {
-
+			console.log(err, "Error");
 		})
 	}
 
@@ -97,9 +101,11 @@ class Profile extends Component {
 				'x-access-token': this.state.token
 			}
 		}).then(response => {
-
+			this.props.setLogged(false);
+			this.props.setUser(null, null, null, null);
+			this.props.history.push("/");
 		}).catch(err => {
-
+			console.log(err, "Error");
 		})
 	}
 
@@ -146,9 +152,24 @@ class Profile extends Component {
 		    let i = 0;
 		    return (
 			    <div className="description-txt">
-				    <h4 className="name-font">
-					    {displayContent(this.state.lang, i++, 'profile')}
-				    </h4> <br/>
+					<div className="row button-footerP">
+						<h4 className="name-font col-sm-auto">
+							{displayContent(this.state.lang, i++, 'profile')}
+						</h4>
+						<div className="input-group input-group-sm col-sm-2">
+							<input type="text" className="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm"/>
+							<button className="btn btn-primary btn-sm" onClick={() => this.props.changeFirstName()}>OK</button>
+						</div> <br/>
+					</div>
+					<div className="row button-footerP">
+						<h5 className="name-font col-sm-auto">
+							{displayContent(this.state.lang, i++, 'profile')}
+						</h5>
+						<div className="input-group input-group-sm col-sm-2">
+							<input type="text" className="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm"/>
+							<button className="btn btn-primary btn-sm" onClick={() => this.props.changeLastName()}>OK</button>
+						</div><br/>
+					</div>
 				    <h6>
 					    {displayContent(this.state.lang, i++, 'profile')}<br/><br/>
 					    {displayContent(this.state.lang, i++, 'profile')}<br/><br/>
@@ -184,6 +205,10 @@ class Profile extends Component {
 					    </tbody>
 				    </table>
 				    <br/>
+				    <div className="row txt-align">
+						<button className="col-2 btn btn-primary button-footerP" onClick={() => this.props.getAccountData()}>{displayContent(this.state.lang, i++, 'profile')}</button>
+						<button className="col-2 btn btn-danger button-footerP" onClick={() => this.props.deleteAccount()}>{displayContent(this.state.lang, i++, 'profile')}</button>
+					</div>
 			    </div>
 		    )
 	    } else {
