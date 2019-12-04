@@ -95,6 +95,18 @@ class Profile extends Component {
 		})
 	}
 
+	onChangeFirstname(value) {
+		this.setState({
+			firstname: value
+		})
+	}
+
+	onChangeLastname(value) {
+		this.setState({
+			lastname: value
+		})
+	}
+
 	deleteAccount() {
 		axios.post('/delete_account', '',{
 			headers: {
@@ -147,6 +159,16 @@ class Profile extends Component {
 		})
 	}
 
+	_handleKeyPressed(e, action) {
+		if (e.key === "Enter") {
+			if (action === "firstname") {
+				this.changeFirstName();
+			} else {
+				this.changeLastName();
+			}
+		}
+	}
+
     render() {
 		if (this.state.logged) {
 		    let i = 0;
@@ -157,8 +179,8 @@ class Profile extends Component {
 							{displayContent(this.state.lang, i++, 'profile')}
 						</h4>
 						<div className="input-group input-group-sm col-sm-2">
-							<input type="text" className="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm"/>
-							<button className="btn btn-primary btn-sm" onClick={() => this.props.changeFirstName()}>OK</button>
+							<input type="text" className="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" onKeyPress={(e) => { this._handleKeyPressed(e, "lastname")}} value={this.state.lastname} onChange={(value) => this.onChangeLastname(value.target.value)}/>
+							<button className="btn btn-primary btn-sm" onClick={() => this.changeLastName()}>OK</button>
 						</div> <br/>
 					</div>
 					<div className="row button-footerP">
@@ -166,8 +188,8 @@ class Profile extends Component {
 							{displayContent(this.state.lang, i++, 'profile')}
 						</h5>
 						<div className="input-group input-group-sm col-sm-2">
-							<input type="text" className="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm"/>
-							<button className="btn btn-primary btn-sm" onClick={() => this.props.changeLastName()}>OK</button>
+							<input type="text" className="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" onKeyPress={(e) => { this._handleKeyPressed(e, "firstname")}} value={this.state.firstname} onChange={(value) => this.onChangeFirstname(value.target.value)}/>
+							<button className="btn btn-primary btn-sm" onClick={() => this.changeFirstName()}>OK</button>
 						</div><br/>
 					</div>
 				    <h6>
@@ -206,8 +228,8 @@ class Profile extends Component {
 				    </table>
 				    <br/>
 				    <div className="row txt-align">
-						<button className="col-2 btn btn-primary button-footerP" onClick={() => this.props.getAccountData()}>{displayContent(this.state.lang, i++, 'profile')}</button>
-						<button className="col-2 btn btn-danger button-footerP" onClick={() => this.props.deleteAccount()}>{displayContent(this.state.lang, i++, 'profile')}</button>
+						<button className="col-2 btn btn-primary button-footerP" onClick={() => this.getAccountData()}>{displayContent(this.state.lang, i++, 'profile')}</button>
+						<button className="col-2 btn btn-danger button-footerP" onClick={() => this.deleteAccount()}>{displayContent(this.state.lang, i++, 'profile')}</button>
 					</div>
 			    </div>
 		    )
