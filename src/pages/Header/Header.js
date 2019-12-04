@@ -19,7 +19,7 @@ class Header extends Component {
         this.state = {
             isOpen: false,
             logged: false,
-	        email: undefined,
+	        lastname: undefined,
             lang: 'fr'
         };
 
@@ -29,26 +29,20 @@ class Header extends Component {
 
     componentDidMount() {
     	console.log('header mounted');
-    	// console.log(this.props);
 	    if (this.props.base) {
-		    const { base: { language, logged, email } } = this.props;
-		    // console.log(language);
-		    // this.props.setLanguage('en');
-		    // console.log(language);
-		    // const { state: { language }} = this.props;
+		    const { base: { language, logged, lastname } } = this.props;
 		    this.setState({
 			    lang: language,
 			    logged,
-			    email
+			    lastname
 		    });
-		    // console.log(language);
 	    }
     }
 
     componentDidUpdate(prevProps, prevState, snapshot) {
     	console.log('header update');
 	    if (this.props.base !== prevProps.base) {
-		    this.setState({logged: this.props.base.logged, email: this.props.base.logged ? this.props.base.email : undefined}, () => console.log('re'));
+		    this.setState({logged: this.props.base.logged, lastname: this.props.base.logged ? this.props.base.lastname : undefined}, () => console.log('re'));
 	    }
     }
 
@@ -61,11 +55,11 @@ class Header extends Component {
     getFlag()  {
         switch (this.state.lang) {
             case 'fr':
-                return (<img src={french} className={this.frenchClass} alt="french" width="35" height="35" /*onClick={() => this.props.setLanguage('fr')}*//>);
+                return (<img src={french} className={this.frenchClass} alt="french" width="35" height="35"/>);
             case 'en':
-                return (<img src={english} className={this.EnglClass} alt="english" width="35" height="33" /*onClick={() => this.props.setLanguage('en')}*//>)
+                return (<img src={english} className={this.EnglClass} alt="english" width="35" height="33"/>);
             default:
-                return (<img src={french} className={this.frenchClass} alt="french" width="35" height="35" /*onClick={() => this.props.setLanguage('fr')}*//>)
+                return (<img src={french} className={this.frenchClass} alt="french" width="35" height="35"/>);
         }
     }
 
@@ -76,8 +70,8 @@ class Header extends Component {
 
     disconnect() {
     	this.props.setLogged(false);
-    	this.props.setUser(undefined, undefined);
-    	this.setState({logged: false});
+    	this.props.setUser(undefined, undefined, undefined, undefined);
+    	this.setState({logged: false, lastname: undefined});
     }
 
     render () {
@@ -92,7 +86,7 @@ class Header extends Component {
                 <Navbar className="navbar navbar-expand-sm uber-color" light expand="md">
                     <img src={logo} alt="logo" width={65} height={70}/>
                     <NavbarBrand className="navbar-brand uber-color button-footer" href="/"> Überschutz</NavbarBrand>
-	                {this.state.logged ? <text className="navbar-brand uber-color button-footer">{displayContent(this.state.lang, 0, 'navbar')} {this.state.email} !</text> : null}
+	                {this.state.logged ? <text className="navbar-brand uber-color button-footer">{displayContent(this.state.lang, 0, 'navbar')} {this.state.lastname} !</text> : null}
 	                {this.state.logged ? <button onClick={() => this.disconnect()}>{displayContent(this.state.lang, 1, 'navbar')}</button> : null}
 	                {/*<NavbarToggler className="navbar-toggler" onClick={this.toggle}/>
                     <Collapse className="collapse navbar-collapse" isOpen={this.state.isOpen} navbar>*/}
@@ -146,17 +140,4 @@ class Header extends Component {
     }
 }
 
-// const mapStateToProps = (state) => {
-// 	return {
-// 		lang: state.lang
-// 	}
-// };
-//
-// const mapDispatchToProps = (dispatch) => {
-// 	return {
-// 		setLanguage: () => dispatch({type: 'SET_LANGUAGE'})
-// 	}
-// };
-
-// export default connect(mapStateToProps, mapDispatchToProps)(Header);
 export default Header;

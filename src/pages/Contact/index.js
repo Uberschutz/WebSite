@@ -9,7 +9,7 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-	setSubscribed: bindActionCreators(actions.setSubscribed, dispatch)
+	setNewsletter: bindActionCreators(actions.setNewsletter, dispatch)
 })
 
 const ContactContainer = connect(mapStateToProps, mapDispatchToProps)(Contact)

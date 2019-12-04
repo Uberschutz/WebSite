@@ -13,11 +13,12 @@ export function saveAuthToken(token, email, username) {
     }
 }
 
-export const setUser = (email, username, token) => ({
+export const setUser = (email, lastname, firstname, token) => ({
     type: 'SET_USER',
     payload: {
         email,
-        username,
+        lastname,
+	    firstname,
 	    token
     }
 });
@@ -42,6 +43,13 @@ export const setSubscribed = (subscribed) => ({
        subscribed
    }
 });
+
+export const setNewsletter = (newsletter) => ({
+	type: 'SET_NEWSLETTER',
+	payload: {
+		newsletter
+	}
+})
 
 /*
 import axios from 'axios'

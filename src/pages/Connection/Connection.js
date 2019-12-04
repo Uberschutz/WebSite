@@ -64,8 +64,8 @@ class Connection extends Component {
             }).then(response => {
                 console.log(response);
                 this.props.setLogged(true);
-                this.props.setUser(this.state.email, response.data.name, response.data.token);
-                this.props.setSubscribed(response.data.subscribed);
+                this.props.setUser(this.state.email, response.data.lastname, response.data.firstname, response.data.token);
+                this.props.setNewsletter(response.data.newsletter);
                 this.props.history.push('/');
             }).catch(err => {
                 console.log(err);

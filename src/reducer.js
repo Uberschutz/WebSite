@@ -3,7 +3,8 @@ const initialState = {
     logged: false,
     token: undefined,
     email: undefined,
-    username: undefined
+    lastname: undefined,
+	firstname: undefined
 };
 
 const base = (state = initialState, action) => {
@@ -22,11 +23,14 @@ const base = (state = initialState, action) => {
             const { logged } = action.payload;
             return { ...state, logged };
         case 'SET_USER':
-            const { email, username, token } = action.payload;
-            return { ...state, email, username, token };
+            const { email, lastname, firstname, token } = action.payload;
+            return { ...state, email, lastname, firstname, token };
         case 'SET_SUBSCRIBED':
             const { subscribed } = action.payload;
             return { ...state, subscribed };
+	    case 'SET_NEWSLETTER':
+		    const { newsletter } = action.payload;
+		    return { ...state, newsletter };
         default:
             return state;
     }

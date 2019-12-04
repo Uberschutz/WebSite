@@ -74,7 +74,7 @@ class Registration extends Component {
     }
 
     register() {
-        if (this.state.email !== '' && this.state.passwd !== '' && this.state.name !== '') {
+        if (this.state.email !== '' && this.state.passwd !== '' && this.state.lastname !== '') {
             axios.post('/register', {
                 email: this.state.email,
                 passwd: this.state.passwd,

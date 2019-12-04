@@ -124,6 +124,111 @@ app.post('/children', (req, res) => {
 	})
 });
 
+app.post('/rename', (req, res) => {
+	axios.post('http://user_server:8081/rename', {
+		key: req.body.key,
+		value: req.body.value
+	}, {
+		headers: {
+			'x-access-token': req.headers['x-access-token']
+		}
+	}).then(response => {
+		console.log(response.data);
+		res.send(response.data);
+	}).catch(err => {
+		console.log(err);
+		res.status(500).send(`An error occurred: ${err.response.data}`);
+	})
+});
+
+app.post('/delete_account', (req, res) => {
+	axios.post('http://user_server:8081/delete_account', '', {
+		headers: {
+			'x-access-token': req.headers['x-access-token']
+		}
+	}).then(response => {
+		console.log(response.data);
+		res.send(response.data);
+	}).catch(err => {
+		console.log(err);
+		res.status(500).send(`An error occurred: ${err.response.data}`);
+	})
+});
+
+app.get('/gdpr', (req, res) => {
+	axios.get('http://user_server:8081/gdpr', {
+		headers: {
+			'x-access-token': req.headers['x-access-token']
+		}
+	}).then(response => {
+		console.log(response.data);
+		res.send(response.data);
+	}).catch(err => {
+		console.log(err);
+		res.status(500).send(`An error occurred: ${err.response.data}`);
+	})
+});
+
+app.get('/get_subscription', (req, res) => {
+	axios.get('http://user_server:8081/get_subscription',{
+		headers: {
+			'x-access-token': req.headers['x-access-token']
+		}
+	}).then(response => {
+		console.log(response.data);
+		res.send(response.data);
+	}).catch(err => {
+		console.log(err);
+		res.status(500).send(`An error occurred: ${err.response.data}`);
+	})
+});
+
+app.post('/subscribe', (req, res) => {
+	axios.post('http://user_server:8081/subscribe', {
+		subscription: req.body.subscription
+	}, {
+		headers: {
+			'x-access-token': req.headers['x-access-token']
+		}
+	}).then(response => {
+		console.log(response.data);
+		res.send(response.data);
+	}).catch(err => {
+		console.log(err);
+		res.status(500).send(`An error occurred: ${err.response.data}`);
+	})
+});
+
+app.post('/unsubscribe', (req, res) => {
+	axios.post('http://user_server:8081/unsubscribe', '', {
+		headers: {
+			'x-access-token': req.headers['x-access-token']
+		}
+	}).then(response => {
+		console.log(response.data);
+		res.send(response.data);
+	}).catch(err => {
+		console.log(err);
+		res.status(500).send(`An error occurred: ${err.response.data}`);
+	})
+});
+
+app.post('/set_subscription', (req, res) => {
+	axios.post('http://user_server:8081/set_subscription', {
+		subscription: req.body.subscription
+	}, {
+		headers: {
+			'x-access-token': req.headers['x-access-token']
+		}
+	}).then(response => {
+		console.log(response.data);
+		res.send(response.data);
+	}).catch(err => {
+		console.log(err);
+		res.status(500).send(`An error occurred: ${err.response.data}`);
+	})
+});
+
 app.get('*', (req, res) => {
 	res.sendFile(path.resolve( __dirname, "./build/index.html" ));
 });

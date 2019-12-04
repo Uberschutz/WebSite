@@ -11,7 +11,7 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
 	setLogged: bindActionCreators(actions.setLogged, dispatch),
 	setUser: bindActionCreators(actions.setUser, dispatch),
-	setSubscribed: bindActionCreators(actions.setSubscribed, dispatch)
+	setNewsletter: bindActionCreators(actions.setNewsletter, dispatch)
 })
 
 const ConnectionContainer = connect(mapStateToProps, mapDispatchToProps)(Connection)

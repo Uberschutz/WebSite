@@ -44,7 +44,7 @@ class Contact extends Component {
     }
 
     updateNewsletter(state) {
-        this.props.setSubscribed(state);
+        this.props.setNewsletter(state);
     }
 
     render() {
