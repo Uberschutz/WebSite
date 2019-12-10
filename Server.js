@@ -11,7 +11,7 @@ app.use( express.static(path.resolve( __dirname, "./build" ) ) );
 
 app.post('/get_data', (req, res) => {
 	if (req.body.id) {
-		axios.post('http://93.118.34.39:5412/collect', `token=EEB4D392E3564E922BC6479EFCE49&type=text&id=${req.body.id}`, {
+		axios.post('http://93.118.34.39:5412/collect', `token=EEB4D392E3564E922BC6479EFCE49&type=text&userId=${req.body.id}`, {
 			headers: {
 				'Content-Type': 'application/x-www-form-urlencoded'
 			}
