@@ -9,7 +9,8 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-
+	setUser: bindActionCreators(actions.setUser, dispatch),
+	setLogged: bindActionCreators(actions.setLogged, dispatch)
 })
 
 const ProfileContainer = connect(mapStateToProps, mapDispatchToProps)(Profile)
