@@ -110,7 +110,8 @@ app.post('/children', (req, res) => {
 		name: req.body.name,
 		newName: (req.body.newName ? req.body.newName : ''),
 		age: req.body.age,
-		options: req.body.options
+		options: req.body.options,
+		discordId: req.body.discordId
 	}, {
 		headers: {
 			'x-access-token': req.headers['x-access-token']
