@@ -2,17 +2,6 @@ export const test = () => ({
     type: 'TEST',
 })
 
-export function saveAuthToken(token, email, username) {
-    return {
-        type: 'SAVE_AUTH_TOKEN',
-        payload: {
-            token,
-            email,
-            username
-        }
-    }
-}
-
 export const setUser = (email, lastname, firstname, token) => ({
     type: 'SET_USER',
     payload: {

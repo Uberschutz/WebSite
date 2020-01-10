@@ -12,10 +12,6 @@ const base = (state = initialState, action) => {
         case 'TEST':
         	console.log('test');
             return { ...state, email: 'test' };
-        // case 'SAVE_AUTH_TOKEN':
-        // 	console.log('save auth')
-        //     const { token } = action.payload;
-        //     return { ...state, token };
 	    case 'SET_LANGUAGE':
 		    const { language } = action.payload;
 		    return { ...state, language };

@@ -231,6 +231,7 @@ class Form extends Component {
                 name: this.props.name
             }).then(response => { console.log(response);
             this.setState({subscribed: true});
+            this.onChangeSent();
             this.props.updateNewsletter(true)}).catch(err => {console.log(err); this.onSubscribeFailure(err)})
         }
     }
