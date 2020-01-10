@@ -4,7 +4,9 @@ const initialState = {
     token: undefined,
     email: undefined,
     lastname: undefined,
-	firstname: undefined
+	firstname: undefined,
+	subscribed: false,
+	newsletter: false
 };
 
 const base = (state = initialState, action) => {

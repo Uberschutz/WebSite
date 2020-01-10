@@ -22,12 +22,12 @@ class Contact extends Component {
 
 	componentDidMount() {
     	if (this.props.base) {
-		    const {base: {language, logged, subscribed, lastname, email}} = this.props;
+		    const {base: {language, logged, newsletter, lastname, email}} = this.props;
 		    console.log(language, this.state.lang, 'kek');
             this.setState({
 			    lang: language,
                 connected: logged,
-                subscribed: subscribed,
+                subscribed: newsletter,
                 name: lastname,
                 email: email
 			})

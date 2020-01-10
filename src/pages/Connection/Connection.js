@@ -18,12 +18,15 @@ class Connection extends Component {
 	        alphaSurname: false,
 	        lang: 'fr'
         };
+        this.onChangeEmail = this.onChangeEmail.bind(this);
+        this.onChangePass = this.onChangePass.bind(this);
+        this._handleKeyPressed = this._handleKeyPressed.bind(this);
     }
 
 	componentDidMount() {
 		if (this.props.base) {
 			const { base: { language } } = this.props;
-			console.log(language, this.state.lang, 'kek')
+			console.log(language, this.state.lang, 'kek');
 			if (this.state.lang !== language) {
 				this.setState({
 					lang: language
@@ -49,11 +52,11 @@ class Connection extends Component {
     }
 
     onChangeEmail(email) {
-		this.setState({email: email});
+		this.setState({email: email.target.value});
 	}
 
 	onChangePass(pass) {
-		this.setState({password: pass});
+		this.setState({password: pass.target.value});
 	}
 
 	connect() {
@@ -90,13 +93,13 @@ class Connection extends Component {
                             <div className="input-group-prepend">
                                 <span className="input-group-text" id="inputGroup-sizing-default">Email</span>
                             </div>
-                            <input value={this.state.email} onChange={(email) => this.onChangeEmail(email.target.value)} onKeyPress={(event) => {this._handleKeyPressed(event)}} type="text" className="form-control" aria-label="Email"/>
+                            <input value={this.state.email} onChange={this.onChangeEmail} onKeyPress={this._handleKeyPressed} type="text" className="form-control" aria-label="Email"/>
                         </div>
                         <div className="input-group mb-3">
                             <div className="input-group-prepend">
                                 <span className="input-group-text" id="inputGroup-sizing-default">{displayContent(this.state.lang, i++, 'connexion')}</span>
                             </div>
-                            <input value={this.state.password} onChange={(password) => this.onChangePass(password.target.value)} onKeyPress={(event) => {this._handleKeyPressed(event)}} type="password" className="form-control" aria-label="Email"/>
+                            <input value={this.state.password} onChange={this.onChangePass} onKeyPress={this._handleKeyPressed} type="password" className="form-control" aria-label="Email"/>
                         </div>
                         <button onClick={() => this.connect()} type="button" className="btn btn-primary">{displayContent(this.state.lang, i++, 'connexion')}</button>
                     </div>
