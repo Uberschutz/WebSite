@@ -22,13 +22,13 @@ class Contact extends Component {
 
 	componentDidMount() {
     	if (this.props.base) {
-		    const {base: {language, logged, subscribed, username, email}} = this.props;
-		    console.log(language, this.state.lang, 'kek')
+		    const {base: {language, logged, subscribed, lastname, email}} = this.props;
+		    console.log(language, this.state.lang, 'kek');
             this.setState({
 			    lang: language,
                 connected: logged,
                 subscribed: subscribed,
-                name: username,
+                name: lastname,
                 email: email
 			})
 	    }
@@ -195,16 +195,16 @@ class Form extends Component {
 
     onChangeSent() {
         if (this.state.emailError === false) {
-            this.setState({emailSent: true, status: 'Vous êtes maintenant inscrit à la newsletter, merci !', statusErr: false}, () => {
-                setTimeout(() => {this.setState({emailSent: false})}, 10000);
-            });
+            this.setState({emailSent: true, status: 'Vous êtes maintenant inscrit à la newsletter, merci !', statusErr: false}, this.hideAlert);
         }
     }
 
     onSubscribeFailure(error) {
-    	this.setState({emailSent: true, status: error.response && error.response.data ? `An error occurred: ${error.response.data}` : 'An unknown error occurred', statusErr: true}, () => {
-		    setTimeout(() => {this.setState({emailSent: false})}, 10000);
-	    });
+    	this.setState({emailSent: true, status: error.response && error.response.data ? `An error occurred: ${error.response.data}` : 'An unknown error occurred', statusErr: true}, this.hideAlert);
+    }
+
+    hideAlert() {
+	    setTimeout(() => {this.setState({emailSent: false})}, 10000);
     }
 
     registerNews() {
