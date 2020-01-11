@@ -1,15 +1,15 @@
 version: "3"
 services:
-  caddy:
-    image: "abiosoft/caddy:latest"
-    volumes:
-      #- ./certs:/root/certs # to sync mkcert certificates to Caddy
-      - ./Caddyfile:/etc/Caddyfile  # to mount custom Caddyfile
-    ports:
-      - "443:443"
-      - "80:80"
-    depends_on:
-      - client_web
+    caddy:
+      image: "abiosoft/caddy:latest"
+      volumes:
+        #- ./certs:/root/certs # to sync mkcert certificates to Caddy
+        - ./Caddyfile:/etc/Caddyfile  # to mount custom Caddyfile
+      ports:
+        - "443:443"
+        - "80:80"
+      depends_on:
+        - client_web
     mail_server:
         build: ./UberMail/
         ports:
