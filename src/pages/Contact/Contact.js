@@ -2,12 +2,13 @@ import React, { Component } from 'react';
 import '../../styles/bootstrap.css';
 import '../../styles/Contact.css';
 
-import {Icon} from 'antd';
+import { Icon } from 'antd';
 import { Alert } from 'reactstrap';
 import { displayContent } from '../../utils/translationDisplay';
 import axios from 'axios';
 
 import newsletter from '../../assets/icons8-email-100.png';
+import loading from '../../assets/Spinner-1s-70px.gif';
 
 class Contact extends Component {
     constructor(props) {
@@ -283,7 +284,11 @@ class Form extends Component {
                                 {displayContent(this.props.lang, i++,'form')}
                             </small>
                         </div>
-                        <button type="button" className="btn btn-primary button-footer" onClick={() => this.registerNews()}>{displayContent(this.props.lang, i,'form')}</button>
+                        {
+                            this.state.emailSent ?
+                                <img src={loading} alt="loading"/> : <button type="button" className="btn btn-primary button-footer" onClick={() => this.registerNews()}>{displayContent(this.props.lang, i,'form')}</button>
+                        }
+                        <br/>
                     </form>
                     {
                         this.state.emailSent ?
