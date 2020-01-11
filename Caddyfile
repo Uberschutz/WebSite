@@ -1,0 +1,3 @@
+dev.uberschutz.com {
+ proxy / client_web:8080
+}

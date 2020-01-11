@@ -170,7 +170,10 @@ class Form extends Component {
 	        statusErr: false,
 	        status: '',
             subscribed: false
-        }
+        };
+        this.onChangeEmail = this.onChangeEmail.bind(this);
+        this.onChangeName = this.onChangeName.bind(this);
+        this._handleKeyPressed = this._handleKeyPressed.bind(this);
     }
 
 	_handleKeyPressed(e) {
@@ -180,17 +183,17 @@ class Form extends Component {
 	}
 
     onChangeEmail(email) {
-	    if (email !== '' && this.state.emailError) {
+	    if (email && email.target.value !== '' && this.state.emailError) {
 		    this.setState({emailError: false});
 	    }
-    	this.setState({email});
+    	this.setState({email: email.target.value});
     }
 
     onChangeName(name) {
-    	if (name !== '' && this.state.nameError) {
+    	if (name && name.target.value !== '' && this.state.nameError) {
     		this.setState({nameError: false});
 	    }
-    	this.setState({name});
+    	this.setState({name: name.target.value});
     }
 
     onChangeSent() {
@@ -229,10 +232,16 @@ class Form extends Component {
             axios.post('/subscribe_newsletter', {
                 email: this.props.email,
                 name: this.props.name
-            }).then(response => { console.log(response);
-            this.setState({subscribed: true});
-            this.onChangeSent();
-            this.props.updateNewsletter(true)}).catch(err => {console.log(err); this.onSubscribeFailure(err)})
+            }).then(response => {
+            	console.log(response);
+	            this.onChangeSent();
+	            setTimeout(() => {
+		            this.setState({subscribed: true});
+	            }, 120000);
+	            this.props.updateNewsletter(true)
+            }).catch(err => {
+            	console.log(err); this.onSubscribeFailure(err)
+            });
         }
     }
 
@@ -258,17 +267,17 @@ class Form extends Component {
                                 <label>{displayContent(this.props.lang, i,'form')}</label>
                                 {
                                     this.state.nameError ?
-                                        <input type="text" onChange={(name) => this.onChangeName(name.target.value)} className="form-control form-box form-box-error" placeholder={displayContent(this.props.lang, i++,'form')} onKeyPress={(event) => {this._handleKeyPressed(event)}}/>
+                                        <input type="text" onChange={this.onChangeName} className="form-control form-box form-box-error" placeholder={displayContent(this.props.lang, i++,'form')} onKeyPress={this._handleKeyPressed}/>
                                         :
-                                        <input type="text" onChange={(name) => this.onChangeName(name.target.value)} className="form-control form-box" placeholder={displayContent(this.props.lang, i++,'form')} onKeyPress={(event) => {this._handleKeyPressed(event)}}/>
+                                        <input type="text" onChange={this.onChangeName} className="form-control form-box" placeholder={displayContent(this.props.lang, i++,'form')} onKeyPress={this._handleKeyPressed}/>
                                 }
                             </div>
                             <label>{displayContent(this.props.lang, i,'form')}</label>
                             {
                                 this.state.emailError ?
-                                    <input type="email" className="form-control form-box form-box-error" aria-describedby="emailHelp" placeholder={displayContent(this.props.lang, i++,'form')} value={this.state.email} onChange={(email) => this.onChangeEmail(email.target.value)} onKeyPress={(event) => {this._handleKeyPressed(event)}}/>
+                                    <input type="email" className="form-control form-box form-box-error" aria-describedby="emailHelp" placeholder={displayContent(this.props.lang, i++,'form')} value={this.state.email} onChange={this.onChangeEmail} onKeyPress={this._handleKeyPressed}/>
                                     :
-                                    <input type="email" className="form-control form-box" aria-describedby="emailHelp" placeholder={displayContent(this.props.lang, i++,'form')} value={this.state.email} onChange={(email) => this.onChangeEmail(email.target.value)} onKeyPress={(event) => {this._handleKeyPressed(event)}}/>
+                                    <input type="email" className="form-control form-box" aria-describedby="emailHelp" placeholder={displayContent(this.props.lang, i++,'form')} value={this.state.email} onChange={this.onChangeEmail} onKeyPress={this._handleKeyPressed}/>
                             }
                             <small id="emailHelp" className="form-text text-muted col-sm-9">
                                 {displayContent(this.props.lang, i++,'form')}
