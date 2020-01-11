@@ -5,6 +5,7 @@ import '../../styles/Connection.css';
 import { Link } from 'react-router-dom';
 import { displayContent } from '../../utils/translationDisplay';
 import axios from 'axios';
+import {Alert} from "reactstrap";
 
 class Connection extends Component {
 	constructor(props) {
@@ -16,11 +17,13 @@ class Connection extends Component {
 	        password: '',
 	        alphaName: false,
 	        alphaSurname: false,
-	        lang: 'fr'
+	        lang: 'fr',
+	        failAuth: false
         };
         this.onChangeEmail = this.onChangeEmail.bind(this);
         this.onChangePass = this.onChangePass.bind(this);
         this._handleKeyPressed = this._handleKeyPressed.bind(this);
+        this.connect = this.connect.bind(this);
     }
 
 	componentDidMount() {
@@ -72,6 +75,11 @@ class Connection extends Component {
                 this.props.history.push('/');
             }).catch(err => {
                 console.log(err);
+                this.setState({failAuth: true}, () => {
+                	setTimeout(() => {
+                		this.setState({failAuth: false});
+	                }, 10 * 1000);
+                });
             });
 		}
 	}
@@ -101,9 +109,12 @@ class Connection extends Component {
                             </div>
                             <input value={this.state.password} onChange={this.onChangePass} onKeyPress={this._handleKeyPressed} type="password" className="form-control" aria-label="Email"/>
                         </div>
-                        <button onClick={() => this.connect()} type="button" className="btn btn-primary">{displayContent(this.state.lang, i++, 'connexion')}</button>
+                        <button onClick={this.connect} type="button" className="btn btn-primary">{displayContent(this.state.lang, i++, 'connexion')}</button>
                     </div>
                 </div>
+	            {
+	            	this.state.failAuth ? <Alert color="danger">Ce compte n'existe pas</Alert> : null
+	            }
                 <br/>
                 <span>
                     {displayContent(this.state.lang, i++, 'connexion')}

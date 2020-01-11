@@ -208,7 +208,7 @@ class Form extends Component {
     }
 
     hideAlert() {
-	    setTimeout(() => {this.setState({emailSent: false})}, 10000);
+	    setTimeout(() => {this.setState({emailSent: false})}, 10 * 1000);
     }
 
     registerNews() {
@@ -238,7 +238,7 @@ class Form extends Component {
 	            this.onChangeSent();
 	            setTimeout(() => {
 		            this.setState({subscribed: true});
-	            }, 120000);
+	            }, 3 * 1000);
 	            this.props.updateNewsletter(true)
             }).catch(err => {
             	console.log(err); this.onSubscribeFailure(err)
@@ -311,9 +311,18 @@ class Form extends Component {
                     <h5 className="button-footer title-bold">
                         {displayContent(this.props.lang, 7,'form')}
                     </h5>
-                    <input type="radio" onClick={() => this.subscribe()} aria-label="Radio button for following option"/>
+	                {
+	                	this.state.emailSent ?  <img src={loading} alt="loading"/>
+			                :
+			                <input type="radio" onClick={() => this.subscribe()} aria-label="Radio button for following option"/>
+	                }
                     <span>{displayContent(this.props.lang, 8,'form')}</span> <br/>
                     <img className="button-footer" src={newsletter} alt="newsletter"/>
+	                {
+		                this.state.emailSent ?
+			                <Alert color={this.state.statusErr ? "danger" : "success"}> {this.state.status}</Alert>
+			                : null
+	                }
                 </div>
             )
         } else {
