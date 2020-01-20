@@ -1,5 +1,5 @@
 const axios = require('axios');
-// const credentials = require('./credentials.js');
+const credentials = require('./credentials.js');
 const express = require('express');
 const bodyParser = require('body-parser');
 const path = require('path')
@@ -11,7 +11,7 @@ app.use( express.static(path.resolve( __dirname, "./build" ) ) );
 
 app.post('/get_data', (req, res) => {
 	if (req.body.discordId) {
-		axios.post('http://93.118.34.39:5412/collect', `token=EEB4D392E3564E922BC6479EFCE49&type=text&userId=${req.body.discordId}`, {
+		axios.post(`${credentials.api_ip}/collect`, `token=${credentials.token}&type=text&userId=${req.body.discordId}`, {
 			headers: {
 				'Content-Type': 'application/x-www-form-urlencoded'
 			}
@@ -22,7 +22,7 @@ app.post('/get_data', (req, res) => {
 			res.status(500).send('ko');
 		})
 	} else {
-		axios.post('http://93.118.34.39:5412/collect', "token=EEB4D392E3564E922BC6479EFCE49&type=text", {
+		axios.post(`${credentials.api_ip}/collect`, `token=${credentials.token}&type=text`, {
 			headers: {
 				'Content-Type': 'application/x-www-form-urlencoded'
 			}
