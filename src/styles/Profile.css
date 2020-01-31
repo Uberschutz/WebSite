@@ -19,3 +19,8 @@
     margin-top: 15px;
     margin-bottom: 15px;
 }
+
+.right-btn {
+    text-align: right!important;
+    margin-right: 1%;
+}

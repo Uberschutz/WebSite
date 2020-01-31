@@ -65,7 +65,7 @@
         "Vous voulez vous désinscrire de la Newsletter ?", "Rendez vous sur votre", "Profil"
       ],
       "profile": [
-        "Nom de famille : ", "Prénom : ", "Enfants protégés par Überschutz : X ", "Abonnement utilisé : Premium ", "Echéancier de paiement : ",
+        "Nom de famille : ", "Prénom : ", "Enfants protégés par Überschutz : X ", "Abonnement utilisé : Premium ", "Se désinscrire", "Echéancier de paiement : ",
         "Nom du prélèvement", "Payé ?",
         "Récupérer mes informations", "Supprimer mon compte"
       ],
@@ -155,7 +155,7 @@
         "Do you want to unsubscribe from the newsletter?", "Go on your", "Profile"
       ],
       "profile": [
-        "Last name: ", "First name: ", "Child protected by Überschutz : X ", "Subscription used : Premium ", "Payment schedule : ",
+        "Last name: ", "First name: ", "Child protected by Überschutz : X ", "Subscription used : Premium ", "Unsubscribe", "Payment schedule : ",
         "Levy's name : ", "Payed ?",
         "Recover my information", "Delete my account"
       ],

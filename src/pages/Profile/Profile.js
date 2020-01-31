@@ -3,9 +3,9 @@ import '../../styles/bootstrap.css';
 import '../../styles/Profile.css';
 
 import { Icon } from 'antd';
-
 import {displayContent} from '../../utils/translationDisplay';
 import Unauthorized from "../Unauthorized";
+import newsletter from "../../assets/icons8-mail-100.png";
 
 import axios from 'axios';
 
@@ -183,7 +183,7 @@ class Profile extends Component {
 	}
 
     render() {
-		if (this.state.logged) {
+		//if (this.state.logged) {
 		    let i = 0;
 		    return (
 			    <div className="description-txt">
@@ -205,11 +205,17 @@ class Profile extends Component {
 							<button className="btn btn-primary btn-sm" onClick={this.changeFirstName}>OK</button>
 						</div><br/>
 					</div>
-				    <h6>
-					    {displayContent(this.state.lang, i++, 'profile')}<br/><br/>
-					    {displayContent(this.state.lang, i++, 'profile')}<br/><br/>
-					    {displayContent(this.state.lang, i++, 'profile')}<br/>
-				    </h6> <br/>
+					<h6>
+						{displayContent(this.state.lang, i++, 'profile')}<br/><br/>
+						{displayContent(this.state.lang, i++, 'profile')}
+					</h6>
+				    <h6 className="right-btn">
+						Newsletter : <button className="btn btn-dark btn-sm">
+						<img src={newsletter} alt="newsletter"/>{displayContent(this.state.lang, i++, 'profile')}</button>
+					</h6>
+					<h6>
+						{displayContent(this.state.lang, i++, 'profile')}
+					</h6> <br/>
 				    <table className="table">
 					    <thead className="table-primary">
 					    <tr>
@@ -246,11 +252,11 @@ class Profile extends Component {
 					</div>
 			    </div>
 		    )
-	    } else {
+	    /*} else {
     		return (
     			<Unauthorized/>
 		    )
-	    }
+	    }*/
     }
 }
 
