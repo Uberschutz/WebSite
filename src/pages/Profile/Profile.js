@@ -183,7 +183,7 @@ class Profile extends Component {
 	}
 
     render() {
-		//if (this.state.logged) {
+		if (this.state.logged) {
 		    let i = 0;
 		    return (
 			    <div className="description-txt">
@@ -252,11 +252,11 @@ class Profile extends Component {
 					</div>
 			    </div>
 		    )
-	    /*} else {
+	    } else {
     		return (
     			<Unauthorized/>
 		    )
-	    }*/
+	    }
     }
 }
 
