@@ -9,6 +9,7 @@ jobs:
       only:
         - master
         - develop
+        - ci-issue
 #        - unit-tests
 #        - frontend
 #        - backend
