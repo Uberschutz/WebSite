@@ -27,8 +27,8 @@ jobs:
       - checkout
 
       - run:
-        name: update-npm
-        command: 'sudo npm install -g npm@latest'
+          name: update-npm
+          command: 'sudo npm install -g npm@latest'
 
       # Download and cache dependencies
       - restore_cache:
@@ -38,8 +38,8 @@ jobs:
             - v1-dependencies-
 
       - run:
-        name: install-npm
-        command: 'npm install'
+          name: install-npm
+          command: 'npm install'
 
       - save_cache:
           paths:
