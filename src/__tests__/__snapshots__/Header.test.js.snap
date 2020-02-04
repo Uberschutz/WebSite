@@ -4,11 +4,13 @@ exports[`render Header being logged in english 1`] = `
 <div>
   <div>
     <nav
-      class="navbar navbar-expand-md uber-color navbar navbar-expand-md navbar-light"
+      class="navbar navbar-expand-sm uber-color navbar navbar-expand-md navbar-light"
     >
       <img
         alt="logo"
-        src="Uberschutz-logo.png"
+        height="70"
+        src="Uberschutz-Icon.png"
+        width="65"
       />
       <a
         class="navbar-brand uber-color button-footer navbar-brand"
@@ -51,36 +53,6 @@ exports[`render Header being logged in english 1`] = `
               href="/Contact+FAQ"
             >
               Contact + FAQ
-            </a>
-          </li>
-          <li
-            class="nav-item nav-item"
-          >
-            <a
-              class="nav-link uber-color"
-              href="/Profile"
-            >
-              Profil
-            </a>
-          </li>
-          <li
-            class="nav-item nav-item"
-          >
-            <a
-              class="nav-link uber-color"
-              href="/Report"
-            >
-              Rapport
-            </a>
-          </li>
-          <li
-            class="nav-item nav-item"
-          >
-            <a
-              class="nav-link uber-color"
-              href="/Parameters"
-            >
-              Paramètres
             </a>
           </li>
         </ul>
@@ -137,11 +109,13 @@ exports[`render Header being logged in french 1`] = `
 <div>
   <div>
     <nav
-      class="navbar navbar-expand-md uber-color navbar navbar-expand-md navbar-light"
+      class="navbar navbar-expand-sm uber-color navbar navbar-expand-md navbar-light"
     >
       <img
         alt="logo"
-        src="Uberschutz-logo.png"
+        height="70"
+        src="Uberschutz-Icon.png"
+        width="65"
       />
       <a
         class="navbar-brand uber-color button-footer navbar-brand"
@@ -184,36 +158,6 @@ exports[`render Header being logged in french 1`] = `
               href="/Contact+FAQ"
             >
               Contact + FAQ
-            </a>
-          </li>
-          <li
-            class="nav-item nav-item"
-          >
-            <a
-              class="nav-link uber-color"
-              href="/Profile"
-            >
-              Profil
-            </a>
-          </li>
-          <li
-            class="nav-item nav-item"
-          >
-            <a
-              class="nav-link uber-color"
-              href="/Report"
-            >
-              Rapport
-            </a>
-          </li>
-          <li
-            class="nav-item nav-item"
-          >
-            <a
-              class="nav-link uber-color"
-              href="/Parameters"
-            >
-              Paramètres
             </a>
           </li>
         </ul>
@@ -270,11 +214,13 @@ exports[`renders Header without crashing (not connected) in any language 1`] = `
 <div>
   <div>
     <nav
-      class="navbar navbar-expand-md uber-color navbar navbar-expand-md navbar-light"
+      class="navbar navbar-expand-sm uber-color navbar navbar-expand-md navbar-light"
     >
       <img
         alt="logo"
-        src="Uberschutz-logo.png"
+        height="70"
+        src="Uberschutz-Icon.png"
+        width="65"
       />
       <a
         class="navbar-brand uber-color button-footer navbar-brand"
@@ -317,36 +263,6 @@ exports[`renders Header without crashing (not connected) in any language 1`] = `
               href="/Contact+FAQ"
             >
               Contact + FAQ
-            </a>
-          </li>
-          <li
-            class="nav-item nav-item"
-          >
-            <a
-              class="nav-link uber-color"
-              href="/Profile"
-            >
-              Profil
-            </a>
-          </li>
-          <li
-            class="nav-item nav-item"
-          >
-            <a
-              class="nav-link uber-color"
-              href="/Report"
-            >
-              Rapport
-            </a>
-          </li>
-          <li
-            class="nav-item nav-item"
-          >
-            <a
-              class="nav-link uber-color"
-              href="/Parameters"
-            >
-              Paramètres
             </a>
           </li>
         </ul>

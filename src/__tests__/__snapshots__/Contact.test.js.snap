@@ -467,6 +467,7 @@ exports[`renders Contact without crashing 1`] = `
         >
           Soumettre
         </button>
+        <br />
       </form>
     </div>
   </div>
