@@ -54,6 +54,26 @@ app.post('/subscribe_newsletter', (req, res) => {
 	});
 });
 
+app.post('/unsubscribe_newsletter', (req, res) => {
+	// console.log(req.body, req.data);
+	axios.post('http://user_server:8081/unsubscribe_newsletter', {
+		email: req.body.email,
+		name: req.body.name
+	}).then(response => {
+		console.log(response.data);
+		res.send(response.data);
+	}).catch(err => {
+		console.log(err);
+		if (err.response && err.response.data)
+			res.status(500).send(err.response.data);
+		else if (err.response && err.response.statusText)
+			res.status(500).send(err.response.statusText);
+		else
+			res.status(500).send('Unknown Internal error');
+	});
+});
+
+
 app.post('/register', (req, res) => {
 	axios.post('http://user_server:8081/register', {
 		email: req.body.email,
