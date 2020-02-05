@@ -59,6 +59,10 @@ app.post('/unsubscribe_newsletter', (req, res) => {
 	axios.post('http://user_server:8081/unsubscribe_newsletter', {
 		email: req.body.email,
 		name: req.body.name
+	}, {
+		headers: {
+			'x-access-token': req.headers['x-access-token']
+		}
 	}).then(response => {
 		console.log(response.data);
 		res.send(response.data);
