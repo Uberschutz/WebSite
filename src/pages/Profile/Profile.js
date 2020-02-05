@@ -4,8 +4,11 @@ import '../../styles/Profile.css';
 
 import { Icon } from 'antd';
 import {displayContent} from '../../utils/translationDisplay';
+import { Alert } from 'reactstrap';
+
 import Unauthorized from "../Unauthorized";
 import newsletter from "../../assets/icons8-mail-100.png";
+import loading from '../../assets/Spinner-1s-70px.gif';
 
 import axios from 'axios';
 
@@ -24,7 +27,10 @@ class Profile extends Component {
 			newsletter: false,
 			subscribed: false,
 			subscription: '',
-			token: null
+			token: null,
+			load: false,
+			newsletterAlert: '',
+			statusErr: false
 		};
 		// this._handleKeyPressed = this._handleKeyPressed.bind(this);
 		this.onChangeFirstname = this.onChangeFirstname.bind(this);
@@ -76,19 +82,37 @@ class Profile extends Component {
 	}
 
 	unsubscribe_newsletter() {
-		axios.post('/unsubcribe_newsletter', {
-		}, {
-			headers: {
-				'x-access-token': this.state.token
-			}
-		}).then(response => {
-			console.log(response.data);
-			this.setState({
-				newsletter: false
+		this.setState({
+			load: true
+		}, () => {
+				axios.post('/unsubcribe_newsletter', {
+			}, {
+				headers: {
+					'x-access-token': this.state.token
+				}
+			}).then(response => {
+				console.log(response.data);
+				this.setState({
+					newsletter: false,
+					load: false,
+					statusErr: false,
+					newsletterAlert: 'Successfully unsubscribed to the newsletter'
+				});
+				this.props.setNewsletter(false);
+			}).catch(err => {
+				this.setState({
+					load: false,
+					statusErr: true,
+					newsletterAlert: 'An error occurred while unsubscribing your account to the newsletter'
+				});
+				console.log(err);
+			}).finally(() => {
+					setTimeout(() => {
+						this.setState({
+							newsletterAlert: ''
+						})
+					}, 1000 * 5)
 			});
-			this.props.setNewsletter(false);
-		}).catch(err => {
-			console.log(err);
 		});
 	}
 
@@ -228,9 +252,15 @@ class Profile extends Component {
 						{displayContent(this.state.lang, i++, 'profile')}
 					</h6>
 				    <h6 className="right-btn">
-						Newsletter : <button className="btn btn-dark btn-sm" onClick={this.unsubscribe_newsletter}>
-						<img src={newsletter} alt="newsletter"/>{displayContent(this.state.lang, i++, 'profile')}</button>
+						Newsletter : <button className="btn btn-dark btn-sm">
+						<img src={newsletter} alt="newsletter"/>{displayContent(this.state.lang, i++, 'profile')} {
+						this.state.load ? <img src={loading} alt="loading"/> : null
+					}
+				    </button>
 					</h6>
+					{
+						this.state.newsletterAlert !== '' ? <Alert color={this.state.statusErr ? "danger" : "success"}> {this.state.newsletterAlert}</Alert> : null
+					}
 					<h6>
 						{displayContent(this.state.lang, i++, 'profile')}
 					</h6> <br/>
