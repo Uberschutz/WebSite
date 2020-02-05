@@ -85,7 +85,7 @@ class Profile extends Component {
 		this.setState({
 			load: true
 		}, () => {
-				axios.post('/unsubcribe_newsletter', {
+				axios.post('/unsubscribe_newsletter', {
 			}, {
 				headers: {
 					'x-access-token': this.state.token
