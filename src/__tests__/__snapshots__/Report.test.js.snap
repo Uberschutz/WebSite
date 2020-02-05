@@ -23,21 +23,6 @@ exports[`render Report being logged in english 1`] = `
       >
         <div>
           <div>
-            Thomas
-          </div>
-        </div>
-        <div>
-          <div>
-            Théo
-          </div>
-        </div>
-        <div>
-          <div>
-            Philippe
-          </div>
-        </div>
-        <div>
-          <div>
             General
           </div>
         </div>
@@ -73,21 +58,6 @@ exports[`render Report being logged in french 1`] = `
         role="menu"
         tabindex="-1"
       >
-        <div>
-          <div>
-            Thomas
-          </div>
-        </div>
-        <div>
-          <div>
-            Théo
-          </div>
-        </div>
-        <div>
-          <div>
-            Philippe
-          </div>
-        </div>
         <div>
           <div>
             General

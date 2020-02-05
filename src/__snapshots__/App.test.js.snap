@@ -7,11 +7,13 @@ exports[`renders whole without crashing 1`] = `
   >
     <div>
       <nav
-        class="navbar navbar-expand-md uber-color navbar navbar-expand-md navbar-light"
+        class="navbar navbar-expand-sm uber-color navbar navbar-expand-md navbar-light"
       >
         <img
           alt="logo"
-          src="Uberschutz-logo.png"
+          height="70"
+          src="Uberschutz-Icon.png"
+          width="65"
         />
         <a
           class="navbar-brand uber-color button-footer navbar-brand"
@@ -54,36 +56,6 @@ exports[`renders whole without crashing 1`] = `
                 href="/Contact+FAQ"
               >
                 Contact + FAQ
-              </a>
-            </li>
-            <li
-              class="nav-item nav-item"
-            >
-              <a
-                class="nav-link uber-color"
-                href="/Profile"
-              >
-                Profil
-              </a>
-            </li>
-            <li
-              class="nav-item nav-item"
-            >
-              <a
-                class="nav-link uber-color"
-                href="/Report"
-              >
-                Rapport
-              </a>
-            </li>
-            <li
-              class="nav-item nav-item"
-            >
-              <a
-                class="nav-link uber-color"
-                href="/Parameters"
-              >
-                Paramètres
               </a>
             </li>
           </ul>
@@ -271,7 +243,7 @@ exports[`renders whole without crashing 1`] = `
       </a>
       <br />
       <span>
-        © 2018 - 2019
+        © 2018 - 2020
       </span>
       <br />
       <span>

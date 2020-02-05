@@ -33,6 +33,7 @@ class Profile extends Component {
 		this.changeLastName = this.changeLastName.bind(this);
 		this.getAccountData = this.getAccountData.bind(this);
 		this.deleteAccount = this.deleteAccount.bind(this);
+		this.unsubscribe_newsletter = this.unsubscribe_newsletter.bind(this);
 	}
 
 	componentDidMount() {
@@ -72,6 +73,23 @@ class Profile extends Component {
 	componentDidUpdate(prevProps, prevState, snapshot) {
 		// console.log(prevProps, this.props);
 		this.props.base !== prevProps.base && this.setState({lang: this.props.base.language, logged: this.props.base.logged}, () => console.log('re'));
+	}
+
+	unsubscribe_newsletter() {
+		axios.post('/unsubcribe_newsletter', {
+		}, {
+			headers: {
+				'x-access-token': this.state.token
+			}
+		}).then(response => {
+			console.log(response.data);
+			this.setState({
+				newsletter: false
+			});
+			this.props.setNewsletter(false);
+		}).catch(err => {
+			console.log(err);
+		});
 	}
 
 	changeLastName() {

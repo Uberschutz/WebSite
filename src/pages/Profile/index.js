@@ -10,7 +10,8 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
 	setUser: bindActionCreators(actions.setUser, dispatch),
-	setLogged: bindActionCreators(actions.setLogged, dispatch)
+	setLogged: bindActionCreators(actions.setLogged, dispatch),
+	setNewsletter: bindActionCreators(actions.setNewsletter, dispatch)
 })
 
 const ProfileContainer = connect(mapStateToProps, mapDispatchToProps)(Profile)

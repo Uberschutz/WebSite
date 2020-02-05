@@ -3,19 +3,17 @@
 exports[`renders Confirm without crashing 1`] = `
 <div>
   <div>
-    <br />
-    <h5>
-      Votre compte a bien été confirmé !
-      <br />
-       Merci !
-    </h5>
-    <br />
-    <img
-      alt="signup"
-      src="signup-4.png"
-    />
+    <h1
+      class="text-xl-center forbidden"
+    >
+      404 Not Found
+    </h1>
      
     <br />
+    <img
+      alt="notFound"
+      src="fogg-page-not-found.png"
+    />
   </div>
 </div>
 `;

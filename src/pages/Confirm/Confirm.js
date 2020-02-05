@@ -34,26 +34,28 @@ class Confirm extends Component {
     }
 
     componentDidMount() {
-    	const {base: { language }} = this.props;
-    	this.setState({lang: language});
-    	if (this.id) {
-		    axios.post('/verifyaccount', {
-			    id: this.id
-		    }).then(response => {
-		        this.setState({status: 'verified'});
-			    console.log(response);
-			    setTimeout(() => this.props.history.push('/'), 5000);
-		    }).catch(err => {
-		        if (err.response && err.response.data === 'Unknown user') {
-		            this.setState({status: 'expired'});
-                } else if (err.response && err.response.data === 'Account has been already confirmed') {
-		            this.setState({status: 'confirmed'});
-                } else {
-		        	this.setState({status: 'error'});
-		        }
-			    console.log(err);
-		    });
-	    }
+    	if (this.props.base) {
+			const {base: {language}} = this.props;
+			this.setState({lang: language});
+			if (this.id) {
+				axios.post('/verifyaccount', {
+					id: this.id
+				}).then(response => {
+					this.setState({status: 'verified'});
+					console.log(response);
+					setTimeout(() => this.props.history.push('/'), 5000);
+				}).catch(err => {
+					if (err.response && err.response.data === 'Unknown user') {
+						this.setState({status: 'expired'});
+					} else if (err.response && err.response.data === 'Account has been already confirmed') {
+						this.setState({status: 'confirmed'});
+					} else {
+						this.setState({status: 'error'});
+					}
+					console.log(err);
+				});
+			}
+		}
     }
 
     render() {
