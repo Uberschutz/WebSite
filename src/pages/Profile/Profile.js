@@ -228,7 +228,7 @@ class Profile extends Component {
 						{displayContent(this.state.lang, i++, 'profile')}
 					</h6>
 				    <h6 className="right-btn">
-						Newsletter : <button className="btn btn-dark btn-sm">
+						Newsletter : <button className="btn btn-dark btn-sm" onClick={this.unsubscribe_newsletter}>
 						<img src={newsletter} alt="newsletter"/>{displayContent(this.state.lang, i++, 'profile')}</button>
 					</h6>
 					<h6>
