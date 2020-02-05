@@ -251,19 +251,21 @@ class Profile extends Component {
 						{displayContent(this.state.lang, i++, 'profile')}<br/><br/>
 						{displayContent(this.state.lang, i++, 'profile')}
 					</h6>
-					{this.state.newsletter ? <div>
-						<h6 className="right-btn">
-							Newsletter : <button className="btn btn-dark btn-sm" onClick={this.unsubscribe_newsletter}>
-							<img src={newsletter} alt="newsletter"/>{displayContent(this.state.lang, i++, 'profile')} {
-							this.state.load ? <img src={loading} alt="loading"/> : null
-						}
-						</button>
-						</h6>
-						{
-							this.state.newsletterAlert !== '' ? <Alert
-								color={this.state.statusErr ? "danger" : "success"}> {this.state.newsletterAlert}</Alert> : null
-						}
-					</div> : null
+					{
+					this.state.newsletter ?
+						<div>
+							<h6 className="right-btn">
+								Newsletter : <button className="btn btn-dark btn-sm" onClick={this.unsubscribe_newsletter}>
+								<img src={newsletter} alt="newsletter"/>{displayContent(this.state.lang, this.state.newsletter ? i++ : i, 'profile')} {
+								this.state.load ? <img src={loading} alt="loading"/> : null
+							}
+							</button>
+							</h6>
+							{
+								this.state.newsletterAlert !== '' ? <Alert
+									color={this.state.statusErr ? "danger" : "success"}> {this.state.newsletterAlert}</Alert> : null
+							}
+						</div> : null
 					}
 					<h6>
 						{displayContent(this.state.lang, i++, 'profile')}
