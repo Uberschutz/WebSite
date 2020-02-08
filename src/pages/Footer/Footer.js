@@ -40,7 +40,7 @@ class Footer extends Component {
                 </Link>
                 <br/>
                 <span>
-                    © 2018 - 2020
+                    © 2018 - {new Date().getFullYear()}
                 </span>
                 <br/>
                 <span>
