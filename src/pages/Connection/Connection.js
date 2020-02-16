@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom';
 import { displayContent } from '../../utils/translationDisplay';
 import axios from 'axios';
 import {Alert} from "reactstrap";
+import loading from "../../assets/Spinner-1s-70px.gif";
 
 class Connection extends Component {
 	constructor(props) {
@@ -18,7 +19,8 @@ class Connection extends Component {
 	        alphaName: false,
 	        alphaSurname: false,
 	        lang: 'fr',
-	        failAuth: false
+	        failAuth: false,
+            requestSent: false
         };
         this.onChangeEmail = this.onChangeEmail.bind(this);
         this.onChangePass = this.onChangePass.bind(this);
@@ -64,6 +66,7 @@ class Connection extends Component {
 
 	connect() {
 		if (this.state.email && this.state.email !== '' && this.state.password !== '') {
+            this.setState({requestSent: true});
 		    axios.post('/connect', {
 		        email: this.state.email,
                 passwd: this.state.password
@@ -79,6 +82,8 @@ class Connection extends Component {
                 	setTimeout(() => {
                 		this.setState({failAuth: false});
 	                }, 10 * 1000);
+                }).finally(() => {
+                    this.setState({requestSent: false});
                 });
             });
 		}
@@ -110,6 +115,12 @@ class Connection extends Component {
                             <input value={this.state.password} onChange={this.onChangePass} onKeyPress={this._handleKeyPressed} type="password" className="form-control" aria-label="Email"/>
                         </div>
                         <button onClick={this.connect} type="button" className="btn btn-primary">{displayContent(this.state.lang, i++, 'connexion')}</button>
+
+                        {
+                            this.state.requestSent ? <img src={loading} alt="loading"/>
+                                : null
+                        }
+
                     </div>
                 </div>
 	            {
