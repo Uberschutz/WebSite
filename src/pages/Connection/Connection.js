@@ -114,13 +114,11 @@ class Connection extends Component {
                             </div>
                             <input value={this.state.password} onChange={this.onChangePass} onKeyPress={this._handleKeyPressed} type="password" className="form-control" aria-label="Email"/>
                         </div>
-                        <button onClick={this.connect} type="button" className="btn btn-primary">{displayContent(this.state.lang, i++, 'connexion')}</button>
-
+                        <button onClick={this.connect} type="button" className="btn btn-primary">{displayContent(this.state.lang, i++, 'connexion')}</button> <br/>
                         {
                             this.state.requestSent ? <img src={loading} alt="loading"/>
                                 : null
                         }
-
                     </div>
                 </div>
 	            {
