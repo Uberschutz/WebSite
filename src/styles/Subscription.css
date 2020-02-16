@@ -1,0 +1,14 @@
+.title-intro {
+    margin-top: 2%;
+    margin-left: 2%;
+    text-align: left!important;
+}
+
+
+
+.grid-fl {
+    display: flex;
+    flex: 1 1 auto;
+    justify-content: center;
+    margin-top: 2%;
+}

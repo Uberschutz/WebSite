@@ -2,6 +2,7 @@ import React, { Component } from "react";
 
 import axios from 'axios';
 import Unauthorized from "../Unauthorized";
+import '../../styles/Subscription.css';
 
 export default class Subscription extends Component {
     constructor(props) {
@@ -84,7 +85,40 @@ export default class Subscription extends Component {
     render() {
         if (this.props.base.logged) {
             return (
+
                 <div>
+                    <div className="title-intro">
+                        <h4>Logiciels et plug-in</h4> <br/>
+                    </div>
+                    <div className="container">
+                        <div className="row">
+                            <div className="col-sm">
+                                One of three columns
+                            </div>
+                            <div className="col-sm">
+                                One of three columns
+                            </div>
+                            <div className="col-sm">
+                                One of three columns
+                            </div>
+                        </div>
+                    </div> <br/>
+                    <div className="title-intro">
+                        <h4>Licences</h4> <br/>
+                    </div>
+                    <div className="container">
+                        <div className="row">
+                            <div className="col-sm">
+                                One of two columns
+                            </div>
+                            <div className="col-sm">
+                                One of two columns
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                /*<div>
                     {
                         this.state.available_licences.map(licence => {
                             return (
@@ -103,7 +137,7 @@ export default class Subscription extends Component {
                     <div>
                         <button onClick={this.deleteLicence}>Delete</button>
                     </div>
-                </div>
+                </div>*/
             );
         } else {
             return (
