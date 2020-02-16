@@ -2,12 +2,17 @@ const axios = require('axios');
 const credentials = require('./credentials.js');
 const express = require('express');
 const bodyParser = require('body-parser');
-const path = require('path')
+const path = require('path');
 
 const app = express();
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use( express.static(path.resolve( __dirname, "./build" ) ) );
+
+var server_url = "user_server";
+if (process.env.NODE_ENV && process.env.NODE_ENV === 'dev') {
+	server_url = credentials.vm_ip;
+}
 
 app.post('/get_data', (req, res) => {
 	if (req.body.discordId) {
@@ -37,7 +42,7 @@ app.post('/get_data', (req, res) => {
 
 app.post('/subscribe_newsletter', (req, res) => {
 	// console.log(req.body, req.data);
-	axios.post('http://user_server:8081/subscribe_newsletter', {
+	axios.post(`http://${server_url}:8081/subscribe_newsletter`, {
 		email: req.body.email,
 		name: req.body.name
 	}).then(response => {
@@ -56,9 +61,13 @@ app.post('/subscribe_newsletter', (req, res) => {
 
 app.post('/unsubscribe_newsletter', (req, res) => {
 	// console.log(req.body, req.data);
-	axios.post('http://user_server:8081/unsubscribe_newsletter', {
+	axios.post(`http://${server_url}:8081/unsubscribe_newsletter`, {
 		email: req.body.email,
 		name: req.body.name
+	}, {
+		headers: {
+			'x-access-token': req.headers['x-access-token']
+		}
 	}).then(response => {
 		console.log(response.data);
 		res.send(response.data);
@@ -75,7 +84,7 @@ app.post('/unsubscribe_newsletter', (req, res) => {
 
 
 app.post('/register', (req, res) => {
-	axios.post('http://user_server:8081/register', {
+	axios.post(`http://${server_url}:8081/register`, {
 		email: req.body.email,
 		passwd: req.body.passwd,
 		lastname: req.body.lastname,
@@ -95,7 +104,7 @@ app.post('/register', (req, res) => {
 });
 
 app.post('/verifyaccount', (req, res) => {
-	axios.post('http://user_server:8081/verifyaccount', {
+	axios.post(`http://${server_url}:8081/verifyaccount`, {
 		id: req.body.id
 	}).then(response => {
 		console.log(response.data);
@@ -112,7 +121,7 @@ app.post('/verifyaccount', (req, res) => {
 });
 
 app.post('/connect', (req, res) => {
-	axios.post('http://user_server:8081/connect', {
+	axios.post(`http://${server_url}:8081/connect`, {
 		email: req.body.email,
 		passwd: req.body.passwd
 	}).then(response => {
@@ -125,7 +134,7 @@ app.post('/connect', (req, res) => {
 });
 
 app.post('/children', (req, res) => {
-	axios.post('http://user_server:8081/children', {
+	axios.post(`http://${server_url}:8081/children`, {
 		action: req.body.action,
 		name: req.body.name,
 		newName: (req.body.newName ? req.body.newName : ''),
@@ -146,7 +155,7 @@ app.post('/children', (req, res) => {
 });
 
 app.post('/rename', (req, res) => {
-	axios.post('http://user_server:8081/rename', {
+	axios.post(`http://${server_url}:8081/rename`, {
 		key: req.body.key,
 		value: req.body.value
 	}, {
@@ -163,7 +172,7 @@ app.post('/rename', (req, res) => {
 });
 
 app.post('/delete_account', (req, res) => {
-	axios.post('http://user_server:8081/delete_account', '', {
+	axios.post(`http://${server_url}:8081/delete_account`, '', {
 		headers: {
 			'x-access-token': req.headers['x-access-token']
 		}
@@ -177,7 +186,21 @@ app.post('/delete_account', (req, res) => {
 });
 
 app.get('/gdpr', (req, res) => {
-	axios.get('http://user_server:8081/gdpr', {
+	axios.get(`http://${server_url}:8081/gdpr`, {
+		headers: {
+			'x-access-token': req.headers['x-access-token']
+		}
+	}).then(response => {
+		console.log(response.data);
+		res.send(response.data);
+	}).catch(err => {
+		console.log(err);
+		res.status(500).send(`An error occurred: ${err.response.data}`);
+	})
+});
+
+app.get('/get_available_licences', (req, res) => {
+	axios.get(`http://${server_url}:8081/get_available_licences`,{
 		headers: {
 			'x-access-token': req.headers['x-access-token']
 		}
@@ -191,64 +214,64 @@ app.get('/gdpr', (req, res) => {
 });
 
 app.get('/get_subscription', (req, res) => {
-	axios.get('http://user_server:8081/get_subscription',{
+	axios.get(`http://${server_url}:8081/get_subscription`,{
 		headers: {
 			'x-access-token': req.headers['x-access-token']
 		}
 	}).then(response => {
-		console.log(response.data);
+		// console.log(response.data);
 		res.send(response.data);
 	}).catch(err => {
-		console.log(err);
-		res.status(500).send(`An error occurred: ${err.response.data}`);
+		// console.log(err);
+		res.status(err.response.status).send(`An error occurred: ${err.response.data}`);
 	})
 });
 
 app.post('/subscribe', (req, res) => {
-	axios.post('http://user_server:8081/subscribe', {
+	axios.post(`http://${server_url}:8081/subscribe`, {
 		subscription: req.body.subscription
 	}, {
 		headers: {
 			'x-access-token': req.headers['x-access-token']
 		}
 	}).then(response => {
-		console.log(response.data);
+		// console.log(response.data);
 		res.send(response.data);
 	}).catch(err => {
-		console.log(err);
+		// console.log(err);
 		res.status(500).send(`An error occurred: ${err.response.data}`);
 	})
 });
 
 app.post('/unsubscribe', (req, res) => {
-	axios.post('http://user_server:8081/unsubscribe', '', {
+	axios.post(`http://${server_url}:8081/unsubscribe`, '', {
 		headers: {
 			'x-access-token': req.headers['x-access-token']
 		}
 	}).then(response => {
-		console.log(response.data);
+		// console.log(response.data);
 		res.send(response.data);
 	}).catch(err => {
-		console.log(err);
+		// console.log(err);
 		res.status(500).send(`An error occurred: ${err.response.data}`);
 	})
 });
 
-app.post('/set_subscription', (req, res) => {
-	axios.post('http://user_server:8081/set_subscription', {
-		subscription: req.body.subscription
-	}, {
-		headers: {
-			'x-access-token': req.headers['x-access-token']
-		}
-	}).then(response => {
-		console.log(response.data);
-		res.send(response.data);
-	}).catch(err => {
-		console.log(err);
-		res.status(500).send(`An error occurred: ${err.response.data}`);
-	})
-});
+// app.post('/set_subscription', (req, res) => {
+// 	axios.post(`http://${server_url}:8081/set_subscription`, {
+// 		subscription: req.body.subscription
+// 	}, {
+// 		headers: {
+// 			'x-access-token': req.headers['x-access-token']
+// 		}
+// 	}).then(response => {
+// 		console.log(response.data);
+// 		res.send(response.data);
+// 	}).catch(err => {
+// 		console.log(err);
+// 		res.status(500).send(`An error occurred: ${err.response.data}`);
+// 	})
+// });
 
 app.get('*', (req, res) => {
 	res.sendFile(path.resolve( __dirname, "./build/index.html" ));
