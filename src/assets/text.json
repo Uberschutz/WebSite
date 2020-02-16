@@ -92,6 +92,9 @@
       "unauthorized": [
         "403 Accès interdit"
       ],
+      "inComing": [
+        "A venir ..."
+      ],
       "footer": [
         "Créé par Marianne LEVEE & Thomas DEROTE-PARCELLIER ", "Icônes de l'application par "
       ]
@@ -187,6 +190,9 @@
       ],
       "unauthorized": [
         "403 Forbidden"
+      ],
+      "inComing": [
+        "In coming ..."
       ],
       "footer": [
         "Created by Marianne LEVEE & Thomas DEROTE-PARCELLIER ", "App icon by "
