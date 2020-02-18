@@ -58,8 +58,7 @@ class Profile extends Component {
 					email,
 					lastname,
 					firstname,
-					subscription: response.data.subscription,
-					subscribed: response.data.subscribed
+					subscription: response.data
 				});
 			}).catch(err => {
 				console.log(err);
@@ -228,7 +227,7 @@ class Profile extends Component {
 		if (this.state.logged) {
 		    let i = 0;
 		    return (
-			    <div className="description-txt">
+			    <div className="fixed-size description-txt">
 					<div className="row button-footerP">
 						<h4 className="name-font col-sm-auto">
 							{displayContent(this.state.lang, i++, 'profile')}
@@ -250,6 +249,8 @@ class Profile extends Component {
 					<h6>
 						{displayContent(this.state.lang, i++, 'profile')}<br/><br/>
 						{displayContent(this.state.lang, i++, 'profile')}
+						<span>{this.state.subscription}</span>
+						{/*Ecrire achat Üz ici*/}
 					</h6>
 					{
 					++i && this.state.newsletter ?

@@ -24,3 +24,7 @@
     text-align: right!important;
     margin-right: 1%;
 }
+
+.fixed-size {
+    overflow: hidden;
+}

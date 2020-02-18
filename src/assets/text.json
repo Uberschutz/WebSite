@@ -3,7 +3,7 @@
     "lang": "fr",
     "pages": {
       "navbar": [
-        "Bonjour", "Déconnexion", "Connexion", "Profil", "Rapport", "Paramètres"
+        "Bonjour", "Déconnexion", "Connexion", "Abonnements", "Profil", "Rapport", "Paramètres"
       ],
       "home": [
         "Internet :", "êtes-vous conscients des dangers", "que rencontrent vos enfants ?",
@@ -65,7 +65,7 @@
         "Vous voulez vous désinscrire de la Newsletter ?", "Rendez vous sur votre", "Profil"
       ],
       "profile": [
-        "Nom de famille : ", "Prénom : ", "Enfants protégés par Überschutz : X ", "Abonnement utilisé : Premium ", "Se désinscrire", "Echéancier de paiement : ",
+        "Nom de famille : ", "Prénom : ", "Enfants protégés par Überschutz : X ", "Abonnement utilisé : ", "Se désinscrire", "Echéancier de paiement : ",
         "Nom du prélèvement", "Payé ?",
         "Récupérer mes informations", "Supprimer mon compte"
       ],
@@ -104,7 +104,7 @@
     "lang": "en",
     "pages": {
       "navbar": [
-        "Welcome", "Disconnect", "Connection", "Profile", "Report", "Parameters"
+        "Welcome", "Disconnect", "Connection", "Subscription", "Profile", "Report", "Parameters"
       ],
       "home": [
         "Internet :", "are you aware of dangers", "your childrens encounter ?",
@@ -164,7 +164,7 @@
         "Do you want to unsubscribe from the newsletter?", "Go on your", "Profile"
       ],
       "profile": [
-        "Last name: ", "First name: ", "Child protected by Überschutz : X ", "Subscription used : Premium ", "Unsubscribe", "Payment schedule : ",
+        "Last name: ", "First name: ", "Child protected by Überschutz : X ", "Subscription used : ", "Unsubscribe", "Payment schedule : ",
         "Levy's name : ", "Payed ?",
         "Recover my information", "Delete my account"
       ],
