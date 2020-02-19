@@ -22,6 +22,7 @@ export default class Subscription extends Component {
 
         this.addLicence = this.addLicence.bind(this);
         this.deleteLicence = this.deleteLicence.bind(this);
+        this.redirectInComing = this.redirectInComing.bind(this);
     }
 
     componentDidMount() {
@@ -105,6 +106,10 @@ export default class Subscription extends Component {
 
     }
 
+    redirectInComing() {
+        this.props.history.push("/InComing");
+    }
+
     render() {
         let i = 0;
         return (
@@ -121,7 +126,7 @@ export default class Subscription extends Component {
                             {displayContent(this.state.lang, i++, 'subscription')}<br/>
                             {displayContent(this.state.lang, i++, 'subscription')}<br/>
                             {displayContent(this.state.lang, i++, 'subscription')}<br/>
-                            <button type="button" className="btn btn-success button-border">{displayContent(this.state.lang, i++, 'subscription')}</button> <br/>
+                            <button type="button" className="btn btn-success button-border" onClick={this.redirectInComing}>{displayContent(this.state.lang, i++, 'subscription')}</button> <br/>
                         </div>
                         <div className="col-sm">
                             <img className="image-border" src={software} alt="software"/> <br/>
@@ -129,7 +134,7 @@ export default class Subscription extends Component {
                             {displayContent(this.state.lang, i++, 'subscription')}<br/>
                             {displayContent(this.state.lang, i++, 'subscription')}<br/>
                             {displayContent(this.state.lang, i++, 'subscription')}<br/>
-                            <button type="button" className="btn btn-warning button-border">{displayContent(this.state.lang, i++, 'subscription')}</button> <br/>
+                            <button type="button" className="btn btn-warning button-border" onClick={this.redirectInComing}>{displayContent(this.state.lang, i++, 'subscription')}</button> <br/>
                         </div>
                     </div>
                 </div> <br/>
