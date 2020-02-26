@@ -26,34 +26,13 @@ export default class Subscription extends Component {
     }
 
     componentDidMount() {
-        if (this.props.base) {
-            const { base: { language} } = this.props;
+        axios.get('/get_available_licences').then(response => {
             this.setState({
-                lang: language
+                available_licences: response.data
             });
-            axios.get('/get_available_licences', {
-                headers: {
-                    'x-access-token': this.props.base.token
-                }
-            }).then(response => {
-                this.setState({
-                    available_licences: response.data
-                });
-            }).catch(err => {
-                console.log(err);
-            });
-            axios.get('/get_subscription', {
-                headers: {
-                    'x-access-token': this.props.base.token
-                }
-            }).then(response => {
-                this.setState({
-                    account_licence: response.data
-                });
-            }).catch(err => {
-                console.log(err);
-            });
-        }
+        }).catch(err => {
+            console.log(err);
+        });
     }
 
     componentDidUpdate(prevProps, prevState, snapshot) {
