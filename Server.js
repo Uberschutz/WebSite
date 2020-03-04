@@ -40,6 +40,16 @@ app.post('/get_data', (req, res) => {
 	}
 });
 
+app.get('/get_auth_user', (req, res) => {
+	axios.get(`http://${server_url}:8081/get_auth_user`, {
+		headers: req.headers
+	}).then(response => {
+		res.send(response.data);
+	}).catch(err => {
+		res.status(err.response.status).send(err.response.data);
+	})
+});
+
 app.post('/subscribe_newsletter', (req, res) => {
 	// console.log(req.body, req.data);
 	axios.post(`http://${server_url}:8081/subscribe_newsletter`, {

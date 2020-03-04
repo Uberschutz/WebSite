@@ -1,12 +1,12 @@
 const initialState = {
     language: 'fr',
     logged: false,
-    token: undefined,
-    email: undefined,
-    lastname: undefined,
-	firstname: undefined,
-	subscribed: false,
-	newsletter: false
+    token: undefined, // should be replaced by hidden token or cookie/session
+    // email: undefined,
+    // lastname: undefined,
+	// firstname: undefined,
+	// subscribed: false,
+	// newsletter: false
 };
 
 const base = (state = initialState, action) => {
@@ -20,15 +20,18 @@ const base = (state = initialState, action) => {
         case 'SET_LOGGED':
             const { logged } = action.payload;
             return { ...state, logged };
+        case 'SET_AUTH_TOKEN':
+            const { token } = action.payload;
+            return { ...state, token };
         case 'SET_USER':
-            const { email, lastname, firstname, token } = action.payload;
-            return { ...state, email, lastname, firstname, token };
-        case 'SET_SUBSCRIBED':
-            const { subscribed } = action.payload;
-            return { ...state, subscribed };
-	    case 'SET_NEWSLETTER':
-		    const { newsletter } = action.payload;
-		    return { ...state, newsletter };
+            const { email, lastname, firstname } = action.payload;
+            return { ...state, email, lastname, firstname };
+        // case 'SET_SUBSCRIBED':
+        //     const { subscribed } = action.payload;
+        //     return { ...state, subscribed };
+	    // case 'SET_NEWSLETTER':
+		//     const { newsletter } = action.payload;
+		//     return { ...state, newsletter };
         default:
             return state;
     }
