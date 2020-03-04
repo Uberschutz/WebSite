@@ -86,12 +86,12 @@ class Parameters extends Component {
 			this.setState({name: '', age: '', id: null, state: 'Create', alphaErr: false, numErr: false, options: this.options},
 				() => this.setState({showModal: !this.state.showModal}));
 		} else {
-			this.setState({showModal: !this.state.showModal});
+			this.setState({showModal: !this.state.showModal, state: 'Create'});
 		}
 	}
 
 	createChildren() {
-		this.setState({alphaErr: this.state.name === '', numErr: this.state.age === ''});
+		this.setState({alphaErr: this.state.name === '', numErr: this.state.age === '' && isNaN(this.state.age)});
 		if (this.state.name === '' || this.state.age === '')
 			return;
 		if (this.state.state === 'Create') {
@@ -160,28 +160,26 @@ class Parameters extends Component {
 	}
 
 	setFirstName(name) {
-		console.log('Here set children name', name);
 		if (name && !Parameters.isAlpha(name)) {
-			this.setState({alphaErr: true});
+			this.setState({alphaErr: true, name});
 		} else {
-			this.setState({alphaErr: false});
+			this.setState({alphaErr: false, name});
 		}
-		this.setState({name: name})
 	}
 
 	setAge(age) {
-		console.log('Here set children age', age);
 		if (age && !Parameters.isNum(age)) {
-			this.setState({numErr: true});
+			this.setState({numErr: true, age});
 		} else {
-			this.setState({numErr: false});
+			this.setState({numErr: false, age});
 		}
-		this.setState({age: age});
 	}
 
 	setDiscordId(id) {
 		if (id) {
 			this.setState({discordId: id});
+		} else {
+			this.setState({discordId: ''});
 		}
 	}
 
@@ -197,7 +195,7 @@ class Parameters extends Component {
 			return (
 				<div className="card align-card">
 					<Modal isOpen={this.state.showModal} toggle={this.toggleModal}
-					       onClosed={() => this.setState({state: 'Create'})} size='lg'>
+					       /*onClosed={() => this.setState({state: 'Create'})}*/ size='lg'>
 						<form><br/>
 							<div className="align-card">
 								<label className="child-field">
