@@ -115,7 +115,7 @@ class Report extends Component {
 		// 	{name: "Hating", value: min + Math.random() * (max - min)},
 		// ];
 		axios.post('/get_data', {
-			id: child.discordId
+			discordId: child.discordId
 		}).then(response => {
 			console.log(response);
 			const data = response.data.map(obj => {
