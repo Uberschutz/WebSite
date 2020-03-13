@@ -71,3 +71,17 @@
 .size-icon {
     font-size: 20px;
 }
+
+.custom-modal-style {
+    width: 1200px;
+    min-width: 1200px;
+    height: 700px;
+}
+
+
+
+/*@media (min-width:1200px) {
+    .modal-lg, .modal-xl {
+        width: 1000px;
+    }
+}*/

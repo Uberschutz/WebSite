@@ -4,7 +4,6 @@ import '../../styles/Parameters.css';
 import axios from 'axios';
 
 import { Modal, Button } from 'reactstrap';
-// import { Card, CardText, CardTitle, CardFooter } from "reactstrap";
 import {Icon} from 'antd';
 
 import DisplayChildrenList from '../../components/ChildCards';
@@ -194,8 +193,8 @@ class Parameters extends Component {
 		if (this.state.logged) {
 			return (
 				<div className="card align-card">
-					<Modal isOpen={this.state.showModal} toggle={this.toggleModal}
-					       /*onClosed={() => this.setState({state: 'Create'})}*/ size='lg'>
+					<Modal isOpen={this.state.showModal} size="xl" toggle={this.toggleModal} contentClassName="custom-modal-style" centered={true}
+					       /*onClosed={() => this.setState({state: 'Create'})}*/>
 						<form><br/>
 							<div className="align-card">
 								<label className="child-field">
