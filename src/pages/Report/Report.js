@@ -25,9 +25,11 @@ class Report extends Component {
 			lang: 'fr',
 			logged: false,
 			token: '',
-			childrens: []
+			childrens: [],
+			filters: []
 		};
 		this.i = 1;
+		this.editFilter = this.editFilter.bind(this);
 	}
 
 	componentDidMount() {
@@ -73,27 +75,30 @@ class Report extends Component {
 		return str.charAt(0).toUpperCase() + str.slice(1);
 	};
 
-	// componentDidMount() {
-	// 	console.log('whut');
-	// 	this.setState({selectedChild: displayContent(this.props.lang, this.i++, 'report')})
-	// }
+	editFilter(filter) {
+		if (filter in this.state.filters) {
+			this.setState({
+				filters: this.state.slice(this.state.filters.findIndex(filter))
+			});
+		} else {
+			this.setState({
+				filters: this.state.filter.push(filter)
+			})
+		}
+	}
 
 	changeChild(child) {
-		if (child.name === 'general') {
+		if (typeof child === 'string' && child === 'general') {
 			axios.post('/get_data').then(response => {
-				console.log(response);
 				const data = response.data.map(obj => {
 					return {name: this.capitalize(obj.key.toLowerCase()), value: obj.value};
 				});
-				console.log(data);
-				this.setState({selectedChild: 'general', isOpen: false, childData: data});
+				this.setState({selectedChild: 'General', isOpen: false, childData: data});
 			}).catch(err => {
 				console.log(err);
 			})
 		} else {
 			this.getChildData(child)
-			// const datas = this.getChildData(name);
-			// this.setState({selectedChild: name, isOpen: false, childData: datas});
 		}
 	}
 
@@ -101,11 +106,9 @@ class Report extends Component {
 		axios.post('/get_data', {
 			discordId: child.discordId
 		}).then(response => {
-			console.log(response);
 			const data = response.data.map(obj => {
 				return {name: this.capitalize(obj.key.toLowerCase()), value: obj.value};
 			});
-			console.log(data);
 			this.setState({selectedChild: child.name, isOpen: false, childData: data});
 		}).catch(err => {
 			console.log(err);
@@ -120,7 +123,6 @@ class Report extends Component {
 					<div>
 						<ButtonDropdown isOpen={this.state.isOpen} toggle={this.toggle} size="lg">
 							<DropdownToggle color="info">
-								{/*{this.state.selectedChild}*/}
 								{this.state.selectedChild ? this.state.selectedChild : displayContent(this.state.lang, i++, 'report')}
 							</DropdownToggle>
 							<DropdownMenu className="drop btn">
@@ -151,7 +153,6 @@ class Report extends Component {
 					<div style={{width: '50%'}} className="btn">
 						{
 							this.state.childData.map((d, idx) => {
-								console.log("ICI", idx, d);
 								if (d.name === 'Safe') {
 									return (
 										<div style={{height: 32, margin: 10}}>
