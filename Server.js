@@ -29,6 +29,7 @@ app.post('/get_data', (req, res) => {
 	}).then(response => {
 		res.send(response.data.flagsPercentage);
 	}).catch(err => {
+		console.log(err);
 		res.status(err.response.status).send(err.response.data);
 	});
 });

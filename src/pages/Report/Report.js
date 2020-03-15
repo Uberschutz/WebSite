@@ -113,40 +113,41 @@ class Report extends Component {
 	}
 
 	render() {
+		let i = 0;
 		if (this.state.logged) {
 			return (
 				<div>
-                    <br/>
-					<ButtonDropdown isOpen={this.state.isOpen} toggle={this.toggle} size="lg">
-						<DropdownToggle color="info">
-							{/*{this.state.selectedChild}*/}
-							{this.state.selectedChild ? this.state.selectedChild : displayContent(this.state.lang, 0, 'report')}
-						</DropdownToggle>
-						<DropdownMenu className="drop btn">
-							{
-								this.state.childrens.map((d, idx) => {
-									return (
-										<div>
-											<div onClick={() => {this.changeChild(d)}}>{d.name}</div>
-										</div>
-									)
-								})
-							}
-							{/*<div>
-								<div onClick={() => {this.changeChild('Thomas')}}>Thomas</div>
-							</div>
-							<div>
-								<div onClick={() => {this.changeChild('Theo')}}>Théo</div>
-							</div>
-							<div>
-								<div onClick={() => {this.changeChild('Philippe')}}>Philippe</div>
-							</div>*/}
-							<div>
-								<div onClick={() => {this.changeChild('general')}}>General</div>
-							</div>
-						</DropdownMenu>
-					</ButtonDropdown>
-					<br/>
+					<div>
+						<ButtonDropdown isOpen={this.state.isOpen} toggle={this.toggle} size="lg">
+							<DropdownToggle color="info">
+								{/*{this.state.selectedChild}*/}
+								{this.state.selectedChild ? this.state.selectedChild : displayContent(this.state.lang, i++, 'report')}
+							</DropdownToggle>
+							<DropdownMenu className="drop btn">
+								{
+									this.state.childrens.map((d, idx) => {
+										return (
+											<div>
+												<div onClick={() => {this.changeChild(d)}}>{d.name}</div>
+											</div>
+										)
+									})
+								}
+								<div>
+									<div onClick={() => {this.changeChild('general')}}>General</div>
+								</div>
+							</DropdownMenu>
+						</ButtonDropdown>
+					</div> <br/>
+
+					<div className="left-filter">
+						<span>{displayContent(this.state.lang, i++, 'report')}</span> <br/> <br/>
+						<div className="filter-align">
+							<input type="checkbox"/> Discord <br/>
+							<input type="checkbox"/> {displayContent(this.state.lang, i++, 'report')} <br/>
+						</div>
+					</div>
+
 					<div style={{width: '50%'}} className="btn">
 						{
 							this.state.childData.map((d, idx) => {
