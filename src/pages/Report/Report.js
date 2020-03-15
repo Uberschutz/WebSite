@@ -98,22 +98,6 @@ class Report extends Component {
 	}
 
 	getChildData(child) {
-		/* Here call Christian API */
-		// const min = 0;
-		// const max = 100;
-		// return [
-		// 	{name: "Safe", value: min + Math.random() * (max - min)},
-		// 	{name: "Toxicity", value: min + Math.random() * (max - min)},
-		// 	{name: "Obscenity", value: min + Math.random() * (max - min)},
-		// 	{name: "Racism", value: min + Math.random() * (max - min)},
-		// 	{name: "Insult", value: min + Math.random() * (max - min)},
-		// 	{name: "Threat", value: min + Math.random() * (max - min)},
-		// 	{name: "Truly toxic", value: min + Math.random() * (max - min)},
-		// 	{name: "Profanity", value: min + Math.random() * (max - min)},
-		// 	{name: "Inflammatory", value: min + Math.random() * (max - min)},
-		// 	{name: "Identity Attack", value: min + Math.random() * (max - min)},
-		// 	{name: "Hating", value: min + Math.random() * (max - min)},
-		// ];
 		axios.post('/get_data', {
 			discordId: child.discordId
 		}).then(response => {
