@@ -54,10 +54,10 @@ class Header extends Component {
     }
 
     getUser() {
-        if (this.props.base && this.props.base.token) {
+        if (this.props.base && this.props.base.token && this.props.base.logged) {
             axios.get('/get_auth_user', {
                 headers: {
-                    token: this.props.base.token
+                    'x-access-token': this.props.base.token
                 }
             }).then(response => {
                 if (response && response.data) {
@@ -101,6 +101,7 @@ class Header extends Component {
     disconnect() {
     	this.props.setLogged(false);
     	this.props.setUser(undefined, undefined, undefined, undefined);
+    	this.props.setAuthToken(undefined);
     	this.setState({logged: false, lastname: undefined});
     }
 

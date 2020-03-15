@@ -49,33 +49,6 @@ class Profile extends Component {
 			this.setState({
 				logged, language
 			}, this.getUser);
-		// 	axios.get('/get_subscription', {
-		// 		headers: {
-		// 			'x-access-token': token
-		// 		}
-		// 	}).then(response => {
-		// 		this.setState({
-		// 			lang: language,
-		// 			logged : logged,
-		// 			token,
-		// 			newsletter,
-		// 			email,
-		// 			lastname,
-		// 			firstname,
-		// 			subscription: response.data
-		// 		});
-		// 	}).catch(err => {
-		// 		console.log(err);
-		// 		this.setState({
-		// 			lang: language,
-		// 			logged : logged,
-		// 			token,
-		// 			newsletter,
-		// 			email,
-		// 			lastname,
-		// 			firstname
-		// 		});
-		// 	})
 		}
 	}
 
@@ -88,7 +61,7 @@ class Profile extends Component {
 		if (this.props.base && this.props.base.token) {
 			axios.get('/get_auth_user', {
 				headers: {
-					token: this.props.base.token
+					'x-access-token': this.props.base.token
 				}
 			}).then(response => {
 				if (response && response.data) {
@@ -190,7 +163,7 @@ class Profile extends Component {
 			}
 		}).then(response => {
 			this.props.setLogged(false);
-			this.props.setUser(null, null, null, null);
+			// this.props.setUser(null, null, null, null);
 			this.props.history.push("/");
 		}).catch(err => {
 			console.log(err, "Error");
@@ -250,7 +223,6 @@ class Profile extends Component {
 						{displayContent(this.state.lang, i++, 'profile')}<br/><br/>
 						{displayContent(this.state.lang, i++, 'profile')}
 						<span>{this.state.subscription}</span>
-						{/*Ecrire achat Üz ici*/}
 					</h6>
 					{
 					++i && this.state.newsletter ?
