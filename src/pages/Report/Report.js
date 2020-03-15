@@ -25,9 +25,11 @@ class Report extends Component {
 			lang: 'fr',
 			logged: false,
 			token: '',
-			childrens: []
+			childrens: [],
+			filters: []
 		};
 		this.i = 1;
+		this.editFilter = this.editFilter.bind(this);
 	}
 
 	componentDidMount() {
@@ -72,6 +74,18 @@ class Report extends Component {
 	capitalize = function(str) {
 		return str.charAt(0).toUpperCase() + str.slice(1);
 	};
+
+	editFilter(filter) {
+		if (filter in this.state.filters) {
+			this.setState({
+				filters: this.state.slice(this.state.filters.findIndex(filter))
+			});
+		} else {
+			this.setState({
+				filters: this.state.filter.push(filter)
+			})
+		}
+	}
 
 	changeChild(child) {
 		if (typeof child === 'string' && child === 'general') {
