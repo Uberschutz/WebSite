@@ -19,8 +19,8 @@ app.post('/get_data', (req, res) => {
 	if (req.body.discordId) {
 		data += `&userId=${req.body.discordId}`
 	}
-	if (req.body.service) {
-		data += `&service=${req.body.service}`
+	if (req.body.services) {
+		data += `&services=${req.body.services.toString()}`
 	}
 	axios.post(`${credentials.api_ip}/collect`, data, {
 		headers: {

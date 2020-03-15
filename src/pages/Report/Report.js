@@ -76,20 +76,25 @@ class Report extends Component {
 	};
 
 	editFilter(filter) {
-		if (filter in this.state.filters) {
+		if (this.state.filters.includes(filter.target.dataset.filter)) {
+			let filters = [...this.state.filters];
+			let idx = this.state.filters.indexOf(filter.target.dataset.filter);
+			filters.splice(idx, 1);
 			this.setState({
-				filters: this.state.slice(this.state.filters.findIndex(filter))
+				filters: filters
 			});
 		} else {
 			this.setState({
-				filters: this.state.filter.push(filter)
-			})
+				filters: this.state.filters.concat([filter.target.dataset.filter])
+			});
 		}
 	}
 
 	changeChild(child) {
 		if (typeof child === 'string' && child === 'general') {
-			axios.post('/get_data').then(response => {
+			axios.post('/get_data', {
+				services: this.state.filters
+			}).then(response => {
 				const data = response.data.map(obj => {
 					return {name: this.capitalize(obj.key.toLowerCase()), value: obj.value};
 				});
@@ -104,7 +109,8 @@ class Report extends Component {
 
 	getChildData(child) {
 		axios.post('/get_data', {
-			discordId: child.discordId
+			discordId: child.discordId,
+			services: this.state.filters
 		}).then(response => {
 			const data = response.data.map(obj => {
 				return {name: this.capitalize(obj.key.toLowerCase()), value: obj.value};
@@ -117,7 +123,7 @@ class Report extends Component {
 
 	render() {
 		let i = 0;
-		if (this.state.logged) {
+		if (!this.state.logged) {
 			return (
 				<div>
 					<div>
@@ -145,8 +151,8 @@ class Report extends Component {
 					<div className="left-filter">
 						<span>{displayContent(this.state.lang, i++, 'report')}</span> <br/> <br/>
 						<div className="filter-align">
-							<input type="checkbox"/> Discord <br/>
-							<input type="checkbox"/> {displayContent(this.state.lang, i++, 'report')} <br/>
+							<input type="checkbox" checked={this.state.filters.includes('Discord')} onChange={this.editFilter} data-filter="Discord"/> Discord <br/>
+							<input type="checkbox" checked={this.state.filters.includes('Internet')} onChange={this.editFilter} data-filter="Internet"/> {displayContent(this.state.lang, i++, 'report')} <br/>
 						</div>
 					</div>
 
