@@ -29,7 +29,11 @@ app.post('/get_data', (req, res) => {
 	}).then(response => {
 		res.send(response.data.flagsPercentage);
 	}).catch(err => {
-		res.status(err.response.status).send(err.response.data);
+		// console.log(err);
+		if (err.response)
+			res.status(err.response.status).send(err.response.data.message);
+		else
+			res.status(500).send('Internal server error');
 	});
 });
 
@@ -192,7 +196,10 @@ function forward_response(res, promise) {
 		statusText: promise.statusText,
 		data: promise.data
 	});*/
-	res.status(promise.status).send(promise.data);
+	if (promise)
+		res.status(promise.status).send(promise.data);
+	else
+		res.status(500).send('Internal server error');
 }
 
 app.listen(8080, () =>
