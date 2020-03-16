@@ -17,21 +17,36 @@ class Contact extends Component {
         this.state = {
             lang: 'fr',
             connected: false,
-            subscribed: false
+            subscribed: false,
+            email: '',
+            lastname: ''
         };
     }
 
 	componentDidMount() {
     	if (this.props.base) {
-		    const {base: {language, logged, newsletter, lastname, email}} = this.props;
+		    const {base: {language, logged}} = this.props;
 		    console.log(language, this.state.lang, 'kek');
             this.setState({
-			    lang: language,
+                lang: language,
                 connected: logged,
-                subscribed: newsletter,
-                name: lastname,
-                email: email
-			})
+            }, () =>
+                axios.get('/get_auth_user', {
+                    headers: {
+                        'x-access-token': this.props.base.token
+                    }
+                }).then(response => {
+                    if (response && response.data) {
+                        this.setState({
+                            subscribed: response.data.newsletter,
+                            lastname: response.data.lastname,
+                            email: response.data.email
+                        });
+                    }
+                }).catch(err => {
+                    console.log(err);
+                })
+            );
 	    }
 	}
 
@@ -44,9 +59,9 @@ class Contact extends Component {
         this.props.history.push("/Profile");
     }
 
-    updateNewsletter(state) {
-        this.props.setNewsletter(state);
-    }
+    // updateNewsletter(state) {
+    //     this.props.setNewsletter(state);
+    // }
 
     render() {
         let i = 0;
@@ -87,7 +102,7 @@ class Contact extends Component {
                     </div>
                 </div>
                 <Faq lang={this.state.lang}/>
-                <Form lang={this.state.lang} connected={this.state.connected} subscribed={this.state.subscribed} redirectProfile={this.redirectProfile.bind(this)} name={this.state.name} email={this.state.email} updateNewsletter={this.updateNewsletter.bind(this)}/>
+                <Form lang={this.state.lang} connected={this.state.connected} subscribed={this.state.subscribed} redirectProfile={this.redirectProfile.bind(this)} name={this.state.lastname} email={this.state.email}/>
             </div>
         )
     }
@@ -175,6 +190,8 @@ class Form extends Component {
         this.onChangeEmail = this.onChangeEmail.bind(this);
         this.onChangeName = this.onChangeName.bind(this);
         this._handleKeyPressed = this._handleKeyPressed.bind(this);
+        this.registerNews = this.registerNews.bind(this);
+        this.subscribe = this.subscribe.bind(this);
     }
 
 	_handleKeyPressed(e) {
@@ -229,17 +246,17 @@ class Form extends Component {
     }
 
     subscribe() {
-        if (this.props.name !== '' && this.props.email !== '') {
+        if (this.props.connected && this.props.name !== '' && this.props.email !== '') {
             axios.post('/subscribe_newsletter', {
                 email: this.props.email,
                 name: this.props.name
             }).then(response => {
-            	console.log(response);
+            	console.log(response.data);
 	            this.onChangeSent();
 	            setTimeout(() => {
 		            this.setState({subscribed: true});
 	            }, 3 * 1000);
-	            this.props.updateNewsletter(true)
+	            // this.props.updateNewsletter(true)
             }).catch(err => {
             	console.log(err); this.onSubscribeFailure(err)
             });
@@ -286,7 +303,7 @@ class Form extends Component {
                         </div>
                         {
                             this.state.emailSent ?
-                                <img src={loading} alt="loading"/> : <button type="button" className="btn btn-primary button-footer" onClick={() => this.registerNews()}>{displayContent(this.props.lang, i,'form')}</button>
+                                <img src={loading} alt="loading"/> : <button type="button" className="btn btn-primary button-footer" onClick={this.registerNews}>{displayContent(this.props.lang, i,'form')}</button>
                         }
                         <br/>
                     </form>
@@ -302,7 +319,7 @@ class Form extends Component {
                 <div className="button-footer">
                     <span className="question">{displayContent(this.props.lang, 9,'form')}</span><br/>
                     <span>{displayContent(this.props.lang, 10,'form')}</span>
-                    <button className="btn btn-info button-footer" onClick={() => this.props.redirectProfile()}>{displayContent(this.props.lang, 11,'form')}</button>
+                    <button className="btn btn-info button-footer" onClick={this.props.redirectProfile}>{displayContent(this.props.lang, 11,'form')}</button>
                 </div>
             )
         } else if (this.props.connected && !this.props.subscribed) {
@@ -314,7 +331,7 @@ class Form extends Component {
 	                {
 	                	this.state.emailSent ?  <img src={loading} alt="loading"/>
 			                :
-			                <input type="radio" onClick={() => this.subscribe()} aria-label="Radio button for following option"/>
+			                <input type="radio" onClick={this.subscribe} aria-label="Radio button for following option"/>
 	                }
                     <span>{displayContent(this.props.lang, 8,'form')}</span> <br/>
                     <img className="button-footer" src={newsletter} alt="newsletter"/>
@@ -330,7 +347,7 @@ class Form extends Component {
 		        <div className="button-footer">
 			        <span className="question">{displayContent(this.props.lang, 9,'form')}</span><br/>
 			        <span>{displayContent(this.props.lang, 10,'form')}</span>
-			        <button className="btn btn-info button-footer" onClick={() => this.props.redirectProfile()}>{displayContent(this.props.lang, 11,'form')}</button>
+			        <button className="btn btn-info button-footer" onClick={this.props.redirectProfile}>{displayContent(this.props.lang, 11,'form')}</button>
 		        </div>
 	        )
         }

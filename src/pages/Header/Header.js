@@ -11,39 +11,69 @@ import {DropdownMenu, DropdownToggle, ButtonDropdown} from 'reactstrap'
 import {Link} from "react-router-dom";
 import { displayContent } from '../../utils/translationDisplay';
 
+import axios from 'axios';
+
 class Header extends Component {
     constructor(props) {
         super(props);
 
-        this.toggle = this.toggle.bind(this);
         this.state = {
             isOpen: false,
             logged: false,
 	        lastname: undefined,
+            firstname: undefined,
             lang: 'fr'
         };
 
         this.frenchClass = "clickable-flag" + (this.state.lang === "fr" ? " touched" : "");
         this.EnglClass = "clickable-flag" + (this.state.lang === "en" ? " touched" : "");
+
+        this.toggle = this.toggle.bind(this);
+        this.refreshAccount = this.refreshAccount.bind(this);
+        this.getUser = this.getUser.bind(this);
     }
 
     componentDidMount() {
     	console.log('header mounted');
 	    if (this.props.base) {
-		    const { base: { language, logged, lastname } } = this.props;
+		    const { base: { language, logged } } = this.props;
 		    this.setState({
 			    lang: language,
-			    logged,
-			    lastname
+			    logged
 		    });
+		    this.getUser();
+		    this.refreshAccount();
 	    }
     }
 
     componentDidUpdate(prevProps, prevState, snapshot) {
     	console.log('header update');
 	    if (this.props.base !== prevProps.base) {
-		    this.setState({logged: this.props.base.logged, lastname: this.props.base.logged ? this.props.base.lastname : undefined}, () => console.log('re'));
+		    this.setState({logged: this.props.base.logged}, () => console.log('re'));
 	    }
+    }
+
+    getUser() {
+        if (this.props.base && this.props.base.token && this.props.base.logged) {
+            axios.get('/get_auth_user', {
+                headers: {
+                    'x-access-token': this.props.base.token
+                }
+            }).then(response => {
+                if (response && response.data) {
+                    this.setState({
+                        firstname: response.data.firstname,
+                        lastname: response.data.lastname
+                    });
+                }
+            }).catch(err => {
+                console.log(err);
+            })
+        }
+    }
+
+    refreshAccount() {
+        setInterval(this.getUser, 1000 * 30);
     }
 
 	toggle() {
@@ -71,11 +101,12 @@ class Header extends Component {
     disconnect() {
     	this.props.setLogged(false);
     	this.props.setUser(undefined, undefined, undefined, undefined);
+    	this.props.setAuthToken(undefined);
     	this.setState({logged: false, lastname: undefined});
     }
 
     render () {
-    	console.log('redux', this.props)
+    	console.log('redux', this.props);
 	    console.log('states', this.state.logged);
         // console.log(this.frenchClass);
         // console.log(this.EnglClass);

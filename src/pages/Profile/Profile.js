@@ -40,44 +40,43 @@ class Profile extends Component {
 		this.getAccountData = this.getAccountData.bind(this);
 		this.deleteAccount = this.deleteAccount.bind(this);
 		this.unsubscribe_newsletter = this.unsubscribe_newsletter.bind(this);
+		this.getUser = this.getUser.bind(this);
 	}
 
 	componentDidMount() {
 		if (this.props.base) {
-			const { base: { language, logged, newsletter, email, lastname, firstname, token } } = this.props;
-			axios.get('/get_subscription', {
-				headers: {
-					'x-access-token': token
-				}
-			}).then(response => {
-				this.setState({
-					lang: language,
-					logged : logged,
-					token,
-					newsletter,
-					email,
-					lastname,
-					firstname,
-					subscription: response.data
-				});
-			}).catch(err => {
-				console.log(err);
-				this.setState({
-					lang: language,
-					logged : logged,
-					token,
-					newsletter,
-					email,
-					lastname,
-					firstname
-				});
-			})
+			const { base: { language, logged } } = this.props;
+			this.setState({
+				logged, language
+			}, this.getUser);
 		}
 	}
 
 	componentDidUpdate(prevProps, prevState, snapshot) {
 		// console.log(prevProps, this.props);
 		this.props.base !== prevProps.base && this.setState({lang: this.props.base.language, logged: this.props.base.logged}, () => console.log('re'));
+	}
+
+	getUser() {
+		if (this.props.base && this.props.base.token) {
+			axios.get('/get_auth_user', {
+				headers: {
+					'x-access-token': this.props.base.token
+				}
+			}).then(response => {
+				if (response && response.data) {
+					this.setState({
+						firstname: response.data.firstname,
+						lastname: response.data.lastname,
+						email: response.data.email,
+						newsletter: response.data.newsletter,
+						subscription: response.data.subscription
+					});
+				}
+			}).catch(err => {
+				console.log(err);
+			})
+		}
 	}
 
 	unsubscribe_newsletter() {
@@ -164,36 +163,10 @@ class Profile extends Component {
 			}
 		}).then(response => {
 			this.props.setLogged(false);
-			this.props.setUser(null, null, null, null);
+			// this.props.setUser(null, null, null, null);
 			this.props.history.push("/");
 		}).catch(err => {
 			console.log(err, "Error");
-		})
-	}
-
-	subscribe() {
-		axios.post('/subscribe', {
-			subscription: this.state.subscription
-		},{
-			headers: {
-				'x-access-token': this.state.token
-			}
-		}).then(response => {
-
-		}).catch(err => {
-
-		})
-	}
-
-	unsubscribe() {
-		axios.post('/unsubscribe', '',{
-			headers: {
-				'x-access-token': this.state.token
-			}
-		}).then(response => {
-
-		}).catch(err => {
-
 		})
 	}
 
@@ -250,7 +223,6 @@ class Profile extends Component {
 						{displayContent(this.state.lang, i++, 'profile')}<br/><br/>
 						{displayContent(this.state.lang, i++, 'profile')}
 						<span>{this.state.subscription}</span>
-						{/*Ecrire achat Üz ici*/}
 					</h6>
 					{
 					++i && this.state.newsletter ?
