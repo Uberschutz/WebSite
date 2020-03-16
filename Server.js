@@ -19,17 +19,24 @@ app.post('/get_data', (req, res) => {
 	if (req.body.discordId) {
 		data += `&userId=${req.body.discordId}`
 	}
-	if (req.body.service) {
-		data += `&service=${req.body.service}`
+	if (req.body.services) {
+		data += `&services=${req.body.services.join(';')}`
 	}
 	axios.post(`${credentials.api_ip}/collect`, data, {
 		headers: {
 			'Content-Type': 'application/x-www-form-urlencoded'
 		}
 	}).then(response => {
-		res.send(response.data.flagsPercentage);
+		// console.log(response.data.datas);
+		// console.log(response.data.datas[0].value);
+		// console.log(response.data.datas[1].value);
+		res.send(response.data.datas);
 	}).catch(err => {
-		res.status(err.response.status).send(err.response.data);
+		// console.log(err);
+		if (err.response)
+			res.status(err.response.status).send(err.response.data.message);
+		else
+			res.status(500).send('Internal server error');
 	});
 });
 
@@ -202,7 +209,10 @@ function forward_response(res, promise) {
 		statusText: promise.statusText,
 		data: promise.data
 	});*/
-	res.status(promise.status).send(promise.data);
+	if (promise)
+		res.status(promise.status).send(promise.data);
+	else
+		res.status(500).send('Internal server error');
 }
 
 app.listen(8080, () =>

@@ -25,9 +25,12 @@ class Report extends Component {
 			lang: 'fr',
 			logged: false,
 			token: '',
-			childrens: []
+			childrens: [],
+			filters: [],
+			filterData: []
 		};
 		this.i = 1;
+		this.editFilter = this.editFilter.bind(this);
 	}
 
 	componentDidMount() {
@@ -73,104 +76,119 @@ class Report extends Component {
 		return str.charAt(0).toUpperCase() + str.slice(1);
 	};
 
-	// componentDidMount() {
-	// 	console.log('whut');
-	// 	this.setState({selectedChild: displayContent(this.props.lang, this.i++, 'report')})
-	// }
+	editFilter(filter) {
+		if (this.state.filters.includes(filter.target.dataset.filter)) {
+			let filters = [...this.state.filters];
+			let idx = this.state.filters.indexOf(filter.target.dataset.filter);
+			filters.splice(idx, 1);
+			if (filters.length === 1 && this.state.filterData.length > 0) {
+				console.log(this.state.filterData, 'deleting', filters[0]);
+				const data = this.state.filterData.find(obj => obj.key === filters[0]).value.map(obj => {
+					return {name: this.capitalize(obj.name.toLowerCase()), value: obj.value};
+				});
+				console.log('Editing filter and data (deletion)', data, filters);
+				this.setState({
+					filters: filters,
+					childData: data
+				});
+			} else {
+				this.setState({
+					filters: filters
+				});
+			}
+		} else {
+			if (this.state.filters.length === 0 && this.state.filterData.length > 0) {
+				console.log(this.state.filterData, 'adding');
+				const data = this.state.filterData.find(obj => obj.key === filter.target.dataset.filter).value.map(obj => {
+					return {name: this.capitalize(obj.name.toLowerCase()), value: obj.value};
+				});
+				console.log('Editing filter and data (addition)', data, filter.target.dataset.filter);
+				this.setState({
+					filters: this.state.filters.concat([filter.target.dataset.filter]),
+					childData: data
+				});
+			} else {
+				this.setState({
+					filters: this.state.filters.concat([filter.target.dataset.filter])
+				});
+			}
+		}
+	}
 
 	changeChild(child) {
-		if (child.name === 'general') {
-			axios.post('/get_data').then(response => {
-				console.log(response);
+		if (typeof child === 'string' && child === 'general') {
+			axios.post('/get_data', {
+				services: this.state.filters
+			}).then(response => {
 				const data = response.data.map(obj => {
 					return {name: this.capitalize(obj.key.toLowerCase()), value: obj.value};
 				});
-				console.log(data);
-				this.setState({selectedChild: 'general', isOpen: false, childData: data});
+				this.setState({selectedChild: 'General', isOpen: false, childData: data});
 			}).catch(err => {
 				console.log(err);
 			})
 		} else {
 			this.getChildData(child)
-			// const datas = this.getChildData(name);
-			// this.setState({selectedChild: name, isOpen: false, childData: datas});
 		}
 	}
 
 	getChildData(child) {
-		/* Here call Christian API */
-		// const min = 0;
-		// const max = 100;
-		// return [
-		// 	{name: "Safe", value: min + Math.random() * (max - min)},
-		// 	{name: "Toxicity", value: min + Math.random() * (max - min)},
-		// 	{name: "Obscenity", value: min + Math.random() * (max - min)},
-		// 	{name: "Racism", value: min + Math.random() * (max - min)},
-		// 	{name: "Insult", value: min + Math.random() * (max - min)},
-		// 	{name: "Threat", value: min + Math.random() * (max - min)},
-		// 	{name: "Truly toxic", value: min + Math.random() * (max - min)},
-		// 	{name: "Profanity", value: min + Math.random() * (max - min)},
-		// 	{name: "Inflammatory", value: min + Math.random() * (max - min)},
-		// 	{name: "Identity Attack", value: min + Math.random() * (max - min)},
-		// 	{name: "Hating", value: min + Math.random() * (max - min)},
-		// ];
 		axios.post('/get_data', {
-			discordId: child.discordId
+			discordId: child.discordId,
+			services: this.state.filters
 		}).then(response => {
-			console.log(response);
-			const data = response.data.map(obj => {
-				return {name: this.capitalize(obj.key.toLowerCase()), value: obj.value};
+			// console.log(response.data.find(obj => obj.key === 'All').value);
+			const data = response.data.find(obj => obj.key === 'All').value.map(obj => {
+				return {name: this.capitalize(obj.name.toLowerCase()), value: obj.value};
 			});
-			console.log(data);
-			this.setState({selectedChild: child.name, isOpen: false, childData: data});
+			this.setState({selectedChild: child.name, isOpen: false, childData: data, filterData: response.data});
 		}).catch(err => {
 			console.log(err);
 		})
 	}
 
 	render() {
+		let i = 1;
 		if (this.state.logged) {
 			return (
 				<div>
-                    <br/>
-					<ButtonDropdown isOpen={this.state.isOpen} toggle={this.toggle} size="lg">
-						<DropdownToggle color="info">
-							{/*{this.state.selectedChild}*/}
-							{this.state.selectedChild ? this.state.selectedChild : displayContent(this.state.lang, 0, 'report')}
-						</DropdownToggle>
-						<DropdownMenu className="drop btn">
-							{
-								this.state.childrens.map((d, idx) => {
-									return (
-										<div>
-											<div onClick={() => {this.changeChild(d)}}>{d.name}</div>
-										</div>
-									)
-								})
-							}
-							{/*<div>
-								<div onClick={() => {this.changeChild('Thomas')}}>Thomas</div>
-							</div>
-							<div>
-								<div onClick={() => {this.changeChild('Theo')}}>Théo</div>
-							</div>
-							<div>
-								<div onClick={() => {this.changeChild('Philippe')}}>Philippe</div>
-							</div>*/}
-							<div>
-								<div onClick={() => {this.changeChild('general')}}>General</div>
-							</div>
-						</DropdownMenu>
-					</ButtonDropdown>
-					<br/>
-					<div style={{width: '50%'}} className="btn">
+					<div className="mrg-begin">
+						<ButtonDropdown isOpen={this.state.isOpen} toggle={this.toggle} size="lg">
+							<DropdownToggle caret color="info">
+								{this.state.selectedChild ? this.state.selectedChild : displayContent(this.state.lang, 0, 'report')}
+							</DropdownToggle>
+							<DropdownMenu className="drop btn">
+								{
+									this.state.childrens.map((d, idx) => {
+										return (
+											<div>
+												<div onClick={() => {this.changeChild(d)}}>{d.name}</div>
+											</div>
+										)
+									})
+								}
+								<div>
+									<div onClick={() => {this.changeChild('general')}}>General</div>
+								</div>
+							</DropdownMenu>
+						</ButtonDropdown>
+					</div> <br/>
+
+					<div className="left-filter">
+						<span>{displayContent(this.state.lang, i++, 'report')}</span> <br/> <br/>
+						<div className="filter-align">
+							<input type="checkbox" checked={this.state.filters.includes('Discord')} onChange={this.editFilter} data-filter="Discord"/> Discord <br/>
+							<input type="checkbox" checked={this.state.filters.includes('Internet')} onChange={this.editFilter} data-filter="Internet"/> {displayContent(this.state.lang, i++, 'report')} <br/>
+						</div>
+					</div>
+
+					<div style={{width: '70%'}} className="btn test">
 						{
 							this.state.childData.map((d, idx) => {
-								console.log("ICI", idx, d);
 								if (d.name === 'Safe') {
 									return (
 										<div style={{height: 32, margin: 10}}>
-											<text style={{float: "left", marginRight: 10, width: 150, textAlign: 'right'}}>{displayContent(this.state.lang, idx + 1, 'report')}</text><ProgressBar style={{height: 24, fontSize: 15}} animated striped variant="success" now={Math.round(d.value)} label={`${Math.round(d.value)}%`}/>
+											<text style={{float: "left", marginRight: 10, width: 150, textAlign: 'right'}}>{displayContent(this.state.lang, idx + i, 'report')}</text><ProgressBar style={{height: 24, fontSize: 15}} animated striped variant="success" now={Math.round(d.value)} label={`${Math.round(d.value)}%`}/>
 										</div>
 									);
 								} else {
@@ -183,14 +201,16 @@ class Report extends Component {
 										color = "danger";
 									return (
 										<div style={{height: 32, margin: 10}}>
-											<text style={{float: "left", marginRight: 10, width: 150, textAlign: 'right'}}>{displayContent(this.state.lang, idx + 1, 'report')}</text><ProgressBar style={{height: 24, fontSize: 15}} animated striped variant={color} now={Math.round(d.value)} label={`${Math.round(d.value)}%`}/>
+											<text style={{float: "left", marginRight: 10, width: 150, textAlign: 'right'}}>{displayContent(this.state.lang, idx + i, 'report')}</text><ProgressBar style={{height: 24, fontSize: 15}} animated striped variant={color} now={Math.round(d.value)} label={`${Math.round(d.value)}%`}/>
 										</div>
 									);
 								}
 							})
 						}
 					</div>
-					<Summary lang={this.state.lang} child={this.state.selectedChild} safe={this.state.childData.length > 0 ? Math.round(this.state.childData.find(c => c.name === 'Safe').value) : -1}/>
+					<div className="summary">
+						<Summary lang={this.state.lang} child={this.state.selectedChild} safe={this.state.childData.length > 0 ? Math.round(this.state.childData.find(c => c.name === 'Safe').value) : -1}/>
+					</div>
 				</div>
 			);
 		} else {
