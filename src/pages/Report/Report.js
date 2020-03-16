@@ -148,14 +148,14 @@ class Report extends Component {
 	}
 
 	render() {
-		let i = 0;
+		let i = 1;
 		if (this.state.logged) {
 			return (
 				<div>
 					<div>
 						<ButtonDropdown isOpen={this.state.isOpen} toggle={this.toggle} size="lg">
 							<DropdownToggle color="info">
-								{this.state.selectedChild ? this.state.selectedChild : displayContent(this.state.lang, i++, 'report')}
+								{this.state.selectedChild ? this.state.selectedChild : displayContent(this.state.lang, 0, 'report')}
 							</DropdownToggle>
 							<DropdownMenu className="drop btn">
 								{
@@ -188,7 +188,7 @@ class Report extends Component {
 								if (d.name === 'Safe') {
 									return (
 										<div style={{height: 32, margin: 10}}>
-											<text style={{float: "left", marginRight: 10, width: 150, textAlign: 'right'}}>{displayContent(this.state.lang, idx + 1, 'report')}</text><ProgressBar style={{height: 24, fontSize: 15}} animated striped variant="success" now={Math.round(d.value)} label={`${Math.round(d.value)}%`}/>
+											<text style={{float: "left", marginRight: 10, width: 150, textAlign: 'right'}}>{displayContent(this.state.lang, idx + i, 'report')}</text><ProgressBar style={{height: 24, fontSize: 15}} animated striped variant="success" now={Math.round(d.value)} label={`${Math.round(d.value)}%`}/>
 										</div>
 									);
 								} else {
@@ -201,7 +201,7 @@ class Report extends Component {
 										color = "danger";
 									return (
 										<div style={{height: 32, margin: 10}}>
-											<text style={{float: "left", marginRight: 10, width: 150, textAlign: 'right'}}>{displayContent(this.state.lang, idx + 1, 'report')}</text><ProgressBar style={{height: 24, fontSize: 15}} animated striped variant={color} now={Math.round(d.value)} label={`${Math.round(d.value)}%`}/>
+											<text style={{float: "left", marginRight: 10, width: 150, textAlign: 'right'}}>{displayContent(this.state.lang, idx + i, 'report')}</text><ProgressBar style={{height: 24, fontSize: 15}} animated striped variant={color} now={Math.round(d.value)} label={`${Math.round(d.value)}%`}/>
 										</div>
 									);
 								}
