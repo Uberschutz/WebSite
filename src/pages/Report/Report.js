@@ -120,10 +120,10 @@ class Report extends Component {
 			axios.post('/get_data', {
 				services: this.state.filters
 			}).then(response => {
-				const data = response.data.map(obj => {
-					return {name: this.capitalize(obj.key.toLowerCase()), value: obj.value};
+				const data = response.data.find(obj => obj.key === 'All').value.map(obj => {
+					return {name: this.capitalize(obj.name.toLowerCase()), value: obj.value};
 				});
-				this.setState({selectedChild: 'General', isOpen: false, childData: data});
+				this.setState({selectedChild: 'General', isOpen: false, childData: data, filterData: response.data});
 			}).catch(err => {
 				console.log(err);
 			})
