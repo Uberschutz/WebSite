@@ -152,9 +152,9 @@ class Report extends Component {
 		if (this.state.logged) {
 			return (
 				<div>
-					<div>
+					<div className="mrg-begin">
 						<ButtonDropdown isOpen={this.state.isOpen} toggle={this.toggle} size="lg">
-							<DropdownToggle color="info">
+							<DropdownToggle caret color="info">
 								{this.state.selectedChild ? this.state.selectedChild : displayContent(this.state.lang, 0, 'report')}
 							</DropdownToggle>
 							<DropdownMenu className="drop btn">
@@ -182,7 +182,7 @@ class Report extends Component {
 						</div>
 					</div>
 
-					<div style={{width: '50%'}} className="btn">
+					<div style={{width: '70%'}} className="btn test">
 						{
 							this.state.childData.map((d, idx) => {
 								if (d.name === 'Safe') {
@@ -208,7 +208,9 @@ class Report extends Component {
 							})
 						}
 					</div>
-					<Summary lang={this.state.lang} child={this.state.selectedChild} safe={this.state.childData.length > 0 ? Math.round(this.state.childData.find(c => c.name === 'Safe').value) : -1}/>
+					<div className="summary">
+						<Summary lang={this.state.lang} child={this.state.selectedChild} safe={this.state.childData.length > 0 ? Math.round(this.state.childData.find(c => c.name === 'Safe').value) : -1}/>
+					</div>
 				</div>
 			);
 		} else {

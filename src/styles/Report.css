@@ -17,3 +17,13 @@
 .filter-align {
     text-align: left;
 }
+
+.test {
+    margin-left: 0;
+    float: left;
+    margin-bottom: 2%;
+}
+
+.summary {
+    clear: both;
+}
