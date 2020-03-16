@@ -20,14 +20,17 @@ app.post('/get_data', (req, res) => {
 		data += `&userId=${req.body.discordId}`
 	}
 	if (req.body.services) {
-		data += `&services=${req.body.services.toString()}`
+		data += `&services=${req.body.services.join(';')}`
 	}
 	axios.post(`${credentials.api_ip}/collect`, data, {
 		headers: {
 			'Content-Type': 'application/x-www-form-urlencoded'
 		}
 	}).then(response => {
-		res.send(response.data.flagsPercentage);
+		// console.log(response.data.datas);
+		// console.log(response.data.datas[0].value);
+		// console.log(response.data.datas[1].value);
+		res.send(response.data.datas);
 	}).catch(err => {
 		// console.log(err);
 		if (err.response)

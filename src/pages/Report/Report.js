@@ -26,7 +26,8 @@ class Report extends Component {
 			logged: false,
 			token: '',
 			childrens: [],
-			filters: []
+			filters: [],
+			filterData: []
 		};
 		this.i = 1;
 		this.editFilter = this.editFilter.bind(this);
@@ -80,13 +81,37 @@ class Report extends Component {
 			let filters = [...this.state.filters];
 			let idx = this.state.filters.indexOf(filter.target.dataset.filter);
 			filters.splice(idx, 1);
-			this.setState({
-				filters: filters
-			});
+			if (filters.length === 1 && this.state.filterData.length > 0) {
+				console.log(this.state.filterData, 'deleting', filters[0]);
+				const data = this.state.filterData.find(obj => obj.key === filters[0]).value.map(obj => {
+					return {name: this.capitalize(obj.name.toLowerCase()), value: obj.value};
+				});
+				console.log('Editing filter and data (deletion)', data, filters);
+				this.setState({
+					filters: filters,
+					childData: data
+				});
+			} else {
+				this.setState({
+					filters: filters
+				});
+			}
 		} else {
-			this.setState({
-				filters: this.state.filters.concat([filter.target.dataset.filter])
-			});
+			if (this.state.filters.length === 0 && this.state.filterData.length > 0) {
+				console.log(this.state.filterData, 'adding');
+				const data = this.state.filterData.find(obj => obj.key === filter.target.dataset.filter).value.map(obj => {
+					return {name: this.capitalize(obj.name.toLowerCase()), value: obj.value};
+				});
+				console.log('Editing filter and data (addition)', data, filter.target.dataset.filter);
+				this.setState({
+					filters: this.state.filters.concat([filter.target.dataset.filter]),
+					childData: data
+				});
+			} else {
+				this.setState({
+					filters: this.state.filters.concat([filter.target.dataset.filter])
+				});
+			}
 		}
 	}
 
@@ -112,10 +137,11 @@ class Report extends Component {
 			discordId: child.discordId,
 			services: this.state.filters
 		}).then(response => {
-			const data = response.data.map(obj => {
-				return {name: this.capitalize(obj.key.toLowerCase()), value: obj.value};
+			// console.log(response.data.find(obj => obj.key === 'All').value);
+			const data = response.data.find(obj => obj.key === 'All').value.map(obj => {
+				return {name: this.capitalize(obj.name.toLowerCase()), value: obj.value};
 			});
-			this.setState({selectedChild: child.name, isOpen: false, childData: data});
+			this.setState({selectedChild: child.name, isOpen: false, childData: data, filterData: response.data});
 		}).catch(err => {
 			console.log(err);
 		})
@@ -123,7 +149,7 @@ class Report extends Component {
 
 	render() {
 		let i = 0;
-		if (!this.state.logged) {
+		if (this.state.logged) {
 			return (
 				<div>
 					<div>
