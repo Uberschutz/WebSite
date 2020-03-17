@@ -182,7 +182,7 @@ class Report extends Component {
 						</div>
 					</div>
 
-					<div style={{width: '70%'}} className="btn test">
+					<div style={{width: '70%'}} className="btn content-right">
 						{
 							this.state.childData.map((d, idx) => {
 								if (d.name === 'Safe') {
