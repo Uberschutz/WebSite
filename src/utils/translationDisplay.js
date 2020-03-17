@@ -12,3 +12,12 @@ export function displayContent(lang, index, field) {
 		return null
 	}
 }
+
+export function displayHttpMessages(lang, code, message) {
+	try {
+		return (content.filter(obj => obj.lang === lang)[0].httpResponses.filter(obj => obj.code === code).messages.filter(obj => obj.key === message)[0].translate);
+	} catch (e) {
+		console.log(`An error occurred with following values: language: ${lang} | code: ${code} | message: ${message}`);
+		return null
+	}
+}

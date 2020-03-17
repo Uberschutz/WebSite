@@ -109,7 +109,114 @@
       "footer": [
         "Créé par Marianne LEVEE & Thomas DEROTE-PARCELLIER ", "Icônes de l'application par "
       ]
-    }
+    },
+    "httpResponses": [
+      {
+        "code": "200",
+        "messages": [
+          {
+            "key": "First name successfully updated",
+            "translate": "Le prénom a correctement été mis à jour"
+          },
+          {
+            "key": "Last name successfully updated",
+            "translate": "Le nom de famille a correctement été mis à jour"
+          },
+          {
+            "key": "Account successfully deleted",
+            "translate": "Le compte a correctement été supprimé"
+          },
+          {
+            "key": "Successfully unsubscribed",
+            "translate": "Désinscription réussie"
+          },
+          {
+            "key": "Account successfully created",
+            "translate": "Le compte a correctement été créé"
+          },
+          {
+            "key": "Account successfully confirmed",
+            "translate": "Le compte a correctement été confirmé"
+          },
+          {
+            "key": "Successfully unsubscribed from Newsletter",
+            "translate": "Désinscription à la Newsletter réussie"
+          },
+          {
+            "key": "Successfully subscribed to the Newsletter",
+            "translate": "Inscription à la Newsletter réussie"
+          }
+        ]
+      },
+      {
+        "code": "400",
+        "messages": [
+          {
+            "key": "Invalid request: Missing headers or data",
+            "translate": "Requête invalide : En-têtes ou données manquants"
+          },
+          {
+            "key": "Invalid request: Unknown children action",
+            "translate": "Requête invalide : Opération sur l'enfant inconnue"
+          },
+          {
+            "key": "Invalid request: Missing data",
+            "translate": "Requête invalide : Données manquantes"
+          },
+          {
+            "key": "Invalid request: Unknown user",
+            "translate": "Requête invalide : Utilisateur inconnu"
+          },
+          {
+            "key": "Invalid request: Missing credentials",
+            "translate": "Requête invalide : Identifiants manquants"
+          },
+          {
+            "key": "Invalid request: Missing headers",
+            "translate": "Requête invalide : En-têtes manquantes"
+          },
+          {
+            "key": "Invalid request: Account has been already confirmed",
+            "translate": "Requête invalide : Le compte a déjà été confirmé"
+          },
+          {
+            "key": "Invalid request: User already registered",
+            "translate": "Requête invalide : Utilisateur déjà inscrit"
+          }
+        ]
+      },
+      {
+        "code": "401",
+        "messages": [
+          {
+            "key": "Missing authorization token",
+            "translate": "Token d'authentification manquant"
+          },
+          {
+            "key": "Unauthorized request",
+            "translate": "Requête non autorisée"
+          }
+        ]
+      },
+      {
+        "code": "403",
+        "messages": [
+          {
+            "key": "You must verify your account before connecting",
+            "translate": "Vous devez vérifier votre compte avant de vous connecter"
+          }
+        ]
+      },
+      {
+        "code": "500",
+        "messages": [
+          {
+            "key": "Internal server error",
+            "translate": "Erreur interne du serveur"
+          }
+        ]
+      }
+    ]
   },
   {
     "lang": "en",

@@ -3,7 +3,7 @@ import '../../styles/bootstrap.css';
 import '../../styles/Connection.css';
 
 import { Link } from 'react-router-dom';
-import { displayContent } from '../../utils/translationDisplay';
+import { displayContent, displayHttpMessages } from '../../utils/translationDisplay';
 import axios from 'axios';
 import {Alert} from "reactstrap";
 import loading from "../../assets/Spinner-1s-70px.gif";
@@ -20,7 +20,9 @@ class Connection extends Component {
 	        alphaSurname: false,
 	        lang: 'fr',
 	        failAuth: false,
-            requestSent: false
+            requestSent: false,
+            requestCode: 200,
+            requestMessage: ""
         };
         this.onChangeEmail = this.onChangeEmail.bind(this);
         this.onChangePass = this.onChangePass.bind(this);
@@ -79,7 +81,7 @@ class Connection extends Component {
                 this.props.history.push('/');
             }).catch(err => {
                 console.log(err);
-                this.setState({failAuth: true}, () => {
+                this.setState({failAuth: true, requestCode: err.response.status, requestMessage: err.response.data}, () => {
                 	setTimeout(() => {
                 		this.setState({failAuth: false});
 	                }, 10 * 1000);
@@ -123,7 +125,7 @@ class Connection extends Component {
                     </div>
                 </div>
 	            {
-	            	this.state.failAuth ? <Alert color="danger">Ce compte n'existe pas</Alert> : null
+	            	this.state.failAuth ? <Alert color="danger">{displayHttpMessages(this.state.lang, this.state.requestCode, this.state.requestMessage)}</Alert> : null
 	            }
                 <br/>
                 <span>
