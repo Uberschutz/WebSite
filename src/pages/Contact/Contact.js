@@ -4,7 +4,7 @@ import '../../styles/Contact.css';
 
 import { Icon } from 'antd';
 import { Alert } from 'reactstrap';
-import { displayContent } from '../../utils/translationDisplay';
+import {displayContent, displayHttpMessages} from '../../utils/translationDisplay';
 import axios from 'axios';
 
 import newsletter from '../../assets/icons8-email-100.png';
@@ -214,14 +214,14 @@ class Form extends Component {
     	this.setState({name: name.target.value});
     }
 
-    onChangeSent() {
+    onChangeSent(response) {
         if (this.state.emailError === false) {
-            this.setState({emailSent: true, status: 'Vous êtes maintenant inscrit à la newsletter, merci !', statusErr: false}, this.hideAlert);
+            this.setState({emailSent: true, status: displayHttpMessages(this.state.lang, response.status, response.data), statusErr: false}, this.hideAlert);
         }
     }
 
     onSubscribeFailure(error) {
-    	this.setState({emailSent: true, status: error.response && error.response.data ? `An error occurred: ${error.response.data}` : 'An unknown error occurred', statusErr: true}, this.hideAlert);
+    	this.setState({emailSent: true, status:`An error occurred: ${displayHttpMessages(this.state.lang, error.response.status, error.response.data)}`, statusErr: true}, this.hideAlert);
     }
 
     hideAlert() {
@@ -234,7 +234,7 @@ class Form extends Component {
 			    email: this.state.email,
 			    name: this.state.name
 		    }).then(response => { console.log(response);
-                this.onChangeSent()}).catch(err => {console.log(err); this.onSubscribeFailure(err)})
+                this.onChangeSent(response)}).catch(err => {console.log(err); this.onSubscribeFailure(err)})
 	    } else {
     		if (this.state.name === '') {
     			this.setState({nameError: true});
@@ -252,7 +252,7 @@ class Form extends Component {
                 name: this.props.name
             }).then(response => {
             	console.log(response.data);
-	            this.onChangeSent();
+	            this.onChangeSent(response);
 	            setTimeout(() => {
 		            this.setState({subscribed: true});
 	            }, 3 * 1000);
