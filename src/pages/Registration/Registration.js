@@ -3,7 +3,7 @@ import '../../styles/bootstrap.css';
 import '../../styles/Connection.css';
 
 import axios from "axios";
-import {displayContent} from "../../utils/translationDisplay";
+import {displayContent, displayHttpMessages} from "../../utils/translationDisplay";
 import {Alert} from "reactstrap";
 
 class Registration extends Component {
@@ -85,7 +85,7 @@ class Registration extends Component {
 	            this.setState({
 		            emailSent: true,
 		            statusErr: false,
-		            status: 'Un email pour finaliser votre inscription vous a été envoyé sur votre adresse email'
+		            status: this.state.lang === "en" ? `${response.data}` : `${displayHttpMessages(this.state.lang, response.status, response.data)}`
 	            }, () => {
 	            	setTimeout(() => {this.setState({emailSent: false})}, 10000);
 	            });
@@ -94,7 +94,7 @@ class Registration extends Component {
 	            this.setState({
 		            emailSent: true,
 		            statusErr: true,
-		            status: err.response && err.response.data ? `An error occurred: ${err.response.data}` : 'An unknown error occurred'
+		            status: this.state.lang === "en" ? `An error occurred : ${err.response.data}` : `${displayHttpMessages(this.state.lang, err.response.status, err.response.data)}`
 	            }, () => {
 		            setTimeout(() => {this.setState({emailSent: false})}, 10000);
 	            });
