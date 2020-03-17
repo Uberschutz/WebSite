@@ -125,7 +125,7 @@ class Connection extends Component {
                     </div>
                 </div>
 	            {
-	            	this.state.failAuth ? <Alert color="danger">{displayHttpMessages(this.state.lang, this.state.requestCode, this.state.requestMessage)}</Alert> : null
+	            	this.state.failAuth ? <Alert color="danger">{this.state.lang === "en" ? this.state.requestMessage : displayHttpMessages(this.state.lang, this.state.requestCode, this.state.requestMessage)}</Alert> : null
 	            }
                 <br/>
                 <span>

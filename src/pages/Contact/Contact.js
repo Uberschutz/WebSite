@@ -216,12 +216,12 @@ class Form extends Component {
 
     onChangeSent(response) {
         if (this.state.emailError === false) {
-            this.setState({emailSent: true, status: displayHttpMessages(this.state.lang, response.status, response.data), statusErr: false}, this.hideAlert);
+            this.setState({emailSent: true, status: this.state.lang === "en" ? response.data : displayHttpMessages(this.state.lang, response.status, response.data), statusErr: false}, this.hideAlert);
         }
     }
 
     onSubscribeFailure(error) {
-    	this.setState({emailSent: true, status:`An error occurred: ${displayHttpMessages(this.state.lang, error.response.status, error.response.data)}`, statusErr: true}, this.hideAlert);
+    	this.setState({emailSent: true, status: this.state.lang === "en" ? error.response.data : displayHttpMessages(this.state.lang, error.response.status, error.response.data), statusErr: true}, this.hideAlert);
     }
 
     hideAlert() {
