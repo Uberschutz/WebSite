@@ -3,7 +3,7 @@ import '../../styles/bootstrap.css';
 import '../../styles/Profile.css';
 
 import { Icon } from 'antd';
-import {displayContent} from '../../utils/translationDisplay';
+import {displayContent, displayHttpMessages} from '../../utils/translationDisplay';
 import { Alert } from 'reactstrap';
 
 import Unauthorized from "../Unauthorized";
@@ -94,14 +94,14 @@ class Profile extends Component {
 					newsletter: false,
 					load: false,
 					statusErr: false,
-					newsletterAlert: 'Successfully unsubscribed to the newsletter'
+					newsletterAlert: this.state.lang === "en" ? response.data : displayHttpMessages(this.state.lang, response.status, response.data)
 				});
 				this.props.setNewsletter(false);
 			}).catch(err => {
 				this.setState({
 					load: false,
 					statusErr: true,
-					newsletterAlert: 'An error occurred while unsubscribing your account to the newsletter'
+					newsletterAlert: this.state.lang === "en" ? err.response.data : displayHttpMessages(this.state.lang, err.response.status, err.response.data)
 				});
 				console.log(err);
 			}).finally(() => {
