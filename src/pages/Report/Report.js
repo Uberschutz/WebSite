@@ -121,7 +121,7 @@ class Report extends Component {
 				services: this.state.filters
 			}).then(response => {
 				const data = response.data.find(obj => obj.key === 'All').value.map(obj => {
-					return {name: this.capitalize(obj.name.toLowerCase()), value: obj.value};
+					return {name: this.capitalize(obj.name.toLowerCase()), value: obj.percentValue};
 				});
 				this.setState({selectedChild: 'General', isOpen: false, childData: data, filterData: response.data});
 			}).catch(err => {
@@ -139,7 +139,7 @@ class Report extends Component {
 		}).then(response => {
 			// console.log(response.data.find(obj => obj.key === 'All').value);
 			const data = response.data.find(obj => obj.key === 'All').value.map(obj => {
-				return {name: this.capitalize(obj.name.toLowerCase()), value: obj.value};
+				return {name: this.capitalize(obj.name.toLowerCase()), value: obj.percentValue};
 			});
 			this.setState({selectedChild: child.name, isOpen: false, childData: data, filterData: response.data});
 		}).catch(err => {
