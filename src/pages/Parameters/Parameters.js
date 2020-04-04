@@ -3,7 +3,7 @@ import '../../styles/bootstrap.css';
 import '../../styles/Parameters.css';
 import axios from 'axios';
 
-import { Modal, Button } from 'reactstrap';
+import { Modal, ModalHeader, ModalFooter, Button } from 'reactstrap';
 import {Icon} from 'antd';
 
 import DisplayChildrenList from '../../components/ChildCards';
@@ -197,6 +197,7 @@ class Parameters extends Component {
 					       /*onClosed={() => this.setState({state: 'Create'})}*/>
 						<form><br/>
 							<div className="align-card">
+								<ModalHeader className="tag-header" style={{backgroundColor: "#3498db"}}>Informations</ModalHeader>
 								<label className="child-field">
 									{displayContent(this.state.lang, 0, 'parameters')}<br/>
 									{this.state.alphaErr ? <input
@@ -218,33 +219,38 @@ class Parameters extends Component {
 										       value={this.state.age}
 										       onChange={(age) => this.setAge(age.target.value)}/>}
 								</label>
+								<br/>
+								<label className="child-field">
+									Discord ID (Bêta)<br/>
+									<input className="child-field" type="text"
+										   value={this.state.discordId}
+										   onChange={(id) => this.setDiscordId(id.target.value)}/>
+								</label>
+								<br/> <br/>
 							</div>
+							<ModalHeader className="tag-header" style={{backgroundColor:"#3498db"}}>Paramètres de protection</ModalHeader>
 							<br/>
 							<OptionsList
-								listClassName={'row'}
+								listClassName={'row margin-footer'}
 								optionClassName={'col-4 align'}
 								options={this.state.options}
 								translations={displayContent(this.state.lang, -1, 'options')}
 								toggleOption={this.toggleOption.bind(this)}
 							/>
-							Discord ID <br/>
-							<input className="child-field" type="text"
-							       value={this.state.discordId}
-							       onChange={(id) => this.setDiscordId(id.target.value)}/>
-							<br/><br/>
-							<div className="align-card">
+
+							<ModalFooter>
 								<Button className="save-child btn change-child"
-								        onClick={() => this.createChildren()}>
+										onClick={() => this.createChildren()}>
 									{this.state.state === 'Create' ? displayContent(this.state.lang, 6, 'parameters') :
 										displayContent(this.state.lang, 7, 'parameters')}
 								</Button>
 								<Button className="btn btn-danger change-child"
-								        onClick={this.toggleModal}>{displayContent(this.state.lang, 1, 'parameters')}</Button>
+										onClick={this.toggleModal}>{displayContent(this.state.lang, 1, 'parameters')}</Button>
 								<br/>
 								{this.state.alphaErr || this.state.numErr ? (<div><span
 									className="address-params text-danger">{displayContent(this.state.lang, 2, 'parameters')}</span><br/><br/>
 								</div>) : null}
-							</div>
+							</ModalFooter>
 						</form>
 					</Modal>
 					<DisplayChildrenList

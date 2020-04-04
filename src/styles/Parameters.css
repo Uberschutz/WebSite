@@ -78,6 +78,16 @@
     height: 700px;
 }
 
+.tag-header {
+    width: fit-content!important;
+    height: fit-content!important;
+    font-size: 10%;
+    text-align: center;
+}
+
+.margin-footer {
+    margin-bottom: 10%!important;
+}
 
 
 /*@media (min-width:1200px) {
