@@ -85,7 +85,7 @@ class Parameters extends Component {
 			this.setState({name: '', age: '', id: null, state: 'Create', alphaErr: false, numErr: false, options: this.options, discordId: ''},
 				() => this.setState({showModal: !this.state.showModal}));
 		} else {
-			this.setState({showModal: !this.state.showModal, state: 'Create'});
+			this.setState({showModal: !this.state.showModal});
 		}
 	}
 
