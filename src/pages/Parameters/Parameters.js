@@ -228,16 +228,7 @@ class Parameters extends Component {
 								</label>
 								<br/> <br/>
 							</div>
-							<ModalHeader className="tag-header" style={{backgroundColor:"#3498db"}}>Paramètres de protection</ModalHeader>
 							<br/>
-							<OptionsList
-								listClassName={'row margin-footer'}
-								optionClassName={'col-4 align'}
-								options={this.state.options}
-								translations={displayContent(this.state.lang, -1, 'options')}
-								toggleOption={this.toggleOption.bind(this)}
-							/>
-
 							<ModalFooter>
 								<Button className="save-child btn change-child"
 										onClick={() => this.createChildren()}>

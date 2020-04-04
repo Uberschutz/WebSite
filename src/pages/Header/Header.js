@@ -134,9 +134,6 @@ class Header extends Component {
                                 <NavItem className="nav-item">
                                     <Link to="/Contact+FAQ" className="nav-link uber-color">Contact + FAQ</Link>
                                 </NavItem>
-                                <NavItem className="nav-item">
-                                    <Link to="/Subscription" className="nav-link uber-color">{displayContent(this.state.lang, i++, 'navbar')}</Link>
-                                </NavItem>
 	                            { this.state.logged ?
                                 <NavItem className="nav-item">
 	                                <Link to="/Profile" className="nav-link uber-color">{displayContent(this.state.lang, i++, 'navbar')}</Link>

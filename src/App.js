@@ -57,8 +57,6 @@ const App = props => {
 		                        <Route path={'/Parameters'} exact component={Parameters}/>
 			                    <Route path={'/Report'} exact component={Report}/>
 			                    <Route path={'/Confirm'} component={Confirm}/>
-			                    <Route path={'/Subscription'} component={Subscription}/>
-			                    <Route path={'/InComing'} component={InComing}/>
 			                    <Route path={'*'} component={NotFound}/>
 		                    </Switch>
 		                    <Footer/>

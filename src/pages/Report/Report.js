@@ -173,15 +173,6 @@ class Report extends Component {
 							</DropdownMenu>
 						</ButtonDropdown>
 					</div> <br/>
-
-					<div className="left-filter">
-						<span>{displayContent(this.state.lang, i++, 'report')}</span> <br/> <br/>
-						<div className="filter-align">
-							<input type="checkbox" checked={this.state.filters.includes('Discord')} onChange={this.editFilter} data-filter="Discord"/> Discord <br/>
-							<input type="checkbox" checked={this.state.filters.includes('Internet')} onChange={this.editFilter} data-filter="Internet"/> {displayContent(this.state.lang, i++, 'report')} <br/>
-						</div>
-					</div>
-
 					<div style={{width: '70%'}} className="btn content-right">
 						{
 							this.state.childData.map((d, idx) => {
