@@ -84,7 +84,7 @@ class Report extends Component {
 			if (filters.length === 1 && this.state.filterData.length > 0) {
 				console.log(this.state.filterData, 'deleting', filters[0]);
 				const data = this.state.filterData.find(obj => obj.key === filters[0]).value.map(obj => {
-					return {name: this.capitalize(obj.name.toLowerCase()), value: obj.value};
+					return {name: this.capitalize(obj.name.toLowerCase()), value: obj.percentValue};
 				});
 				console.log('Editing filter and data (deletion)', data, filters);
 				this.setState({
@@ -100,7 +100,7 @@ class Report extends Component {
 			if (this.state.filters.length === 0 && this.state.filterData.length > 0) {
 				console.log(this.state.filterData, 'adding');
 				const data = this.state.filterData.find(obj => obj.key === filter.target.dataset.filter).value.map(obj => {
-					return {name: this.capitalize(obj.name.toLowerCase()), value: obj.value};
+					return {name: this.capitalize(obj.name.toLowerCase()), value: obj.percentValue};
 				});
 				console.log('Editing filter and data (addition)', data, filter.target.dataset.filter);
 				this.setState({
