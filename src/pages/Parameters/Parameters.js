@@ -3,8 +3,7 @@ import '../../styles/bootstrap.css';
 import '../../styles/Parameters.css';
 import axios from 'axios';
 
-import { Modal, Button } from 'reactstrap';
-// import { Card, CardText, CardTitle, CardFooter } from "reactstrap";
+import { Modal, ModalHeader, ModalFooter, Button } from 'reactstrap';
 import {Icon} from 'antd';
 
 import DisplayChildrenList from '../../components/ChildCards';
@@ -86,12 +85,12 @@ class Parameters extends Component {
 			this.setState({name: '', age: '', id: null, state: 'Create', alphaErr: false, numErr: false, options: this.options, discordId: ''},
 				() => this.setState({showModal: !this.state.showModal}));
 		} else {
-			this.setState({showModal: !this.state.showModal});
+			this.setState({showModal: !this.state.showModal, state: 'Create'});
 		}
 	}
 
 	createChildren() {
-		this.setState({alphaErr: this.state.name === '', numErr: this.state.age === ''});
+		this.setState({alphaErr: this.state.name === '', numErr: this.state.age === '' && isNaN(this.state.age)});
 		if (this.state.name === '' || this.state.age === '')
 			return;
 		if (this.state.state === 'Create') {
@@ -160,28 +159,26 @@ class Parameters extends Component {
 	}
 
 	setFirstName(name) {
-		console.log('Here set children name', name);
 		if (name && !Parameters.isAlpha(name)) {
-			this.setState({alphaErr: true});
+			this.setState({alphaErr: true, name});
 		} else {
-			this.setState({alphaErr: false});
+			this.setState({alphaErr: false, name});
 		}
-		this.setState({name: name})
 	}
 
 	setAge(age) {
-		console.log('Here set children age', age);
 		if (age && !Parameters.isNum(age)) {
-			this.setState({numErr: true});
+			this.setState({numErr: true, age});
 		} else {
-			this.setState({numErr: false});
+			this.setState({numErr: false, age});
 		}
-		this.setState({age: age});
 	}
 
 	setDiscordId(id) {
 		if (id) {
 			this.setState({discordId: id});
+		} else {
+			this.setState({discordId: ''});
 		}
 	}
 
@@ -196,10 +193,11 @@ class Parameters extends Component {
 		if (this.state.logged) {
 			return (
 				<div className="card align-card">
-					<Modal isOpen={this.state.showModal} toggle={this.toggleModal}
-					       onClosed={() => this.setState({state: 'Create'})} size='lg'>
+					<Modal isOpen={this.state.showModal} size="xl" toggle={this.toggleModal} contentClassName="custom-modal-style" centered={true}
+					       /*onClosed={() => this.setState({state: 'Create'})}*/>
 						<form><br/>
 							<div className="align-card">
+								<ModalHeader className="tag-header" style={{backgroundColor: "#3498db"}}>Informations</ModalHeader>
 								<label className="child-field">
 									{displayContent(this.state.lang, 0, 'parameters')}<br/>
 									{this.state.alphaErr ? <input
@@ -221,33 +219,38 @@ class Parameters extends Component {
 										       value={this.state.age}
 										       onChange={(age) => this.setAge(age.target.value)}/>}
 								</label>
+								<br/>
+								<label className="child-field">
+									Discord ID (Bêta)<br/>
+									<input className="child-field" type="text"
+										   value={this.state.discordId}
+										   onChange={(id) => this.setDiscordId(id.target.value)}/>
+								</label>
+								<br/> <br/>
 							</div>
+							<ModalHeader className="tag-header" style={{backgroundColor:"#3498db"}}>Paramètres de protection</ModalHeader>
 							<br/>
 							<OptionsList
-								listClassName={'row'}
+								listClassName={'row margin-footer'}
 								optionClassName={'col-4 align'}
 								options={this.state.options}
 								translations={displayContent(this.state.lang, -1, 'options')}
 								toggleOption={this.toggleOption.bind(this)}
 							/>
-							Discord ID <br/>
-							<input className="child-field" type="text"
-							       value={this.state.discordId}
-							       onChange={(id) => this.setDiscordId(id.target.value)}/>
-							<br/><br/>
-							<div className="align-card">
+
+							<ModalFooter>
 								<Button className="save-child btn change-child"
-								        onClick={() => this.createChildren()}>
+										onClick={() => this.createChildren()}>
 									{this.state.state === 'Create' ? displayContent(this.state.lang, 6, 'parameters') :
 										displayContent(this.state.lang, 7, 'parameters')}
 								</Button>
 								<Button className="btn btn-danger change-child"
-								        onClick={this.toggleModal}>{displayContent(this.state.lang, 1, 'parameters')}</Button>
+										onClick={this.toggleModal}>{displayContent(this.state.lang, 1, 'parameters')}</Button>
 								<br/>
 								{this.state.alphaErr || this.state.numErr ? (<div><span
 									className="address-params text-danger">{displayContent(this.state.lang, 2, 'parameters')}</span><br/><br/>
 								</div>) : null}
-							</div>
+							</ModalFooter>
 						</form>
 					</Modal>
 					<DisplayChildrenList

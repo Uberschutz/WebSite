@@ -1,11 +1,18 @@
 import React, {Component} from "react";
+import Switch from '@material-ui/core/Switch';
+import FormControlLabel from "@material-ui/core/FormControlLabel";
 import '../styles/Parameters.css';
 
 export class Option extends Component {
     render() {
         return (
             <div className={this.props.className}>
-                <input className="options-center" type="checkbox" checked={this.props.option.enabled} onChange={() => this.props.toggleOption(this.props.index)}/>{this.props.value}
+                <FormControlLabel
+                    value="bottom"
+                    control={<Switch color="primary" checked={this.props.option.enabled} className="options-center" onChange={() => this.props.toggleOption(this.props.index)}/>}
+                    label={this.props.value}
+                    labelPlacement="top"
+                />
             </div>
         );
     }
