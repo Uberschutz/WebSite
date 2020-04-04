@@ -83,7 +83,7 @@ class Parameters extends Component {
 
 	toggleModal() {
 		if (this.state.showModal) {
-			this.setState({name: '', age: '', id: null, state: 'Create', alphaErr: false, numErr: false, options: this.options},
+			this.setState({name: '', age: '', id: null, state: 'Create', alphaErr: false, numErr: false, options: this.options, discordId: ''},
 				() => this.setState({showModal: !this.state.showModal}));
 		} else {
 			this.setState({showModal: !this.state.showModal});
