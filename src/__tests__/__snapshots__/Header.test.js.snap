@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`render Header being logged in english 1`] = `
+exports[`Testing the Header component rendering render Header being logged in english 1`] = `
 <div>
   <div>
     <nav
@@ -18,6 +18,16 @@ exports[`render Header being logged in english 1`] = `
       >
          Überschutz
       </a>
+      <text
+        class="navbar-brand uber-color button-footer"
+      >
+        Welcome
+         
+         !
+      </text>
+      <button>
+        Disconnect
+      </button>
       <div
         class="collapse navbar-collapse collapse show navbar-collapse"
       >
@@ -39,10 +49,143 @@ exports[`render Header being logged in english 1`] = `
           >
             <a
               class="nav-link uber-color"
-              href="/Connection"
+              href="/Contact+FAQ"
             >
-              Connexion
-               
+              Contact + FAQ
+            </a>
+          </li>
+          <li
+            class="nav-item nav-item"
+          >
+            <a
+              class="nav-link uber-color"
+              href="/Subscription"
+            >
+              Subscription
+            </a>
+          </li>
+          <li
+            class="nav-item nav-item"
+          >
+            <a
+              class="nav-link uber-color"
+              href="/Profile"
+            >
+              Profile
+            </a>
+          </li>
+          <li
+            class="nav-item nav-item"
+          >
+            <a
+              class="nav-link uber-color"
+              href="/Report"
+            >
+              Report
+            </a>
+          </li>
+          <li
+            class="nav-item nav-item"
+          >
+            <a
+              class="nav-link uber-color"
+              href="/Parameters"
+            >
+              Parameters
+            </a>
+          </li>
+        </ul>
+      </div>
+      <div
+        class="btn-group btn-group-sm"
+      >
+        <button
+          aria-expanded="false"
+          aria-haspopup="true"
+          class="dropdown-toggle btn btn-primary"
+          type="button"
+        >
+          <img
+            alt="english"
+            class="clickable-flag"
+            height="33"
+            src="icons8-grande-bretagne-48.png"
+            width="35"
+          />
+        </button>
+        <div
+          aria-hidden="true"
+          class="drop btn dropdown-menu"
+          role="menu"
+          tabindex="-1"
+        >
+          <div>
+            <img
+              alt="french"
+              class="clickable-flag touched"
+              height="35"
+              src="icons8-france-96.png"
+              width="35"
+            />
+          </div>
+          <div>
+            <img
+              alt="english"
+              class="clickable-flag"
+              height="33"
+              src="icons8-grande-bretagne-48.png"
+              width="35"
+            />
+          </div>
+        </div>
+      </div>
+    </nav>
+  </div>
+</div>
+`;
+
+exports[`Testing the Header component rendering render Header being logged in french 1`] = `
+<div>
+  <div>
+    <nav
+      class="navbar navbar-expand-sm uber-color navbar navbar-expand-md navbar-light"
+    >
+      <img
+        alt="logo"
+        height="70"
+        src="Uberschutz-Icon.png"
+        width="65"
+      />
+      <a
+        class="navbar-brand uber-color button-footer navbar-brand"
+        href="/"
+      >
+         Überschutz
+      </a>
+      <text
+        class="navbar-brand uber-color button-footer"
+      >
+        Bonjour
+         
+         !
+      </text>
+      <button>
+        Déconnexion
+      </button>
+      <div
+        class="collapse navbar-collapse collapse show navbar-collapse"
+      >
+        <ul
+          class="ml-auto navbar  navbar-expand-md navbar-nav"
+        >
+          <li
+            class="nav-item nav-item"
+          >
+            <a
+              class="nav-link uber-color"
+              href="/"
+            >
+              Menu
             </a>
           </li>
           <li
@@ -53,6 +196,46 @@ exports[`render Header being logged in english 1`] = `
               href="/Contact+FAQ"
             >
               Contact + FAQ
+            </a>
+          </li>
+          <li
+            class="nav-item nav-item"
+          >
+            <a
+              class="nav-link uber-color"
+              href="/Subscription"
+            >
+              Abonnements
+            </a>
+          </li>
+          <li
+            class="nav-item nav-item"
+          >
+            <a
+              class="nav-link uber-color"
+              href="/Profile"
+            >
+              Profil
+            </a>
+          </li>
+          <li
+            class="nav-item nav-item"
+          >
+            <a
+              class="nav-link uber-color"
+              href="/Report"
+            >
+              Rapport
+            </a>
+          </li>
+          <li
+            class="nav-item nav-item"
+          >
+            <a
+              class="nav-link uber-color"
+              href="/Parameters"
+            >
+              Paramètres
             </a>
           </li>
         </ul>
@@ -105,7 +288,121 @@ exports[`render Header being logged in english 1`] = `
 </div>
 `;
 
-exports[`render Header being logged in french 1`] = `
+exports[`Testing the Header component rendering render Header not being logged in english 1`] = `
+<div>
+  <div>
+    <nav
+      class="navbar navbar-expand-sm uber-color navbar navbar-expand-md navbar-light"
+    >
+      <img
+        alt="logo"
+        height="70"
+        src="Uberschutz-Icon.png"
+        width="65"
+      />
+      <a
+        class="navbar-brand uber-color button-footer navbar-brand"
+        href="/"
+      >
+         Überschutz
+      </a>
+      <div
+        class="collapse navbar-collapse collapse show navbar-collapse"
+      >
+        <ul
+          class="ml-auto navbar  navbar-expand-md navbar-nav"
+        >
+          <li
+            class="nav-item nav-item"
+          >
+            <a
+              class="nav-link uber-color"
+              href="/"
+            >
+              Menu
+            </a>
+          </li>
+          <li
+            class="nav-item nav-item"
+          >
+            <a
+              class="nav-link uber-color"
+              href="/Connection"
+            >
+              Connection
+            </a>
+          </li>
+          <li
+            class="nav-item nav-item"
+          >
+            <a
+              class="nav-link uber-color"
+              href="/Contact+FAQ"
+            >
+              Contact + FAQ
+            </a>
+          </li>
+          <li
+            class="nav-item nav-item"
+          >
+            <a
+              class="nav-link uber-color"
+              href="/Subscription"
+            >
+              Subscription
+            </a>
+          </li>
+        </ul>
+      </div>
+      <div
+        class="btn-group btn-group-sm"
+      >
+        <button
+          aria-expanded="false"
+          aria-haspopup="true"
+          class="dropdown-toggle btn btn-primary"
+          type="button"
+        >
+          <img
+            alt="english"
+            class="clickable-flag"
+            height="33"
+            src="icons8-grande-bretagne-48.png"
+            width="35"
+          />
+        </button>
+        <div
+          aria-hidden="true"
+          class="drop btn dropdown-menu"
+          role="menu"
+          tabindex="-1"
+        >
+          <div>
+            <img
+              alt="french"
+              class="clickable-flag touched"
+              height="35"
+              src="icons8-france-96.png"
+              width="35"
+            />
+          </div>
+          <div>
+            <img
+              alt="english"
+              class="clickable-flag"
+              height="33"
+              src="icons8-grande-bretagne-48.png"
+              width="35"
+            />
+          </div>
+        </div>
+      </div>
+    </nav>
+  </div>
+</div>
+`;
+
+exports[`Testing the Header component rendering render Header not being logged in french 1`] = `
 <div>
   <div>
     <nav
@@ -147,7 +444,6 @@ exports[`render Header being logged in french 1`] = `
               href="/Connection"
             >
               Connexion
-               
             </a>
           </li>
           <li
@@ -158,6 +454,16 @@ exports[`render Header being logged in french 1`] = `
               href="/Contact+FAQ"
             >
               Contact + FAQ
+            </a>
+          </li>
+          <li
+            class="nav-item nav-item"
+          >
+            <a
+              class="nav-link uber-color"
+              href="/Subscription"
+            >
+              Abonnements
             </a>
           </li>
         </ul>
@@ -210,7 +516,7 @@ exports[`render Header being logged in french 1`] = `
 </div>
 `;
 
-exports[`renders Header without crashing (not connected) in any language 1`] = `
+exports[`Testing the Header component rendering renders Header without crashing in any language 1`] = `
 <div>
   <div>
     <nav
@@ -252,7 +558,6 @@ exports[`renders Header without crashing (not connected) in any language 1`] = `
               href="/Connection"
             >
               Connexion
-               
             </a>
           </li>
           <li
@@ -263,6 +568,16 @@ exports[`renders Header without crashing (not connected) in any language 1`] = `
               href="/Contact+FAQ"
             >
               Contact + FAQ
+            </a>
+          </li>
+          <li
+            class="nav-item nav-item"
+          >
+            <a
+              class="nav-link uber-color"
+              href="/Subscription"
+            >
+              Abonnements
             </a>
           </li>
         </ul>

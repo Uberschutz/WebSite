@@ -226,7 +226,7 @@ class Report extends Component {
 class Summary extends Component {
 
     componentDidMount() {
-        console.log("CACA", this.props.safe);
+        // console.log("CACA", this.props.safe);
     }
 
     render() {
