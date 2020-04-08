@@ -19,7 +19,8 @@ class Confirm extends Component {
 
         this.state = {
         	lang: 'fr',
-            status: ''
+            status: '',
+	        pending: false
         };
 
         if (props && props.location && props.location.search) {
@@ -36,21 +37,21 @@ class Confirm extends Component {
     componentDidMount() {
     	if (this.props.base) {
 			const {base: {language}} = this.props;
-			this.setState({lang: language});
+			this.setState({lang: language, pending: true});
 			if (this.id) {
 				axios.post('/verifyaccount', {
 					id: this.id
 				}).then(response => {
-					this.setState({status: 'verified'});
+					this.setState({status: 'verified', pending: false});
 					console.log(response);
 					setTimeout(() => this.props.history.push('/'), 5000);
 				}).catch(err => {
 					if (err.response && err.response.data === 'Invalid request: Unknown user') {
-						this.setState({status: 'expired'});
+						this.setState({status: 'expired', pending: false});
 					} else if (err.response && err.response.data === 'Invalid request: Account has been already confirmed') {
-						this.setState({status: 'confirmed'});
+						this.setState({status: 'confirmed', pending: false});
 					} else {
-						this.setState({status: 'error'});
+						this.setState({status: 'error', pending: false});
 					}
 					console.log(err);
 				});
@@ -60,7 +61,7 @@ class Confirm extends Component {
 
     render() {
     	let i = 0;
-	    if (!this.error && this.state.status !== 'error') {
+	    if (!this.error && this.state.status !== 'error' && !this.state.pending) {
 		    if (this.state.status === 'verified') {
 			    return (
 				    <div>
@@ -79,9 +80,13 @@ class Confirm extends Component {
 			    )
 		    }
 	    } else {
-		    return (
-			    <NotFound/>
-		    );
+	    	if (this.state.pending) {
+	    		return (<div/>)
+		    } else {
+			    return (
+				    <NotFound/>
+			    );
+		    }
     }
 }
 }
