@@ -1,3 +1,9 @@
+const document = require("docx").Document;
+const pack = require("docx").Packer;
+const paragraph = require("docx").Paragraph;
+const textRun = require("docx").TextRun;
+const fs = require("fs").writeFileSync;
+
 const axios = require('axios');
 const credentials = require('./credentials.js');
 const express = require('express');
@@ -27,12 +33,8 @@ app.post('/get_data', (req, res) => {
 			'Content-Type': 'application/x-www-form-urlencoded'
 		}
 	}).then(response => {
-		// console.log(response.data.datas);
-		// console.log(response.data.datas[0].value);
-		// console.log(response.data.datas[1].value);
 		res.send(response.data.datas);
 	}).catch(err => {
-		// console.log(err);
 		if (err.response)
 			res.status(err.response.status).send(err.response.data.message);
 		else
@@ -135,12 +137,53 @@ app.post('/delete_account', async (req, res) => {
 });
 
 app.get('/gdpr', async (req, res) => {
-	let result = await axios.get(`http://${server_url}:8081/gdpr`, {
+	axios.get(`http://${server_url}:8081/gdpr`, {
 		headers: {
 			'x-access-token': req.headers['x-access-token']
 		}
-	}).then(response => response).catch(err => err.response);
-	forward_response(res, result);
+	}).then(async response => {
+		console.log(response.data);
+		let lines = [];
+		for (let [key, value] of Object.entries(response.data)) {
+			if (key === 'creation_date') {
+				let date = new Date(value);
+				lines.push(new paragraph({
+					children: [
+						new textRun(`${key}: ${date.toString()}`)
+					]
+				}));
+			} else if (key === 'childrens') {
+				value.forEach((c, i) => {
+					lines.push(new paragraph({
+						children: [
+							new textRun(`child ${i}: first name: ${c.name}, age: ${c.age} years`)
+						]
+					}));
+				});
+			} else {
+				lines.push(new paragraph({
+					children: [
+						new textRun(`${key}: ${value}`)
+					]
+				}));
+			}
+		}
+		const doc = new document();
+		doc.addSection({
+			properties: {},
+			children: lines,
+		});
+		const b64string = await pack.toBase64String(doc);
+		res.setHeader("Content-Disposition", "attachment; filename=data.docx");
+		res.setHeader("Content-Type", "application/vnd.openxmlformats-officedocument.wordprocessingml.document");
+		const buffer = Buffer.from(b64string, "base64");
+		 res.send(buffer);
+	}).catch(err => {
+		if (err.response)
+			res.status(err.response.status).send(err.response.data);
+		else
+			res.status(500).send('Internal server error');
+	});
 });
 
 app.get('/get_available_licences', async (req, res) => {

@@ -45,9 +45,9 @@ class Profile extends Component {
 
 	componentDidMount() {
 		if (this.props.base) {
-			const { base: { language, logged } } = this.props;
+			const { base: { language, logged, token } } = this.props;
 			this.setState({
-				logged, language
+				logged, language, token
 			}, this.getUser);
 		}
 	}
@@ -174,10 +174,11 @@ class Profile extends Component {
 		axios.get('/gdpr', {
 			headers: {
 				'x-access-token': this.state.token
-			}
+			},
+			responseType: "blob"
 		}).then(response => {
 			try {
-				fileDownload(JSON.stringify(response.data), 'data.json');
+				fileDownload(response.data, 'data.docx');
 			} catch (e) {
 				console.log(e);
 			}
