@@ -18,11 +18,9 @@ RUN npm install -g npm@latest
 
 USER node
 
-RUN npm update
-
-RUN npm install
-
 COPY --chown=node:node . .
+
+RUN npm update
 
 RUN npm install
 
