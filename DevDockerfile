@@ -1,0 +1,23 @@
+FROM node:latest
+
+RUN git branch -b develop
+
+RUN git pull
+
+RUN mkdir -p /home/node/app/node_modules && chown -R node:node /home/node/app
+
+WORKDIR /home/node/app
+
+USER node
+
+COPY --chown=node:node . .
+
+RUN npm install
+
+EXPOSE 8083
+
+ENV PORT 8083
+
+RUN npm run build
+
+CMD [ "node", "Server.js" ]

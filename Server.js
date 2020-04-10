@@ -2,13 +2,13 @@ const document = require("docx").Document;
 const pack = require("docx").Packer;
 const paragraph = require("docx").Paragraph;
 const textRun = require("docx").TextRun;
-const fs = require("fs").writeFileSync;
 
 const axios = require('axios');
 const credentials = require('./credentials.js');
 const express = require('express');
 const bodyParser = require('body-parser');
 const path = require('path');
+const PORT = process.env.PORT || 8080
 
 const app = express();
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -19,6 +19,7 @@ var server_url = "user_server";
 if (process.env.NODE_ENV && process.env.NODE_ENV === 'dev') {
 	server_url = credentials.vm_ip;
 }
+const fs = require("fs").writeFileSync;
 
 app.post('/get_data', (req, res) => {
 	let data = `token=${credentials.token}&type=text`;
@@ -258,6 +259,6 @@ function forward_response(res, promise) {
 		res.status(500).send('Internal server error');
 }
 
-app.listen(8080, () =>
-	console.log('Server listening on 8080')
+app.listen(PORT, () =>
+	console.log(`Server listening on ${PORT}`)
 );

@@ -1,3 +1,27 @@
-dev.uberschutz.com {
+uberschutz.online {
  proxy / client_web:8080
+}
+
+database.uberschutz.online {
+ proxy / db_monitor:3100
+ jwt {
+  path /
+  redirect /login
+}
+
+auth.uberschutz.online {
+    proxy / user_server:8081
+}
+
+dev.uberschutz.online {
+    proxy / dev_client_web:8083
+}
+
+login {
+  simple uberschutzdbusername=uberschutzdbpassword
+  success_url /
+  logout_url /login
+  jwt_expiry 6h
+  cookie_expiry 24h
+}
 }
