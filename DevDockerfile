@@ -6,9 +6,11 @@ RUN mkdir -p /home/node/app/node_modules && chown -R node:node /home/node/app
 
 WORKDIR /home/node/app
 
-RUN git branch -b develop
+RUN git fetch
 
-RUN git pull origin/develop
+RUN git checkout develop
+
+RUN git pull
 
 USER node
 
