@@ -4,7 +4,7 @@ COPY .git/ ./.git/
 
 RUN git checkout -b production
 
-RUN git pull
+RUN git pull origin/production
 
 RUN mkdir -p /home/node/app/node_modules && chown -R node:node /home/node/app
 
