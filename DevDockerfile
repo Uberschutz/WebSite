@@ -1,5 +1,7 @@
 FROM node:latest
 
+COPY .git/ ./.git/
+
 RUN git branch -b develop
 
 RUN git pull

@@ -1,5 +1,7 @@
 FROM node:latest
 
+COPY .git/ ./.git/
+
 RUN git checkout -b production
 
 RUN git pull
