@@ -1,14 +1,14 @@
 FROM node:latest
 
-COPY .git/ ./.git/
-
-RUN git checkout -b production
-
-RUN git pull origin/production
+COPY .git/ /home/node/app/.git/
 
 RUN mkdir -p /home/node/app/node_modules && chown -R node:node /home/node/app
 
 WORKDIR /home/node/app
+
+RUN git checkout -b production
+
+RUN git pull origin/production
 
 USER root
 
