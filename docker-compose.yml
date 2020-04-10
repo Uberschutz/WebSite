@@ -5,15 +5,15 @@ services:
       depends_on:
         - user_db
       environment:
-        - MONGOKU_DEFAULT_HOST=''
+      - MONGOKU_DEFAULT_HOST='mongodb://127.0.0.1:27117;${UZ_root_user}:${UZ_root_password}@user_db:27117'
       ports:
         - "3100:3100"
     caddy:
+      image: "abiosoft/caddy:latest"
       build:
-        context: github.com/abiosoft/caddy-docker.git
+        #        context: github.com/abiosoft/caddy-docker.git
         args:
-          plugins: http.login, http.jwt
-#      image: "abiosoft/caddy:latest"
+        plugins: http.login, http.jwt
       volumes:
         #- ./certs:/root/certs # to sync mkcert certificates to Caddy
         - ./Caddyfile:/etc/Caddyfile  # to mount custom Caddyfile

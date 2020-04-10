@@ -12,9 +12,15 @@ RUN git checkout develop
 
 RUN git pull
 
+USER root
+
+RUN npm install -g npm@latest
+
 USER node
 
 COPY --chown=node:node . .
+
+RUN npm update
 
 RUN npm install
 
