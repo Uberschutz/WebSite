@@ -1,6 +1,236 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`renders Registration without crashing 1`] = `
+exports[`Testing the Registration page rendering renders Registration in english 1`] = `
+<div>
+  <div
+    class="col"
+  >
+    <br />
+    <div
+      class="card text-white bg-dark box-center"
+    >
+      <div
+        class="card-body bg-dark item-align text-align"
+      >
+        <h5
+          class="card-title text-align"
+        >
+          Registration
+        </h5>
+        <p
+          class="card-text"
+        >
+          Please fill these fields to continue
+        </p>
+        <div
+          class="input-group mb-3"
+        >
+          <div
+            class="input-group-prepend"
+          >
+            <span
+              class="input-group-text"
+              id="inputGroup-sizing-default"
+            >
+              Lastname
+            </span>
+          </div>
+          <input
+            aria-label="Nom"
+            class="form-control"
+            type="text"
+            value=""
+          />
+        </div>
+        <div
+          class="input-group mb-3"
+        >
+          <div
+            class="input-group-prepend"
+          >
+            <span
+              class="input-group-text"
+              id="inputGroup-sizing-default"
+            >
+              Firstname
+            </span>
+          </div>
+          <input
+            aria-label="Prénom"
+            class="form-control"
+            type="text"
+            value=""
+          />
+        </div>
+        <div
+          class="input-group mb-3"
+        >
+          <div
+            class="input-group-prepend"
+          >
+            <span
+              class="input-group-text"
+              id="inputGroup-sizing-default"
+            >
+              Email
+            </span>
+          </div>
+          <input
+            aria-label="Email"
+            class="form-control"
+            type="text"
+            value=""
+          />
+        </div>
+        <div
+          class="input-group mb-3"
+        >
+          <div
+            class="input-group-prepend"
+          >
+            <span
+              class="input-group-text"
+              id="inputGroup-sizing-default"
+            >
+              Password
+            </span>
+          </div>
+          <input
+            aria-label="Email"
+            class="form-control"
+            type="password"
+            value=""
+          />
+        </div>
+        <button
+          class="btn btn-primary"
+          type="button"
+        >
+          Continue
+        </button>
+        <br />
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Testing the Registration page rendering renders Registration in french 1`] = `
+<div>
+  <div
+    class="col"
+  >
+    <br />
+    <div
+      class="card text-white bg-dark box-center"
+    >
+      <div
+        class="card-body bg-dark item-align text-align"
+      >
+        <h5
+          class="card-title text-align"
+        >
+          Inscription
+        </h5>
+        <p
+          class="card-text"
+        >
+          Merci de remplir ces champs pour continuer
+        </p>
+        <div
+          class="input-group mb-3"
+        >
+          <div
+            class="input-group-prepend"
+          >
+            <span
+              class="input-group-text"
+              id="inputGroup-sizing-default"
+            >
+              Nom
+            </span>
+          </div>
+          <input
+            aria-label="Nom"
+            class="form-control"
+            type="text"
+            value=""
+          />
+        </div>
+        <div
+          class="input-group mb-3"
+        >
+          <div
+            class="input-group-prepend"
+          >
+            <span
+              class="input-group-text"
+              id="inputGroup-sizing-default"
+            >
+              Prénom
+            </span>
+          </div>
+          <input
+            aria-label="Prénom"
+            class="form-control"
+            type="text"
+            value=""
+          />
+        </div>
+        <div
+          class="input-group mb-3"
+        >
+          <div
+            class="input-group-prepend"
+          >
+            <span
+              class="input-group-text"
+              id="inputGroup-sizing-default"
+            >
+              Email
+            </span>
+          </div>
+          <input
+            aria-label="Email"
+            class="form-control"
+            type="text"
+            value=""
+          />
+        </div>
+        <div
+          class="input-group mb-3"
+        >
+          <div
+            class="input-group-prepend"
+          >
+            <span
+              class="input-group-text"
+              id="inputGroup-sizing-default"
+            >
+              Mot de passe
+            </span>
+          </div>
+          <input
+            aria-label="Email"
+            class="form-control"
+            type="password"
+            value=""
+          />
+        </div>
+        <button
+          class="btn btn-primary"
+          type="button"
+        >
+          Continuer
+        </button>
+        <br />
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Testing the Registration page rendering renders Registration without crashing 1`] = `
 <div>
   <div
     class="col"

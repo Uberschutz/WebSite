@@ -1,7 +1,19 @@
 version: "3"
 services:
+    db_monitor:
+      image: 'huggingface/mongoku'
+      depends_on:
+        - user_db
+      environment:
+        - MONGOKU_DEFAULT_HOST=''
+      ports:
+        - "3100:3100"
     caddy:
-      image: "abiosoft/caddy:latest"
+      build:
+        context: github.com/abiosoft/caddy-docker.git
+        args:
+          plugins: http.login, http.jwt
+#      image: "abiosoft/caddy:latest"
       volumes:
         #- ./certs:/root/certs # to sync mkcert certificates to Caddy
         - ./Caddyfile:/etc/Caddyfile  # to mount custom Caddyfile
@@ -27,6 +39,16 @@ services:
         build: .
         ports:
           - "8080:8080"
+        depends_on:
+          - mail_server
+          - user_server
+          - user_db
+    dev_client_web:
+        build:
+          context: .
+          dockerfile: DevDockerfile
+        ports:
+          - "8083:8083"
         depends_on:
           - mail_server
           - user_server

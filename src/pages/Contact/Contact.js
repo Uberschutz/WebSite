@@ -26,7 +26,7 @@ class Contact extends Component {
 	componentDidMount() {
     	if (this.props.base) {
 		    const {base: {language, logged}} = this.props;
-		    console.log(language, this.state.lang, 'kek');
+		    // console.log(language, this.state.lang, 'kek');
             this.setState({
                 lang: language,
                 connected: logged,

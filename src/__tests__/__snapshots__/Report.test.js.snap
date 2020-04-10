@@ -1,87 +1,197 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`render Report being logged in english 1`] = `
+exports[`Testing the Report page rendering render Report being logged in english 1`] = `
 <div>
   <div>
-    <br />
     <div
-      class="btn-group btn-group-lg"
+      class="mrg-begin"
     >
-      <button
-        aria-expanded="false"
-        aria-haspopup="true"
-        class="btn btn-info"
-        type="button"
-      >
-        Kids
-      </button>
       <div
-        aria-hidden="true"
-        class="drop btn dropdown-menu"
-        role="menu"
-        tabindex="-1"
+        class="btn-group btn-group-lg"
       >
-        <div>
+        <button
+          aria-expanded="false"
+          aria-haspopup="true"
+          class="dropdown-toggle btn btn-info"
+          type="button"
+        >
+          Kids
+        </button>
+        <div
+          aria-hidden="true"
+          class="drop btn dropdown-menu"
+          role="menu"
+          tabindex="-1"
+        >
           <div>
-            General
+            <div>
+              General
+            </div>
           </div>
         </div>
       </div>
     </div>
+     
     <br />
     <div
-      class="btn"
-      style="width: 50%;"
+      class="left-filter"
+    >
+      <span>
+        Filters:
+      </span>
+       
+      <br />
+       
+      <br />
+      <div
+        class="filter-align"
+      >
+        <input
+          data-filter="Discord"
+          type="checkbox"
+        />
+         Discord 
+        <br />
+        <input
+          data-filter="Internet"
+          type="checkbox"
+        />
+         
+        Internet browsing
+         
+        <br />
+      </div>
+    </div>
+    <div
+      class="btn content-right"
+      style="width: 70%;"
+    />
+    <div
+      class="summary"
     />
   </div>
 </div>
 `;
 
-exports[`render Report being logged in french 1`] = `
+exports[`Testing the Report page rendering render Report being logged in french 1`] = `
 <div>
   <div>
-    <br />
     <div
-      class="btn-group btn-group-lg"
+      class="mrg-begin"
     >
-      <button
-        aria-expanded="false"
-        aria-haspopup="true"
-        class="btn btn-info"
-        type="button"
-      >
-        Enfants
-      </button>
       <div
-        aria-hidden="true"
-        class="drop btn dropdown-menu"
-        role="menu"
-        tabindex="-1"
+        class="btn-group btn-group-lg"
       >
-        <div>
+        <button
+          aria-expanded="false"
+          aria-haspopup="true"
+          class="dropdown-toggle btn btn-info"
+          type="button"
+        >
+          Enfants
+        </button>
+        <div
+          aria-hidden="true"
+          class="drop btn dropdown-menu"
+          role="menu"
+          tabindex="-1"
+        >
           <div>
-            General
+            <div>
+              General
+            </div>
           </div>
         </div>
       </div>
     </div>
+     
     <br />
     <div
-      class="btn"
-      style="width: 50%;"
+      class="left-filter"
+    >
+      <span>
+        Filtres :
+      </span>
+       
+      <br />
+       
+      <br />
+      <div
+        class="filter-align"
+      >
+        <input
+          data-filter="Discord"
+          type="checkbox"
+        />
+         Discord 
+        <br />
+        <input
+          data-filter="Internet"
+          type="checkbox"
+        />
+         
+        Navigation internet
+         
+        <br />
+      </div>
+    </div>
+    <div
+      class="btn content-right"
+      style="width: 70%;"
+    />
+    <div
+      class="summary"
     />
   </div>
 </div>
 `;
 
-exports[`renders Report without crashing (not connected) in any language 1`] = `
+exports[`Testing the Report page rendering render Report not being logged in english 1`] = `
 <div>
   <div>
     <div>
       <h1
         class="text-xl-center forbidden"
       >
-        403 Forbidden
+        403 Accès interdit
+      </h1>
+      <br />
+      <img
+        alt="forbidden"
+        src="fogg-no-comments.png"
+      />
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Testing the Report page rendering render Report not being logged in french 1`] = `
+<div>
+  <div>
+    <div>
+      <h1
+        class="text-xl-center forbidden"
+      >
+        403 Accès interdit
+      </h1>
+      <br />
+      <img
+        alt="forbidden"
+        src="fogg-no-comments.png"
+      />
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Testing the Report page rendering renders Report without crashing (not connected) in any language 1`] = `
+<div>
+  <div>
+    <div>
+      <h1
+        class="text-xl-center forbidden"
+      >
+        403 Accès interdit
       </h1>
       <br />
       <img

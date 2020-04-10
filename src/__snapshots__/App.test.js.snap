@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`renders whole without crashing 1`] = `
+exports[`Testing the whole app rendering renders whole application without crashing 1`] = `
 <div>
   <div
     class="App"
@@ -45,7 +45,6 @@ exports[`renders whole without crashing 1`] = `
                 href="/Connection"
               >
                 Connexion
-                 
               </a>
             </li>
             <li
@@ -56,6 +55,16 @@ exports[`renders whole without crashing 1`] = `
                 href="/Contact+FAQ"
               >
                 Contact + FAQ
+              </a>
+            </li>
+            <li
+              class="nav-item nav-item"
+            >
+              <a
+                class="nav-link uber-color"
+                href="/Subscription"
+              >
+                Abonnements
               </a>
             </li>
           </ul>
@@ -243,7 +252,8 @@ exports[`renders whole without crashing 1`] = `
       </a>
       <br />
       <span>
-        © 2018 - 2020
+        © 2018 - 
+        2020
       </span>
       <br />
       <span>

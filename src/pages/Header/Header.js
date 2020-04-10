@@ -34,7 +34,7 @@ class Header extends Component {
     }
 
     componentDidMount() {
-    	console.log('header mounted');
+    	// console.log('header mounted');
 	    if (this.props.base) {
 		    const { base: { language, logged } } = this.props;
 		    this.setState({
@@ -47,9 +47,9 @@ class Header extends Component {
     }
 
     componentDidUpdate(prevProps, prevState, snapshot) {
-    	console.log('header update');
+    	// console.log('header update');
 	    if (this.props.base !== prevProps.base) {
-		    this.setState({logged: this.props.base.logged}, () => console.log('re'));
+		    this.setState({logged: this.props.base.logged});
 	    }
     }
 
@@ -106,8 +106,8 @@ class Header extends Component {
     }
 
     render () {
-    	console.log('redux', this.props);
-	    console.log('states', this.state.logged);
+    	// console.log('redux', this.props);
+	    // console.log('states', this.state.logged);
         // console.log(this.frenchClass);
         // console.log(this.EnglClass);
         let i = 2;

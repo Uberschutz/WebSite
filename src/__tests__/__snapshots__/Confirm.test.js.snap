@@ -1,12 +1,48 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`renders Confirm without crashing 1`] = `
+exports[`Testing the Confirm page rendering renders Confirm without crashing in any language 1`] = `
 <div>
   <div>
     <h1
       class="text-xl-center forbidden"
     >
-      404 Not Found
+      404 Page non trouvée
+    </h1>
+     
+    <br />
+    <img
+      alt="notFound"
+      src="fogg-page-not-found.png"
+    />
+  </div>
+</div>
+`;
+
+exports[`Testing the Confirm page rendering renders Confirm without crashing in english 1`] = `
+<div>
+  <div>
+    <h1
+      class="text-xl-center forbidden"
+    >
+      404 Page non trouvée
+    </h1>
+     
+    <br />
+    <img
+      alt="notFound"
+      src="fogg-page-not-found.png"
+    />
+  </div>
+</div>
+`;
+
+exports[`Testing the Confirm page rendering renders Confirm without crashing in french 1`] = `
+<div>
+  <div>
+    <h1
+      class="text-xl-center forbidden"
+    >
+      404 Page non trouvée
     </h1>
      
     <br />

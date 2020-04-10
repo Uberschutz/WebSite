@@ -17,13 +17,10 @@ class HomePage extends Component {
 		this.state = {
 			lang: 'fr'
 		};
-	// }
-    // state = {
-    //     lang: 'fr'
     };
 
 	componentDidMount() {
-		console.log('mount');
+		// console.log('mount');
 		if (this.props.base) {
 			const {base: {language}} = this.props;
 			// console.log(this.props, 'in home');
@@ -41,7 +38,7 @@ class HomePage extends Component {
 		// this.props.base.language !== prevProps.base.language && this.setState({lang: this.props.base.language}, () => console.log('re'));
 		if (this.props.base && this.props.base.language !== this.state.lang) {
 			// this.props.base.language !== prevState.language && this.setState({lang: this.props.base.language}, () => console.log('re'));
-			this.setState({lang: this.props.base.language}, () => console.log('re'))
+			this.setState({lang: this.props.base.language})
 		}
 	}
 
@@ -52,7 +49,7 @@ class HomePage extends Component {
 
 	render() {
 		let i = 0;
-		console.log('render');
+		// console.log('render');
         return (
             <div>
                 <img src={canvas} alt="canvas" className="responsive-image"/>
