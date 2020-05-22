@@ -48,6 +48,8 @@ services:
           - mail_server
           - user_server
           - user_db
+        volumes:
+          - ./credentials.js:/home/node/app/credentials.js
     dev_client_web:
         build:
           context: https://github.com/Uberschutz/WebSite.git#develop
