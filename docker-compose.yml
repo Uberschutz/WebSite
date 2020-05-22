@@ -39,7 +39,9 @@ services:
           - uz_user=${uz_user}
           - uz_password=${uz_password}
     client_web:
-        build: .
+        build:
+          context: https://github.com/Uberschutz/WebSite.git#production
+          dockerfile: Dockerfile
         ports:
           - "8080:8080"
         depends_on:
@@ -48,7 +50,7 @@ services:
           - user_db
     dev_client_web:
         build:
-          context: .
+          context: https://github.com/Uberschutz/WebSite.git#develop
           dockerfile: DevDockerfile
         ports:
           - "8083:8083"
