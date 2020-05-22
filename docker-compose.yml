@@ -58,6 +58,8 @@ services:
           - mail_server
           - user_server
           - user_db
+        volumes:
+        - ./credentials.js:/home/node/app/credentials.js
     user_db:
         image: 'mongo:latest'
         command: mongod --port 27117 --auth
