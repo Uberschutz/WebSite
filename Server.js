@@ -19,7 +19,6 @@ var server_url = "user_server";
 if (process.env.NODE_ENV && process.env.NODE_ENV === 'dev') {
 	server_url = credentials.vm_ip;
 }
-const fs = require("fs").writeFileSync;
 
 app.post('/get_data', (req, res) => {
 	let data = `token=${credentials.token}&type=text`;
