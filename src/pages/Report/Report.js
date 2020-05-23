@@ -78,16 +78,21 @@ class Report extends Component {
 	};
 
 	editFilter(filter) {
-		console.log(this.state.selectedChild);
+		if (this.state.filterData.length < 2)
+			return;
 		if (this.state.filters.includes(filter.target.dataset.filter)) {
 			let filters = [...this.state.filters];
 			let idx = this.state.filters.indexOf(filter.target.dataset.filter);
 			filters.splice(idx, 1);
 			if (filters.length === 1 && this.state.filterData.length > 0) {
 				console.log(this.state.filterData, 'deleting', filters[0]);
-				const data = this.state.filterData.find(obj => obj.key === filters[0]).value.map(obj => {
+				let data = this.state.filterData.find(obj => obj.key === filters[0]).value.map(obj => {
 					return {name: this.capitalize(obj.name.toLowerCase()), value: obj.percentValue};
 				});
+				const idx = data.findIndex(d => d.name === 'Safe');
+				const safe = data[idx];
+				data.splice(idx, 1);
+				data = [safe, ...data];
 				console.log('Editing filter and data (deletion)', data, filters);
 				this.setState({
 					filters: filters,
@@ -108,7 +113,7 @@ class Report extends Component {
 			}
 		} else {
 			if (this.state.filters.length === 0 && this.state.filterData.length > 0) {
-				console.log(this.state.filterData, 'adding');
+				console.log(this.state.filterData, 'adding', this.state.filters);
 				let data = this.state.filterData.find(obj => obj.key === filter.target.dataset.filter).value.map(obj => {
 					return {name: this.capitalize(obj.name.toLowerCase()), value: obj.percentValue};
 				});
@@ -122,11 +127,11 @@ class Report extends Component {
 					childData: data
 				});
 			} else {
-				console.log('request', this.state.filters, filter.target.dataset.filter)
+				console.log('request', this.state.filters, filter.target.dataset.filter, this.state.selectedChild)
 				this.setState({
 					filters: this.state.filters.concat([filter.target.dataset.filter])
 				}, () => {
-					this.changeChild(this.state.selectedChild === 'General' ? 'general' : this.state.selectedChild);
+					this.changeChild(this.state.selectedChild === 'General' ? 'general' : this.state.childrens.find(c => c.name === this.state.selectedChild));
 				});
 			}
 		}
@@ -148,16 +153,10 @@ class Report extends Component {
 					data.splice(idx, 1);
 					data = [safe, ...data];
 					console.log(data);
-					this.setState({selectedChild: 'General', isOpen: false, childData: data, filterData: response.data, dataExists: true});
+					this.setState({selectedChild: 'General', isOpen: false, childData: data, filterData: response.data, dataExists: safe.value !== 0});
 				} else {
-					data = response.data.map(obj => {
-						return {name: this.capitalize(obj.key.toLowerCase()), value: 0};
-					})
-					const idx = data.findIndex(d => d.name === 'Safe');
-					const safe = data[idx];
-					data.splice(idx, 1);
-					data = [safe, ...data];
-					this.setState({selectedChild: 'General', isOpen: false, childData: data, filterData: response.data, dataExists: false});
+					console.log('An error occurred: There is no data from the report API');
+					this.setState({selectedChild: 'General', isOpen: false, filterData: response.data, dataExists: false});
 				}
 			}).catch(err => {
 				console.log(err);
@@ -172,7 +171,6 @@ class Report extends Component {
 			discordId: child.discordId,
 			services: this.state.filters
 		}).then(response => {
-			// console.log(response.data.find(obj => obj.key === 'All').value);
 			const values = response.data.find(obj => obj.key === 'All').value;
 			let data;
 			if (values.length > 0) {
@@ -183,16 +181,10 @@ class Report extends Component {
 				const safe = data[idx];
 				data.splice(idx, 1);
 				data = [safe, ...data];
-				this.setState({selectedChild: child.name, isOpen: false, childData: data, filterData: response.data, dataExists: true});
+				this.setState({selectedChild: child.name, isOpen: false, childData: data, filterData: response.data, dataExists: safe.value !== 0});
 			} else {
-				data = response.data.map(obj => {
-					return {name: this.capitalize(obj.key.toLowerCase()), value: 0};
-				})
-				const idx = data.findIndex(d => d.name === 'Safe');
-				const safe = data[idx];
-				data.splice(idx, 1);
-				data = [safe, ...data];
-				this.setState({selectedChild: child.name, isOpen: false, childData: data, filterData: response.data, dataExists: false});
+				console.log('An error occurred: There is no data from the report API');
+				this.setState({selectedChild: child.name, isOpen: false, filterData: response.data, dataExists: false});
 			}
 		}).catch(err => {
 			console.log(err);
@@ -283,7 +275,7 @@ class Summary extends Component {
 
     render() {
     	let i = 0;
-	    if (this.props.child  && this.props.safe > 0) {
+	    if (this.props.child && this.props.safe > 0) {
 	        return (
                 <div>
                     <h5> {displayContent(this.props.lang, i++, 'summary')} {this.props.child} {displayContent(this.props.lang, i++, 'summary')} {this.props.safe} {displayContent(this.props.lang, i++, 'summary')}</h5>
