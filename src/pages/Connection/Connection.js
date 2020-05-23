@@ -79,13 +79,16 @@ class Connection extends Component {
                 // this.props.setNewsletter(response.data.newsletter);
                 this.props.history.push('/');
             }).catch(err => {
-                console.log(err);
-                this.setState({failAuth: true, requestCode: err.response.status, requestMessage: err.response.data}, () => {
-                	setTimeout(() => {
-                		this.setState({failAuth: false});
+                console.log(err.response);
+                this.setState({
+	                failAuth: true,
+	                requestCode: err.response.status,
+	                requestMessage: err.response.data,
+	                requestSent: false
+                }, () => {
+	                setTimeout(() => {
+		                this.setState({failAuth: false});
 	                }, 10 * 1000);
-                }).finally(() => {
-                    this.setState({requestSent: false});
                 });
             });
 		}

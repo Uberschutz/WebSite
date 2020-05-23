@@ -94,9 +94,13 @@ class Report extends Component {
 					childData: data
 				});
 			} else {
-				const data = this.state.filterData.find(obj => obj.key === 'All').value.map(obj => {
+				let data = this.state.filterData.find(obj => obj.key === 'All').value.map(obj => {
 					return {name: this.capitalize(obj.name.toLowerCase()), value: obj.percentValue};
 				});
+				const idx = data.findIndex(d => d.name === 'Safe');
+				const safe = data[idx];
+				data.splice(idx, 1);
+				data = [safe, ...data];
 				this.setState({
 					filters: filters,
 					childData: data
@@ -105,9 +109,13 @@ class Report extends Component {
 		} else {
 			if (this.state.filters.length === 0 && this.state.filterData.length > 0) {
 				console.log(this.state.filterData, 'adding');
-				const data = this.state.filterData.find(obj => obj.key === filter.target.dataset.filter).value.map(obj => {
+				let data = this.state.filterData.find(obj => obj.key === filter.target.dataset.filter).value.map(obj => {
 					return {name: this.capitalize(obj.name.toLowerCase()), value: obj.percentValue};
 				});
+				const idx = data.findIndex(d => d.name === 'Safe');
+				const safe = data[idx];
+				data.splice(idx, 1);
+				data = [safe, ...data];
 				console.log('Editing filter and data (addition)', data, filter.target.dataset.filter);
 				this.setState({
 					filters: this.state.filters.concat([filter.target.dataset.filter]),
@@ -135,11 +143,20 @@ class Report extends Component {
 					data = response.data.find(obj => obj.key === 'All').value.map(obj => {
 						return {name: this.capitalize(obj.name.toLowerCase()), value: obj.percentValue};
 					});
+					const idx = data.findIndex(d => d.name === 'Safe');
+					const safe = data[idx];
+					data.splice(idx, 1);
+					data = [safe, ...data];
+					console.log(data);
 					this.setState({selectedChild: 'General', isOpen: false, childData: data, filterData: response.data, dataExists: true});
 				} else {
 					data = response.data.map(obj => {
 						return {name: this.capitalize(obj.key.toLowerCase()), value: 0};
 					})
+					const idx = data.findIndex(d => d.name === 'Safe');
+					const safe = data[idx];
+					data.splice(idx, 1);
+					data = [safe, ...data];
 					this.setState({selectedChild: 'General', isOpen: false, childData: data, filterData: response.data, dataExists: false});
 				}
 			}).catch(err => {
@@ -162,11 +179,19 @@ class Report extends Component {
 				data = response.data.find(obj => obj.key === 'All').value.map(obj => {
 					return {name: this.capitalize(obj.name.toLowerCase()), value: obj.percentValue};
 				});
+				const idx = data.findIndex(d => d.name === 'Safe');
+				const safe = data[idx];
+				data.splice(idx, 1);
+				data = [safe, ...data];
 				this.setState({selectedChild: child.name, isOpen: false, childData: data, filterData: response.data, dataExists: true});
 			} else {
 				data = response.data.map(obj => {
 					return {name: this.capitalize(obj.key.toLowerCase()), value: 0};
 				})
+				const idx = data.findIndex(d => d.name === 'Safe');
+				const safe = data[idx];
+				data.splice(idx, 1);
+				data = [safe, ...data];
 				this.setState({selectedChild: child.name, isOpen: false, childData: data, filterData: response.data, dataExists: false});
 			}
 		}).catch(err => {
