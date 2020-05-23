@@ -62,7 +62,7 @@ app.post('/subscribe_newsletter', async (req, res) => {
 });
 
 app.post('/unsubscribe_newsletter', async (req, res) => {
-	let result = axios.post(`http://${server_url}:8081/unsubscribe_newsletter`, {
+	let result = await axios.post(`http://${server_url}:8081/unsubscribe_newsletter`, {
 		email: req.body.email,
 		name: req.body.name
 	}, {
