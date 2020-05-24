@@ -61,10 +61,10 @@ jobs:
           command: |
             if [ "$CIRCLE_BRANCH" == "develop" ];
             then
-              ssh $SSH_USER@$SSH_HOST "cd uberschutz_project/eip/WebSite && git pull && docker-compose build --no-cache --force-rm dev_client_web && docker-compose up -d dev_client_web"
+              ssh $SSH_USER@$SSH_HOST -p 50417 "cd uberschutz_project/eip/WebSite && git pull && docker-compose build --no-cache --force-rm dev_client_web && docker-compose up -d dev_client_web"
             elif [ "$CIRCLE_BRANCH" == "production" ];
             then
-              ssh $SSH_USER@$SSH_HOST "cd uberschutz_project/eip/WebSite && git pull && docker-compose build --no-cache --force-rm client_web && docker-compose up -d client_web"
+              ssh $SSH_USER@$SSH_HOST -p 50417 "cd uberschutz_project/eip/WebSite && git pull && docker-compose build --no-cache --force-rm client_web && docker-compose up -d client_web"
             fi
 
 workflows:
