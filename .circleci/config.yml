@@ -55,17 +55,17 @@ jobs:
   deploy:
     machine:
       enabled: true
-      steps:
-        - run:
-            name: Deploy Over SSH
-            command: |
-              if [ "$CIRCLE_BRANCH" == "develop" ];
-              then
-                ssh $SSH_USER@$SSH_HOST "cd uberschutz_project/eip/WebSite && git pull && docker-compose build --no-cache --force-rm dev_client_web && docker-compose up -d dev_client_web"
-              elif [ "$CIRCLE_BRANCH" == "production" ];
-              then
-                ssh $SSH_USER@$SSH_HOST "cd uberschutz_project/eip/WebSite && git pull && docker-compose build --no-cache --force-rm client_web && docker-compose up -d client_web"
-              fi
+    steps:
+      - run:
+          name: Deploy Over SSH
+          command: |
+            if [ "$CIRCLE_BRANCH" == "develop" ];
+            then
+              ssh $SSH_USER@$SSH_HOST "cd uberschutz_project/eip/WebSite && git pull && docker-compose build --no-cache --force-rm dev_client_web && docker-compose up -d dev_client_web"
+            elif [ "$CIRCLE_BRANCH" == "production" ];
+            then
+              ssh $SSH_USER@$SSH_HOST "cd uberschutz_project/eip/WebSite && git pull && docker-compose build --no-cache --force-rm client_web && docker-compose up -d client_web"
+            fi
 
 workflows:
   version: 2
