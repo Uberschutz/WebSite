@@ -5,12 +5,12 @@
 version: 2
 jobs:
   build:
-    branches:
-      only:
-        - master
-        - develop
-        - unit-tests
-        - rendering-unit-tests
+#    branches:
+#      only:
+#        - master
+#        - develop
+#        - unit-tests
+#        - rendering-unit-tests
 
     docker:
       # specify the version you desire here
@@ -71,7 +71,14 @@ workflows:
   version: 2
   build-and-deploy:
     jobs:
-      - build
+      - build:
+          filters:
+            branches:
+              only:
+                - master
+                - develop
+                - unit-tests
+                - rendering-unit-tests
       - deploy:
           requires:
             - build # only deploy once build job has completed
