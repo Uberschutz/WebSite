@@ -53,7 +53,7 @@ exports[`Testing the Report page rendering render Report being logged in english
          Discord 
         <br />
         <input
-          data-filter="Internet"
+          data-filter="plugin"
           type="checkbox"
         />
          
@@ -126,7 +126,7 @@ exports[`Testing the Report page rendering render Report being logged in french 
          Discord 
         <br />
         <input
-          data-filter="Internet"
+          data-filter="plugin"
           type="checkbox"
         />
          
