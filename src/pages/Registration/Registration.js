@@ -5,6 +5,7 @@ import '../../styles/Connection.css';
 import axios from "axios";
 import {displayContent, displayHttpMessages} from "../../utils/translationDisplay";
 import {Alert} from "reactstrap";
+import loading from "../../assets/Spinner-1s-70px.gif";
 
 class Registration extends Component {
 
@@ -20,7 +21,8 @@ class Registration extends Component {
             lang: "fr",
 	        status: '',
 	        statusErr: false,
-	        emailSent: false
+	        emailSent: false,
+	        pending: false
         };
     }
 
@@ -75,6 +77,7 @@ class Registration extends Component {
 
     register() {
         if (this.state.email !== '' && this.state.passwd !== '' && this.state.lastname !== '') {
+        	this.setState({pending: true});
             axios.post('/register', {
                 email: this.state.email,
                 passwd: this.state.passwd,
@@ -84,6 +87,7 @@ class Registration extends Component {
             	console.log(response);
 	            this.setState({
 		            emailSent: true,
+		            pending: false,
 		            statusErr: false,
 		            status: this.state.lang === "en" ? `${response.data}` : `${displayHttpMessages(this.state.lang, response.status, response.data)}`
 	            }, () => {
@@ -94,6 +98,7 @@ class Registration extends Component {
 	            this.setState({
 		            emailSent: true,
 		            statusErr: true,
+		            pending: false,
 		            status: this.state.lang === "en" ? `An error occurred : ${err.response.data}` : `${displayHttpMessages(this.state.lang, err.response.status, err.response.data)}`
 	            }, () => {
 		            setTimeout(() => {this.setState({emailSent: false})}, 10000);
@@ -152,6 +157,10 @@ class Registration extends Component {
                         {this.state.alphaSurname || this.state.alphaName ?
                             <span className="address text-danger">{displayContent(this.state.lang, i, 'registration')}</span> : null}
                     </div>
+	                {
+		                this.state.pending ? <img src={loading} alt="loading"/>
+			                : null
+	                }
                 </div>
 	            {
 		            this.state.emailSent ?
