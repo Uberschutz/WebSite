@@ -3,8 +3,11 @@ import '../../styles/bootstrap.css';
 import '../../styles/Parameters.css';
 import axios from 'axios';
 
-import { Modal, ModalHeader, ModalFooter, Button } from 'reactstrap';
-import {Icon} from 'antd';
+import Modal from 'reactstrap/lib/Modal';
+import ModalHeader from 'reactstrap/lib/ModalHeader';
+import ModalFooter from 'reactstrap/lib/ModalFooter';
+import Button from 'reactstrap/lib/Button';
+import Icon from 'antd/lib/icon/index';
 
 import DisplayChildrenList from '../../components/ChildCards';
 import OptionsList from '../../components/OptionsList';

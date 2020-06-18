@@ -4,7 +4,7 @@ import '../../styles/Connection.css';
 
 import axios from "axios";
 import {displayContent, displayHttpMessages} from "../../utils/translationDisplay";
-import {Alert} from "reactstrap";
+import Alert from "reactstrap/lib/Alert";
 import loading from "../../assets/Spinner-1s-70px.gif";
 
 class Registration extends Component {

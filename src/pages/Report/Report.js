@@ -2,8 +2,10 @@ import React, { Component } from 'react';
 import '../../styles/bootstrap.css';
 import '../../styles/Report.css';
 
-import {ButtonDropdown, DropdownMenu, DropdownToggle} from "reactstrap";
-import {ProgressBar} from "react-bootstrap";
+import ButtonDropdown from "reactstrap/lib/ButtonDropdown";
+import DropdownMenu from "reactstrap/lib/DropdownMenu";
+import DropdownToggle from "reactstrap/lib/DropdownToggle";
+import ProgressBar from "react-bootstrap/ProgressBar";
 import { displayContent } from '../../utils/translationDisplay';
 import axios from 'axios';
 

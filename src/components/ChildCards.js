@@ -1,6 +1,10 @@
 import React, {Component} from "react";
-import {Button, Card, CardFooter, CardText, CardTitle} from "reactstrap";
-import {Icon} from "antd";
+import Button from "reactstrap/lib/Button";
+import Card from "reactstrap/lib/Card";
+import CardFooter from "reactstrap/lib/CardFooter";
+import CardText from "reactstrap/lib/CardText";
+import CardTitle from "reactstrap/lib/CardTitle";
+import Icon from "antd/lib/icon/index";
 
 export class DisplayChildrenCard extends Component {
 	render() {

@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import '../../styles/bootstrap.css';
 import '../../styles/Contact.css';
 
-import { Icon } from 'antd';
-import { Alert } from 'reactstrap';
+import Icon from 'antd/lib/icon/index';
+import Alert from 'reactstrap/lib/Alert';
 import {displayContent, displayHttpMessages} from '../../utils/translationDisplay';
 import axios from 'axios';
 

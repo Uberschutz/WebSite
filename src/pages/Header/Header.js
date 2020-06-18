@@ -6,9 +6,15 @@ import logo from '../../assets/Uberschutz-Icon.png';
 import french from '../../assets/icons8-france-96.png';
 import english from '../../assets/icons8-grande-bretagne-48.png';
 
-import {Navbar, NavbarBrand, Nav, Collapse, NavItem} from 'reactstrap';
-import {DropdownMenu, DropdownToggle, ButtonDropdown} from 'reactstrap'
-import {Link} from "react-router-dom";
+import Navbar from 'reactstrap/lib/Navbar';
+import NavbarBrand from 'reactstrap/lib/NavbarBrand';
+import Nav from 'reactstrap/lib/Nav';
+import Collapse from 'reactstrap/lib/Collapse';
+import NavItem from 'reactstrap/lib/NavItem';
+import DropdownMenu from 'reactstrap/lib/DropdownMenu'
+import DropdownToggle from 'reactstrap/lib/DropdownToggle'
+import ButtonDropdown from 'reactstrap/lib/ButtonDropdown'
+const Link = require("react-router-dom").Link;
 import { displayContent } from '../../utils/translationDisplay';
 
 import axios from 'axios';

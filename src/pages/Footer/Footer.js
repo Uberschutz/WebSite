@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import '../../styles/bootstrap.css';
 import '../../styles/HomePage.css';
 
-import { Link } from 'react-router-dom';
+const Link = require("react-router-dom").Link;
 import {displayContent} from "../../utils/translationDisplay";
 
 class Footer extends Component {

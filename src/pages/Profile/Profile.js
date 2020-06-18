@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 import '../../styles/bootstrap.css';
 import '../../styles/Profile.css';
 
-import { Icon } from 'antd';
+import Icon from 'antd/lib/icon/index';
 import {displayContent, displayHttpMessages} from '../../utils/translationDisplay';
-import { Alert } from 'reactstrap';
+import Alert from 'reactstrap/lib/Alert';
 
 import Unauthorized from "../Unauthorized";
 import newsletter from "../../assets/icons8-mail-100.png";
