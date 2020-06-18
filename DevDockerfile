@@ -8,7 +8,7 @@ USER node
 
 COPY --chown=node:node . .
 
-RUN yarn install
+RUN yarn install --silent --no-progress
 
 EXPOSE 8083
 

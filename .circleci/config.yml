@@ -28,11 +28,12 @@ jobs:
 
 #      - run:
 #          name: update-npm
+#          name: update-yarn
 #          command: 'sudo npm install -g npm@latest'
 
       - run:
           name: update-dependencies
-          command: 'yarn upgrade'
+          command: 'yarn upgrade --silent --no-progress'
 #          command: 'npm update'
       # Download and cache dependencies
       - restore_cache:
@@ -45,7 +46,7 @@ jobs:
       - run:
           name: install-yarn
 #          name: install-npm
-          command: 'yarn install'
+          command: 'yarn install --silent --no-progress'
 #          command: 'npm install'
 
       - save_cache:
