@@ -14,10 +14,10 @@ import NavItem from 'reactstrap/lib/NavItem';
 import DropdownMenu from 'reactstrap/lib/DropdownMenu'
 import DropdownToggle from 'reactstrap/lib/DropdownToggle'
 import ButtonDropdown from 'reactstrap/lib/ButtonDropdown'
-const Link = require("react-router-dom").Link;
 import { displayContent } from '../../utils/translationDisplay';
-
 import axios from 'axios';
+
+const Link = require("react-router-dom").Link;
 
 class Header extends Component {
     constructor(props) {

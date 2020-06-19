@@ -2,11 +2,12 @@ import React, { Component } from 'react';
 import '../../styles/bootstrap.css';
 import '../../styles/Connection.css';
 
-const Link = require("react-router-dom").Link;
 import { displayContent, displayHttpMessages } from '../../utils/translationDisplay';
 import axios from 'axios';
 import Alert from "reactstrap/lib/Alert";
 import loading from "../../assets/Spinner-1s-70px.gif";
+
+const Link = require("react-router-dom").Link;
 
 class Connection extends Component {
 	constructor(props) {
