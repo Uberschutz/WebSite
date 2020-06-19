@@ -32,7 +32,7 @@ class Profile extends Component {
 			newsletterAlert: '',
 			statusErr: false
 		};
-		// this._handleKeyPressed = this._handleKeyPressed.bind(this);
+		this._handleKeyPressed = this._handleKeyPressed.bind(this);
 		this.onChangeFirstname = this.onChangeFirstname.bind(this);
 		this.onChangeLastname = this.onChangeLastname.bind(this);
 		this.changeFirstName = this.changeFirstName.bind(this);
@@ -187,9 +187,13 @@ class Profile extends Component {
 		})
 	}
 
-	_handleKeyPressed(e, action) {
+	_handleKeyPressed(e) {
 		if (e.key === "Enter") {
-			if (action === "firstname") {
+			console.log(e)
+			console.log(e.target)
+			console.log(e.target.dataset)
+			console.log(e.target.dataset.action)
+			if (e.target.dataset.action === "firstname") {
 				this.changeFirstName();
 			} else {
 				this.changeLastName();
@@ -207,7 +211,7 @@ class Profile extends Component {
 							{displayContent(this.state.lang, i++, 'profile')}
 						</h4>
 						<div className="input-group input-group-sm col-sm-2">
-							<input type="text" className="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" onKeyPress={(e) => { this._handleKeyPressed(e, "lastname")}} value={this.state.lastname} onChange={this.onChangeLastname}/>
+							<input type="text" className="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" data-action="lastname" onKeyPress={this._handleKeyPressed} value={this.state.lastname} onChange={this.onChangeLastname}/>
 							<button className="btn btn-primary btn-sm" onClick={this.changeLastName}>OK</button>
 						</div> <br/>
 					</div>
@@ -216,7 +220,7 @@ class Profile extends Component {
 							{displayContent(this.state.lang, i++, 'profile')}
 						</h5>
 						<div className="input-group input-group-sm col-sm-2">
-							<input type="text" className="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" onKeyPress={(e) => { this._handleKeyPressed(e, "firstname")}} value={this.state.firstname} onChange={this.onChangeFirstname}/>
+							<input type="text" className="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" data-action="firstname" onKeyPress={this._handleKeyPressed} value={this.state.firstname} onChange={this.onChangeFirstname}/>
 							<button className="btn btn-primary btn-sm" onClick={this.changeFirstName}>OK</button>
 						</div><br/>
 					</div>
