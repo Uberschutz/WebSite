@@ -21,6 +21,8 @@ class Contact extends Component {
             email: '',
             lastname: ''
         };
+
+	    this.redirectProfile = this.redirectProfile.bind(this);
     }
 
 	componentDidMount() {
@@ -102,7 +104,7 @@ class Contact extends Component {
                     </div>
                 </div>
                 <Faq lang={this.state.lang}/>
-                <Form lang={this.state.lang} connected={this.state.connected} subscribed={this.state.subscribed} redirectProfile={this.redirectProfile.bind(this)} name={this.state.lastname} email={this.state.email}/>
+                <Form lang={this.state.lang} connected={this.state.connected} subscribed={this.state.subscribed} redirectProfile={this.redirectProfile} name={this.state.lastname} email={this.state.email}/>
             </div>
         )
     }
