@@ -4,22 +4,20 @@ RUN mkdir -p /home/node/app/node_modules && chown -R node:node /home/node/app
 
 WORKDIR /home/node/app
 
-USER root
-
-RUN npm install -g npm@latest
-
 USER node
 
 COPY --chown=node:node . .
 
-RUN npm update
+ARG NODE_ENV
 
-RUN npm install
+ENV NODE_ENV $NODE_ENV
+
+RUN yarn install --silent --no-progress
 
 EXPOSE 8080
 
 ENV PORT 8080
 
-RUN npm run build
+RUN yarn run build
 
 CMD [ "node", "Server.js" ]

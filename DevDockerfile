@@ -8,6 +8,10 @@ USER node
 
 COPY --chown=node:node . .
 
+ARG NODE_ENV
+
+ENV NODE_ENV $NODE_ENV
+
 RUN yarn install --silent --no-progress
 
 EXPOSE 8083
