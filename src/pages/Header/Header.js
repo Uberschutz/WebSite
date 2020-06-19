@@ -119,8 +119,6 @@ class Header extends Component {
                     <NavbarBrand className="navbar-brand uber-color button-footer" href="/"> Überschutz</NavbarBrand>
 	                {this.state.logged ? <text className="navbar-brand uber-color button-footer">{displayContent(this.state.lang, 0, 'navbar')} {this.state.lastname} !</text> : null}
 	                {this.state.logged ? <button onClick={() => this.disconnect()}>{displayContent(this.state.lang, 1, 'navbar')}</button> : null}
-	                {/*<NavbarToggler className="navbar-toggler" onClick={this.toggle}/>
-                    <Collapse className="collapse navbar-collapse" isOpen={this.state.isOpen} navbar>*/}
                     <Collapse className="collapse navbar-collapse" isOpen={true} navbar>
                         <Nav className="ml-auto navbar  navbar-expand-md" navbar>
                             <React.Fragment>
@@ -140,7 +138,6 @@ class Header extends Component {
 	                            { this.state.logged ?
                                 <NavItem className="nav-item">
 	                                <Link to="/Profile" className="nav-link uber-color">{displayContent(this.state.lang, i++, 'navbar')}</Link>
-                                    {/*<NavLink className="nav-link uber-color" href="/Profile">{displayContent(this.state.lang, i++, 'navbar')} </NavLink>*/}
                                 </NavItem> : null }
 	                            {this.state.logged ?
 	                            <NavItem className="nav-item">
@@ -149,7 +146,6 @@ class Header extends Component {
 	                            {this.state.logged ?
                                 <NavItem className="nav-item">
 	                                <Link to="/Parameters" className="nav-link uber-color">{displayContent(this.state.lang, i, 'navbar')}</Link>
-                                    {/*<NavLink className="nav-link uber-color" href="/Parameters">{displayContent(this.state.lang, i, 'navbar')} </NavLink>*/}
                                 </NavItem> : null }
                             </React.Fragment>
                         </Nav>
@@ -157,7 +153,6 @@ class Header extends Component {
 	                <ButtonDropdown isOpen={this.state.isOpen} toggle={this.toggle} size="sm">
 		                <DropdownToggle caret color="primary">
                             {this.getFlag()}
-			                {/*<img src={french} className={frenchClass} alt="french" width="35" height="35" onClick={() => this.props.setLanguage('fr')}/>*/}
 		                </DropdownToggle>
 		                <DropdownMenu className="drop btn">
 			                <div>
