@@ -33,9 +33,15 @@ class Parameters extends Component {
 			token: '',
 			discordId: ''
 		};
+
+		this.toggleOption = this.toggleOption.bind(this);
 		this.toggleModal = this.toggleModal.bind(this);
 		this.editChildren = this.editChildren.bind(this);
 		this.deleteChildren = this.deleteChildren.bind(this);
+		this.createChildren = this.createChildren.bind(this);
+		this.setAge = this.setAge.bind(this);
+		this.setFirstName = this.setFirstName.bind(this);
+		this.setDiscordId = this.setDiscordId.bind(this);
 		this.options = [{name: 'Reports', enabled: false}, {name: 'Uberschutz', enabled: false}, {name: 'Alerts', enabled: false}, {name: 'Adds', enabled: false}];
 	}
 
@@ -162,24 +168,24 @@ class Parameters extends Component {
 	}
 
 	setFirstName(name) {
-		if (name && !Parameters.isAlpha(name)) {
-			this.setState({alphaErr: true, name});
+		if (name.target.value && !Parameters.isAlpha(name.target.value)) {
+			this.setState({alphaErr: true, name: name.target.value});
 		} else {
-			this.setState({alphaErr: false, name});
+			this.setState({alphaErr: false, name: name.target.value});
 		}
 	}
 
 	setAge(age) {
-		if (age && !Parameters.isNum(age)) {
-			this.setState({numErr: true, age});
+		if (age.target.value && !Parameters.isNum(age.target.value)) {
+			this.setState({numErr: true, age: age.target.value});
 		} else {
-			this.setState({numErr: false, age});
+			this.setState({numErr: false, age: age.target.value});
 		}
 	}
 
 	setDiscordId(id) {
-		if (id) {
-			this.setState({discordId: id});
+		if (id.target.value) {
+			this.setState({discordId: id.target.value});
 		} else {
 			this.setState({discordId: ''});
 		}
@@ -206,10 +212,10 @@ class Parameters extends Component {
 									{this.state.alphaErr ? <input
 											className="child-field form-box-error form-control"
 											type="text" value={this.state.name}
-											onChange={(name) => this.setFirstName(name.target.value)}/> :
+											onChange={this.setFirstName}/> :
 										<input className="child-field" type="text"
 										       value={this.state.name}
-										       onChange={(name) => this.setFirstName(name.target.value)}/>}
+										       onChange={this.setFirstName}/>}
 								</label>
 								<br/>
 								<label className="child-field">
@@ -217,17 +223,17 @@ class Parameters extends Component {
 									{this.state.numErr ? <input
 											className="child-field form-box-error form-control"
 											type="text" value={this.state.age}
-											onChange={(age) => this.setAge(age.target.value)}/> :
+											onChange={this.setAge}/> :
 										<input className="child-field" type="text"
 										       value={this.state.age}
-										       onChange={(age) => this.setAge(age.target.value)}/>}
+										       onChange={this.setAge}/>}
 								</label>
 								<br/>
 								<label className="child-field">
 									Discord ID (Bêta)<br/>
 									<input className="child-field" type="text"
 										   value={this.state.discordId}
-										   onChange={(id) => this.setDiscordId(id.target.value)}/>
+										   onChange={this.setDiscordId}/>
 								</label>
 								<br/> <br/>
 							</div>
@@ -238,12 +244,12 @@ class Parameters extends Component {
 								optionClassName={'col-4 align'}
 								options={this.state.options}
 								translations={displayContent(this.state.lang, -1, 'options')}
-								toggleOption={this.toggleOption.bind(this)}
+								toggleOption={this.toggleOption}
 							/>
 
 							<ModalFooter>
 								<Button className="save-child btn change-child"
-										onClick={() => this.createChildren()}>
+										onClick={this.createChildren}>
 									{this.state.state === 'Create' ? displayContent(this.state.lang, 6, 'parameters') :
 										displayContent(this.state.lang, 7, 'parameters')}
 								</Button>
