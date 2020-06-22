@@ -73,7 +73,7 @@ class Connection extends Component {
 		        email: this.state.email,
                 passwd: this.state.password
             }).then(response => {
-                console.log(response.data);
+                // console.log(response.data);
                 this.props.setLogged(true);
                 // this.props.setUser(this.state.email, response.data.lastname, response.data.firstname);
                 this.props.setAuthToken(response.data.token);
