@@ -80,7 +80,7 @@ exports[`Testing the Connection page rendering render Connection in english 1`] 
       href="/Registration"
     >
       <button
-        class="btn btn-primary"
+        class="btn button-footer btn-primary"
         type="button"
       >
         Create an account
@@ -170,7 +170,7 @@ exports[`Testing the Connection page rendering render Connection in french 1`] =
       href="/Registration"
     >
       <button
-        class="btn btn-primary"
+        class="btn button-footer btn-primary"
         type="button"
       >
         Créer un compte
@@ -260,7 +260,7 @@ exports[`Testing the Connection page rendering renders Connection without crashi
       href="/Registration"
     >
       <button
-        class="btn btn-primary"
+        class="btn button-footer btn-primary"
         type="button"
       >
         Créer un compte

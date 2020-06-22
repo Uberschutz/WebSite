@@ -2,10 +2,14 @@ import React, { Component } from 'react';
 import '../../styles/bootstrap.css';
 import '../../styles/Report.css';
 
-import {ButtonDropdown, DropdownMenu, DropdownToggle} from "reactstrap";
-import {ProgressBar} from "react-bootstrap";
+import ButtonDropdown from "reactstrap/lib/ButtonDropdown";
+import DropdownMenu from "reactstrap/lib/DropdownMenu";
+import DropdownToggle from "reactstrap/lib/DropdownToggle";
+import ProgressBar from "react-bootstrap/ProgressBar";
 import { displayContent } from '../../utils/translationDisplay';
 import axios from 'axios';
+
+import ReactGA from 'react-ga';
 
 import bad from '../../assets/icons8-triste-80.png'
 import neutral from '../../assets/icons8-neutre-80.png'
@@ -32,9 +36,11 @@ class Report extends Component {
 		};
 		this.i = 1;
 		this.editFilter = this.editFilter.bind(this);
+		this.changeChild = this.changeChild.bind(this);
 	}
 
 	componentDidMount() {
+		ReactGA.pageview(window.location.pathname + window.location.search);
 		if (this.props.base) {
 			const { base: { language, logged, token } } = this.props;
 				this.setState({
@@ -137,8 +143,9 @@ class Report extends Component {
 		}
 	}
 
-	changeChild(child) {
-		if (typeof child === 'string' && child === 'general') {
+	changeChild(data) {
+		const child = data.target.dataset.child;
+		if (!Number.isInteger(+child) && child === 'general') {
 			axios.post('/get_data', {
 				services: this.state.filters
 			}).then(response => {
@@ -160,9 +167,10 @@ class Report extends Component {
 				}
 			}).catch(err => {
 				console.log(err);
+				this.setState({selectedChild: 'General', isOpen: false, dataExists: false})
 			})
 		} else {
-			this.getChildData(child)
+			this.getChildData(this.state.childrens[+child]);
 		}
 	}
 
@@ -188,6 +196,7 @@ class Report extends Component {
 			}
 		}).catch(err => {
 			console.log(err);
+			this.setState({selectedChild: child.name, isOpen: false, dataExists: false})
 		})
 	}
 
@@ -206,13 +215,13 @@ class Report extends Component {
 									this.state.childrens.map((d, idx) => {
 										return (
 											<div>
-												<div onClick={() => {this.changeChild(d)}}>{d.name}</div>
+												<div data-child={idx} onClick={this.changeChild}>{d.name}</div>
 											</div>
 										)
 									})
 								}
 								<div>
-									<div onClick={() => {this.changeChild('general')}}>General</div>
+									<div data-child="general" onClick={this.changeChild}>General</div>
 								</div>
 							</DropdownMenu>
 						</ButtonDropdown>
@@ -268,11 +277,6 @@ class Report extends Component {
 }
 
 class Summary extends Component {
-
-    componentDidMount() {
-        // console.log("CACA", this.props.safe);
-    }
-
     render() {
     	let i = 0;
 	    if (this.props.child && this.props.safe > 0) {

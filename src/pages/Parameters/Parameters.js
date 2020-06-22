@@ -3,8 +3,13 @@ import '../../styles/bootstrap.css';
 import '../../styles/Parameters.css';
 import axios from 'axios';
 
-import { Modal, ModalHeader, ModalFooter, Button } from 'reactstrap';
-import {Icon} from 'antd';
+import Modal from 'reactstrap/lib/Modal';
+import ModalHeader from 'reactstrap/lib/ModalHeader';
+import ModalFooter from 'reactstrap/lib/ModalFooter';
+import Button from 'reactstrap/lib/Button';
+import Icon from 'antd/lib/icon/index';
+
+import ReactGA from 'react-ga';
 
 import DisplayChildrenList from '../../components/ChildCards';
 import OptionsList from '../../components/OptionsList';
@@ -30,13 +35,20 @@ class Parameters extends Component {
 			token: '',
 			discordId: ''
 		};
+
+		this.toggleOption = this.toggleOption.bind(this);
 		this.toggleModal = this.toggleModal.bind(this);
 		this.editChildren = this.editChildren.bind(this);
 		this.deleteChildren = this.deleteChildren.bind(this);
+		this.createChildren = this.createChildren.bind(this);
+		this.setAge = this.setAge.bind(this);
+		this.setFirstName = this.setFirstName.bind(this);
+		this.setDiscordId = this.setDiscordId.bind(this);
 		this.options = [{name: 'Reports', enabled: false}, {name: 'Uberschutz', enabled: false}, {name: 'Alerts', enabled: false}, {name: 'Adds', enabled: false}];
 	}
 
 	componentDidMount() {
+		ReactGA.pageview(window.location.pathname + window.location.search);
 		if (this.props.base) {
 			const { base: { language, logged, token } } = this.props;
 				this.setState({
@@ -159,24 +171,24 @@ class Parameters extends Component {
 	}
 
 	setFirstName(name) {
-		if (name && !Parameters.isAlpha(name)) {
-			this.setState({alphaErr: true, name});
+		if (name.target.value && !Parameters.isAlpha(name.target.value)) {
+			this.setState({alphaErr: true, name: name.target.value});
 		} else {
-			this.setState({alphaErr: false, name});
+			this.setState({alphaErr: false, name: name.target.value});
 		}
 	}
 
 	setAge(age) {
-		if (age && !Parameters.isNum(age)) {
-			this.setState({numErr: true, age});
+		if (age.target.value && !Parameters.isNum(age.target.value)) {
+			this.setState({numErr: true, age: age.target.value});
 		} else {
-			this.setState({numErr: false, age});
+			this.setState({numErr: false, age: age.target.value});
 		}
 	}
 
 	setDiscordId(id) {
-		if (id) {
-			this.setState({discordId: id});
+		if (id.target.value) {
+			this.setState({discordId: id.target.value});
 		} else {
 			this.setState({discordId: ''});
 		}
@@ -203,10 +215,10 @@ class Parameters extends Component {
 									{this.state.alphaErr ? <input
 											className="child-field form-box-error form-control"
 											type="text" value={this.state.name}
-											onChange={(name) => this.setFirstName(name.target.value)}/> :
+											onChange={this.setFirstName}/> :
 										<input className="child-field" type="text"
 										       value={this.state.name}
-										       onChange={(name) => this.setFirstName(name.target.value)}/>}
+										       onChange={this.setFirstName}/>}
 								</label>
 								<br/>
 								<label className="child-field">
@@ -214,24 +226,24 @@ class Parameters extends Component {
 									{this.state.numErr ? <input
 											className="child-field form-box-error form-control"
 											type="text" value={this.state.age}
-											onChange={(age) => this.setAge(age.target.value)}/> :
+											onChange={this.setAge}/> :
 										<input className="child-field" type="text"
 										       value={this.state.age}
-										       onChange={(age) => this.setAge(age.target.value)}/>}
+										       onChange={this.setAge}/>}
 								</label>
 								<br/>
 								<label className="child-field">
 									Discord ID (Bêta)<br/>
 									<input className="child-field" type="text"
 										   value={this.state.discordId}
-										   onChange={(id) => this.setDiscordId(id.target.value)}/>
+										   onChange={this.setDiscordId}/>
 								</label>
 								<br/> <br/>
 							</div>
 							<br/>
 							<ModalFooter>
 								<Button className="save-child btn change-child"
-										onClick={() => this.createChildren()}>
+										onClick={this.createChildren}>
 									{this.state.state === 'Create' ? displayContent(this.state.lang, 6, 'parameters') :
 										displayContent(this.state.lang, 7, 'parameters')}
 								</Button>

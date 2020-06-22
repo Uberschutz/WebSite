@@ -4,12 +4,24 @@ import FormControlLabel from "@material-ui/core/FormControlLabel";
 import '../styles/Parameters.css';
 
 export class Option extends Component {
+
+    constructor(props) {
+        super(props);
+
+        this.toggleOption = this.toggleOption.bind(this);
+    }
+
+    toggleOption() {
+        this.props.toggleOption(this.props.index);
+    }
+
+
     render() {
         return (
             <div className={this.props.className}>
                 <FormControlLabel
                     value="bottom"
-                    control={<Switch color="primary" checked={this.props.option.enabled} className="options-center" onChange={() => this.props.toggleOption(this.props.index)}/>}
+                    control={<Switch color="primary" checked={this.props.option.enabled} className="options-center" onChange={this.toggleOption}/>}
                     label={this.props.value}
                     labelPlacement="top"
                 />

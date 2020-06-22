@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import '../../styles/bootstrap.css';
 import '../../styles/HomePage.css';
 
+import ReactGA from 'react-ga';
+
 import canvas from '../../assets/canvas2.png';
 import whois from '../../assets/CacherPseudo.jpg';
 import software from '../../assets/icons8-boite-à-logiciel-64.png'
@@ -20,7 +22,7 @@ class HomePage extends Component {
     };
 
 	componentDidMount() {
-		// console.log('mount');
+		ReactGA.pageview(window.location.pathname + window.location.search);
 		if (this.props.base) {
 			const {base: {language}} = this.props;
 			// console.log(this.props, 'in home');
@@ -49,7 +51,6 @@ class HomePage extends Component {
 
 	render() {
 		let i = 0;
-		// console.log('render');
         return (
             <div>
                 <img src={canvas} alt="canvas" className="responsive-image"/>
@@ -61,9 +62,9 @@ class HomePage extends Component {
                 <div className="row responsive-image Home">
                     <div>
                         <br/><br/>
-                        <img src={whois} alt="whois"/>
+                        <img src={whois} alt="whois" className="responsive-image"/>
                     </div>
-                    <div className="txt-intro">
+                    <div className="txt-intro responsive-image">
                         <h3 className="h7-font">
 	                        {displayContent(this.state.lang, i++, 'home')}
                         </h3>
@@ -107,10 +108,16 @@ class HomePage extends Component {
                         </div>
                     </div>
                     <br/>
-                    <h7 className="rappel-info">
-	                    {displayContent(this.state.lang, i, 'home')}
-                    </h7>
-                    <br/><br/><br/>
+
+                    <div className="">
+                        <h7 className="rappel-info responsive-image">
+                            {displayContent(this.state.lang, i, 'home')}
+                            <br/>
+                        </h7>
+                        <br/>
+                    </div>
+
+
                 </div>
             </div>
         )

@@ -9,6 +9,8 @@ import alreadyverified from '../../assets/mirage-list-is-empty.png';
 
 import NotFound from "../NotFound";
 
+import ReactGA from 'react-ga';
+
 import {displayContent} from "../../utils/translationDisplay";
 const querystring = require("query-string");
 
@@ -35,6 +37,7 @@ class Confirm extends Component {
     }
 
     componentDidMount() {
+	    ReactGA.pageview(window.location.pathname + window.location.search);
     	if (this.props.base) {
 			const {base: {language}} = this.props;
 			this.setState({lang: language, pending: true});
