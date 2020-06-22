@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import '../../styles/bootstrap.css';
 import '../../styles/Contact.css';
 
-import { Icon } from 'antd';
-import { Alert } from 'reactstrap';
+import Icon from 'antd/lib/icon/index';
+import Alert from 'reactstrap/lib/Alert';
 import {displayContent, displayHttpMessages} from '../../utils/translationDisplay';
 import axios from 'axios';
 
@@ -21,6 +21,8 @@ class Contact extends Component {
             email: '',
             lastname: ''
         };
+
+	    this.redirectProfile = this.redirectProfile.bind(this);
     }
 
 	componentDidMount() {
@@ -102,7 +104,7 @@ class Contact extends Component {
                     </div>
                 </div>
                 <Faq lang={this.state.lang}/>
-                <Form lang={this.state.lang} connected={this.state.connected} subscribed={this.state.subscribed} redirectProfile={this.redirectProfile.bind(this)} name={this.state.lastname} email={this.state.email}/>
+                <Form lang={this.state.lang} connected={this.state.connected} subscribed={this.state.subscribed} redirectProfile={this.redirectProfile} name={this.state.lastname} email={this.state.email}/>
             </div>
         )
     }

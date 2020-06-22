@@ -6,12 +6,18 @@ import logo from '../../assets/Uberschutz-Icon.png';
 import french from '../../assets/icons8-france-96.png';
 import english from '../../assets/icons8-grande-bretagne-48.png';
 
-import {Navbar, NavbarBrand, Nav, Collapse, NavItem} from 'reactstrap';
-import {DropdownMenu, DropdownToggle, ButtonDropdown} from 'reactstrap'
-import {Link} from "react-router-dom";
+import Navbar from 'reactstrap/lib/Navbar';
+import NavbarBrand from 'reactstrap/lib/NavbarBrand';
+import Nav from 'reactstrap/lib/Nav';
+import Collapse from 'reactstrap/lib/Collapse';
+import NavItem from 'reactstrap/lib/NavItem';
+import DropdownMenu from 'reactstrap/lib/DropdownMenu'
+import DropdownToggle from 'reactstrap/lib/DropdownToggle'
+import ButtonDropdown from 'reactstrap/lib/ButtonDropdown'
 import { displayContent } from '../../utils/translationDisplay';
-
 import axios from 'axios';
+
+const Link = require("react-router-dom").Link;
 
 class Header extends Component {
     constructor(props) {
@@ -31,6 +37,8 @@ class Header extends Component {
         this.toggle = this.toggle.bind(this);
         this.refreshAccount = this.refreshAccount.bind(this);
         this.getUser = this.getUser.bind(this);
+        this.disconnect = this.disconnect.bind(this);
+        this.setLanguage = this.setLanguage.bind(this);
     }
 
     componentDidMount() {
@@ -94,8 +102,8 @@ class Header extends Component {
     }
 
     setLanguage(lang) {
-    	this.props.setLanguage(lang);
-    	this.setState({lang, isOpen: !this.state.isOpen});
+    	this.props.setLanguage(lang.target.dataset.lang);
+    	this.setState({lang: lang.target.dataset.lang, isOpen: !this.state.isOpen});
     }
 
     disconnect() {
@@ -106,10 +114,6 @@ class Header extends Component {
     }
 
     render () {
-    	// console.log('redux', this.props);
-	    // console.log('states', this.state.logged);
-        // console.log(this.frenchClass);
-        // console.log(this.EnglClass);
         let i = 2;
 
         return (
@@ -118,7 +122,7 @@ class Header extends Component {
                     <img src={logo} alt="logo" width={65} height={70}/>
                     <NavbarBrand className="navbar-brand uber-color button-footer" href="/"> Überschutz</NavbarBrand>
 	                {this.state.logged ? <text className="navbar-brand uber-color button-footer">{displayContent(this.state.lang, 0, 'navbar')} {this.state.lastname} !</text> : null}
-	                {this.state.logged ? <button onClick={() => this.disconnect()}>{displayContent(this.state.lang, 1, 'navbar')}</button> : null}
+	                {this.state.logged ? <button onClick={this.disconnect}>{displayContent(this.state.lang, 1, 'navbar')}</button> : null}
                     <Collapse className="collapse navbar-collapse" isOpen={true} navbar>
                         <Nav className="ml-auto navbar  navbar-expand-md" navbar>
                             <React.Fragment>
@@ -156,10 +160,10 @@ class Header extends Component {
 		                </DropdownToggle>
 		                <DropdownMenu className="drop btn">
 			                <div>
-				                <img src={french} className={this.frenchClass} alt="french" width="35" height="35" onClick={() => this.setLanguage('fr')}/>
+				                <img src={french} className={this.frenchClass} alt="french" width="35" height="35" data-lang='fr' onClick={this.setLanguage}/>
 			                </div>
 			                <div>
-				                <img src={english} className={this.EnglClass} alt="english" width="35" height="33" onClick={() => this.setLanguage('en')}/>
+				                <img src={english} className={this.EnglClass} alt="english" width="35" height="33" data-lang='en' onClick={this.setLanguage}/>
 			                </div>
 		                </DropdownMenu>
 	                </ButtonDropdown>

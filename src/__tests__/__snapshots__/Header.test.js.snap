@@ -123,6 +123,7 @@ exports[`Testing the Header component rendering render Header being logged in en
             <img
               alt="french"
               class="clickable-flag touched"
+              data-lang="fr"
               height="35"
               src="icons8-france-96.png"
               width="35"
@@ -132,6 +133,7 @@ exports[`Testing the Header component rendering render Header being logged in en
             <img
               alt="english"
               class="clickable-flag"
+              data-lang="en"
               height="33"
               src="icons8-grande-bretagne-48.png"
               width="35"
@@ -267,6 +269,7 @@ exports[`Testing the Header component rendering render Header being logged in fr
             <img
               alt="french"
               class="clickable-flag touched"
+              data-lang="fr"
               height="35"
               src="icons8-france-96.png"
               width="35"
@@ -276,6 +279,7 @@ exports[`Testing the Header component rendering render Header being logged in fr
             <img
               alt="english"
               class="clickable-flag"
+              data-lang="en"
               height="33"
               src="icons8-grande-bretagne-48.png"
               width="35"
@@ -381,6 +385,7 @@ exports[`Testing the Header component rendering render Header not being logged i
             <img
               alt="french"
               class="clickable-flag touched"
+              data-lang="fr"
               height="35"
               src="icons8-france-96.png"
               width="35"
@@ -390,6 +395,7 @@ exports[`Testing the Header component rendering render Header not being logged i
             <img
               alt="english"
               class="clickable-flag"
+              data-lang="en"
               height="33"
               src="icons8-grande-bretagne-48.png"
               width="35"
@@ -495,6 +501,7 @@ exports[`Testing the Header component rendering render Header not being logged i
             <img
               alt="french"
               class="clickable-flag touched"
+              data-lang="fr"
               height="35"
               src="icons8-france-96.png"
               width="35"
@@ -504,6 +511,7 @@ exports[`Testing the Header component rendering render Header not being logged i
             <img
               alt="english"
               class="clickable-flag"
+              data-lang="en"
               height="33"
               src="icons8-grande-bretagne-48.png"
               width="35"
@@ -609,6 +617,7 @@ exports[`Testing the Header component rendering renders Header without crashing 
             <img
               alt="french"
               class="clickable-flag touched"
+              data-lang="fr"
               height="35"
               src="icons8-france-96.png"
               width="35"
@@ -618,6 +627,7 @@ exports[`Testing the Header component rendering renders Header without crashing 
             <img
               alt="english"
               class="clickable-flag"
+              data-lang="en"
               height="33"
               src="icons8-grande-bretagne-48.png"
               width="35"

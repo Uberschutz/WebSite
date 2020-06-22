@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import '../../styles/bootstrap.css';
 import '../../styles/HomePage.css';
-
-import { Link } from 'react-router-dom';
 import {displayContent} from "../../utils/translationDisplay";
+
+const Link = require("react-router-dom").Link;
 
 class Footer extends Component {
 	constructor(props) {

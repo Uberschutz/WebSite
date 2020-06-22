@@ -50,6 +50,8 @@ services:
           - user_db
         volumes:
           - ./credentials.js:/home/node/app/credentials.js
+        environment:
+          - NODE_ENV=production
     dev_client_web:
         build:
           context: https://github.com/Uberschutz/WebSite.git#develop
@@ -61,7 +63,9 @@ services:
           - user_server
           - user_db
         volumes:
-        - ./credentials.js:/home/node/app/credentials.js
+          - ./credentials.js:/home/node/app/credentials.js
+        environment:
+          - NODE_ENV=production
     user_db:
         image: 'mongo:latest'
         command: mongod --port 27117 --auth

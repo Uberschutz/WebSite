@@ -2,11 +2,12 @@ import React, { Component } from 'react';
 import '../../styles/bootstrap.css';
 import '../../styles/Connection.css';
 
-import { Link } from 'react-router-dom';
 import { displayContent, displayHttpMessages } from '../../utils/translationDisplay';
 import axios from 'axios';
-import {Alert} from "reactstrap";
+import Alert from "reactstrap/lib/Alert";
 import loading from "../../assets/Spinner-1s-70px.gif";
+
+const Link = require("react-router-dom").Link;
 
 class Connection extends Component {
 	constructor(props) {
@@ -72,7 +73,7 @@ class Connection extends Component {
 		        email: this.state.email,
                 passwd: this.state.password
             }).then(response => {
-                console.log(response.data);
+                // console.log(response.data);
                 this.props.setLogged(true);
                 // this.props.setUser(this.state.email, response.data.lastname, response.data.firstname);
                 this.props.setAuthToken(response.data.token);
