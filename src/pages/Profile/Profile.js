@@ -10,6 +10,8 @@ import Unauthorized from "../Unauthorized";
 import newsletter from "../../assets/icons8-mail-100.png";
 import loading from '../../assets/Spinner-1s-70px.gif';
 
+import ReactGA from 'react-ga';
+
 import axios from 'axios';
 
 import fileDownload from "js-file-download";
@@ -44,6 +46,7 @@ class Profile extends Component {
 	}
 
 	componentDidMount() {
+		ReactGA.pageview(window.location.pathname + window.location.search);
 		if (this.props.base) {
 			const { base: { language, logged, token } } = this.props;
 			this.setState({

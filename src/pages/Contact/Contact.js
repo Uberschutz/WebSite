@@ -7,6 +7,8 @@ import Alert from 'reactstrap/lib/Alert';
 import {displayContent, displayHttpMessages} from '../../utils/translationDisplay';
 import axios from 'axios';
 
+import ReactGA from 'react-ga';
+
 import newsletter from '../../assets/icons8-email-100.png';
 import loading from '../../assets/Spinner-1s-70px.gif';
 
@@ -26,6 +28,7 @@ class Contact extends Component {
     }
 
 	componentDidMount() {
+		ReactGA.pageview(window.location.pathname + window.location.search);
     	if (this.props.base) {
 		    const {base: {language, logged}} = this.props;
 		    // console.log(language, this.state.lang, 'kek');
