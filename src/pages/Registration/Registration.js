@@ -112,7 +112,7 @@ class Registration extends Component {
     render() {
         let i = 0;
         return (
-            <div className="col">
+            <div className="button-footer">
                 <br/>
                 <div className="card text-white bg-dark box-center">
                     <div className="card-body bg-dark item-align text-align">

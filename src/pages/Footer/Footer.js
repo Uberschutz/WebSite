@@ -34,19 +34,21 @@ class Footer extends Component {
     render() {
 		let i = 0;
         return (
-            <div className="uber-color2 form-align footer">
-                <Link to ='/Contact+FAQ'>
-                    <button type="button" className="btn btn-primary button-footer">Contact</button>
-                </Link>
-                <br/>
-                <span>
+			<footer>
+				<div className="uber-color2">
+					<Link to ='/Contact+FAQ'>
+						<button type="button" className="btn btn-primary button-footer">Contact</button>
+					</Link>
+					<br/>
+					<span>
                     © 2018 - {new Date().getFullYear()}
                 </span>
-                <br/>
-                <span>
+					<br/>
+					<span>
                     {displayContent(this.state.lang, i++, 'footer')}<br/>{displayContent(this.state.lang, i++, 'footer')}<a href="https://icones8.fr">icons8</a> <br/>
                 </span>
-            </div>
+				</div>
+			</footer>
         )
     }
 }
