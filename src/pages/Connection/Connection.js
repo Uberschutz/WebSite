@@ -134,7 +134,7 @@ class Connection extends Component {
                     {displayContent(this.state.lang, i++, 'connexion')}
                 </span> <br/>
                 <Link to={'/Registration'}>
-                    <button type="button" className="btn btn-primary">{displayContent(this.state.lang, i++, 'connexion')}</button>
+                    <button type="button" className="btn button-footer btn-primary">{displayContent(this.state.lang, i++, 'connexion')}</button>
                 </Link>
             </div>
         )

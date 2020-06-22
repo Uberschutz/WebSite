@@ -16,13 +16,6 @@
     color: white!important;
 }
 
-.footer {
-    bottom: 0;
-    padding-bottom: 0;
-    height: auto;
-    width: 100%;
-}
-
 .responsive-image {
     position: relative;
     max-width: 100%;

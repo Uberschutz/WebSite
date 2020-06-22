@@ -34,7 +34,7 @@ class Footer extends Component {
     render() {
 		let i = 0;
         return (
-			<footer className="footer">
+			<footer>
 				<div className="uber-color2">
 					<Link to ='/Contact+FAQ'>
 						<button type="button" className="btn btn-primary button-footer">Contact</button>
