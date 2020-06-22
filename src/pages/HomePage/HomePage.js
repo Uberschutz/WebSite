@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import '../../styles/bootstrap.css';
 import '../../styles/HomePage.css';
 
+import ReactGA from 'react-ga';
+
 import canvas from '../../assets/canvas2.png';
 import whois from '../../assets/CacherPseudo.jpg';
 import software from '../../assets/icons8-boite-à-logiciel-64.png'
@@ -20,7 +22,7 @@ class HomePage extends Component {
     };
 
 	componentDidMount() {
-		// console.log('mount');
+		ReactGA.pageview(window.location.pathname + window.location.search);
 		if (this.props.base) {
 			const {base: {language}} = this.props;
 			// console.log(this.props, 'in home');

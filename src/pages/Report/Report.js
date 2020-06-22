@@ -9,6 +9,8 @@ import ProgressBar from "react-bootstrap/ProgressBar";
 import { displayContent } from '../../utils/translationDisplay';
 import axios from 'axios';
 
+import ReactGA from 'react-ga';
+
 import bad from '../../assets/icons8-triste-80.png'
 import neutral from '../../assets/icons8-neutre-80.png'
 import good from '../../assets/icons8-content-80.png'
@@ -38,6 +40,7 @@ class Report extends Component {
 	}
 
 	componentDidMount() {
+		ReactGA.pageview(window.location.pathname + window.location.search);
 		if (this.props.base) {
 			const { base: { language, logged, token } } = this.props;
 				this.setState({
