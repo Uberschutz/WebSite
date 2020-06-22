@@ -91,6 +91,7 @@ workflows:
               only:
                 - master
                 - develop
+                - production
                 - unit-tests
                 - rendering-unit-tests
       - deploy:
