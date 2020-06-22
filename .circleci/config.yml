@@ -5,12 +5,12 @@
 version: 2
 jobs:
   build:
-    branches:
-      only:
-        - master
-        - develop
-        - unit-tests
-        - rendering-unit-tests
+#    branches:
+#      only:
+#        - master
+#        - develop
+#        - unit-tests
+#        - rendering-unit-tests
 
     docker:
       # specify the version you desire here
@@ -26,28 +26,79 @@ jobs:
     steps:
       - checkout
 
-      - run:
-          name: update-npm
-          command: 'sudo npm install -g npm@latest'
+#      - run:
+#          name: update-npm
+#          name: update-yarn
+#          command: 'sudo npm install -g npm@latest'
 
       - run:
           name: update-dependencies
-          command: 'npm update'
+          command: 'yarn upgrade --silent --no-progress'
+#          command: 'npm update'
       # Download and cache dependencies
       - restore_cache:
           keys:
-            - v1-dependencies-{{ checksum "package-lock.json" }}
+            - v1-dependencies-{{ checksum "yarn.lock" }}
+#            - v1-dependencies-{{ checksum "package-lock.json" }}
             # fallback to using the latest cache if no exact match is found
             - v1-dependencies-
 
       - run:
-          name: install-npm
-          command: 'npm install'
+          name: install-yarn
+#          name: install-npm
+          command: 'yarn install --silent --no-progress'
+#          command: 'npm install'
 
       - save_cache:
           paths:
             - ./node_modules
-          key: v1-dependencies-{{ checksum "package-lock.json" }}
+          key: v1-dependencies-{{ checksum "yarn.lock" }}
+#          key: v1-dependencies-{{ checksum "package-lock.json" }}
 
       # run tests!
-      - run: npm test
+      - run: yarn test
+#      - run: npm test
+
+  deploy:
+    machine:
+      enabled: true
+    steps:
+      - add_ssh_keys:
+          fingerprints:
+            - "81:46:f4:6a:d5:d9:cd:64:ab:ce:5a:1d:7a:4e:b3:4a"
+      - run:
+          name: Update docker image
+          command: |
+            ssh $SSH_USER@$SSH_HOST -p 50417 "docker pull node:latest"
+      - run:
+          name: Deploy Over SSH
+          command: |
+            if [ "$CIRCLE_BRANCH" == "develop" ];
+            then
+              ssh $SSH_USER@$SSH_HOST -p 50417 "cd uberschutz_project/eip/WebSite && git pull && docker-compose build --no-cache --force-rm dev_client_web && docker-compose up -d dev_client_web"
+            elif [ "$CIRCLE_BRANCH" == "production" ];
+            then
+              ssh $SSH_USER@$SSH_HOST -p 50417 "cd uberschutz_project/eip/WebSite && git pull && docker-compose build --no-cache --force-rm client_web && docker-compose up -d client_web"
+            fi
+
+workflows:
+  version: 2
+  build-and-deploy:
+    jobs:
+      - build:
+          filters:
+            branches:
+              only:
+                - master
+                - develop
+                - production
+                - unit-tests
+                - rendering-unit-tests
+      - deploy:
+          requires:
+            - build # only deploy once build job has completed
+          filters:
+            branches:
+              only: # only deploy on the develop and productions branches
+                - develop
+                - production

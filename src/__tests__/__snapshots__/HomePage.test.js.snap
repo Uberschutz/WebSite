@@ -27,11 +27,12 @@ exports[`Testing the Homepage rendering renders Home in english 1`] = `
         <br />
         <img
           alt="whois"
+          class="responsive-image"
           src="CacherPseudo.jpg"
         />
       </div>
       <div
-        class="txt-intro"
+        class="txt-intro responsive-image"
       >
         <h3
           class="h7-font"
@@ -115,14 +116,17 @@ exports[`Testing the Homepage rendering renders Home in english 1`] = `
         </div>
       </div>
       <br />
-      <h7
-        class="rappel-info"
+      <div
+        class=""
       >
-        To protect your child and discuss with him or her when a complicated situation arises.
-      </h7>
-      <br />
-      <br />
-      <br />
+        <h7
+          class="rappel-info responsive-image"
+        >
+          To protect your child and discuss with him or her when a complicated situation arises.
+          <br />
+        </h7>
+        <br />
+      </div>
     </div>
   </div>
 </div>
@@ -155,11 +159,12 @@ exports[`Testing the Homepage rendering renders Home in french 1`] = `
         <br />
         <img
           alt="whois"
+          class="responsive-image"
           src="CacherPseudo.jpg"
         />
       </div>
       <div
-        class="txt-intro"
+        class="txt-intro responsive-image"
       >
         <h3
           class="h7-font"
@@ -243,14 +248,17 @@ exports[`Testing the Homepage rendering renders Home in french 1`] = `
         </div>
       </div>
       <br />
-      <h7
-        class="rappel-info"
+      <div
+        class=""
       >
-        Pour protéger votre enfant et discuter avec lui lorsqu'une situation compliquée se présente.
-      </h7>
-      <br />
-      <br />
-      <br />
+        <h7
+          class="rappel-info responsive-image"
+        >
+          Pour protéger votre enfant et discuter avec lui lorsqu'une situation compliquée se présente.
+          <br />
+        </h7>
+        <br />
+      </div>
     </div>
   </div>
 </div>
@@ -283,11 +291,12 @@ exports[`Testing the Homepage rendering renders Home without crashing 1`] = `
         <br />
         <img
           alt="whois"
+          class="responsive-image"
           src="CacherPseudo.jpg"
         />
       </div>
       <div
-        class="txt-intro"
+        class="txt-intro responsive-image"
       >
         <h3
           class="h7-font"
@@ -371,14 +380,17 @@ exports[`Testing the Homepage rendering renders Home without crashing 1`] = `
         </div>
       </div>
       <br />
-      <h7
-        class="rappel-info"
+      <div
+        class=""
       >
-        Pour protéger votre enfant et discuter avec lui lorsqu'une situation compliquée se présente.
-      </h7>
-      <br />
-      <br />
-      <br />
+        <h7
+          class="rappel-info responsive-image"
+        >
+          Pour protéger votre enfant et discuter avec lui lorsqu'une situation compliquée se présente.
+          <br />
+        </h7>
+        <br />
+      </div>
     </div>
   </div>
 </div>

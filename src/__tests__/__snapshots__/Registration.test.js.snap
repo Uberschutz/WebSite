@@ -3,7 +3,7 @@
 exports[`Testing the Registration page rendering renders Registration in english 1`] = `
 <div>
   <div
-    class="col"
+    class="button-footer"
   >
     <br />
     <div
@@ -118,7 +118,7 @@ exports[`Testing the Registration page rendering renders Registration in english
 exports[`Testing the Registration page rendering renders Registration in french 1`] = `
 <div>
   <div
-    class="col"
+    class="button-footer"
   >
     <br />
     <div
@@ -233,7 +233,7 @@ exports[`Testing the Registration page rendering renders Registration in french 
 exports[`Testing the Registration page rendering renders Registration without crashing 1`] = `
 <div>
   <div
-    class="col"
+    class="button-footer"
   >
     <br />
     <div

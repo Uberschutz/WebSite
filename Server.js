@@ -187,11 +187,8 @@ app.get('/gdpr', async (req, res) => {
 });
 
 app.get('/get_available_licences', async (req, res) => {
-	let result = await axios.get(`http://${server_url}:8081/get_available_licences`,{
-		headers: {
-			'x-access-token': req.headers['x-access-token']
-		}
-	}).then(response => response).catch(err => err.response);
+	let result = await axios.get(`http://${server_url}:8081/get_available_licences`)
+		.then(response => response).catch(err => err.response);
 	forward_response(res, result);
 });
 

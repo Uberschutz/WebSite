@@ -154,26 +154,6 @@ export default class Subscription extends Component {
                     </div>
                 </div>
             </div>
-                /*<div>
-                    {
-                        this.state.available_licences.map(licence => {
-                            return (
-                              <div>
-                                  {licence.name}
-                              </div>
-                            );
-                        })
-                    }
-                    <div>
-                        My licence {this.state.account_licence !== null ? this.state.account_licence : ''}
-                    </div>
-                    <div>
-                        <button data-idx={1} onClick={this.addLicence}>Add</button>
-                    </div>
-                    <div>
-                        <button onClick={this.deleteLicence}>Delete</button>
-                    </div>
-                </div>*/
         );
     }
 }

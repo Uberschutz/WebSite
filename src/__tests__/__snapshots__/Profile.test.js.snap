@@ -20,6 +20,7 @@ exports[`Testing the Profile page rendering renders Profile being logged in engl
           aria-describedby="inputGroup-sizing-sm"
           aria-label="Small"
           class="form-control"
+          data-action="lastname"
           type="text"
           value=""
         />
@@ -47,6 +48,7 @@ exports[`Testing the Profile page rendering renders Profile being logged in engl
           aria-describedby="inputGroup-sizing-sm"
           aria-label="Small"
           class="form-control"
+          data-action="firstname"
           type="text"
           value=""
         />
@@ -201,6 +203,7 @@ exports[`Testing the Profile page rendering renders Profile being logged in fren
           aria-describedby="inputGroup-sizing-sm"
           aria-label="Small"
           class="form-control"
+          data-action="lastname"
           type="text"
           value=""
         />
@@ -228,6 +231,7 @@ exports[`Testing the Profile page rendering renders Profile being logged in fren
           aria-describedby="inputGroup-sizing-sm"
           aria-label="Small"
           class="form-control"
+          data-action="firstname"
           type="text"
           value=""
         />

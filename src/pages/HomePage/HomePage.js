@@ -49,7 +49,6 @@ class HomePage extends Component {
 
 	render() {
 		let i = 0;
-		// console.log('render');
         return (
             <div>
                 <img src={canvas} alt="canvas" className="responsive-image"/>
@@ -61,9 +60,9 @@ class HomePage extends Component {
                 <div className="row responsive-image Home">
                     <div>
                         <br/><br/>
-                        <img src={whois} alt="whois"/>
+                        <img src={whois} alt="whois" className="responsive-image"/>
                     </div>
-                    <div className="txt-intro">
+                    <div className="txt-intro responsive-image">
                         <h3 className="h7-font">
 	                        {displayContent(this.state.lang, i++, 'home')}
                         </h3>
@@ -107,10 +106,16 @@ class HomePage extends Component {
                         </div>
                     </div>
                     <br/>
-                    <h7 className="rappel-info">
-	                    {displayContent(this.state.lang, i, 'home')}
-                    </h7>
-                    <br/><br/><br/>
+
+                    <div className="">
+                        <h7 className="rappel-info responsive-image">
+                            {displayContent(this.state.lang, i, 'home')}
+                            <br/>
+                        </h7>
+                        <br/>
+                    </div>
+
+
                 </div>
             </div>
         )

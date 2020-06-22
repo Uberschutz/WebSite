@@ -4,7 +4,7 @@ import '../../styles/Connection.css';
 
 import axios from "axios";
 import {displayContent, displayHttpMessages} from "../../utils/translationDisplay";
-import {Alert} from "reactstrap";
+import Alert from "reactstrap/lib/Alert";
 import loading from "../../assets/Spinner-1s-70px.gif";
 
 class Registration extends Component {
@@ -24,6 +24,13 @@ class Registration extends Component {
 	        emailSent: false,
 	        pending: false
         };
+
+        this.register = this.register.bind(this);
+        this.onChangeEmail = this.onChangeEmail.bind(this);
+        this.onChangePass = this.onChangePass.bind(this);
+        this.onChangeFirstname = this.onChangeFirstname.bind(this);
+        this.onChangeLastName = this.onChangeLastName.bind(this);
+	    this._handleKeyPressed = this._handleKeyPressed.bind(this);
     }
 
     componentDidMount() {
@@ -50,29 +57,27 @@ class Registration extends Component {
     }
 
     onChangeLastName(name) {
-        if (name && !Registration.isAlpha(name)) {
-            this.setState({alphaName: true});
+        if (name.target.value && !Registration.isAlpha(name.target.value)) {
+            this.setState({alphaName: true, lastname: name.target.value});
         } else {
-            this.setState({alphaName: false});
+            this.setState({alphaName: false, lastname: name.target.value});
         }
-        this.setState({lastname: name});
     }
 
     onChangeFirstname(surname) {
-        if (surname && !Registration.isAlpha(surname)) {
-            this.setState({alphaSurname: true});
+        if (surname.target.value && !Registration.isAlpha(surname.target.value)) {
+            this.setState({alphaSurname: true, firstname: surname.target.value});
         } else {
-            this.setState({alphaSurname: false});
+            this.setState({alphaSurname: false, firstname: surname.target.value});
         }
-        this.setState({firstname: surname});
     }
 
     onChangeEmail(email) {
-        this.setState({email: email});
+        this.setState({email: email.target.value});
     }
 
     onChangePass(pass) {
-        this.setState({passwd: pass});
+        this.setState({passwd: pass.target.value});
     }
 
     register() {
@@ -112,7 +117,7 @@ class Registration extends Component {
     render() {
         let i = 0;
         return (
-            <div className="col">
+            <div className="button-footer">
                 <br/>
                 <div className="card text-white bg-dark box-center">
                     <div className="card-body bg-dark item-align text-align">
@@ -127,32 +132,32 @@ class Registration extends Component {
                                 <span className="input-group-text" id="inputGroup-sizing-default">{displayContent(this.state.lang, i++, 'registration')}</span>
                             </div>
                             {this.state.alphaName ?
-	                            <input value={this.state.lastname} onChange={(name) => this.onChangeLastName(name.target.value)} type="text" className="form-control form-box-error" aria-label="Nom" onKeyPress={(event) => {this._handleKeyPressed(event)}}/>
+	                            <input value={this.state.lastname} onChange={this.onChangeLastName} type="text" className="form-control form-box-error" aria-label="Nom" onKeyPress={this._handleKeyPressed}/>
 	                            :
-                                <input value={this.state.lastname} onChange={(name) => this.onChangeLastName(name.target.value)} type="text" className="form-control" aria-label="Nom" onKeyPress={(event) => {this._handleKeyPressed(event)}}/>}
+                                <input value={this.state.lastname} onChange={this.onChangeLastName} type="text" className="form-control" aria-label="Nom" onKeyPress={this._handleKeyPressed}/>}
                         </div>
                         <div className="input-group mb-3">
                             <div className="input-group-prepend">
                                 <span className="input-group-text" id="inputGroup-sizing-default">{displayContent(this.state.lang, i++, 'registration')}</span>
                             </div>
                             {this.state.alphaSurname ?
-	                            <input value={this.state.firstname} onChange={(surname) => this.onChangeFirstname(surname.target.value)} type="text" className="form-control form-box-error" aria-label="Prénom" onKeyPress={(event) => {this._handleKeyPressed(event)}}/>
+	                            <input value={this.state.firstname} onChange={this.onChangeFirstname} type="text" className="form-control form-box-error" aria-label="Prénom" onKeyPress={this._handleKeyPressed}/>
 	                            :
-                                <input value={this.state.firstname} onChange={(surname) => this.onChangeFirstname(surname.target.value)} type="text" className="form-control" aria-label="Prénom" onKeyPress={(event) => {this._handleKeyPressed(event)}}/>}
+                                <input value={this.state.firstname} onChange={this.onChangeFirstname} type="text" className="form-control" aria-label="Prénom" onKeyPress={this._handleKeyPressed}/>}
                         </div>
                         <div className="input-group mb-3">
                             <div className="input-group-prepend">
                                 <span className="input-group-text" id="inputGroup-sizing-default">Email</span>
                             </div>
-                            <input value={this.state.email} onChange={(email) => this.onChangeEmail(email.target.value)} type="text" className="form-control" aria-label="Email" onKeyPress={(event) => {this._handleKeyPressed(event)}}/>
+                            <input value={this.state.email} onChange={this.onChangeEmail} type="text" className="form-control" aria-label="Email" onKeyPress={this._handleKeyPressed}/>
                         </div>
                         <div className="input-group mb-3">
                             <div className="input-group-prepend">
                                 <span className="input-group-text" id="inputGroup-sizing-default">{displayContent(this.state.lang, i++, 'registration')}</span>
                             </div>
-                            <input value={this.state.password} onChange={(password) => this.onChangePass(password.target.value)} type="password" className="form-control" aria-label="Email" onKeyPress={(event) => {this._handleKeyPressed(event)}}/>
+                            <input value={this.state.password} onChange={this.onChangePass} type="password" className="form-control" aria-label="Email" onKeyPress={this._handleKeyPressed}/>
                         </div>
-                        <button type="button" className="btn btn-primary" onClick={() => this.register()}>{displayContent(this.state.lang, i++, 'registration')}</button>
+                        <button type="button" className="btn btn-primary" onClick={this.register}>{displayContent(this.state.lang, i++, 'registration')}</button>
                         <br/>
                         {this.state.alphaSurname || this.state.alphaName ?
                             <span className="address text-danger">{displayContent(this.state.lang, i, 'registration')}</span> : null}

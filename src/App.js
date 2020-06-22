@@ -1,5 +1,7 @@
 import React from 'react';
-import {BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { BrowserRouter as Router } from 'react-router-dom';
+import Route from "react-router-dom/Route";
+import Switch from "react-router-dom/Switch";
 import './styles/App.css';
 
 import HomePage from "./pages/HomePage";
@@ -14,7 +16,7 @@ import Report from "./pages/Report";
 import Confirm from "./pages/Confirm";
 import Subscription from "./pages/Subscription";
 
-import {Provider} from 'react-redux';
+import { Provider } from 'react-redux';
 import { createStore, applyMiddleware, compose } from 'redux'
 import thunkMiddleware from 'redux-thunk'
 import { persistStore, persistReducer } from 'redux-persist'
