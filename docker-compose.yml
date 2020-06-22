@@ -65,7 +65,7 @@ services:
         volumes:
           - ./credentials.js:/home/node/app/credentials.js
         environment:
-          - NODE_ENV=production
+          - NODE_ENV=development
     user_db:
         image: 'mongo:latest'
         command: mongod --port 27117 --auth
