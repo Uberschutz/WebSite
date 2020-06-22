@@ -4,6 +4,8 @@ import '../styles/Connection.css';
 import forbidden from '../assets/fogg-no-comments.png'
 import {displayContent} from "../utils/translationDisplay";
 
+import ReactGA from 'react-ga';
+
 export default class Unauthorized extends Component {
 
 	constructor(props) {
@@ -15,6 +17,7 @@ export default class Unauthorized extends Component {
 	}
 
 	componentDidMount() {
+		ReactGA.pageview(window.location.pathname + window.location.search);
 		if (this.props.base) {
 			const { base: { language} } = this.props;
 			this.setState({

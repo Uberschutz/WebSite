@@ -9,6 +9,8 @@ import ModalFooter from 'reactstrap/lib/ModalFooter';
 import Button from 'reactstrap/lib/Button';
 import Icon from 'antd/lib/icon/index';
 
+import ReactGA from 'react-ga';
+
 import DisplayChildrenList from '../../components/ChildCards';
 import OptionsList from '../../components/OptionsList';
 import { displayContent } from '../../utils/translationDisplay';
@@ -46,6 +48,7 @@ class Parameters extends Component {
 	}
 
 	componentDidMount() {
+		ReactGA.pageview(window.location.pathname + window.location.search);
 		if (this.props.base) {
 			const { base: { language, logged, token } } = this.props;
 				this.setState({

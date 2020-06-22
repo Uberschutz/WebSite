@@ -7,6 +7,8 @@ import axios from 'axios';
 import Alert from "reactstrap/lib/Alert";
 import loading from "../../assets/Spinner-1s-70px.gif";
 
+import ReactGA from 'react-ga';
+
 const Link = require("react-router-dom").Link;
 
 class Connection extends Component {
@@ -32,6 +34,7 @@ class Connection extends Component {
     }
 
 	componentDidMount() {
+		ReactGA.pageview(window.location.pathname + window.location.search);
 		if (this.props.base) {
 			const { base: { language } } = this.props;
 			if (this.state.lang !== language) {

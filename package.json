@@ -17,6 +17,7 @@
     "react": "^16.13.1",
     "react-bootstrap": "^1.0.1",
     "react-dom": "^16.13.1",
+    "react-ga": "^3.0.0",
     "react-redux": "^7.2.0",
     "react-router-dom": "^5.2.0",
     "react-router-redux": "^4.0.8",
@@ -30,7 +31,7 @@
     "start": "PORT=$PORT react-scripts start",
     "dev": "NODE_ENV=dev node Server.js",
     "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
+    "test": "NODEV_ENV=development react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
     "analyze": "source-map-explorer 'build/static/js/*.js'"
   },

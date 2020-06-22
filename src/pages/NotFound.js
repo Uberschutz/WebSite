@@ -3,6 +3,8 @@ import notFound from "../assets/fogg-page-not-found.png";
 import '../styles/Connection.css'
 import {displayContent} from "../utils/translationDisplay";
 
+import ReactGA from 'react-ga';
+
 export default class NotFound extends Component {
 
 	constructor(props) {
@@ -14,6 +16,7 @@ export default class NotFound extends Component {
 	}
 
 	componentDidMount() {
+		ReactGA.pageview(window.location.pathname + window.location.search);
 		if (this.props.base) {
 			const { base: { language} } = this.props;
 			this.setState({

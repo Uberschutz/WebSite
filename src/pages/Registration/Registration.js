@@ -2,6 +2,8 @@ import React, {Component} from "react";
 import '../../styles/bootstrap.css';
 import '../../styles/Connection.css';
 
+import ReactGA from 'react-ga';
+
 import axios from "axios";
 import {displayContent, displayHttpMessages} from "../../utils/translationDisplay";
 import Alert from "reactstrap/lib/Alert";
@@ -34,6 +36,7 @@ class Registration extends Component {
     }
 
     componentDidMount() {
+	    ReactGA.pageview(window.location.pathname + window.location.search);
         if (this.props.base) {
             const { base: { language } } = this.props;
             // console.log(language, this.state.lang, 'kek')

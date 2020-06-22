@@ -26,6 +26,7 @@ import mainReducer from './combineReducers'
 import NotFound from "./pages/NotFound";
 import InComing from "./pages/InComing";
 
+import ReactGA from 'react-ga';
 
 const persistConfig = {
 	key: 'primary',
@@ -42,6 +43,7 @@ export const store = createStore(
 
 let persistor = persistStore(store);
 
+ReactGA.initialize('UA-170262602-1', {testMode: process.env.NODE_ENV !== 'production'});
 
 const App = props => {
         return (
