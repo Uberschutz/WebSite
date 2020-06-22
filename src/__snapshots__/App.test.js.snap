@@ -141,11 +141,12 @@ exports[`Testing the whole app rendering renders whole application without crash
           <br />
           <img
             alt="whois"
+            class="responsive-image"
             src="CacherPseudo.jpg"
           />
         </div>
         <div
-          class="txt-intro"
+          class="txt-intro responsive-image"
         >
           <h3
             class="h7-font"
@@ -229,48 +230,53 @@ exports[`Testing the whole app rendering renders whole application without crash
           </div>
         </div>
         <br />
-        <h7
-          class="rappel-info"
+        <div
+          class=""
         >
-          Pour protéger votre enfant et discuter avec lui lorsqu'une situation compliquée se présente.
-        </h7>
-        <br />
-        <br />
-        <br />
+          <h7
+            class="rappel-info responsive-image"
+          >
+            Pour protéger votre enfant et discuter avec lui lorsqu'une situation compliquée se présente.
+            <br />
+          </h7>
+          <br />
+        </div>
       </div>
     </div>
-    <div
-      class="uber-color2 form-align footer"
-    >
-      <a
-        href="/Contact+FAQ"
+    <footer>
+      <div
+        class="uber-color2"
       >
-        <button
-          class="btn btn-primary button-footer"
-          type="button"
-        >
-          Contact
-        </button>
-      </a>
-      <br />
-      <span>
-        © 2018 - 
-        2020
-      </span>
-      <br />
-      <span>
-        Créé par Marianne LEVEE & Thomas DEROTE-PARCELLIER 
-        <br />
-        Icônes de l'application par 
         <a
-          href="https://icones8.fr"
+          href="/Contact+FAQ"
         >
-          icons8
+          <button
+            class="btn btn-primary button-footer"
+            type="button"
+          >
+            Contact
+          </button>
         </a>
-         
         <br />
-      </span>
-    </div>
+        <span>
+          © 2018 - 
+          2020
+        </span>
+        <br />
+        <span>
+          Créé par Marianne LEVEE & Thomas DEROTE-PARCELLIER 
+          <br />
+          Icônes de l'application par 
+          <a
+            href="https://icones8.fr"
+          >
+            icons8
+          </a>
+           
+          <br />
+        </span>
+      </div>
+    </footer>
   </div>
 </div>
 `;

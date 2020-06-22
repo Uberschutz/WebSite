@@ -2,111 +2,117 @@
 
 exports[`Testing the Footer component rendering renders Footer in english 1`] = `
 <div>
-  <div
-    class="uber-color2 form-align footer"
-  >
-    <a
-      href="/Contact+FAQ"
+  <footer>
+    <div
+      class="uber-color2"
     >
-      <button
-        class="btn btn-primary button-footer"
-        type="button"
-      >
-        Contact
-      </button>
-    </a>
-    <br />
-    <span>
-      © 2018 - 
-      2020
-    </span>
-    <br />
-    <span>
-      Created by Marianne LEVEE & Thomas DEROTE-PARCELLIER 
-      <br />
-      App icon by 
       <a
-        href="https://icones8.fr"
+        href="/Contact+FAQ"
       >
-        icons8
+        <button
+          class="btn btn-primary button-footer"
+          type="button"
+        >
+          Contact
+        </button>
       </a>
-       
       <br />
-    </span>
-  </div>
+      <span>
+        © 2018 - 
+        2020
+      </span>
+      <br />
+      <span>
+        Created by Marianne LEVEE & Thomas DEROTE-PARCELLIER 
+        <br />
+        App icon by 
+        <a
+          href="https://icones8.fr"
+        >
+          icons8
+        </a>
+         
+        <br />
+      </span>
+    </div>
+  </footer>
 </div>
 `;
 
 exports[`Testing the Footer component rendering renders Footer in french 1`] = `
 <div>
-  <div
-    class="uber-color2 form-align footer"
-  >
-    <a
-      href="/Contact+FAQ"
+  <footer>
+    <div
+      class="uber-color2"
     >
-      <button
-        class="btn btn-primary button-footer"
-        type="button"
-      >
-        Contact
-      </button>
-    </a>
-    <br />
-    <span>
-      © 2018 - 
-      2020
-    </span>
-    <br />
-    <span>
-      Créé par Marianne LEVEE & Thomas DEROTE-PARCELLIER 
-      <br />
-      Icônes de l'application par 
       <a
-        href="https://icones8.fr"
+        href="/Contact+FAQ"
       >
-        icons8
+        <button
+          class="btn btn-primary button-footer"
+          type="button"
+        >
+          Contact
+        </button>
       </a>
-       
       <br />
-    </span>
-  </div>
+      <span>
+        © 2018 - 
+        2020
+      </span>
+      <br />
+      <span>
+        Créé par Marianne LEVEE & Thomas DEROTE-PARCELLIER 
+        <br />
+        Icônes de l'application par 
+        <a
+          href="https://icones8.fr"
+        >
+          icons8
+        </a>
+         
+        <br />
+      </span>
+    </div>
+  </footer>
 </div>
 `;
 
 exports[`Testing the Footer component rendering renders Footer without crashing 1`] = `
 <div>
-  <div
-    class="uber-color2 form-align footer"
-  >
-    <a
-      href="/Contact+FAQ"
+  <footer>
+    <div
+      class="uber-color2"
     >
-      <button
-        class="btn btn-primary button-footer"
-        type="button"
-      >
-        Contact
-      </button>
-    </a>
-    <br />
-    <span>
-      © 2018 - 
-      2020
-    </span>
-    <br />
-    <span>
-      Créé par Marianne LEVEE & Thomas DEROTE-PARCELLIER 
-      <br />
-      Icônes de l'application par 
       <a
-        href="https://icones8.fr"
+        href="/Contact+FAQ"
       >
-        icons8
+        <button
+          class="btn btn-primary button-footer"
+          type="button"
+        >
+          Contact
+        </button>
       </a>
-       
       <br />
-    </span>
-  </div>
+      <span>
+        © 2018 - 
+        2020
+      </span>
+      <br />
+      <span>
+        Créé par Marianne LEVEE & Thomas DEROTE-PARCELLIER 
+        <br />
+        Icônes de l'application par 
+        <a
+          href="https://icones8.fr"
+        >
+          icons8
+        </a>
+         
+        <br />
+      </span>
+    </div>
+  </footer>
 </div>
 `;
