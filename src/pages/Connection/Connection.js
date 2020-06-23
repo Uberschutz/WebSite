@@ -34,7 +34,9 @@ class Connection extends Component {
     }
 
 	componentDidMount() {
-		ReactGA.pageview(window.location.pathname + window.location.search);
+		if (process.env.ANALYTICS === 'true') {
+			ReactGA.pageview(window.location.pathname + window.location.search);
+		}
 		if (this.props.base) {
 			const { base: { language } } = this.props;
 			if (this.state.lang !== language) {
