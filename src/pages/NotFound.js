@@ -16,7 +16,7 @@ export default class NotFound extends Component {
 	}
 
 	componentDidMount() {
-		if (process.env.ANALYTICS === 'true') {
+		if (process.env.REACT_APP_ANALYTICS === 'true') {
 			ReactGA.pageview(window.location.pathname + window.location.search);
 		}
 		if (this.props.base) {

@@ -2,11 +2,11 @@ FROM node:latest
 
 ARG NODE_ENV
 
-ARG ANALYTICS
+ARG REACT_APP_ANALYTICS
 
 ENV NODE_ENV $NODE_ENV
 
-ENV ANALYTICS $ANALYTICS
+ENV REACT_APP_ANALYTICS $REACT_APP_ANALYTICS
 
 RUN mkdir -p /home/node/app/node_modules && chown -R node:node /home/node/app
 
