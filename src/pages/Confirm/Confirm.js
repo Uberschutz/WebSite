@@ -37,7 +37,9 @@ class Confirm extends Component {
     }
 
     componentDidMount() {
-	    ReactGA.pageview(window.location.pathname + window.location.search);
+    	if (process.env.ANALYTICS === 'true') {
+		    ReactGA.pageview(window.location.pathname + window.location.search);
+	    }
     	if (this.props.base) {
 			const {base: {language}} = this.props;
 			this.setState({lang: language, pending: true});

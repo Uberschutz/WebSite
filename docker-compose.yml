@@ -52,6 +52,7 @@ services:
           - ./credentials.js:/home/node/app/credentials.js
         environment:
           - NODE_ENV=production
+          - ANALYTICS=true
     dev_client_web:
         build:
           context: https://github.com/Uberschutz/WebSite.git#develop
@@ -66,6 +67,7 @@ services:
           - ./credentials.js:/home/node/app/credentials.js
         environment:
           - NODE_ENV=production
+          - ANALYTICS=false
     user_db:
         image: 'mongo:latest'
         command: mongod --port 27117 --auth

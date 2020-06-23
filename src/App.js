@@ -43,7 +43,7 @@ export const store = createStore(
 
 let persistor = persistStore(store);
 
-ReactGA.initialize('UA-170262602-1');
+ReactGA.initialize('UA-170262602-1', {testMode: process.env.NODE_ENV !== 'production'});
 
 const App = props => {
         return (
