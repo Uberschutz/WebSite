@@ -42,6 +42,9 @@ services:
         build:
           context: https://github.com/Uberschutz/WebSite.git#production
           dockerfile: Dockerfile
+          args:
+            - NODE_ENV=production
+            - REACT_APP_ANALYTICS=true
         ports:
           - "8080:8080"
         depends_on:
@@ -52,11 +55,13 @@ services:
           - ./credentials.js:/home/node/app/credentials.js
         environment:
           - NODE_ENV=production
-          - REACT_APP_ANALYTICS=true
     dev_client_web:
         build:
           context: https://github.com/Uberschutz/WebSite.git#develop
           dockerfile: DevDockerfile
+          args:
+            - NODE_ENV=production
+            - REACT_APP_ANALYTICS=false
         ports:
           - "8083:8083"
         depends_on:
@@ -67,7 +72,6 @@ services:
           - ./credentials.js:/home/node/app/credentials.js
         environment:
           - NODE_ENV=production
-          - REACT_APP_ANALYTICS=false
     user_db:
         image: 'mongo:latest'
         command: mongod --port 27117 --auth
