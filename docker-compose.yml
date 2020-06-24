@@ -25,6 +25,10 @@ services:
         depends_on:
             - client_web
             - dev_client_web
+            - mail_server
+            - user_db
+            - user_server
+            - db_monitor
     mail_server:
         build: ./UberMail/
         ports:
