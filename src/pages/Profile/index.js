@@ -9,7 +9,8 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-	setUser: bindActionCreators(actions.setUser, dispatch),
+	// setUser: bindActionCreators(actions.setUser, dispatch),
+	setAuthToken: bindActionCreators(actions.setAuthToken, dispatch),
 	setLogged: bindActionCreators(actions.setLogged, dispatch),
 	setNewsletter: bindActionCreators(actions.setNewsletter, dispatch)
 })

@@ -25,16 +25,25 @@ services:
         depends_on:
             - client_web
             - dev_client_web
+            - mail_server
+            - user_db
+            - user_server
+            - db_monitor
     mail_server:
         build: ./UberMail/
         ports:
           - "8082:8082"
     user_server:
-        build: ./UberUsers/
+        build:
+          context: https://github.com/Uberschutz/UberUsers.git
+          args:
+            - NODE_ENV=production
         ports:
           - "8081:8081"
         depends_on:
            - user_db
+        volumes:
+          - ./credentials.js:/home/node/app/credentials.js
         environment:
           - uz_user=${uz_user}
           - uz_password=${uz_password}
