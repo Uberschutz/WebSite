@@ -4,7 +4,7 @@
 #
 version: 2
 jobs:
-  build:
+  test:
 #    branches:
 #      only:
 #        - master
@@ -59,7 +59,7 @@ jobs:
       - run: yarn test
 #      - run: npm test
 
-  deploy:
+  build-and-deploy:
     machine:
       enabled: true
     steps:
@@ -67,25 +67,21 @@ jobs:
           fingerprints:
             - "81:46:f4:6a:d5:d9:cd:64:ab:ce:5a:1d:7a:4e:b3:4a"
       - run:
-          name: Update docker image
-          command: |
-            ssh $SSH_USER@$SSH_HOST -p 50417 "docker pull node:latest"
-      - run:
           name: Deploy Over SSH
           command: |
             if [ "$CIRCLE_BRANCH" == "develop" ];
             then
-              ssh $SSH_USER@$SSH_HOST -p 50417 "cd uberschutz_project/eip/WebSite && git pull && docker-compose build --no-cache --force-rm dev_client_web && docker-compose up -d dev_client_web"
+              ssh $SSH_USER@$SSH_HOST -p 50417 "cd uberschutz_project/eip/WebSite && git pull && docker-compose build --pull --no-cache --force-rm dev_client_web && docker-compose up -d dev_client_web"
             elif [ "$CIRCLE_BRANCH" == "production" ];
             then
-              ssh $SSH_USER@$SSH_HOST -p 50417 "cd uberschutz_project/eip/WebSite && git pull && docker-compose build --no-cache --force-rm client_web && docker-compose up -d client_web"
+              ssh $SSH_USER@$SSH_HOST -p 50417 "cd uberschutz_project/eip/WebSite && git pull && docker-compose build --pull --no-cache --force-rm client_web && docker-compose up -d client_web"
             fi
 
 workflows:
   version: 2
-  build-and-deploy:
+  test-and-deploy:
     jobs:
-      - build:
+      - test:
           filters:
             branches:
               only:
@@ -94,9 +90,9 @@ workflows:
                 - production
                 - unit-tests
                 - rendering-unit-tests
-      - deploy:
+      - build-and-deploy:
           requires:
-            - build # only deploy once build job has completed
+            - test # only deploy once test job has completed
           filters:
             branches:
               only: # only deploy on the develop and productions branches
