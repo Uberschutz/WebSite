@@ -58,6 +58,7 @@ class Header extends Component {
     	// console.log('header update');
 	    if (this.props.base !== prevProps.base) {
 		    this.setState({logged: this.props.base.logged});
+		    this.getUser();
 	    }
     }
 
@@ -81,7 +82,7 @@ class Header extends Component {
     }
 
     refreshAccount() {
-        setInterval(this.getUser, 1000 * 30);
+        setInterval(this.getUser, 1000 * 15);
     }
 
 	toggle() {
@@ -108,7 +109,7 @@ class Header extends Component {
 
     disconnect() {
     	this.props.setLogged(false);
-    	this.props.setUser(undefined, undefined, undefined, undefined);
+    	// this.props.setUser(undefined, undefined, undefined, undefined);
     	this.props.setAuthToken(undefined);
     	this.setState({logged: false, lastname: undefined});
     }
