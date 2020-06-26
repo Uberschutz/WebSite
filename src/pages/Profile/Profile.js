@@ -46,7 +46,7 @@ class Profile extends Component {
 	}
 
 	componentDidMount() {
-		if (process.env.ANALYTICS === 'true') {
+		if (process.env.REACT_APP_ANALYTICS === 'true') {
 			ReactGA.pageview(window.location.pathname + window.location.search);
 		}
 		if (this.props.base) {
@@ -128,7 +128,7 @@ class Profile extends Component {
 				'x-access-token': this.state.token
 			}
 		}).then(response => {
-			this.props.setUser(this.state.email, this.state.lastname, this.state.firstname, this.state.token);
+			// this.props.setUser(this.state.email, this.state.lastname, this.state.firstname, this.state.token);
 		}).catch(err => {
 			console.log(err, "Error");
 		})
@@ -143,7 +143,7 @@ class Profile extends Component {
 				'x-access-token': this.state.token
 			}
 		}).then(response => {
-			this.props.setUser(this.state.email, this.state.lastname, this.state.firstname, this.state.token);
+			// this.props.setUser(this.state.email, this.state.lastname, this.state.firstname, this.state.token);
 		}).catch(err => {
 			console.log(err, "Error");
 		})
@@ -168,7 +168,7 @@ class Profile extends Component {
 			}
 		}).then(response => {
 			this.props.setLogged(false);
-			// this.props.setUser(null, null, null, null);
+			this.props.setAuthToken(null);
 			this.props.history.push("/");
 		}).catch(err => {
 			console.log(err, "Error");
@@ -194,10 +194,10 @@ class Profile extends Component {
 
 	_handleKeyPressed(e) {
 		if (e.key === "Enter") {
-			console.log(e)
-			console.log(e.target)
-			console.log(e.target.dataset)
-			console.log(e.target.dataset.action)
+			// console.log(e)
+			// console.log(e.target)
+			// console.log(e.target.dataset)
+			// console.log(e.target.dataset.action)
 			if (e.target.dataset.action === "firstname") {
 				this.changeFirstName();
 			} else {
