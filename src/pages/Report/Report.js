@@ -202,8 +202,8 @@ class Report extends Component {
 		if (this.state.logged) {
 			return (
 				<div>
-					<div className="mrg-begin">
-						<ButtonDropdown isOpen={this.state.isOpen} toggle={this.toggle} size="lg">
+					<div>
+						<ButtonDropdown isOpen={this.state.isOpen} toggle={this.toggle} size="lg" className="mrg-begin">
 							<DropdownToggle caret color="info">
 								{this.state.selectedChild ? this.state.selectedChild : displayContent(this.state.lang, 0, 'report')}
 							</DropdownToggle>
@@ -222,8 +222,7 @@ class Report extends Component {
 								</div>
 							</DropdownMenu>
 						</ButtonDropdown>
-					</div> <br/>
-
+					</div>
 					<div className="left-filter">
 						<span>{displayContent(this.state.lang, i++, 'report')}</span> <br/> <br/>
 						<div className="filter-align">
@@ -231,7 +230,6 @@ class Report extends Component {
 							<input type="checkbox" checked={this.state.filters.includes('plugin')} onChange={this.editFilter} data-filter="plugin"/> {displayContent(this.state.lang, i++, 'report')} <br/>
 						</div>
 					</div>
-
 					<div style={{width: '70%'}} className="btn content-right">
 						{
 							this.state.childData.map((d, idx) => {
@@ -257,9 +255,9 @@ class Report extends Component {
 								}
 							})
 						}
-					</div>
-					<div className="summary">
-						<Summary lang={this.state.lang} child={this.state.selectedChild} safe={this.state.dataExists ? Math.round(this.state.childData.find(c => c.name === 'Safe').value) : -1}/>
+						<div className="summary">
+							<Summary lang={this.state.lang} child={this.state.selectedChild} safe={this.state.dataExists ? Math.round(this.state.childData.find(c => c.name === 'Safe').value) : -1}/>
+						</div>
 					</div>
 				</div>
 			);
@@ -278,7 +276,7 @@ class Summary extends Component {
     	let i = 0;
 	    if (this.props.child && this.props.safe > 0) {
 	        return (
-                <div>
+                <div className="responsive-image">
                     <h5> {displayContent(this.props.lang, i++, 'summary')} {this.props.child} {displayContent(this.props.lang, i++, 'summary')} {this.props.safe} {displayContent(this.props.lang, i++, 'summary')}</h5>
                     <br/>
 	                {this.props.safe >= 0 && this.props.safe < 33 && <img src={bad} alt="bad"/>}
