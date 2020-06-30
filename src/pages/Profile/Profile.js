@@ -205,83 +205,86 @@ class Profile extends Component {
 		if (this.state.logged) {
 		    let i = 0;
 		    return (
-			    <div className="fixed-size description-txt">
-					<div className="row button-footerP">
-						<h4 className="name-font col-sm-auto">
+			    <div className="fixed-size">
+					<div className="description-txt">
+						<div className="row button-footerP">
+							<h4 className="name-font col-sm-auto">
+								{displayContent(this.state.lang, i++, 'profile')}
+							</h4>
+							<div className="input-group input-group-sm col-sm-2">
+								<input type="text" className="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" data-action="lastname" onKeyPress={this._handleKeyPressed} value={this.state.lastname} onChange={this.onChangeLastname}/>
+								<button className="btn btn-primary btn-sm" onClick={this.changeLastName}>OK</button>
+							</div> <br/>
+						</div>
+						<div className="row button-footerP">
+							<h5 className="name-font col-sm-auto">
+								{displayContent(this.state.lang, i++, 'profile')}
+							</h5>
+							<div className="input-group input-group-sm col-sm-2">
+								<input type="text" className="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" data-action="firstname" onKeyPress={this._handleKeyPressed} value={this.state.firstname} onChange={this.onChangeFirstname}/>
+								<button className="btn btn-primary btn-sm" onClick={this.changeFirstName}>OK</button>
+							</div><br/>
+						</div>
+						<h6>
+							{displayContent(this.state.lang, i++, 'profile')}<br/><br/>
 							{displayContent(this.state.lang, i++, 'profile')}
-						</h4>
-						<div className="input-group input-group-sm col-sm-2">
-							<input type="text" className="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" data-action="lastname" onKeyPress={this._handleKeyPressed} value={this.state.lastname} onChange={this.onChangeLastname}/>
-							<button className="btn btn-primary btn-sm" onClick={this.changeLastName}>OK</button>
-						</div> <br/>
-					</div>
-					<div className="row button-footerP">
-						<h5 className="name-font col-sm-auto">
+							<span>{this.state.subscription}</span>
+						</h6>
+						{
+							++i && this.state.newsletter ?
+								<div>
+									<h6 className="right-btn">
+										Newsletter : <button className="btn btn-dark btn-sm" onClick={this.unsubscribe_newsletter}>
+										<img src={newsletter} alt="newsletter"/>{displayContent(this.state.lang, i - 1, 'profile')} {
+										this.state.load ? <img src={loading} alt="loading"/> : null
+									}
+									</button>
+									</h6>
+									{
+										this.state.newsletterAlert !== '' ? <Alert
+											color={this.state.statusErr ? "danger" : "success"}>{this.state.newsletterAlert}</Alert> : null
+									}
+								</div> : null
+						}
+						<h6>
 							{displayContent(this.state.lang, i++, 'profile')}
-						</h5>
-						<div className="input-group input-group-sm col-sm-2">
-							<input type="text" className="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" data-action="firstname" onKeyPress={this._handleKeyPressed} value={this.state.firstname} onChange={this.onChangeFirstname}/>
-							<button className="btn btn-primary btn-sm" onClick={this.changeFirstName}>OK</button>
-						</div><br/>
+						</h6><br/>
+						<table className="table">
+							<thead className="table-primary">
+							<tr>
+								<th scope="col">Date</th>
+								<th scope="col">{displayContent(this.state.lang, i++, 'profile')}</th>
+								<th scope="col">{displayContent(this.state.lang, i++, 'profile')}</th>
+							</tr>
+							</thead>
+							<tbody>
+							<tr>
+								<th scope="row">22/05/2019</th>
+								<td>Achat d'Überschutz Premium</td>
+								<td>
+									<Icon type="check-circle" theme="twoTone"
+										  twoToneColor="#52c41a"/>
+								</td>
+							</tr>
+							<tr>
+								<th scope="row">25/05/2019</th>
+								<td>Prélèvement n°1 Überschutz Premium</td>
+								<td>En cours ...</td>
+							</tr>
+							<tr>
+								<th scope="row">25/06/2019</th>
+								<td>Prélèvement n°2 Überschutz Premium</td>
+								<td>Prochainement</td>
+							</tr>
+							</tbody>
+						</table>
+						<br/>
 					</div>
-					<h6>
-						{displayContent(this.state.lang, i++, 'profile')}<br/><br/>
-						{displayContent(this.state.lang, i++, 'profile')}
-						<span>{this.state.subscription}</span>
-					</h6>
-					{
-					++i && this.state.newsletter ?
-						<div>
-							<h6 className="right-btn">
-								Newsletter : <button className="btn btn-dark btn-sm" onClick={this.unsubscribe_newsletter}>
-								<img src={newsletter} alt="newsletter"/>{displayContent(this.state.lang, i - 1, 'profile')} {
-								this.state.load ? <img src={loading} alt="loading"/> : null
-							}
-							</button>
-							</h6>
-							{
-								this.state.newsletterAlert !== '' ? <Alert
-									color={this.state.statusErr ? "danger" : "success"}>{this.state.newsletterAlert}</Alert> : null
-							}
-						</div> : null
-					}
-					<h6>
-						{displayContent(this.state.lang, i++, 'profile')}
-					</h6><br/>
-				    <table className="table">
-					    <thead className="table-primary">
-					    <tr>
-						    <th scope="col">Date</th>
-						    <th scope="col">{displayContent(this.state.lang, i++, 'profile')}</th>
-						    <th scope="col">{displayContent(this.state.lang, i++, 'profile')}</th>
-					    </tr>
-					    </thead>
-					    <tbody>
-					    <tr>
-						    <th scope="row">22/05/2019</th>
-						    <td>Achat d'Überschutz Premium</td>
-						    <td>
-							    <Icon type="check-circle" theme="twoTone"
-							          twoToneColor="#52c41a"/>
-						    </td>
-					    </tr>
-					    <tr>
-						    <th scope="row">25/05/2019</th>
-						    <td>Prélèvement n°1 Überschutz Premium</td>
-						    <td>En cours ...</td>
-					    </tr>
-					    <tr>
-						    <th scope="row">25/06/2019</th>
-						    <td>Prélèvement n°2 Überschutz Premium</td>
-						    <td>Prochainement</td>
-					    </tr>
-					    </tbody>
-				    </table>
-				    <br/>
 				    <div className="row txt-align">
 						<button className="col-2 btn btn-primary button-footerP" onClick={this.getAccountData}>{displayContent(this.state.lang, i++, 'profile')}</button>
 						<button className="col-2 btn btn-danger button-footerP" onClick={this.deleteAccount}>{displayContent(this.state.lang, i++, 'profile')}</button>
 					</div>
+					<POptions/>
 			    </div>
 		    )
 	    } else {
@@ -290,6 +293,25 @@ class Profile extends Component {
 		    )
 	    }
     }
+}
+
+class POptions extends Component {
+
+	constructor() {
+		super();
+	}
+
+	componentDidMount() {
+	}
+
+	render() {
+		return (
+			<div className="uber-color2 responsive-image">
+				<button type="button" className="btn btn-outline-primary options-margin">Modifier mon adresse email</button>
+				<button type="button" className="btn btn-outline-primary options-margin">Modifier mon mot de passe</button>
+			</div>
+		)
+	}
 }
 
 export default Profile;
