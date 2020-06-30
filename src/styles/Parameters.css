@@ -14,8 +14,8 @@
     align-content: center;
     align-self: center;
     text-align: center;
-    margin-bottom: 13px;
-    margin-top: 13px;
+    margin-bottom: 2%;
+    margin-top: 2%;
 }
 
 .add-child {
@@ -23,16 +23,16 @@
     align-self: center;
     background-color: #007bff;
     border-top-color: #007bff;
-    margin-bottom: 13px;
+    margin-bottom: 1%;
     outline: none;
 }
 
 .btn-mod {
-    margin : 5px;
+    margin : 1%;
 }
 
 .options-center {
-    margin: 4px;
+    margin: 1%;
     vertical-align: middle;
 }
 
@@ -41,7 +41,7 @@
 }
 
 .child-field {
-    margin-top: 10px;
+    margin-top: 1%;
 }
 
 .save-child {
@@ -50,9 +50,9 @@
 }
 
 .change-child {
-    margin-bottom: 10px;
+    margin-bottom: 1%;
     outline: none;
-    margin-left: 5px;
+    margin-left: 1%;
 }
 
 .address-params {
@@ -73,9 +73,9 @@
 }
 
 .custom-modal-style {
-    width: 1200px;
-    min-width: 1200px;
-    height: 700px;
+    width: 100%;
+    min-width: 100%;
+    height: auto;
 }
 
 .tag-header {
@@ -88,10 +88,3 @@
 .margin-footer {
     margin-bottom: 1.5%!important;
 }
-
-
-/*@media (min-width:1200px) {
-    .modal-lg, .modal-xl {
-        width: 1000px;
-    }
-}*/
