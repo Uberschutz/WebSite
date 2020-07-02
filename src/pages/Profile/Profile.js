@@ -280,11 +280,12 @@ class Profile extends Component {
 						</table>
 						<br/>
 					</div>
+					<button type="button" className="btn btn-outline-dark options-margin">{displayContent(this.state.lang, i++, 'profile')}</button>
+					<button type="button" className="btn btn-outline-dark options-margin">{displayContent(this.state.lang, i++, 'profile')}</button>
 				    <div className="row txt-align">
-						<button className="col-2 btn btn-primary button-footerP" onClick={this.getAccountData}>{displayContent(this.state.lang, i++, 'profile')}</button>
-						<button className="col-2 btn btn-danger button-footerP" onClick={this.deleteAccount}>{displayContent(this.state.lang, i++, 'profile')}</button>
+						<button className="col-2 btn btn-primary options-margin" onClick={this.getAccountData}>{displayContent(this.state.lang, i++, 'profile')}</button>
+						<button className="col-2 btn btn-danger options-margin" onClick={this.deleteAccount}>{displayContent(this.state.lang, i++, 'profile')}</button>
 					</div>
-					<POptions/>
 			    </div>
 		    )
 	    } else {
@@ -293,25 +294,6 @@ class Profile extends Component {
 		    )
 	    }
     }
-}
-
-class POptions extends Component {
-
-	constructor() {
-		super();
-	}
-
-	componentDidMount() {
-	}
-
-	render() {
-		return (
-			<div className="uber-color2 responsive-image">
-				<button type="button" className="btn btn-outline-primary options-margin">Modifier mon adresse email</button>
-				<button type="button" className="btn btn-outline-primary options-margin">Modifier mon mot de passe</button>
-			</div>
-		)
-	}
 }
 
 export default Profile;
