@@ -5,6 +5,8 @@ import '../../styles/Profile.css';
 import Icon from 'antd/lib/icon/index';
 import {displayContent, displayHttpMessages} from '../../utils/translationDisplay';
 import Alert from 'reactstrap/lib/Alert';
+import ModalHeader from "reactstrap/lib/ModalHeader";
+import ModalFooter from "reactstrap/lib/ModalFooter";
 
 import Unauthorized from "../Unauthorized";
 import newsletter from "../../assets/icons8-mail-100.png";
@@ -13,6 +15,7 @@ import loading from '../../assets/Spinner-1s-70px.gif';
 import axios from 'axios';
 
 import fileDownload from "js-file-download";
+import Modal from "reactstrap/lib/Modal";
 
 class Profile extends Component {
 	constructor(props) {
@@ -30,7 +33,9 @@ class Profile extends Component {
 			token: null,
 			load: false,
 			newsletterAlert: '',
-			statusErr: false
+			statusErr: false,
+			emailModal: false,
+			passwordModal: false
 		};
 		this._handleKeyPressed = this._handleKeyPressed.bind(this);
 		this.onChangeFirstname = this.onChangeFirstname.bind(this);
@@ -41,6 +46,8 @@ class Profile extends Component {
 		this.deleteAccount = this.deleteAccount.bind(this);
 		this.unsubscribe_newsletter = this.unsubscribe_newsletter.bind(this);
 		this.getUser = this.getUser.bind(this);
+		/*this.toggleModalEmail = this.toggleModalEmail.bind(this);*/
+		/*this.toggleModalPassword = this.toggleModalPassword.bind(this);*/
 	}
 
 	componentDidMount() {
@@ -201,6 +208,24 @@ class Profile extends Component {
 		}
 	}
 
+	/*toggleModalEmail() {
+		if (this.state.showModal) {
+			this.setState({name: '', age: '', id: null, state: 'Create', alphaErr: false, numErr: false, options: this.options, discordId: ''},
+				() => this.setState({showModal: !this.state.showModal}));
+		} else {
+			this.setState({showModal: !this.state.showModal});
+		}
+	}*/
+
+	/*toggleModalPassword() {
+		if (this.state.showModal) {
+			this.setState({name: '', age: '', id: null, state: 'Create', alphaErr: false, numErr: false, options: this.options, discordId: ''},
+				() => this.setState({showModal: !this.state.showModal}));
+		} else {
+			this.setState({showModal: !this.state.showModal});
+		}
+	}*/
+
     render() {
 		if (this.state.logged) {
 		    let i = 0;
@@ -280,11 +305,39 @@ class Profile extends Component {
 						</table>
 						<br/>
 					</div>
-					<button type="button" className="btn btn-outline-dark options-margin">{displayContent(this.state.lang, i++, 'profile')}</button>
-					<button type="button" className="btn btn-outline-dark options-margin">{displayContent(this.state.lang, i++, 'profile')}</button>
+					<button type="button" className="btn btn-outline-dark options-margin" /*onClick={}*/>{displayContent(this.state.lang, i++, 'profile')}</button>
+					<button type="button" className="btn btn-outline-dark options-margin" /*onClick={}*/>{displayContent(this.state.lang, i++, 'profile')}</button>
 				    <div className="row txt-align">
 						<button className="col-2 btn btn-primary options-margin" onClick={this.getAccountData}>{displayContent(this.state.lang, i++, 'profile')}</button>
+
+						<Modal isOpen={this.state.showModal} size="m" toggle={this.toggleModalEmail} centered={true}>
+							<ModalHeader>Modifier mon adresse email</ModalHeader>
+							<label className="col-form-label">Nouvelle adresse email :</label>
+							<input type="text" className="form-control" id="recipient-name"/>
+							<label className="col-form-label">Confirmer la nouvelle adresse email :</label>
+							<input type="text" className="form-control" id="recipient-name"/>
+							<ModalFooter>
+								<button className="btn btn-primary">Valider</button>
+								<button className="btn btn-danger">Annuler</button>
+							</ModalFooter>
+						</Modal>
+
 						<button className="col-2 btn btn-danger options-margin" onClick={this.deleteAccount}>{displayContent(this.state.lang, i++, 'profile')}</button>
+
+						<Modal isOpen={this.state.showModal} size="m" toggle={this.toggleModalPassword} centered={true}>
+							<ModalHeader>Modifier mon mot de passe</ModalHeader>
+							<label className="col-form-label">Ancien mot de passe :</label>
+							<input type="text" className="form-control" id="recipient-name"/>
+							<label className="col-form-label">Nouveau mot de passe :</label>
+							<input type="text" className="form-control" id="recipient-name"/>
+							<label className="col-form-label">Confirmer le nouveau mot de passe :</label>
+							<input type="text" className="form-control" id="recipient-name"/>
+							<ModalFooter>
+								<button className="btn btn-primary">Valider</button>
+								<button className="btn btn-danger">Annuler</button>
+							</ModalFooter>
+						</Modal>
+
 					</div>
 			    </div>
 		    )
