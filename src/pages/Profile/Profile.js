@@ -6,6 +6,7 @@ import Icon from 'antd/lib/icon/index';
 import {displayContent, displayHttpMessages} from '../../utils/translationDisplay';
 import Alert from 'reactstrap/lib/Alert';
 import ModalHeader from "reactstrap/lib/ModalHeader";
+import ModalBody from "reactstrap/lib/ModalBody";
 import ModalFooter from "reactstrap/lib/ModalFooter";
 
 import Unauthorized from "../Unauthorized";
@@ -35,7 +36,14 @@ class Profile extends Component {
 			newsletterAlert: '',
 			statusErr: false,
 			emailModal: false,
-			passwordModal: false
+			passwordModal: false,
+			password: '',
+			newPassword: '',
+			confirmPassword: '',
+			confirmEmail: '',
+			badEmail: false,
+			badPassword: false,
+			noneData: false
 		};
 		this._handleKeyPressed = this._handleKeyPressed.bind(this);
 		this.onChangeFirstname = this.onChangeFirstname.bind(this);
@@ -46,8 +54,15 @@ class Profile extends Component {
 		this.deleteAccount = this.deleteAccount.bind(this);
 		this.unsubscribe_newsletter = this.unsubscribe_newsletter.bind(this);
 		this.getUser = this.getUser.bind(this);
-		/*this.toggleModalEmail = this.toggleModalEmail.bind(this);*/
-		/*this.toggleModalPassword = this.toggleModalPassword.bind(this);*/
+		this.toggleModalEmail = this.toggleModalEmail.bind(this);
+		this.toggleModalPassword = this.toggleModalPassword.bind(this);
+		this.onChangePassword = this.onChangePassword(this);
+		this.onChangeEmail = this.onChangeEmail(this);
+		this.onChangeConfirmPassword = this.onChangeConfirmPassword(this);
+		this.onChangeConfirmEmail = this.onChangeConfirmEmail(this);
+		this.onChangeNewPassword = this.onChangeNewPassword(this);
+		this.updateEmail = this.updateEmail(this);
+		this.updatePassword = this.updatePassword(this);
 	}
 
 	componentDidMount() {
@@ -208,23 +223,91 @@ class Profile extends Component {
 		}
 	}
 
-	/*toggleModalEmail() {
-		if (this.state.showModal) {
-			this.setState({name: '', age: '', id: null, state: 'Create', alphaErr: false, numErr: false, options: this.options, discordId: ''},
-				() => this.setState({showModal: !this.state.showModal}));
+	toggleModalEmail() {
+		if (this.state.emailModal) {
+			this.setState({},
+				() => this.setState({emailModal: !this.state.emailModal}));
 		} else {
-			this.setState({showModal: !this.state.showModal});
+			this.setState({emailModal: !this.state.emailModal});
 		}
-	}*/
+	}
 
-	/*toggleModalPassword() {
-		if (this.state.showModal) {
-			this.setState({name: '', age: '', id: null, state: 'Create', alphaErr: false, numErr: false, options: this.options, discordId: ''},
-				() => this.setState({showModal: !this.state.showModal}));
+	toggleModalPassword() {
+		if (this.state.passwordModal) {
+			this.setState({},
+				() => this.setState({passwordModal: !this.state.passwordModal}));
 		} else {
-			this.setState({showModal: !this.state.showModal});
+			this.setState({passwordModal: !this.state.passwordModal});
 		}
-	}*/
+	}
+
+	onChangePassword(psswd) {
+		this.setState({password: psswd.target.value});
+	}
+
+	onChangeEmail(mail) {
+		this.setState({email: mail.target.value});
+	}
+
+	onChangeConfirmPassword(confirmPsswd) {
+		this.setState({confirmPassword: confirmPsswd});
+	}
+
+	onChangeConfirmEmail(confirmMail) {
+		this.setState({confirmEmail: confirmMail});
+	}
+
+	onChangeNewPassword(newPsswd) {
+		this.setState({newPassword: newPsswd});
+	}
+
+	updateEmail() {
+		if (this.state.email === this.state.confirmEmail && this.state.confirmEmail !== '') {
+			axios.post('/change_email', {
+				email: this.state.email
+			}, {
+				headers: {
+					'x-access-token': this.state.token
+				}}).then(response => {
+					console.log(response.data);
+			}).catch(err => {
+				console.log(err.response.data);
+			})
+		} else if (this.state.email !== this.state.confirmEmail) {
+			this.setState({
+				badEmail: true
+			})
+		} else {
+			this.setState( {
+				noneData: true
+			})
+		}
+	}
+
+	updatePassword() {
+		if (this.state.newPassword === this.state.confirmPassword && this.state.newPassword !== '') {
+			axios.post('/change_password', {
+				passwd: this.state.password,
+				new_passwd: this.state.newPassword
+			}, {
+				headers: {
+					'x-access-token': this.state.token
+				}
+			}).then(response => {
+				console.log(response.data);
+			}).catch(err => {
+				console.log(err.response.data);
+			})
+		} else if (this.state.newPassword !== this.state.confirmPassword) {
+			this.setState( {
+				badPassword: true
+			})
+		} else {
+			this.setState( {
+				noneData: true
+			})
+		}
+	}
 
     render() {
 		if (this.state.logged) {
@@ -305,17 +388,19 @@ class Profile extends Component {
 						</table>
 						<br/>
 					</div>
-					<button type="button" className="btn btn-outline-dark options-margin" /*onClick={}*/>{displayContent(this.state.lang, i++, 'profile')}</button>
-					<button type="button" className="btn btn-outline-dark options-margin" /*onClick={}*/>{displayContent(this.state.lang, i++, 'profile')}</button>
+					<button type="button" className="btn btn-outline-dark options-margin" onClick={this.toggleModalEmail}>{displayContent(this.state.lang, i++, 'profile')}</button>
+					<button type="button" className="btn btn-outline-dark options-margin" onClick={this.toggleModalPassword}>{displayContent(this.state.lang, i++, 'profile')}</button>
 				    <div className="row txt-align">
 						<button className="col-2 btn btn-primary options-margin" onClick={this.getAccountData}>{displayContent(this.state.lang, i++, 'profile')}</button>
 
-						<Modal isOpen={this.state.showModal} size="m" toggle={this.toggleModalEmail} centered={true}>
+						<Modal isOpen={this.state.emailModal} size="lg" toggle={this.toggleModalEmail} centered={true}>
 							<ModalHeader>Modifier mon adresse email</ModalHeader>
-							<label className="col-form-label">Nouvelle adresse email :</label>
-							<input type="text" className="form-control" id="recipient-name"/>
-							<label className="col-form-label">Confirmer la nouvelle adresse email :</label>
-							<input type="text" className="form-control" id="recipient-name"/>
+							<ModalBody>
+								<label className="col-form-label options-margin">Nouvelle adresse email :</label>
+								<input onChange={this.onChangeEmail} type="text" className="form-control" id="recipient-name"/> <br/>
+								<label className="col-form-label options-margin">Confirmer la nouvelle adresse email :</label>
+								<input onChange={this.onChangeConfirmEmail} type="text" className="form-control" id="recipient-name"/> <br/>
+							</ModalBody>
 							<ModalFooter>
 								<button className="btn btn-primary">Valider</button>
 								<button className="btn btn-danger">Annuler</button>
@@ -324,14 +409,16 @@ class Profile extends Component {
 
 						<button className="col-2 btn btn-danger options-margin" onClick={this.deleteAccount}>{displayContent(this.state.lang, i++, 'profile')}</button>
 
-						<Modal isOpen={this.state.showModal} size="m" toggle={this.toggleModalPassword} centered={true}>
+						<Modal isOpen={this.state.passwordModal} size="lg" toggle={this.toggleModalPassword} centered={true}>
 							<ModalHeader>Modifier mon mot de passe</ModalHeader>
-							<label className="col-form-label">Ancien mot de passe :</label>
-							<input type="text" className="form-control" id="recipient-name"/>
-							<label className="col-form-label">Nouveau mot de passe :</label>
-							<input type="text" className="form-control" id="recipient-name"/>
-							<label className="col-form-label">Confirmer le nouveau mot de passe :</label>
-							<input type="text" className="form-control" id="recipient-name"/>
+							<ModalBody>
+								<label className="col-form-label options-margin">Ancien mot de passe :</label>
+								<input onChange={this.onChangePassword} type="text" className="form-control" id="recipient-name"/> <br/>
+								<label className="col-form-label options-margin">Nouveau mot de passe :</label>
+								<input onChange={this.onChangeNewPassword} type="text" className="form-control" id="recipient-name"/> <br/>
+								<label className="col-form-label options-margin">Confirmer le nouveau mot de passe :</label>
+								<input onChange={this.onChangeConfirmPassword} type="text" className="form-control" id="recipient-name"/> <br/>
+							</ModalBody>
 							<ModalFooter>
 								<button className="btn btn-primary">Valider</button>
 								<button className="btn btn-danger">Annuler</button>
