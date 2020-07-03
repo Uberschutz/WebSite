@@ -56,13 +56,13 @@ class Profile extends Component {
 		this.getUser = this.getUser.bind(this);
 		this.toggleModalEmail = this.toggleModalEmail.bind(this);
 		this.toggleModalPassword = this.toggleModalPassword.bind(this);
-		this.onChangePassword = this.onChangePassword(this);
-		this.onChangeEmail = this.onChangeEmail(this);
-		this.onChangeConfirmPassword = this.onChangeConfirmPassword(this);
-		this.onChangeConfirmEmail = this.onChangeConfirmEmail(this);
-		this.onChangeNewPassword = this.onChangeNewPassword(this);
-		this.updateEmail = this.updateEmail(this);
-		this.updatePassword = this.updatePassword(this);
+		this.onChangePassword = this.onChangePassword.bind(this);
+		this.onChangeEmail = this.onChangeEmail.bind(this);
+		this.onChangeConfirmPassword = this.onChangeConfirmPassword.bind(this);
+		this.onChangeConfirmEmail = this.onChangeConfirmEmail.bind(this);
+		this.onChangeNewPassword = this.onChangeNewPassword.bind(this);
+		this.updateEmail = this.updateEmail.bind(this);
+		this.updatePassword = this.updatePassword.bind(this);
 	}
 
 	componentDidMount() {
@@ -250,18 +250,19 @@ class Profile extends Component {
 	}
 
 	onChangeConfirmPassword(confirmPsswd) {
-		this.setState({confirmPassword: confirmPsswd});
+		this.setState({confirmPassword: confirmPsswd.target.value});
 	}
 
 	onChangeConfirmEmail(confirmMail) {
-		this.setState({confirmEmail: confirmMail});
+		this.setState({confirmEmail: confirmMail.target.value});
 	}
 
 	onChangeNewPassword(newPsswd) {
-		this.setState({newPassword: newPsswd});
+		this.setState({newPassword: newPsswd.target.value});
 	}
 
 	updateEmail() {
+		console.log(this.state);
 		if (this.state.email === this.state.confirmEmail && this.state.confirmEmail !== '') {
 			axios.post('/change_email', {
 				email: this.state.email
@@ -272,6 +273,7 @@ class Profile extends Component {
 					console.log(response.data);
 			}).catch(err => {
 				console.log(err.response.data);
+				/*ici c'est pour voir avec la DB si ancienne adresse email est la meme que la nouvelle saisie*/
 			})
 		} else if (this.state.email !== this.state.confirmEmail) {
 			this.setState({
@@ -297,6 +299,7 @@ class Profile extends Component {
 				console.log(response.data);
 			}).catch(err => {
 				console.log(err.response.data);
+				/*ici c'est pour voir avec la DB si ancien mdp est le meme que le nouveau saisi*/
 			})
 		} else if (this.state.newPassword !== this.state.confirmPassword) {
 			this.setState( {
@@ -402,8 +405,8 @@ class Profile extends Component {
 								<input onChange={this.onChangeConfirmEmail} type="text" className="form-control" id="recipient-name"/> <br/>
 							</ModalBody>
 							<ModalFooter>
-								<button className="btn btn-primary">Valider</button>
-								<button className="btn btn-danger">Annuler</button>
+								<button className="btn btn-primary" onClick={this.updateEmail}>Valider</button>
+								<button className="btn btn-danger" onClick={this.toggleModalEmail}>Annuler</button>
 							</ModalFooter>
 						</Modal>
 
@@ -413,15 +416,15 @@ class Profile extends Component {
 							<ModalHeader>Modifier mon mot de passe</ModalHeader>
 							<ModalBody>
 								<label className="col-form-label options-margin">Ancien mot de passe :</label>
-								<input onChange={this.onChangePassword} type="text" className="form-control" id="recipient-name"/> <br/>
+								<input onChange={this.onChangePassword} type="password" className="form-control" id="recipient-name"/> <br/>
 								<label className="col-form-label options-margin">Nouveau mot de passe :</label>
-								<input onChange={this.onChangeNewPassword} type="text" className="form-control" id="recipient-name"/> <br/>
+								<input onChange={this.onChangeNewPassword} type="password" className="form-control" id="recipient-name"/> <br/>
 								<label className="col-form-label options-margin">Confirmer le nouveau mot de passe :</label>
-								<input onChange={this.onChangeConfirmPassword} type="text" className="form-control" id="recipient-name"/> <br/>
+								<input onChange={this.onChangeConfirmPassword} type="password" className="form-control" id="recipient-name"/> <br/>
 							</ModalBody>
 							<ModalFooter>
-								<button className="btn btn-primary">Valider</button>
-								<button className="btn btn-danger">Annuler</button>
+								<button className="btn btn-primary" onClick={this.updatePassword}>Valider</button>
+								<button className="btn btn-danger" onClick={this.toggleModalPassword}>Annuler</button>
 							</ModalFooter>
 						</Modal>
 
