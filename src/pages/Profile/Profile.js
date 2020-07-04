@@ -395,23 +395,23 @@ class Profile extends Component {
 					<button type="button" className="btn btn-outline-dark options-margin" onClick={this.toggleModalPassword}>{displayContent(this.state.lang, i++, 'profile')}</button>
 				    <div className="row txt-align">
 						<button className="col-2 btn btn-primary options-margin" onClick={this.getAccountData}>{displayContent(this.state.lang, i++, 'profile')}</button>
-
 						<Modal isOpen={this.state.emailModal} size="lg" toggle={this.toggleModalEmail} centered={true}>
 							<ModalHeader>Modifier mon adresse email</ModalHeader>
 							<ModalBody>
 								<label className="col-form-label options-margin">Nouvelle adresse email :</label>
 								<input onChange={this.onChangeEmail} type="text" className="form-control" id="recipient-name"/> <br/>
 								<label className="col-form-label options-margin">Confirmer la nouvelle adresse email :</label>
-								<input onChange={this.onChangeConfirmEmail} type="text" className="form-control" id="recipient-name"/> <br/>
+								{
+									this.state.badEmail ? <input onChange={this.onChangeConfirmEmail} type="text" className="form-control border border-danger" id="recipient-name"/> : <input onChange={this.onChangeConfirmEmail} type="text" className="form-control" id="recipient-name"/>
+								}
+								<br/>
 							</ModalBody>
 							<ModalFooter>
 								<button className="btn btn-primary" onClick={this.updateEmail}>Valider</button>
 								<button className="btn btn-danger" onClick={this.toggleModalEmail}>Annuler</button>
 							</ModalFooter>
 						</Modal>
-
 						<button className="col-2 btn btn-danger options-margin" onClick={this.deleteAccount}>{displayContent(this.state.lang, i++, 'profile')}</button>
-
 						<Modal isOpen={this.state.passwordModal} size="lg" toggle={this.toggleModalPassword} centered={true}>
 							<ModalHeader>Modifier mon mot de passe</ModalHeader>
 							<ModalBody>
@@ -420,7 +420,10 @@ class Profile extends Component {
 								<label className="col-form-label options-margin">Nouveau mot de passe :</label>
 								<input onChange={this.onChangeNewPassword} type="password" className="form-control" id="recipient-name"/> <br/>
 								<label className="col-form-label options-margin">Confirmer le nouveau mot de passe :</label>
-								<input onChange={this.onChangeConfirmPassword} type="password" className="form-control" id="recipient-name"/> <br/>
+								{
+									this.state.badPassword ? <input onChange={this.onChangeConfirmPassword} type="password" className="form-control border border-danger" id="recipient-name"/> : <input onChange={this.onChangeConfirmPassword} type="password" className="form-control" id="recipient-name"/>
+								}
+								<br/>
 							</ModalBody>
 							<ModalFooter>
 								<button className="btn btn-primary" onClick={this.updatePassword}>Valider</button>
