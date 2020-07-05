@@ -43,7 +43,9 @@ class Profile extends Component {
 			confirmEmail: '',
 			badEmail: false,
 			badPassword: false,
-			noneData: false
+			noneData: false,
+			requestEmailSent: false,
+			requestPasswordSent: false
 		};
 		this._handleKeyPressed = this._handleKeyPressed.bind(this);
 		this.onChangeFirstname = this.onChangeFirstname.bind(this);
@@ -264,6 +266,7 @@ class Profile extends Component {
 	updateEmail() {
 		console.log(this.state);
 		if (this.state.email === this.state.confirmEmail && this.state.confirmEmail !== '') {
+			this.setState({requestEmailSent: true});
 			axios.post('/change_email', {
 				email: this.state.email
 			}, {
@@ -271,8 +274,14 @@ class Profile extends Component {
 					'x-access-token': this.state.token
 				}}).then(response => {
 					console.log(response.data);
+				this.setState({
+					requestEmailSent: false
+				})
 			}).catch(err => {
 				console.log(err.response.data);
+				this.setState({
+					requestEmailSent: false
+				})
 				/*ici c'est pour voir avec la DB si ancienne adresse email est la meme que la nouvelle saisie*/
 			})
 		} else if (this.state.email !== this.state.confirmEmail) {
@@ -288,6 +297,7 @@ class Profile extends Component {
 
 	updatePassword() {
 		if (this.state.newPassword === this.state.confirmPassword && this.state.newPassword !== '') {
+			this.setState({requestPasswordSent: true});
 			axios.post('/change_password', {
 				passwd: this.state.password,
 				new_passwd: this.state.newPassword
@@ -297,8 +307,14 @@ class Profile extends Component {
 				}
 			}).then(response => {
 				console.log(response.data);
+				this.setState({
+					requestPasswordSent: false
+				})
 			}).catch(err => {
 				console.log(err.response.data);
+				this.setState({
+					requestPasswordSent: false
+				})
 				/*ici c'est pour voir avec la DB si ancien mdp est le meme que le nouveau saisi*/
 			})
 		} else if (this.state.newPassword !== this.state.confirmPassword) {
@@ -405,6 +421,9 @@ class Profile extends Component {
 									this.state.badEmail ? <input onChange={this.onChangeConfirmEmail} type="text" className="form-control border border-danger" id="recipient-name"/> : <input onChange={this.onChangeConfirmEmail} type="text" className="form-control" id="recipient-name"/>
 								}
 								<br/>
+								{
+									this.state.requestEmailSent ? <img src={loading} className="align-card" alt="loading" className="body-image"/> : null
+								}
 							</ModalBody>
 							<ModalFooter>
 								<button className="btn btn-primary" onClick={this.updateEmail}>Valider</button>
@@ -424,6 +443,9 @@ class Profile extends Component {
 									this.state.badPassword ? <input onChange={this.onChangeConfirmPassword} type="password" className="form-control border border-danger" id="recipient-name"/> : <input onChange={this.onChangeConfirmPassword} type="password" className="form-control" id="recipient-name"/>
 								}
 								<br/>
+								{
+									this.state.requestPasswordSent ? <img src={loading} alt="loading" className="body-image"/> : null
+								}
 							</ModalBody>
 							<ModalFooter>
 								<button className="btn btn-primary" onClick={this.updatePassword}>Valider</button>
