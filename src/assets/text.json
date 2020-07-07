@@ -79,6 +79,10 @@
         "Modifier mon adresse email", "Modifier mon mot de passe",
         "Récupérer mes informations", "Supprimer mon compte"
       ],
+      "modifications": [
+        "Modifier mon adresse email", "Nouvelle adresse email :", "Confirmer la nouvelle adresse email :", "Valider", "Annuler",
+        "Modifier mon mot de passe", "Ancien mot de passe :", "Nouveau mot de passe :", "Confirmer le nouveau mot de passe :", "Valider", "Annuler"
+      ],
       "report": [
         "Enfants",
         "Filtres :", "Navigation internet",
@@ -296,6 +300,10 @@
         "Levy's name : ", "Payed ?",
         "Change my email address", "Change my password",
         "Recover my information", "Delete my account"
+      ],
+      "modifications": [
+        "Change my email address", "New email address:", "Confirm new email address:", "Validate", "Cancel",
+        "Change my password", "Old password:", "New password:", "Confirm new password:", "Validate", "Cancel"
       ],
       "report": [
         "Kids",
