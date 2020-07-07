@@ -257,11 +257,25 @@ class Profile extends Component {
 	}
 
 	onChangePassword(psswd) {
-		this.setState({password: psswd.target.value});
+		this.setState({
+			password: psswd.target.value,
+			badPassword: false
+		});
 	}
 
 	onChangeEmail(mail) {
-		this.setState({email: mail.target.value});
+		let reg = /^[a-zA-Z0-9@.\-_]+$/;
+		if (mail.target.value !== '' && !reg.test(mail.target.value)) {
+			this.setState({
+				email: mail.target.value,
+				badEmail: true
+			});
+		} else {
+			this.setState({
+				email: mail.target.value,
+				badEmail: false
+			});
+		}
 	}
 
 	onChangeConfirmPassword(confirmPsswd) {
@@ -278,6 +292,13 @@ class Profile extends Component {
 
 	updateEmail() {
 		console.log(this.state);
+		if (!this.state.email.includes("@") || this.state.email.startsWith("@") || this.state.email.endsWith("@")) {
+			this.setState({
+				badEmail: true,
+				emailError: displayContent(this.state.lang, 0, ''), /*message error a ecrire quand email correspond pas a ce qu'on attend*/
+			})
+			return;
+		}
 		if (this.state.email === this.state.confirmEmail && this.state.confirmEmail !== '') {
 			this.setState({requestEmailSent: true});
 			axios.post('/change_email', {
@@ -295,9 +316,8 @@ class Profile extends Component {
 				console.log(err.response.data);
 				this.setState({
 					requestEmailSent: false,
-					emailError: err.response.data
+					emailError: this.state.lang === "en" ? err.response.data : displayHttpMessages(this.state.lang, err.response.status, err.response.data)
 				})
-				/*ici c'est pour voir avec la DB si ancienne adresse email est la meme que la nouvelle saisie*/
 			}).finally(() => {
 				setTimeout(() => {
 					this.setState({
@@ -313,11 +333,19 @@ class Profile extends Component {
 		} else {
 			this.setState( {
 				noneData: true
+				/*noneData: displayContent(this.state.lang, 0, '') /*champs vide message a créer*/
 			})
 		}
 	}
 
 	updatePassword() {
+		if (this.state.password.length < 8) {
+			this.setState({
+				badPassword: true,
+				passwordError: displayContent(this.state.lang, 0, ''), /*message error a ecrire quand mot de passe correspond pas a ce qu'on attend < 8*/
+			})
+			return;
+		}
 		if (this.state.newPassword === this.state.confirmPassword && this.state.newPassword !== '') {
 			this.setState({requestPasswordSent: true});
 			axios.post('/change_password', {
@@ -337,9 +365,8 @@ class Profile extends Component {
 				console.log(err.response.data);
 				this.setState({
 					requestPasswordSent: false,
-					passwordError: err.response.data
+					passwordError: this.state.lang === "en" ? err.response.data : displayHttpMessages(this.state.lang, err.response.status, err.response.data)
 				})
-				/*ici c'est pour voir avec la DB si ancien mdp est le meme que le nouveau saisi*/
 			}).finally(() => {
 				setTimeout(() => {
 						this.setState({
@@ -355,6 +382,7 @@ class Profile extends Component {
 		} else {
 			this.setState( {
 				noneData: true
+				/*noneData: displayContent(this.state.lang, 0, '') /*champs vide message a créer*/
 			})
 		}
 	}
