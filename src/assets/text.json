@@ -188,6 +188,18 @@
           {
             "key": "Invalid request: User already registered",
             "translate": "Requête invalide : Utilisateur déjà inscrit"
+          },
+          {
+            "key": "The new provided email is the same as the old one",
+            "translate":"La nouvelle adresse email renseignée est la même que l'ancienne"
+          },
+          {
+            "key": "The new provided password is the same as the old one",
+            "translate":"Le nouveau mot de passe renseigné est le même que l'ancien"
+          },
+          {
+            "key": "Wrong password",
+            "translate": "Mauvais mot de passe"
           }
         ]
       },

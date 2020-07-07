@@ -46,7 +46,9 @@ class Profile extends Component {
 			noneData: false,
 			requestEmailSent: false,
 			requestPasswordSent: false,
-			deleteModal: false
+			deleteModal: false,
+			emailError: '',
+			passwordError: ''
 		};
 		this._handleKeyPressed = this._handleKeyPressed.bind(this);
 		this.onChangeFirstname = this.onChangeFirstname.bind(this);
@@ -286,14 +288,23 @@ class Profile extends Component {
 				}}).then(response => {
 					console.log(response.data);
 				this.setState({
-					requestEmailSent: false
+					requestEmailSent: false,
+					emailModal: false
 				})
 			}).catch(err => {
 				console.log(err.response.data);
 				this.setState({
-					requestEmailSent: false
+					requestEmailSent: false,
+					emailError: err.response.data
 				})
 				/*ici c'est pour voir avec la DB si ancienne adresse email est la meme que la nouvelle saisie*/
+			}).finally(() => {
+				setTimeout(() => {
+					this.setState({
+						emailError: ''
+					})
+				},
+					1000 * 10)
 			})
 		} else if (this.state.email !== this.state.confirmEmail) {
 			this.setState({
@@ -319,14 +330,23 @@ class Profile extends Component {
 			}).then(response => {
 				console.log(response.data);
 				this.setState({
-					requestPasswordSent: false
+					requestPasswordSent: false,
+					passwordModal: false
 				})
 			}).catch(err => {
 				console.log(err.response.data);
 				this.setState({
-					requestPasswordSent: false
+					requestPasswordSent: false,
+					passwordError: err.response.data
 				})
 				/*ici c'est pour voir avec la DB si ancien mdp est le meme que le nouveau saisi*/
+			}).finally(() => {
+				setTimeout(() => {
+						this.setState({
+							passwordError: ''
+						})
+					},
+					1000 * 10)
 			})
 		} else if (this.state.newPassword !== this.state.confirmPassword) {
 			this.setState( {
@@ -424,6 +444,9 @@ class Profile extends Component {
 						<ModalBody>
 							<label className="col-form-label options-margin">{displayContent(this.state.lang, 1, 'modifications')}</label>
 							<input onChange={this.onChangeEmail} type="text" className="form-control" id="recipient-name"/> <br/>
+							{
+								this.state.emailError !== '' ? <Alert color="danger">{this.state.emailError}</Alert> : null
+							}
 							<label className="col-form-label options-margin">{displayContent(this.state.lang, 2, 'modifications')}</label>
 							{
 								this.state.badEmail ? <input onChange={this.onChangeConfirmEmail} type="text" className="form-control border border-danger" id="recipient-name"/> : <input onChange={this.onChangeConfirmEmail} type="text" className="form-control" id="recipient-name"/>
@@ -446,6 +469,9 @@ class Profile extends Component {
 							<input onChange={this.onChangePassword} type="password" className="form-control" id="recipient-name"/> <br/>
 							<label className="col-form-label options-margin">{displayContent(this.state.lang, 7, 'modifications')}</label>
 							<input onChange={this.onChangeNewPassword} type="password" className="form-control" id="recipient-name"/> <br/>
+							{
+								this.state.passwordError !== '' ? <Alert color="danger">{this.state.passwordError}</Alert> : null
+							}
 							<label className="col-form-label options-margin">{displayContent(this.state.lang, 8, 'modifications')}</label>
 							{
 								this.state.badPassword ? <input onChange={this.onChangeConfirmPassword} type="password" className="form-control border border-danger" id="recipient-name"/> : <input onChange={this.onChangeConfirmPassword} type="password" className="form-control" id="recipient-name"/>
