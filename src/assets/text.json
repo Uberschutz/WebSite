@@ -77,7 +77,8 @@
         "Nom de famille : ", "Prénom : ", "Enfants protégés par Überschutz : X ", "Abonnement utilisé : ", "Se désinscrire", "Echéancier de paiement : ",
         "Nom du prélèvement", "Payé ?",
         "Modifier mon adresse email", "Modifier mon mot de passe",
-        "Récupérer mes informations", "Supprimer mon compte"
+        "Récupérer mes informations", "Supprimer mon compte",
+        "Êtes-vous sûr de vouloir supprimer votre compte ?", "Oui", "Non"
       ],
       "modifications": [
         "Modifier mon adresse email", "Nouvelle adresse email :", "Confirmer la nouvelle adresse email :", "Valider", "Annuler",
@@ -299,7 +300,8 @@
         "Last name: ", "First name: ", "Child protected by Überschutz : X ", "Subscription used : ", "Unsubscribe", "Payment schedule : ",
         "Levy's name : ", "Payed ?",
         "Change my email address", "Change my password",
-        "Recover my information", "Delete my account"
+        "Recover my information", "Delete my account",
+        "Are you sure to delete your account?", "Yes", "No"
       ],
       "modifications": [
         "Change my email address", "New email address:", "Confirm new email address:", "Validate", "Cancel",

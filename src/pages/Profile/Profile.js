@@ -466,9 +466,9 @@ class Profile extends Component {
 						<Modal isOpen={this.state.deleteModal} size="lg" toggle={this.toggleModalDelete} centered={true}>
 							<ModalHeader>{displayContent(this.state.lang, 11, 'profile')}</ModalHeader>
 							<ModalBody centered={true} className="txt-align">
-								<label className="col-form-label button-footerP txt-align">Êtes-vous sûr de vouloir supprimer votre compte ?</label> <br/>
-								<button className="btn btn-primary options-margin" onClick={this.deleteAccount}>Oui</button>
-								<button className="btn btn-danger options-margin" onClick={this.toggleModalDelete}>Non</button>
+								<label className="col-form-label button-footerP txt-align">{displayContent(this.state.lang, 12, 'profile')}</label> <br/>
+								<button className="btn btn-primary options-margin" onClick={this.deleteAccount}>{displayContent(this.state.lang, 13, 'profile')}</button>
+								<button className="btn btn-danger options-margin" onClick={this.toggleModalDelete}>{displayContent(this.state.lang, 14, 'profile')}</button>
 							</ModalBody>
 						</Modal>
 					</div>
