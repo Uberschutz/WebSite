@@ -112,8 +112,13 @@
       "inComing": [
         "A venir ..."
       ],
+      "error": [
+        "L'adresse email ne respecte pas les standards attendus",
+        "Le mot de passe renseigné ne contient pas assez de caractères (au moins 8)",
+        "Veuillez remplir ce champs"
+      ],
       "footer": [
-        "Créé par Marianne LEVEE & Thomas DEROTE-PARCELLIER ", "Icônes de l'application par "
+        "Créé par Marianne & Thomas ", "Icônes de l'application par "
       ]
     },
     "httpResponses": [
@@ -347,8 +352,13 @@
       "inComing": [
         "In coming ..."
       ],
+      "error": [
+        "Email address does not meet expected standards",
+        "The password entered does not contain enough characters (at least 8)",
+        "Please fill this field"
+      ],
       "footer": [
-        "Created by Marianne LEVEE & Thomas DEROTE-PARCELLIER ", "App icon by "
+        "Created by Marianne & Thomas ", "App icon by "
       ]
     }
   }

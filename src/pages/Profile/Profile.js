@@ -43,7 +43,7 @@ class Profile extends Component {
 			confirmEmail: '',
 			badEmail: false,
 			badPassword: false,
-			noneData: false,
+			noneData: '',
 			requestEmailSent: false,
 			requestPasswordSent: false,
 			deleteModal: false,
@@ -295,7 +295,7 @@ class Profile extends Component {
 		if (!this.state.email.includes("@") || this.state.email.startsWith("@") || this.state.email.endsWith("@")) {
 			this.setState({
 				badEmail: true,
-				emailError: displayContent(this.state.lang, 0, ''), /*message error a ecrire quand email correspond pas a ce qu'on attend*/
+				emailError: displayContent(this.state.lang, 0, 'error'), /*message error a ecrire quand email correspond pas a ce qu'on attend*/
 			})
 			return;
 		}
@@ -332,7 +332,7 @@ class Profile extends Component {
 			})
 		} else {
 			this.setState( {
-				noneData: true
+				noneData: displayContent(this.state.lang, 2, 'error'),
 				/*noneData: displayContent(this.state.lang, 0, '') /*champs vide message a créer*/
 			})
 		}
@@ -342,7 +342,7 @@ class Profile extends Component {
 		if (this.state.password.length < 8) {
 			this.setState({
 				badPassword: true,
-				passwordError: displayContent(this.state.lang, 0, ''), /*message error a ecrire quand mot de passe correspond pas a ce qu'on attend < 8*/
+				passwordError: displayContent(this.state.lang, 1, 'error'), /*message error a ecrire quand mot de passe correspond pas a ce qu'on attend < 8*/
 			})
 			return;
 		}
@@ -381,7 +381,7 @@ class Profile extends Component {
 			})
 		} else {
 			this.setState( {
-				noneData: true
+				noneData: displayContent(this.state.lang, 2, 'error'),
 				/*noneData: displayContent(this.state.lang, 0, '') /*champs vide message a créer*/
 			})
 		}
