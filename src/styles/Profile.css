@@ -8,7 +8,6 @@
 
 .description-txt {
     text-align: left!important;
-    margin: 7px;
 }
 
 .name-font {
@@ -16,8 +15,8 @@
 }
 
 .button-footerP {
-    margin-top: 15px;
-    margin-bottom: 15px;
+    margin-top: 1.5%;
+    margin-bottom: 1.5%;
 }
 
 .right-btn {
@@ -27,4 +26,12 @@
 
 .fixed-size {
     overflow: hidden;
+}
+
+.options-margin {
+    margin: 1%;
+}
+
+.body-image {
+    margin-left: 45%;
 }
