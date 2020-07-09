@@ -46,6 +46,7 @@ class Profile extends Component {
 			badEmail: false,
 			badPassword: false,
 			noneData: '',
+			noneDataBis: '',
 			requestEmailSent: false,
 			requestPasswordSent: false,
 			deleteModal: false,
@@ -148,33 +149,56 @@ class Profile extends Component {
 	}
 
 	changeLastName() {
-		axios.post('/rename', {
-			key: 'lastname',
-			value: this.state.lastname
-		},{
-			headers: {
-				'x-access-token': this.state.token
-			}
-		}).then(response => {
-			// this.props.setUser(this.state.email, this.state.lastname, this.state.firstname, this.state.token);
-		}).catch(err => {
-			console.log(err, "Error");
-		})
+		console.log("LastName: ", this.state.lastname);
+		if (this.state.lastname !== '' && this.state.lastname !== null) {
+			axios.post('/rename', {
+				key: 'lastname',
+				value: this.state.lastname
+			},{
+				headers: {
+					'x-access-token': this.state.token
+				}
+			}).then(response => {
+				//this.props.setUser(this.state.email, this.state.lastname, this.state.firstname, this.state.token);
+			}).catch(err => {
+				console.log(err, "Error");
+			})
+		} else {
+			this.setState( {
+				noneData: displayContent(this.state.lang, 2, 'error'),
+			}, () =>
+				setTimeout(() =>
+				this.setState({
+					noneData: ''
+				}), 1000 * 10)
+			)
+		}
 	}
 
 	changeFirstName() {
-		axios.post('/rename', {
-			key: 'firstname',
-			value: this.state.firstname
-		},{
-			headers: {
-				'x-access-token': this.state.token
-			}
-		}).then(response => {
-			// this.props.setUser(this.state.email, this.state.lastname, this.state.firstname, this.state.token);
-		}).catch(err => {
-			console.log(err, "Error");
-		})
+		if (this.state.firstname !== '' && this.state.lastname !== null) {
+			axios.post('/rename', {
+				key: 'firstname',
+				value: this.state.firstname
+			},{
+				headers: {
+					'x-access-token': this.state.token
+				}
+			}).then(response => {
+				//this.props.setUser(this.state.email, this.state.lastname, this.state.firstname, this.state.token);
+			}).catch(err => {
+				console.log(err, "Error");
+			})
+		} else {
+			this.setState( {
+				noneDataBis: displayContent(this.state.lang, 2, 'error'),
+			}, () =>
+			setTimeout(() =>
+			this.setState({
+				noneDataBis: ''
+			}), 1000 * 10)
+			)
+		}
 	}
 
 	onChangeFirstname(value) {
@@ -300,7 +324,7 @@ class Profile extends Component {
 		if (!this.state.email.includes("@") || this.state.email.startsWith("@") || this.state.email.endsWith("@")) {
 			this.setState({
 				badEmail: true,
-				emailError: displayContent(this.state.lang, 0, 'error'), /*message error a ecrire quand email correspond pas a ce qu'on attend*/
+				emailError: displayContent(this.state.lang, 0, 'error'),
 			})
 			return;
 		}
@@ -338,7 +362,6 @@ class Profile extends Component {
 		} else {
 			this.setState( {
 				noneData: displayContent(this.state.lang, 2, 'error'),
-				/*noneData: displayContent(this.state.lang, 0, '') /*champs vide message a créer*/
 			})
 		}
 	}
@@ -347,7 +370,7 @@ class Profile extends Component {
 		if (this.state.password.length < 8) {
 			this.setState({
 				badPassword: true,
-				passwordError: displayContent(this.state.lang, 1, 'error'), /*message error a ecrire quand mot de passe correspond pas a ce qu'on attend < 8*/
+				passwordError: displayContent(this.state.lang, 1, 'error'),
 			})
 			return;
 		}
@@ -387,7 +410,6 @@ class Profile extends Component {
 		} else {
 			this.setState( {
 				noneData: displayContent(this.state.lang, 2, 'error'),
-				/*noneData: displayContent(this.state.lang, 0, '') /*champs vide message a créer*/
 			})
 		}
 	}
@@ -407,6 +429,9 @@ class Profile extends Component {
 								<button className="btn btn-primary btn-sm" onClick={this.changeLastName}>OK</button>
 							</div> <br/>
 						</div>
+						{
+							this.state.noneData !== '' ? <Alert color="danger" className="txt-align">{this.state.noneData}</Alert> : null
+						}
 						<div className="row button-footerP">
 							<h5 className="name-font col-sm-auto">
 								{displayContent(this.state.lang, i++, 'profile')}
@@ -416,6 +441,9 @@ class Profile extends Component {
 								<button className="btn btn-primary btn-sm" onClick={this.changeFirstName}>OK</button>
 							</div><br/>
 						</div>
+						{
+							this.state.noneDataBis !== '' ? <Alert color="danger" className="txt-align">{this.state.noneDataBis}</Alert> : null
+						}
 						<h6>
 							{displayContent(this.state.lang, i++, 'profile')}<br/><br/>
 							{displayContent(this.state.lang, i++, 'profile')}
