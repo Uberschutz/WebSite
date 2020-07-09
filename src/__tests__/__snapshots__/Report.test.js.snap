@@ -3,11 +3,9 @@
 exports[`Testing the Report page rendering render Report being logged in english 1`] = `
 <div>
   <div>
-    <div
-      class="mrg-begin"
-    >
+    <div>
       <div
-        class="btn-group btn-group-lg"
+        class="mrg-begin btn-group btn-group-lg"
       >
         <button
           aria-expanded="false"
@@ -33,8 +31,6 @@ exports[`Testing the Report page rendering render Report being logged in english
         </div>
       </div>
     </div>
-     
-    <br />
     <div
       class="left-filter"
     >
@@ -67,10 +63,11 @@ exports[`Testing the Report page rendering render Report being logged in english
     <div
       class="btn content-right"
       style="width: 70%;"
-    />
-    <div
-      class="summary"
-    />
+    >
+      <div
+        class="summary"
+      />
+    </div>
   </div>
 </div>
 `;
@@ -78,11 +75,9 @@ exports[`Testing the Report page rendering render Report being logged in english
 exports[`Testing the Report page rendering render Report being logged in french 1`] = `
 <div>
   <div>
-    <div
-      class="mrg-begin"
-    >
+    <div>
       <div
-        class="btn-group btn-group-lg"
+        class="mrg-begin btn-group btn-group-lg"
       >
         <button
           aria-expanded="false"
@@ -108,8 +103,6 @@ exports[`Testing the Report page rendering render Report being logged in french 
         </div>
       </div>
     </div>
-     
-    <br />
     <div
       class="left-filter"
     >
@@ -142,10 +135,11 @@ exports[`Testing the Report page rendering render Report being logged in french 
     <div
       class="btn content-right"
       style="width: 70%;"
-    />
-    <div
-      class="summary"
-    />
+    >
+      <div
+        class="summary"
+      />
+    </div>
   </div>
 </div>
 `;
