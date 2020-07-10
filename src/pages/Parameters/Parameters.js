@@ -6,6 +6,7 @@ import axios from 'axios';
 import Modal from 'reactstrap/lib/Modal';
 import ModalHeader from 'reactstrap/lib/ModalHeader';
 import ModalFooter from 'reactstrap/lib/ModalFooter';
+import Alert from 'reactstrap/lib/Alert';
 import Button from 'reactstrap/lib/Button';
 import Icon from 'antd/lib/icon/index';
 
@@ -104,7 +105,7 @@ class Parameters extends Component {
 	}
 
 	createChildren() {
-		this.setState({alphaErr: this.state.name === '', numErr: this.state.age === '' && isNaN(this.state.age)});
+		this.setState({alphaErr: this.state.name === '', numErr: this.state.age === '' || isNaN(this.state.age)});
 		if (this.state.name === '' || this.state.age === '')
 			return;
 		if (this.state.state === 'Create') {
@@ -207,8 +208,7 @@ class Parameters extends Component {
 		if (this.state.logged) {
 			return (
 				<div className="card align-card">
-					<Modal isOpen={this.state.showModal} size="xl" toggle={this.toggleModal} contentClassName="custom-modal-style" centered={true}
-					       /*onClosed={() => this.setState({state: 'Create'})}*/>
+					<Modal isOpen={this.state.showModal} size="xl" toggle={this.toggleModal} contentClassName="custom-modal-style" centered={true}>
 						<form><br/>
 							<div className="align-card">
 								<ModalHeader className="tag-header" style={{backgroundColor: "#3498db"}}>Informations</ModalHeader>
@@ -223,6 +223,9 @@ class Parameters extends Component {
 										       onChange={this.setFirstName}/>}
 								</label>
 								<br/>
+								{
+									this.state.alphaErr ? (<Alert color="danger">{displayContent(this.state.lang, 2, 'parameters')}</Alert>) : null
+								}
 								<label className="child-field">
 									Age<br/>
 									{this.state.numErr ? <input
@@ -234,6 +237,9 @@ class Parameters extends Component {
 										       onChange={this.setAge}/>}
 								</label>
 								<br/>
+								{
+									this.state.numErr? (<Alert color="danger">{displayContent(this.state.lang, 8, 'parameters')}</Alert>) : null
+								}
 								<label className="child-field">
 									Discord ID (Bêta)<br/>
 									<input className="child-field" type="text"
@@ -261,9 +267,6 @@ class Parameters extends Component {
 								<Button className="btn btn-danger change-child"
 										onClick={this.toggleModal}>{displayContent(this.state.lang, 1, 'parameters')}</Button>
 								<br/>
-								{this.state.alphaErr || this.state.numErr ? (<div><span
-									className="address-params text-danger">{displayContent(this.state.lang, 2, 'parameters')}</span><br/><br/>
-								</div>) : null}
 							</ModalFooter>
 						</form>
 					</Modal>

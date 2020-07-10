@@ -88,7 +88,7 @@
         "La navigation Internet de ", "est à ", "% saine", "Les données Internet de ", "n'ont pas pu être récupérées"
       ],
       "parameters": [
-        "Prénom", "Annuler","Prénom ou Age invalide", "Supprimer", "Éditer", "Nouveau", "Créer", "Sauvegarder"
+        "Prénom", "Annuler","Prénom invalide", "Supprimer", "Éditer", "Nouveau", "Créer", "Sauvegarder", "Age invalide"
       ],
       "options": [
         "Rapports", "Uberschutz", "Alertes", "Publicités"
@@ -323,7 +323,7 @@
         "Internet browsing of ", "is at ", "% safe", "Internet data of ", "could not be recovered"
       ],
       "parameters": [
-        "Name", "Cancel","Invalid Name or Age", "Delete", "Edit", "New", "Create", "Save"
+        "Name", "Cancel","Invalid Name", "Delete", "Edit", "New", "Create", "Save", "Invalid Age"
       ],
       "options": [
         "Reports", "Uberschutz", "Alerts", "Adds"
