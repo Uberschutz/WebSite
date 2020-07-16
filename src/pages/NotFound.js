@@ -37,11 +37,11 @@ export default class NotFound extends Component {
 	render() {
 		let i = 0;
 		return (
-			<div>
+			<div className="responsive-image">
 				<h1 className="text-xl-center forbidden">
 					{displayContent(this.state.lang, i++, 'notFound')}
 				</h1> <br/>
-				<img src={notFound} alt="notFound"/>
+				<img src={notFound} alt="notFound" className="responsive-image"/>
 			</div>
 		);
 	}

@@ -38,12 +38,12 @@ export default class Unauthorized extends Component {
 	render() {
 		let i = 0;
 		return (
-			<div>
+			<div className="responsive-image">
 				<h1 className="text-xl-center forbidden">
 					{displayContent(this.state.lang, i++, 'unauthorized')}
 				</h1>
 				<br/>
-				<img src={forbidden} alt="forbidden"/>
+				<img src={forbidden} alt="forbidden" className="responsive-image"/>
 			</div>
 		);
 	}
