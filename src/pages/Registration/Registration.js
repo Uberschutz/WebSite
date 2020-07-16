@@ -162,6 +162,14 @@ class Registration extends Component {
                             </div>
                             <input value={this.state.password} onChange={this.onChangePass} type="password" className="form-control" aria-label="Email" onKeyPress={this._handleKeyPressed}/>
                         </div>
+
+                        <div className="input-group mb-3">
+                            <div className="input-group-prepend">
+                                <input type="checkbox"/>
+                                <span className="btn-rgpd">J'accepte de communiquer mon adresse email pour l'inscription</span>
+                            </div>
+                        </div>
+
                         <button type="button" className="btn btn-primary" onClick={this.register}>{displayContent(this.state.lang, i++, 'registration')}</button>
                         <br/>
                         {this.state.alphaSurname || this.state.alphaName ?
