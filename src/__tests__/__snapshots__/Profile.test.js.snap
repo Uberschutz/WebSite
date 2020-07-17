@@ -64,14 +64,14 @@ exports[`Testing the Profile page rendering renders Profile being logged in engl
         <br />
       </div>
       <h6>
-        Enfants protégés par Überschutz : X 
+        Se désinscrire
         <br />
         <br />
-        Abonnement utilisé : 
+        Modifier mon adresse email
         <span />
       </h6>
       <h6>
-        Echéancier de paiement : 
+        Récupérer mes informations
       </h6>
       <br />
       <table
@@ -89,12 +89,12 @@ exports[`Testing the Profile page rendering renders Profile being logged in engl
             <th
               scope="col"
             >
-              Nom du prélèvement
+              Supprimer mon compte
             </th>
             <th
               scope="col"
             >
-              Payé ?
+              Êtes-vous sûr de vouloir supprimer votre compte ?
             </th>
           </tr>
         </thead>
@@ -173,27 +173,23 @@ exports[`Testing the Profile page rendering renders Profile being logged in engl
       class="btn btn-outline-dark options-margin"
       type="button"
     >
-      Modifier mon adresse email
+      Oui
     </button>
     <button
       class="btn btn-outline-dark options-margin"
       type="button"
     >
-      Modifier mon mot de passe
+      Non
     </button>
     <div
       class="row txt-align"
     >
       <button
         class="col-2 btn btn-primary options-margin"
-      >
-        Récupérer mes informations
-      </button>
+      />
       <button
         class="col-2 btn btn-danger options-margin"
-      >
-        Supprimer mon compte
-      </button>
+      />
     </div>
   </div>
 </div>
@@ -263,14 +259,14 @@ exports[`Testing the Profile page rendering renders Profile being logged in fren
         <br />
       </div>
       <h6>
-        Enfants protégés par Überschutz : X 
+        Se désinscrire
         <br />
         <br />
-        Abonnement utilisé : 
+        Modifier mon adresse email
         <span />
       </h6>
       <h6>
-        Echéancier de paiement : 
+        Récupérer mes informations
       </h6>
       <br />
       <table
@@ -288,12 +284,12 @@ exports[`Testing the Profile page rendering renders Profile being logged in fren
             <th
               scope="col"
             >
-              Nom du prélèvement
+              Supprimer mon compte
             </th>
             <th
               scope="col"
             >
-              Payé ?
+              Êtes-vous sûr de vouloir supprimer votre compte ?
             </th>
           </tr>
         </thead>
@@ -372,27 +368,23 @@ exports[`Testing the Profile page rendering renders Profile being logged in fren
       class="btn btn-outline-dark options-margin"
       type="button"
     >
-      Modifier mon adresse email
+      Oui
     </button>
     <button
       class="btn btn-outline-dark options-margin"
       type="button"
     >
-      Modifier mon mot de passe
+      Non
     </button>
     <div
       class="row txt-align"
     >
       <button
         class="col-2 btn btn-primary options-margin"
-      >
-        Récupérer mes informations
-      </button>
+      />
       <button
         class="col-2 btn btn-danger options-margin"
-      >
-        Supprimer mon compte
-      </button>
+      />
     </div>
   </div>
 </div>
