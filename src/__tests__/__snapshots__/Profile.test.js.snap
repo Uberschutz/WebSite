@@ -63,133 +63,33 @@ exports[`Testing the Profile page rendering renders Profile being logged in engl
         </div>
         <br />
       </div>
-      <h6>
-        Se désinscrire
-        <br />
-        <br />
-        Modifier mon adresse email
-        <span />
-      </h6>
-      <h6>
-        Récupérer mes informations
-      </h6>
-      <br />
-      <table
-        class="table"
-      >
-        <thead
-          class="table-primary"
-        >
-          <tr>
-            <th
-              scope="col"
-            >
-              Date
-            </th>
-            <th
-              scope="col"
-            >
-              Supprimer mon compte
-            </th>
-            <th
-              scope="col"
-            >
-              Êtes-vous sûr de vouloir supprimer votre compte ?
-            </th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <th
-              scope="row"
-            >
-              22/05/2019
-            </th>
-            <td>
-              Achat d'Überschutz Premium
-            </td>
-            <td>
-              <i
-                aria-label="icon: check-circle"
-                class="anticon anticon-check-circle"
-              >
-                <svg
-                  aria-hidden="true"
-                  class=""
-                  data-icon="check-circle"
-                  fill="currentColor"
-                  focusable="false"
-                  height="1em"
-                  viewBox="64 64 896 896"
-                  width="1em"
-                >
-                  <path
-                    d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm0 820c-205.4 0-372-166.6-372-372s166.6-372 372-372 372 166.6 372 372-166.6 372-372 372z"
-                    fill="#52c41a"
-                  />
-                  <path
-                    d="M512 140c-205.4 0-372 166.6-372 372s166.6 372 372 372 372-166.6 372-372-166.6-372-372-372zm193.4 225.7l-210.6 292a31.8 31.8 0 0 1-51.7 0L318.5 484.9c-3.8-5.3 0-12.7 6.5-12.7h46.9c10.3 0 19.9 5 25.9 13.3l71.2 98.8 157.2-218c6-8.4 15.7-13.3 25.9-13.3H699c6.5 0 10.3 7.4 6.4 12.7z"
-                    fill="#f6ffed"
-                  />
-                  <path
-                    d="M699 353h-46.9c-10.2 0-19.9 4.9-25.9 13.3L469 584.3l-71.2-98.8c-6-8.3-15.6-13.3-25.9-13.3H325c-6.5 0-10.3 7.4-6.5 12.7l124.6 172.8a31.8 31.8 0 0 0 51.7 0l210.6-292c3.9-5.3.1-12.7-6.4-12.7z"
-                    fill="#52c41a"
-                  />
-                </svg>
-              </i>
-            </td>
-          </tr>
-          <tr>
-            <th
-              scope="row"
-            >
-              25/05/2019
-            </th>
-            <td>
-              Prélèvement n°1 Überschutz Premium
-            </td>
-            <td>
-              En cours ...
-            </td>
-          </tr>
-          <tr>
-            <th
-              scope="row"
-            >
-              25/06/2019
-            </th>
-            <td>
-              Prélèvement n°2 Überschutz Premium
-            </td>
-            <td>
-              Prochainement
-            </td>
-          </tr>
-        </tbody>
-      </table>
       <br />
     </div>
     <button
       class="btn btn-outline-dark options-margin"
       type="button"
     >
-      Oui
+      Modifier mon adresse email
     </button>
     <button
       class="btn btn-outline-dark options-margin"
       type="button"
     >
-      Non
+      Modifier mon mot de passe
     </button>
     <div
       class="row txt-align"
     >
       <button
         class="col-2 btn btn-primary options-margin"
-      />
+      >
+        Récupérer mes informations
+      </button>
       <button
         class="col-2 btn btn-danger options-margin"
-      />
+      >
+        Supprimer mon compte
+      </button>
     </div>
   </div>
 </div>
@@ -258,133 +158,33 @@ exports[`Testing the Profile page rendering renders Profile being logged in fren
         </div>
         <br />
       </div>
-      <h6>
-        Se désinscrire
-        <br />
-        <br />
-        Modifier mon adresse email
-        <span />
-      </h6>
-      <h6>
-        Récupérer mes informations
-      </h6>
-      <br />
-      <table
-        class="table"
-      >
-        <thead
-          class="table-primary"
-        >
-          <tr>
-            <th
-              scope="col"
-            >
-              Date
-            </th>
-            <th
-              scope="col"
-            >
-              Supprimer mon compte
-            </th>
-            <th
-              scope="col"
-            >
-              Êtes-vous sûr de vouloir supprimer votre compte ?
-            </th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <th
-              scope="row"
-            >
-              22/05/2019
-            </th>
-            <td>
-              Achat d'Überschutz Premium
-            </td>
-            <td>
-              <i
-                aria-label="icon: check-circle"
-                class="anticon anticon-check-circle"
-              >
-                <svg
-                  aria-hidden="true"
-                  class=""
-                  data-icon="check-circle"
-                  fill="currentColor"
-                  focusable="false"
-                  height="1em"
-                  viewBox="64 64 896 896"
-                  width="1em"
-                >
-                  <path
-                    d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm0 820c-205.4 0-372-166.6-372-372s166.6-372 372-372 372 166.6 372 372-166.6 372-372 372z"
-                    fill="#52c41a"
-                  />
-                  <path
-                    d="M512 140c-205.4 0-372 166.6-372 372s166.6 372 372 372 372-166.6 372-372-166.6-372-372-372zm193.4 225.7l-210.6 292a31.8 31.8 0 0 1-51.7 0L318.5 484.9c-3.8-5.3 0-12.7 6.5-12.7h46.9c10.3 0 19.9 5 25.9 13.3l71.2 98.8 157.2-218c6-8.4 15.7-13.3 25.9-13.3H699c6.5 0 10.3 7.4 6.4 12.7z"
-                    fill="#f6ffed"
-                  />
-                  <path
-                    d="M699 353h-46.9c-10.2 0-19.9 4.9-25.9 13.3L469 584.3l-71.2-98.8c-6-8.3-15.6-13.3-25.9-13.3H325c-6.5 0-10.3 7.4-6.5 12.7l124.6 172.8a31.8 31.8 0 0 0 51.7 0l210.6-292c3.9-5.3.1-12.7-6.4-12.7z"
-                    fill="#52c41a"
-                  />
-                </svg>
-              </i>
-            </td>
-          </tr>
-          <tr>
-            <th
-              scope="row"
-            >
-              25/05/2019
-            </th>
-            <td>
-              Prélèvement n°1 Überschutz Premium
-            </td>
-            <td>
-              En cours ...
-            </td>
-          </tr>
-          <tr>
-            <th
-              scope="row"
-            >
-              25/06/2019
-            </th>
-            <td>
-              Prélèvement n°2 Überschutz Premium
-            </td>
-            <td>
-              Prochainement
-            </td>
-          </tr>
-        </tbody>
-      </table>
       <br />
     </div>
     <button
       class="btn btn-outline-dark options-margin"
       type="button"
     >
-      Oui
+      Modifier mon adresse email
     </button>
     <button
       class="btn btn-outline-dark options-margin"
       type="button"
     >
-      Non
+      Modifier mon mot de passe
     </button>
     <div
       class="row txt-align"
     >
       <button
         class="col-2 btn btn-primary options-margin"
-      />
+      >
+        Récupérer mes informations
+      </button>
       <button
         class="col-2 btn btn-danger options-margin"
-      />
+      >
+        Supprimer mon compte
+      </button>
     </div>
   </div>
 </div>
