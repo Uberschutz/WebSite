@@ -23,7 +23,7 @@ exports[`Testing the Footer component rendering renders Footer in english 1`] = 
       </span>
       <br />
       <span>
-        Created by Marianne LEVEE & Thomas DEROTE-PARCELLIER 
+        Created by Marianne & Thomas 
         <br />
         App icon by 
         <a
@@ -62,7 +62,7 @@ exports[`Testing the Footer component rendering renders Footer in french 1`] = `
       </span>
       <br />
       <span>
-        Créé par Marianne LEVEE & Thomas DEROTE-PARCELLIER 
+        Créé par Marianne & Thomas 
         <br />
         Icônes de l'application par 
         <a
@@ -101,7 +101,7 @@ exports[`Testing the Footer component rendering renders Footer without crashing 
       </span>
       <br />
       <span>
-        Créé par Marianne LEVEE & Thomas DEROTE-PARCELLIER 
+        Créé par Marianne & Thomas 
         <br />
         Icônes de l'application par 
         <a

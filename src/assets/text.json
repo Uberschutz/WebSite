@@ -19,7 +19,7 @@
         "Inscription", "Merci de remplir ces champs pour continuer", "Nom", "Prénom", "Mot de passe", "Continuer", "Nom ou prénom invalide"
       ],
       "contact": [
-        "Qui sommes nous ? Que faisons nous ?", "• Überschutz :", "Nous sommes un groupe de 7 étudiants d'Epitech de la promo 2021.",
+        "Qui sommes nous ? Que faisons nous ?", "• Überschutz :", "Nous sommes un groupe de 8 étudiants d'Epitech de la promo 2021.",
         "Notre groupe a été créé en octobre 2018 (tout d'abord 3 personnes) lors de la Moonshot, puis s'est complété courant janvier 2019.",
         "• Notre but :", "Nous voulons qu'Internet soit un lieu de partage, de détente et de recherche.",
         "Beaucoup trop de personnes et d'enfants sont harcelés, arnaqués ou confrontés à du contenu inapproprié.",
@@ -47,15 +47,10 @@
         "A tout moment, les parents peuvent voir l'activité qu'ont leurs enfants sur Internet grâce au monitoring disponible avec le logiciel. Cela leur permettra de voir si l'enfant est aggressif ou agressé, s'il visite des sites peu recommandé ou si c'est un élément toxique sur Internet.",
         "A quel prix pouvez-vous protéger votre enfant ?",
         "Nous proposons plusieurs formules et plusieurs types de logiciels.",
-        "Si vous voulez en savoir plus, rendez-vous sur la page ", "\"Produits\"", " ou envoyer nous un mail à ",
-        " pour avoir des renseignements supervisés.", "Comment paramétrer l'application ", "(web et mobile)",
+        "Ces formules sont encore en cours de développement, nous vous tiendrons au courant des futurs avancés par Newsletter !",
+        "Comment paramétrer l'application ", "(web et mobile)",
         "Pour les 2 plateformes, rendez-vous sur la page ", "\"Paramètres\"",
-        ", cliquez sur le prénom de l'enfant que vous voulez protéger et cochez les options que vous voulez appliquer à sa navigation Internet.",
-        "Choisissez le type de restriction que vous voulez ", "(bloquer, limiter, avertir).",
-        "Comment initialiser Überschutz sur les appareils de vos enfants ?",
-        "Lors de votre 1ere visite, allez sur la page ", "\"Connexion\"", " et remplissez les champs demandés dans ", "\"Inscription\"",
-        "Renseignez le code d'activation de la license obtenu lors de l'achat de Überschutz dans : ",
-        "\"Code d'activation\".", "Vous serez ensuite redirigés vers votre profil où vous pourrez ajouter et paramétrer les options que vous voulez attribuer à la navigation Internet de votre enfant."
+        " et ajoutez les enfants que vous voulez protéger."
       ],
       "form": [
         "Vous êtes intéressés par notre solution ?", "N'hésitez pas à vous tenir informés en remplissant ce formulaire !",
@@ -75,7 +70,13 @@
       ],
       "profile": [
         "Nom de famille : ", "Prénom : ", "Se désinscrire",
-        "Récupérer mes informations", "Supprimer mon compte"
+        "Modifier mon adresse email", "Modifier mon mot de passe",
+        "Récupérer mes informations", "Supprimer mon compte",
+        "Êtes-vous sûr de vouloir supprimer votre compte ?", "Oui", "Non"
+      ],
+      "modifications": [
+        "Modifier mon adresse email", "Nouvelle adresse email :", "Confirmer la nouvelle adresse email :", "Valider", "Annuler",
+        "Modifier mon mot de passe", "Ancien mot de passe :", "Nouveau mot de passe :", "Confirmer le nouveau mot de passe :", "Valider", "Annuler"
       ],
       "report": [
         "Enfants",
@@ -86,7 +87,7 @@
         "La navigation Internet de ", "est à ", "% saine", "Les données Internet de ", "n'ont pas pu être récupérées"
       ],
       "parameters": [
-        "Prénom", "Annuler","Prénom ou Age invalide", "Supprimer", "Éditer", "Nouveau", "Créer", "Sauvegarder"
+        "Prénom", "Annuler","Prénom invalide", "Supprimer", "Éditer", "Nouveau", "Créer", "Sauvegarder", "Age invalide"
       ],
       "options": [
         "Rapports", "Uberschutz", "Alertes", "Publicités"
@@ -105,8 +106,13 @@
       "inComing": [
         "A venir ..."
       ],
+      "error": [
+        "L'adresse email ne respecte pas les standards attendus",
+        "Le mot de passe renseigné ne contient pas assez de caractères (au moins 8)",
+        "Veuillez remplir ce champs"
+      ],
       "footer": [
-        "Créé par Marianne LEVEE & Thomas DEROTE-PARCELLIER ", "Icônes de l'application par "
+        "Créé par Marianne & Thomas ", "Icônes de l'application par "
       ]
     },
     "httpResponses": [
@@ -181,6 +187,18 @@
           {
             "key": "Invalid request: User already registered",
             "translate": "Requête invalide : Utilisateur déjà inscrit"
+          },
+          {
+            "key": "The new provided email is the same as the old one",
+            "translate":"La nouvelle adresse email renseignée est la même que l'ancienne"
+          },
+          {
+            "key": "The new provided password is the same as the old one",
+            "translate":"Le nouveau mot de passe renseigné est le même que l'ancien"
+          },
+          {
+            "key": "Wrong password",
+            "translate": "Mauvais mot de passe"
           }
         ]
       },
@@ -236,7 +254,7 @@
         "Registration", "Please fill these fields to continue", "Lastname", "Firstname", "Password", "Continue", "Invalid lastname or surname"
       ],
       "contact": [
-        "Who are we ? What do we do ?", "• Überschutz :", "We are a group of 7 Epitech students from the 2021 promo.",
+        "Who are we ? What do we do ?", "• Überschutz :", "We are a group of 8 Epitech students from the 2021 promo.",
         "Our group was created in October 2018 (first 3 people) during the Moonshot, then completed in January 2019.",
         "• Our goal :", "We want the Internet to be a place of sharing, relaxation and research.",
         "Too many people and children are harassed, scammed or confronted with inappropriate content.",
@@ -263,15 +281,10 @@
         "At any moment, parents can see the activity their children have on the Internet thanks to the monitoring available with the software.This will allow them to see if the child is aggressive or assaulted, if he visits sites that are not recommended or if it's a toxic element on the Internet. ",
         "At what price can you protect your child?",
         "We offer several formulas and several types of software.",
-        "If you want to know more, go to the page ", "\"Products\"", " or send us an email to ",
-        " to have supervised information.", "How to set the application", "(web and mobile)",
+        "These formulas are still under development, we will keep you informed of future advances by Newsletter!",
+        "How to set the application", "(web and mobile)",
         "For both platforms, go to the page ", "\"Settings\"",
-        ", click on the first name of the child you want to protect and tick the options you want to apply to his Internet browsing.",
-        "Choose the type of restriction you want ", "(block, limit, warn).",
-        "How to initialize Überschutz on the devices of your children?",
-        "During your first visit, go to the page ", "\"Login\"", " and fill in the required fields in ", "\"Registration\"",
-        "Enter the activation code of the license obtained when you purchase Überschutz in: ",
-        "\"Activation code\".", "You will then be redirected to your profile where you can add and set the options you want to assign to your child's Internet browsing."
+        " and add the children you want to protect."
       ],
       "form": [
         "Are you interested in our solution ?", "Feel free to keep informed by completing this form !",
@@ -291,7 +304,13 @@
       ],
       "profile": [
         "Last name: ", "First name: ", "Unsubscribe",
-        "Recover my information", "Delete my account"
+        "Change my email address", "Change my password",
+        "Recover my information", "Delete my account",
+        "Are you sure to delete your account?", "Yes", "No"
+      ],
+      "modifications": [
+        "Change my email address", "New email address:", "Confirm new email address:", "Validate", "Cancel",
+        "Change my password", "Old password:", "New password:", "Confirm new password:", "Validate", "Cancel"
       ],
       "report": [
         "Kids",
@@ -302,7 +321,7 @@
         "Internet browsing of ", "is at ", "% safe", "Internet data of ", "could not be recovered"
       ],
       "parameters": [
-        "Name", "Cancel","Invalid Name or Age", "Delete", "Edit", "New", "Create", "Save"
+        "Name", "Cancel","Invalid Name", "Delete", "Edit", "New", "Create", "Save", "Invalid Age"
       ],
       "options": [
         "Reports", "Uberschutz", "Alerts", "Adds"
@@ -321,8 +340,13 @@
       "inComing": [
         "In coming ..."
       ],
+      "error": [
+        "Email address does not meet expected standards",
+        "The password entered does not contain enough characters (at least 8)",
+        "Please fill this field"
+      ],
       "footer": [
-        "Created by Marianne LEVEE & Thomas DEROTE-PARCELLIER ", "App icon by "
+        "Created by Marianne & Thomas ", "App icon by "
       ]
     }
   }
