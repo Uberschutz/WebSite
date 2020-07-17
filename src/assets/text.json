@@ -107,6 +107,18 @@
       "inComing": [
         "A venir ..."
       ],
+      "dataCollect": [
+        "Collecte de données à caractère personnel",
+        "Les informations recueillies sur ce formulaire sont enregistrées dans un fichier informatisé par", "pour l'inscription et l'identification de votre compte.",
+        "La base légale du traitement est le consentement.",
+        "Les données collectées seront communiquées aux seuls destinataires suivants :",
+        "Les données sont conservées pendant une durée de 3 ans ou jusqu'à la supression du compte.",
+        "Vous pouvez accéder aux données vous concernant, les rectifier, demander leur effacement ou exercer votre droit à la limitation du traitement de vos données.",
+        "Vous pouvez retirer à tout moment votre consentement au traitement de vos données.",
+        "Consultez le site", "pour plus d’informations sur vos droits.",
+        "Pour exercer ces droits ou pour toute question sur le traitement de vos données dans ce dispositif, vous pouvez contacter (le service chargé de l’exercice de ces droits) :",
+        "Retour", "J'ai bien lu et je veux m'inscrire"
+      ],
       "error": [
         "L'adresse email ne respecte pas les standards attendus",
         "Le mot de passe renseigné ne contient pas assez de caractères (au moins 8)",
@@ -341,6 +353,18 @@
       ],
       "inComing": [
         "In coming ..."
+      ],
+      "dataCollect": [
+        "Collection of personal data",
+        "The information collected on this form is saved in a computerized file by", "for registration and identification of your account.",
+        "The legal basis for processing is consent.",
+        "The data collected will be communicated to the following recipients only:",
+        "The data are kept for a period of 3 years or until the account is deleted.",
+        "You can access your data, correct it, request its erasure or exercise your right to limit the processing of your data.",
+        "You can withdraw your consent to the processing of your data at any time.",
+        "Visit the site", "for more information on your rights.",
+        "To exercise these rights or for any questions about the processing of your data in this device, you can contact (the department responsible for exercising these rights):",
+        "Return", "I read correctly and I want to register"
       ],
       "error": [
         "Email address does not meet expected standards",
