@@ -417,6 +417,7 @@ class Profile extends Component {
     render() {
 		if (this.state.logged) {
 		    let i = 0;
+		    let j = 0;
 		    return (
 			    <div className="fixed-size">
 					<div className="description-txt">
@@ -501,14 +502,14 @@ class Profile extends Component {
 					</div>
 					<button type="button" className="btn btn-outline-dark options-margin" onClick={this.toggleModalEmail}>{displayContent(this.state.lang, i++, 'profile')}</button>
 					<Modal isOpen={this.state.emailModal} size="lg" toggle={this.toggleModalEmail} centered={true}>
-						<ModalHeader>{displayContent(this.state.lang, 0, 'modifications')}</ModalHeader>
+						<ModalHeader>{displayContent(this.state.lang, j++, 'modifications')}</ModalHeader>
 						<ModalBody>
-							<label className="col-form-label options-margin">{displayContent(this.state.lang, 1, 'modifications')}</label>
+							<label className="col-form-label options-margin">{displayContent(this.state.lang, j++, 'modifications')}</label>
 							<input onChange={this.onChangeEmail} type="text" className="form-control" id="recipient-name"/> <br/>
 							{
 								this.state.emailError !== '' ? <Alert color="danger">{this.state.emailError}</Alert> : null
 							}
-							<label className="col-form-label options-margin">{displayContent(this.state.lang, 2, 'modifications')}</label>
+							<label className="col-form-label options-margin">{displayContent(this.state.lang, j++, 'modifications')}</label>
 							{
 								this.state.badEmail ? <input onChange={this.onChangeConfirmEmail} type="text" className="form-control border border-danger" id="recipient-name"/> : <input onChange={this.onChangeConfirmEmail} type="text" className="form-control" id="recipient-name"/>
 							}
@@ -518,22 +519,22 @@ class Profile extends Component {
 							}
 						</ModalBody>
 						<ModalFooter>
-							<button className="btn btn-primary" onClick={this.updateEmail}>{displayContent(this.state.lang, 3, 'modifications')}</button>
-							<button className="btn btn-danger" onClick={this.toggleModalEmail}>{displayContent(this.state.lang, 4, 'modifications')}</button>
+							<button className="btn btn-primary" onClick={this.updateEmail}>{displayContent(this.state.lang, j++, 'modifications')}</button>
+							<button className="btn btn-danger" onClick={this.toggleModalEmail}>{displayContent(this.state.lang, j++, 'modifications')}</button>
 						</ModalFooter>
 					</Modal>
 					<button type="button" className="btn btn-outline-dark options-margin" onClick={this.toggleModalPassword}>{displayContent(this.state.lang, i++, 'profile')}</button>
 					<Modal isOpen={this.state.passwordModal} size="lg" toggle={this.toggleModalPassword} centered={true}>
-						<ModalHeader>{displayContent(this.state.lang, 5, 'modifications')}</ModalHeader>
+						<ModalHeader>{displayContent(this.state.lang, j++, 'modifications')}</ModalHeader>
 						<ModalBody>
-							<label className="col-form-label options-margin">{displayContent(this.state.lang, 6, 'modifications')}</label>
+							<label className="col-form-label options-margin">{displayContent(this.state.lang, j++, 'modifications')}</label>
 							<input onChange={this.onChangePassword} type="password" className="form-control" id="recipient-name"/> <br/>
-							<label className="col-form-label options-margin">{displayContent(this.state.lang, 7, 'modifications')}</label>
+							<label className="col-form-label options-margin">{displayContent(this.state.lang, j++, 'modifications')}</label>
 							<input onChange={this.onChangeNewPassword} type="password" className="form-control" id="recipient-name"/> <br/>
 							{
 								this.state.passwordError !== '' ? <Alert color="danger">{this.state.passwordError}</Alert> : null
 							}
-							<label className="col-form-label options-margin">{displayContent(this.state.lang, 8, 'modifications')}</label>
+							<label className="col-form-label options-margin">{displayContent(this.state.lang, j++, 'modifications')}</label>
 							{
 								this.state.badPassword ? <input onChange={this.onChangeConfirmPassword} type="password" className="form-control border border-danger" id="recipient-name"/> : <input onChange={this.onChangeConfirmPassword} type="password" className="form-control" id="recipient-name"/>
 							}
@@ -543,19 +544,19 @@ class Profile extends Component {
 							}
 						</ModalBody>
 						<ModalFooter>
-							<button className="btn btn-primary" onClick={this.updatePassword}>{displayContent(this.state.lang, 9, 'modifications')}</button>
-							<button className="btn btn-danger" onClick={this.toggleModalPassword}>{displayContent(this.state.lang, 10, 'modifications')}</button>
+							<button className="btn btn-primary" onClick={this.updatePassword}>{displayContent(this.state.lang, j++, 'modifications')}</button>
+							<button className="btn btn-danger" onClick={this.toggleModalPassword}>{displayContent(this.state.lang, j++, 'modifications')}</button>
 						</ModalFooter>
 					</Modal>
 				    <div className="row txt-align">
 						<button className="col-2 btn btn-primary options-margin" onClick={this.getAccountData}>{displayContent(this.state.lang, i++, 'profile')}</button>
 						<button className="col-2 btn btn-danger options-margin" onClick={this.toggleModalDelete}>{displayContent(this.state.lang, i++, 'profile')}</button>
 						<Modal isOpen={this.state.deleteModal} size="lg" toggle={this.toggleModalDelete} centered={true}>
-							<ModalHeader>{displayContent(this.state.lang, 11, 'profile')}</ModalHeader>
+							<ModalHeader>{displayContent(this.state.lang, j++, 'profile')}</ModalHeader>
 							<ModalBody centered={true} className="txt-align">
-								<label className="col-form-label button-footerP txt-align">{displayContent(this.state.lang, 12, 'profile')}</label> <br/>
-								<button className="btn btn-primary options-margin" onClick={this.deleteAccount}>{displayContent(this.state.lang, 13, 'profile')}</button>
-								<button className="btn btn-danger options-margin" onClick={this.toggleModalDelete}>{displayContent(this.state.lang, 14, 'profile')}</button>
+								<label className="col-form-label button-footerP txt-align">{displayContent(this.state.lang, j++, 'profile')}</label> <br/>
+								<button className="btn btn-primary options-margin" onClick={this.deleteAccount}>{displayContent(this.state.lang, j++, 'profile')}</button>
+								<button className="btn btn-danger options-margin" onClick={this.toggleModalDelete}>{displayContent(this.state.lang, j++, 'profile')}</button>
 							</ModalBody>
 						</Modal>
 					</div>
