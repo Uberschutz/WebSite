@@ -26,6 +26,7 @@ import mainReducer from './combineReducers'
 import NotFound from "./pages/NotFound";
 import InComing from "./pages/InComing";
 import DataCollect from "./pages/DataCollect";
+import DataInformations from "./pages/DataInformations"
 
 import ReactGA from 'react-ga';
 
@@ -65,6 +66,7 @@ const App = props => {
 			                    <Route path={'/Subscription'} component={Subscription}/>
 			                    <Route path={'/InComing'} component={InComing}/>
 			                    <Route path={'/DataCollect'} component={DataCollect}/>
+			                    <Route path={'/DataInformations'} component={DataInformations}/>
 			                    <Route path={'*'} component={NotFound}/>
 		                    </Switch>
 		                    <Footer/>
