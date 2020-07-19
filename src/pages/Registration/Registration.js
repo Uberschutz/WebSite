@@ -36,6 +36,9 @@ class Registration extends Component {
     }
 
     componentDidMount() {
+        if (!this.props.base.acceptedRGPD) {
+            this.props.history.push('/DataCollect');
+        }
 	    if (process.env.REACT_APP_ANALYTICS === 'true') {
 		    ReactGA.pageview(window.location.pathname + window.location.search);
 	    }

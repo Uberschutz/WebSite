@@ -33,6 +33,15 @@ export default class DataCollect extends Component {
         }
     }
 
+    acceptRGPD = () => {
+        this.props.RGPD(true);
+        this.props.history.push('/Registration');
+    }
+
+    /*acceptRGPD() {
+
+    }*/
+
     render() {
         let i = 0;
         return (
@@ -55,9 +64,7 @@ export default class DataCollect extends Component {
               <Link to={'/'}>
                   <button className="btn btn-danger button-border button-footer col-2">{displayContent(this.state.lang, i++,'dataCollect')}</button>
               </Link>
-              <Link to={'/Registration'}>
-                  <button className="btn btn-primary button-border button-footer col-2">{displayContent(this.state.lang, i++,'dataCollect')}</button>
-              </Link>
+                  <button className="btn btn-primary button-border button-footer col-2" onClick={this.acceptRGPD}>{displayContent(this.state.lang, i++,'dataCollect')}</button>
           </div>
         );
     }

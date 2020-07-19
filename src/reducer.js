@@ -2,6 +2,7 @@ const initialState = {
     language: 'fr',
     logged: false,
     token: undefined, // should be replaced by hidden token or cookie/session
+    acceptedRGPD: false,
     // email: undefined,
     // lastname: undefined,
 	// firstname: undefined,
@@ -26,6 +27,9 @@ const base = (state = initialState, action) => {
         case 'SET_USER':
             const { email, lastname, firstname } = action.payload;
             return { ...state, email, lastname, firstname };
+        case 'RGPD':
+            const {acceptedRGPD} = action.payload;
+            return {...state, acceptedRGPD};
         // case 'SET_SUBSCRIBED':
         //     const { subscribed } = action.payload;
         //     return { ...state, subscribed };

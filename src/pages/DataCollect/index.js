@@ -9,7 +9,8 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-    setNewsletter: bindActionCreators(actions.setNewsletter, dispatch)
+    setNewsletter: bindActionCreators(actions.setNewsletter, dispatch),
+    RGPD: bindActionCreators(actions.setRGPDAcceptation, dispatch)
 })
 
 const DataCollectContainer = connect(mapStateToProps, mapDispatchToProps)(DataCollect)
