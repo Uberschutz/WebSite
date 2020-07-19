@@ -125,7 +125,6 @@ class Registration extends Component {
                 this.setState({
                     errorChecked: displayContent(this.state.lang, 3, 'error')
                 })
-                /*mettre message erreur accepte pas coché*/
             }
         } else {
 

@@ -12,6 +12,8 @@ import ReactGA from 'react-ga';
 import newsletter from '../../assets/icons8-email-100.png';
 import loading from '../../assets/Spinner-1s-70px.gif';
 
+const Link = require("react-router-dom").Link;
+
 class Contact extends Component {
     constructor(props) {
         super(props);
@@ -21,7 +23,7 @@ class Contact extends Component {
             connected: false,
             subscribed: false,
             email: '',
-            lastname: ''
+            lastname: '',
         };
 
 	    this.redirectProfile = this.redirectProfile.bind(this);
@@ -182,13 +184,16 @@ class Form extends Component {
             emailSent: false,
 	        statusErr: false,
 	        status: '',
-            subscribed: false
+            subscribed: false,
+            isChecked: false,
+            errorChecked: ''
         };
         this.onChangeEmail = this.onChangeEmail.bind(this);
         this.onChangeName = this.onChangeName.bind(this);
         this._handleKeyPressed = this._handleKeyPressed.bind(this);
         this.registerNews = this.registerNews.bind(this);
         this.subscribe = this.subscribe.bind(this);
+        this.collectAcceptation = this.collectAcceptation.bind(this);
     }
 
 	_handleKeyPressed(e) {
@@ -227,12 +232,23 @@ class Form extends Component {
 
     registerNews() {
     	if (this.state.name !== '' && this.state.email !== '') {
-		    axios.post('/subscribe_newsletter', {
-			    email: this.state.email,
-			    name: this.state.name
-		    }).then(response => { console.log(response);
-                this.onChangeSent(response)}).catch(err => {console.log(err); this.onSubscribeFailure(err)})
-	    } else {
+            if (this.state.isChecked) {
+                axios.post('/subscribe_newsletter', {
+                    email: this.state.email,
+                    name: this.state.name
+                }).then(response => {
+                    console.log(response);
+                    this.onChangeSent(response)
+                }).catch(err => {
+                    console.log(err);
+                    this.onSubscribeFailure(err)
+                })
+            } else {
+                this.setState({
+                    errorChecked: displayContent(this.props.lang, 3, 'error')
+                });
+            }
+        } else {
     		if (this.state.name === '') {
     			this.setState({nameError: true});
 		    }
@@ -242,23 +258,27 @@ class Form extends Component {
 	    }
     }
 
+    collectAcceptation() {
+        this.setState({isChecked: !this.state.isChecked});
+    }
+
     subscribe() {
         if (this.props.connected && this.props.name !== '' && this.props.email !== '') {
             axios.post('/subscribe_newsletter', {
                 email: this.props.email,
                 name: this.props.name
             }).then(response => {
-            	console.log(response.data);
-	            this.onChangeSent(response);
-	            setTimeout(() => {
-		            this.setState({subscribed: true});
-	            }, 3 * 1000);
-	            // this.props.updateNewsletter(true)
-            }).catch(err => {
-            	console.log(err); this.onSubscribeFailure(err)
-            });
+                console.log(response.data);
+                this.onChangeSent(response);
+                setTimeout(() => {
+                    this.setState({subscribed: true});
+                    }, 3 * 1000);
+                    // this.props.updateNewsletter(true)
+                }).catch(err => {
+                    console.log(err); this.onSubscribeFailure(err)
+                });
+            }
         }
-    }
 
     render() {
         let i = 0;
@@ -274,7 +294,7 @@ class Form extends Component {
                     </h11><br/>
                     <h11>
                         {displayContent(this.props.lang, i++,'form')}<h11 className="address">
-                        uberschutz_2021@labeip.epitech.eu</h11>
+                        uberschutz.epitech@gmail.com</h11>
                     </h11>
                     <form><br/>
                         <div className="form-group">
@@ -297,6 +317,8 @@ class Form extends Component {
                             <small id="emailHelp" className="form-text text-muted col-sm-9">
                                 {displayContent(this.props.lang, i++,'form')}
                             </small>
+                            <input className='button-footer' type="checkbox" checked={this.state.isChecked} onChange={this.collectAcceptation}/>
+                            <span>J'accepte de communiquer mon adresse email pour l'inscription</span>
                         </div>
                         {
                             this.state.emailSent ?
@@ -308,6 +330,9 @@ class Form extends Component {
                         this.state.emailSent ?
                             <Alert color={this.state.statusErr ? "danger" : "success"}> {this.state.status}</Alert>
                             : null
+                    }
+                    {
+                        this.state.errorChecked ? <Alert color="danger">{this.state.errorChecked}</Alert> : null
                     }
                 </div>
             )
