@@ -16,7 +16,7 @@
         "Vous n'avez pas de compte ?", "Créer un compte"
       ],
       "registration": [
-        "Inscription", "Merci de remplir ces champs pour continuer", "Nom", "Prénom", "Mot de passe", "Continuer", "Nom ou prénom invalide"
+        "Inscription", "Merci de remplir ces champs pour continuer", "Nom", "Prénom", "Mot de passe", "J'accepte de communiquer mon adresse email pour l'inscription", "Continuer", "Nom ou prénom invalide"
       ],
       "contact": [
         "Qui sommes nous ? Que faisons nous ?", "• Überschutz :", "Nous sommes un groupe de 8 étudiants d'Epitech de la promo 2021.",
@@ -132,7 +132,8 @@
       "error": [
         "L'adresse email ne respecte pas les standards attendus",
         "Le mot de passe renseigné ne contient pas assez de caractères (au moins 8)",
-        "Veuillez remplir ce champs"
+        "Veuillez remplir ce champs",
+        "Vous devez accepter de nous partager votre email pour vous inscrire"
       ],
       "footer": [
         "Créé par Marianne & Thomas ", "Icônes de l'application par "
@@ -274,7 +275,7 @@
         "You don't have an account ?", "Create an account"
       ],
       "registration": [
-        "Registration", "Please fill these fields to continue", "Lastname", "Firstname", "Password", "Continue", "Invalid lastname or surname"
+        "Registration", "Please fill these fields to continue", "Lastname", "Firstname", "Password", "I agree to provide my email address for registration", "Continue", "Invalid lastname or surname"
       ],
       "contact": [
         "Who are we ? What do we do ?", "• Überschutz :", "We are a group of 8 Epitech students from the 2021 promo.",
@@ -389,7 +390,8 @@
       "error": [
         "Email address does not meet expected standards",
         "The password entered does not contain enough characters (at least 8)",
-        "Please fill this field"
+        "Please fill this field",
+        "You must agree to share your email with us to register"
       ],
       "footer": [
         "Created by Marianne & Thomas ", "App icon by "
