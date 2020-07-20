@@ -16,7 +16,7 @@
         "Vous n'avez pas de compte ?", "Créer un compte"
       ],
       "registration": [
-        "Inscription", "Merci de remplir ces champs pour continuer", "Nom", "Prénom", "Mot de passe", "Continuer", "Nom ou prénom invalide"
+        "Inscription", "Merci de remplir ces champs pour continuer", "Nom", "Prénom", "Mot de passe", "J'accepte de communiquer mon adresse email pour l'inscription", "Continuer", "Nom ou prénom invalide"
       ],
       "contact": [
         "Qui sommes nous ? Que faisons nous ?", "• Überschutz :", "Nous sommes un groupe de 8 étudiants d'Epitech de la promo 2021.",
@@ -55,7 +55,7 @@
       "form": [
         "Vous êtes intéressés par notre solution ?", "N'hésitez pas à vous tenir informés en remplissant ce formulaire !",
         "Ou en nous contactant à l'adresse suivante : ", "Nom ou Prénom", "Adresse email",
-        "Nous ne partagerons jamais votre adresse email avec qui que ce soit.", "Soumettre",
+        "Nous ne partagerons jamais votre adresse email avec qui que ce soit.", "J'accepte de communiquer mon adresse email pour l'inscription", "Soumettre","Plus d'informations", "Fermer",
         "N'hésitez pas à vous tenir informés en activant cette option pour vous inscrire à la Newsletter :", " Inscrit à la Newsletter",
         "Vous voulez vous désinscrire de la Newsletter ?", "Rendez vous sur votre", "Profil"
       ],
@@ -107,10 +107,33 @@
       "inComing": [
         "A venir ..."
       ],
+      "dataCollect": [
+        "Collecte de données à caractère personnel",
+        "Les informations recueillies sur ce formulaire sont enregistrées dans un fichier informatisé par", "pour l'inscription et l'identification de votre compte.",
+        "La base légale du traitement est le consentement.",
+        "Les données collectées seront communiquées aux seuls destinataires suivants :",
+        "Les données sont conservées pendant une durée de 3 ans ou jusqu'à la supression du compte.",
+        "Vous pouvez accéder aux données vous concernant, les rectifier, demander leur effacement ou exercer votre droit à la limitation du traitement de vos données.",
+        "Vous pouvez retirer à tout moment votre consentement au traitement de vos données.",
+        "Consultez le site", "pour plus d’informations sur vos droits.",
+        "Pour exercer ces droits ou pour toute question sur le traitement de vos données dans ce dispositif, vous pouvez contacter (le service chargé de l’exercice de ces droits) :",
+        "Retour", "J'ai bien lu et je veux m'inscrire"
+      ],
+      "dataInformations": [
+        "Données personnelles",
+        "L'administration du site web Überschutz nécessite un traitement de données personnelles",
+        "Objet du traitement de données", "Finalités", "Le traitement a pour objet la gestion du site web administré par Überschutz. Il permet :", "La connexion aux espaces privés", "La gestion de la clientèle et du support client", "L'envoi d'emails lors des différentes inscriptions sur le site", "L'envoi par emails de lettres d'informations (optionnel)", "Certaines données sont collectées automatiquement du fait de vos actions sur le site afin d'effectuer des mesures d'audience (le nombre de pages vues, le nombre de visite du site, les pages consultées, l'horodatage etc.) ou sont nécessaires à la prévention et la résolution d'incidents techniques",
+        "Données collectées", "Les données personnelles collectées et traitées sont vos nom, prénom, email, mot de passe et cookies",
+        "Destinataires", "Les données collectées sont destinées à notre service technique. Elles sont également transmises aux tiers suivants :", " en tant qu'outil de suivi d'audience,", " en tant que machine virtuelle de stockage et sauvegarde des données",
+        "Durée de conservation des données", "Les données sont conservées pendant toute la durée d'utilisation du service puis sont archivées pour une durée supplémentaire en lien avec les durées de prescription et de conservation légale pour des raisons strictement limitées et autorisées par la loi. Passé ce délai, elles sont supprimées.",
+        "Localisation et hébergement des données collectées", "Les données collectées sont hébergées par les prestataires suivants :", ", en qualité d'hébergeur du site web (localisation des données : Europe du Nord)", ", en qualité d'hébergeur du nom de domaine (localisation des données : France),", ", en tant qu'outil de suivi d'audience (localisation des données : Monde)", ", en tant que machine virtuelle de stockage de données (localisation des données : Europe du Nord)",
+        "Retrait du consentement", "Vous pouvez retirer à tout moment votre consentement sur l'utilisation de vos données personnelles non-indispensables à la bonne utilisation du service fourni par ce site Internet :", "en vous connectant à votre compte et en procédant à sa suppression si vous disposez d'un compte sur notre site web,", "en écrivant à test.controleparental.donnees@gmail.com pour le retrait de données que vous nous auriez communiqué par le biais des formulaires présents sur le site."
+      ],
       "error": [
         "L'adresse email ne respecte pas les standards attendus",
         "Le mot de passe renseigné ne contient pas assez de caractères (au moins 8)",
-        "Veuillez remplir ce champs"
+        "Veuillez remplir ce champs",
+        "Vous devez accepter de nous partager votre email pour vous inscrire"
       ],
       "footer": [
         "Créé par Marianne & Thomas ", "Icônes de l'application par "
@@ -252,7 +275,7 @@
         "You don't have an account ?", "Create an account"
       ],
       "registration": [
-        "Registration", "Please fill these fields to continue", "Lastname", "Firstname", "Password", "Continue", "Invalid lastname or surname"
+        "Registration", "Please fill these fields to continue", "Lastname", "Firstname", "Password", "I agree to provide my email address for registration", "Continue", "Invalid lastname or surname"
       ],
       "contact": [
         "Who are we ? What do we do ?", "• Überschutz :", "We are a group of 8 Epitech students from the 2021 promo.",
@@ -290,7 +313,7 @@
       "form": [
         "Are you interested in our solution ?", "Feel free to keep informed by completing this form !",
         "Or by contacting us at the following address : ", "Name or Surname", "Email address", "We'll never share your email with anyone else.",
-        "Submit",
+        "I agree to communicate my email address for registration", "Submit", "More informations", "Close",
         "Do not hesitate to keep yourself informed by activating this option to subscribe to the Newsletter:", "Subscribe to the Newsletter",
         "Do you want to unsubscribe from the newsletter?", "Go on your", "Profile"
       ],
@@ -342,10 +365,33 @@
       "inComing": [
         "In coming ..."
       ],
+      "dataCollect": [
+        "Collection of personal data",
+        "The information collected on this form is saved in a computerized file by", "for registration and identification of your account.",
+        "The legal basis for processing is consent.",
+        "The data collected will be communicated to the following recipients only:",
+        "The data are kept for a period of 3 years or until the account is deleted.",
+        "You can access your data, correct it, request its erasure or exercise your right to limit the processing of your data.",
+        "You can withdraw your consent to the processing of your data at any time.",
+        "Visit the site", "for more information on your rights.",
+        "To exercise these rights or for any questions about the processing of your data in this device, you can contact (the department responsible for exercising these rights):",
+        "Return", "I read correctly and I want to register"
+      ],
+      "dataInformations": [
+        "Personal data",
+        "The administration of the Überschutz website requires the processing of personal data",
+        "Purpose of data processing", "Purposes", "The purpose of processing is to manage the website administered by Überschutz. It allows:", "Connection to private areas", "Customer management and customer support "," Sending emails when registering on the site "," Sending emails with newsletters (optional) "," Some data is collected automatically as a result of your actions on the site in order to '' perform audience measurements (the number of pages viewed, the number of visits to the site, the pages viewed, timestamps etc.) or are necessary for the prevention and resolution of technical incidents ",
+        "Data collected", "The personal data collected and processed are your name, first name, email address, password and cookies",
+        "Recipients", "The data collected is intended for our technical service. It is also transmitted to the following third parties:", " as an audience monitoring tool,", " as a virtual machine for data storage and backup ",
+        "Data retention period", "The data are kept for the duration of use of the service and are then archived for an additional period in connection with the periods of limitation and legal retention for reasons strictly limited and authorized by law . After this period, they are deleted. ",
+        "Localization and hosting of collected data", "The collected data is hosted by the following providers:", " as web host (data localization: Northern Europe) ","  as host of the domain name (data location: France), "," as an audience tracking tool ( data location: World) ","  as a data storage virtual machine (data location: Northern Europe) ",
+        "Withdrawal of consent", "You can withdraw your consent at any time to the use of your personal data which is not essential for the proper use of the service provided by this website:", "by logging into your account and proceeding to its deletion if you have an account on our website, "," by writing to test.controleparental.donnees@gmail.com for the withdrawal of data that you have communicated to us through the forms on the site. "
+      ],
       "error": [
         "Email address does not meet expected standards",
         "The password entered does not contain enough characters (at least 8)",
-        "Please fill this field"
+        "Please fill this field",
+        "You must agree to share your email with us to register"
       ],
       "footer": [
         "Created by Marianne & Thomas ", "App icon by "

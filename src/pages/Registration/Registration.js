@@ -24,7 +24,9 @@ class Registration extends Component {
 	        status: '',
 	        statusErr: false,
 	        emailSent: false,
-	        pending: false
+	        pending: false,
+            isChecked: false,
+            errorChecked: ''
         };
 
         this.register = this.register.bind(this);
@@ -33,9 +35,13 @@ class Registration extends Component {
         this.onChangeFirstname = this.onChangeFirstname.bind(this);
         this.onChangeLastName = this.onChangeLastName.bind(this);
 	    this._handleKeyPressed = this._handleKeyPressed.bind(this);
+	    this.collectAcceptation = this.collectAcceptation.bind(this);
     }
 
     componentDidMount() {
+        if (!this.props.base.acceptedRGPD) {
+            this.props.history.push('/DataCollect');
+        }
 	    if (process.env.REACT_APP_ANALYTICS === 'true') {
 		    ReactGA.pageview(window.location.pathname + window.location.search);
 	    }
@@ -87,36 +93,46 @@ class Registration extends Component {
 
     register() {
         if (this.state.email !== '' && this.state.passwd !== '' && this.state.lastname !== '') {
-        	this.setState({pending: true});
-            axios.post('/register', {
-                email: this.state.email,
-                passwd: this.state.passwd,
-                lastname: this.state.lastname,
-	            firstname: this.state.firstname
-            }).then(response => {
-            	console.log(response);
-	            this.setState({
-		            emailSent: true,
-		            pending: false,
-		            statusErr: false,
-		            status: this.state.lang === "en" ? `${response.data}` : `${displayHttpMessages(this.state.lang, response.status, response.data)}`
-	            }, () => {
-	            	setTimeout(() => {this.setState({emailSent: false})}, 10000);
-	            });
-            }).catch(err => {
-            	console.log(err);
-	            this.setState({
-		            emailSent: true,
-		            statusErr: true,
-		            pending: false,
-		            status: this.state.lang === "en" ? `An error occurred : ${err.response.data}` : `${displayHttpMessages(this.state.lang, err.response.status, err.response.data)}`
-	            }, () => {
-		            setTimeout(() => {this.setState({emailSent: false})}, 10000);
-	            });
-            });
+            if (this.state.isChecked) {
+                this.setState({pending: true});
+                axios.post('/register', {
+                    email: this.state.email,
+                    passwd: this.state.passwd,
+                    lastname: this.state.lastname,
+                    firstname: this.state.firstname
+                }).then(response => {
+                    console.log(response);
+                    this.setState({
+                        emailSent: true,
+                        pending: false,
+                        statusErr: false,
+                        status: this.state.lang === "en" ? `${response.data}` : `${displayHttpMessages(this.state.lang, response.status, response.data)}`
+                    }, () => {
+                        setTimeout(() => {this.setState({emailSent: false})}, 10000);
+                    });
+                }).catch(err => {
+                    console.log(err);
+                    this.setState({
+                        emailSent: true,
+                        statusErr: true,
+                        pending: false,
+                        status: this.state.lang === "en" ? `An error occurred : ${err.response.data}` : `${displayHttpMessages(this.state.lang, err.response.status, err.response.data)}`
+                    }, () => {
+                        setTimeout(() => {this.setState({emailSent: false})}, 10000);
+                    });
+                });
+            } else {
+                this.setState({
+                    errorChecked: displayContent(this.state.lang, 3, 'error')
+                })
+            }
         } else {
 
         }
+    }
+
+    collectAcceptation() {
+        this.setState({isChecked: !this.state.isChecked});
     }
 
     render() {
@@ -162,6 +178,17 @@ class Registration extends Component {
                             </div>
                             <input value={this.state.password} onChange={this.onChangePass} type="password" className="form-control" aria-label="Email" onKeyPress={this._handleKeyPressed}/>
                         </div>
+
+                        <div className="input-group mb-3">
+                            <div className="input-group-prepend">
+                                <input type="checkbox" checked={this.state.isChecked} onChange={this.collectAcceptation}/>
+                                <span className="btn-rgpd">{displayContent(this.state.lang, i++, 'registration')}</span>
+                            </div>
+                        </div>
+                        {
+                            this.state.errorChecked ? <Alert color="danger">{this.state.errorChecked}</Alert> : null
+                        }
+
                         <button type="button" className="btn btn-primary" onClick={this.register}>{displayContent(this.state.lang, i++, 'registration')}</button>
                         <br/>
                         {this.state.alphaSurname || this.state.alphaName ?
