@@ -2,7 +2,9 @@
 
 exports[`Testing the Confirm page rendering renders Confirm without crashing in any language 1`] = `
 <div>
-  <div>
+  <div
+    class="responsive-image"
+  >
     <h1
       class="text-xl-center forbidden"
     >
@@ -12,6 +14,7 @@ exports[`Testing the Confirm page rendering renders Confirm without crashing in 
     <br />
     <img
       alt="notFound"
+      class="responsive-image"
       src="fogg-page-not-found.png"
     />
   </div>
@@ -20,7 +23,9 @@ exports[`Testing the Confirm page rendering renders Confirm without crashing in 
 
 exports[`Testing the Confirm page rendering renders Confirm without crashing in english 1`] = `
 <div>
-  <div>
+  <div
+    class="responsive-image"
+  >
     <h1
       class="text-xl-center forbidden"
     >
@@ -30,6 +35,7 @@ exports[`Testing the Confirm page rendering renders Confirm without crashing in 
     <br />
     <img
       alt="notFound"
+      class="responsive-image"
       src="fogg-page-not-found.png"
     />
   </div>
@@ -38,7 +44,9 @@ exports[`Testing the Confirm page rendering renders Confirm without crashing in 
 
 exports[`Testing the Confirm page rendering renders Confirm without crashing in french 1`] = `
 <div>
-  <div>
+  <div
+    class="responsive-image"
+  >
     <h1
       class="text-xl-center forbidden"
     >
@@ -48,6 +56,7 @@ exports[`Testing the Confirm page rendering renders Confirm without crashing in 
     <br />
     <img
       alt="notFound"
+      class="responsive-image"
       src="fogg-page-not-found.png"
     />
   </div>

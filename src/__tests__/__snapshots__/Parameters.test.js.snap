@@ -72,7 +72,9 @@ exports[`Testing the Parameters page rendering render Parameters being logged in
 
 exports[`Testing the Parameters page rendering render Parameters not being logged in english 1`] = `
 <div>
-  <div>
+  <div
+    class="responsive-image"
+  >
     <h1
       class="text-xl-center forbidden"
     >
@@ -81,6 +83,7 @@ exports[`Testing the Parameters page rendering render Parameters not being logge
     <br />
     <img
       alt="forbidden"
+      class="responsive-image"
       src="fogg-no-comments.png"
     />
   </div>
@@ -89,7 +92,9 @@ exports[`Testing the Parameters page rendering render Parameters not being logge
 
 exports[`Testing the Parameters page rendering render Parameters not being logged in french 1`] = `
 <div>
-  <div>
+  <div
+    class="responsive-image"
+  >
     <h1
       class="text-xl-center forbidden"
     >
@@ -98,6 +103,7 @@ exports[`Testing the Parameters page rendering render Parameters not being logge
     <br />
     <img
       alt="forbidden"
+      class="responsive-image"
       src="fogg-no-comments.png"
     />
   </div>
@@ -106,7 +112,9 @@ exports[`Testing the Parameters page rendering render Parameters not being logge
 
 exports[`Testing the Parameters page rendering renders Parameters without crashing (not connected) in any language 1`] = `
 <div>
-  <div>
+  <div
+    class="responsive-image"
+  >
     <h1
       class="text-xl-center forbidden"
     >
@@ -115,6 +123,7 @@ exports[`Testing the Parameters page rendering renders Parameters without crashi
     <br />
     <img
       alt="forbidden"
+      class="responsive-image"
       src="fogg-no-comments.png"
     />
   </div>

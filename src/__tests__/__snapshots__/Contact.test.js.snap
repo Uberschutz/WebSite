@@ -340,7 +340,7 @@ exports[`Testing the Contact Page rendering renders Contact in english 1`] = `
         <h11
           class="address"
         >
-          uberschutz_2021@labeip.epitech.eu
+          uberschutz.epitech@gmail.com
         </h11>
       </h11>
       <form>
@@ -376,12 +376,25 @@ exports[`Testing the Contact Page rendering renders Contact in english 1`] = `
           >
             We'll never share your email with anyone else.
           </small>
+          <input
+            class="button-footer"
+            type="checkbox"
+          />
+          <span>
+            I agree to communicate my email address for registration
+          </span>
         </div>
         <button
           class="btn btn-primary button-footer"
           type="button"
         >
           Submit
+        </button>
+        <button
+          class="btn btn-dark button-footer"
+          type="button"
+        >
+          More informations
         </button>
         <br />
       </form>
@@ -730,7 +743,7 @@ exports[`Testing the Contact Page rendering renders Contact in french 1`] = `
         <h11
           class="address"
         >
-          uberschutz_2021@labeip.epitech.eu
+          uberschutz.epitech@gmail.com
         </h11>
       </h11>
       <form>
@@ -766,12 +779,25 @@ exports[`Testing the Contact Page rendering renders Contact in french 1`] = `
           >
             Nous ne partagerons jamais votre adresse email avec qui que ce soit.
           </small>
+          <input
+            class="button-footer"
+            type="checkbox"
+          />
+          <span>
+            J'accepte de communiquer mon adresse email pour l'inscription
+          </span>
         </div>
         <button
           class="btn btn-primary button-footer"
           type="button"
         >
           Soumettre
+        </button>
+        <button
+          class="btn btn-dark button-footer"
+          type="button"
+        >
+          Plus d'informations
         </button>
         <br />
       </form>
@@ -1120,7 +1146,7 @@ exports[`Testing the Contact Page rendering renders Contact without crashing in 
         <h11
           class="address"
         >
-          uberschutz_2021@labeip.epitech.eu
+          uberschutz.epitech@gmail.com
         </h11>
       </h11>
       <form>
@@ -1156,12 +1182,25 @@ exports[`Testing the Contact Page rendering renders Contact without crashing in 
           >
             Nous ne partagerons jamais votre adresse email avec qui que ce soit.
           </small>
+          <input
+            class="button-footer"
+            type="checkbox"
+          />
+          <span>
+            J'accepte de communiquer mon adresse email pour l'inscription
+          </span>
         </div>
         <button
           class="btn btn-primary button-footer"
           type="button"
         >
           Soumettre
+        </button>
+        <button
+          class="btn btn-dark button-footer"
+          type="button"
+        >
+          Plus d'informations
         </button>
         <br />
       </form>

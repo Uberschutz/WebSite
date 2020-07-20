@@ -77,7 +77,7 @@ exports[`Testing the Connection page rendering render Connection in english 1`] 
      
     <br />
     <a
-      href="/Registration"
+      href="/DataCollect"
     >
       <button
         class="btn button-footer btn-primary"
@@ -167,7 +167,7 @@ exports[`Testing the Connection page rendering render Connection in french 1`] =
      
     <br />
     <a
-      href="/Registration"
+      href="/DataCollect"
     >
       <button
         class="btn button-footer btn-primary"
@@ -257,7 +257,7 @@ exports[`Testing the Connection page rendering renders Connection without crashi
      
     <br />
     <a
-      href="/Registration"
+      href="/DataCollect"
     >
       <button
         class="btn button-footer btn-primary"
