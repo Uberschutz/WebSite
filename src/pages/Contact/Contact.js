@@ -6,6 +6,10 @@ import Icon from 'antd/lib/icon/index';
 import Alert from 'reactstrap/lib/Alert';
 import {displayContent, displayHttpMessages} from '../../utils/translationDisplay';
 import axios from 'axios';
+import Modal from "reactstrap/lib/Modal";
+import ModalHeader from "reactstrap/lib/ModalHeader";
+import ModalBody from "reactstrap/lib/ModalBody";
+import ModalFooter from "reactstrap/lib/ModalFooter";
 
 import ReactGA from 'react-ga';
 
@@ -186,7 +190,8 @@ class Form extends Component {
 	        status: '',
             subscribed: false,
             isChecked: false,
-            errorChecked: ''
+            errorChecked: '',
+            dataModal: false
         };
         this.onChangeEmail = this.onChangeEmail.bind(this);
         this.onChangeName = this.onChangeName.bind(this);
@@ -194,6 +199,7 @@ class Form extends Component {
         this.registerNews = this.registerNews.bind(this);
         this.subscribe = this.subscribe.bind(this);
         this.collectAcceptation = this.collectAcceptation.bind(this);
+        this.toggleModalData = this.toggleModalData.bind(this);
     }
 
 	_handleKeyPressed(e) {
@@ -277,11 +283,21 @@ class Form extends Component {
                 }).catch(err => {
                     console.log(err); this.onSubscribeFailure(err)
                 });
-            }
         }
+    }
+
+    toggleModalData() {
+        if (this.state.dataModal) {
+            this.setState({},
+                () => this.setState({dataModal: !this.state.dataModal}));
+        } else {
+            this.setState({dataModal: !this.state.dataModal});
+        }
+    }
 
     render() {
         let i = 0;
+        let j = 0;
         if (!this.props.connected) {
             return (
                 <div>
@@ -318,12 +334,31 @@ class Form extends Component {
                                 {displayContent(this.props.lang, i++,'form')}
                             </small>
                             <input className='button-footer' type="checkbox" checked={this.state.isChecked} onChange={this.collectAcceptation}/>
-                            <span>J'accepte de communiquer mon adresse email pour l'inscription</span>
+                            <span>{displayContent(this.props.lang, i++,'form')}</span>
                         </div>
                         {
                             this.state.emailSent ?
                                 <img src={loading} alt="loading"/> : <button type="button" className="btn btn-primary button-footer" onClick={this.registerNews}>{displayContent(this.props.lang, i,'form')}</button>
                         }
+                        <button type="button" className="btn btn-dark button-footer" onClick={this.toggleModalData}>{displayContent(this.props.lang, ++i,'form')}</button>
+
+                        <Modal isOpen={this.state.dataModal} size="lg" toggle={this.toggleModalData} centered={true}>
+                            <ModalHeader>{displayContent(this.props.lang, j++,'dataCollect')}</ModalHeader>
+                            <ModalBody>
+                                <span>{displayContent(this.props.lang, j++,'dataCollect')} Überschutz, uberschutz.epitech@gmail.com {displayContent(this.props.lang, j++,'dataCollect')}</span><br/>
+                                <span>{displayContent(this.props.lang, j++,'dataCollect')}</span> <br/>
+                                <span>{displayContent(this.props.lang, j++,'dataCollect')} Überschutz.</span> <br/>
+                                <span>{displayContent(this.props.lang, j++,'dataCollect')}</span> <br/>
+                                <span>{displayContent(this.props.lang, j++,'dataCollect')}</span> <br/>
+                                <span>{displayContent(this.props.lang, j++,'dataCollect')}</span> <br/>
+                                <span>{displayContent(this.props.lang, j++,'dataCollect')} <a href="https://cnil.fr">cnil.fr</a> {displayContent(this.props.lang, j++,'dataCollect')}</span> <br/>
+                                <span>{displayContent(this.props.lang, j++,'dataCollect')} test.controleparental.donnees@gmail.com</span>
+                            </ModalBody>
+                            <ModalFooter>
+                                <button className="btn btn-danger" onClick={this.toggleModalData}>{displayContent(this.props.lang, ++i,'form')}</button>
+                            </ModalFooter>
+                        </Modal>
+
                         <br/>
                     </form>
                     {
@@ -339,23 +374,23 @@ class Form extends Component {
         } else if (this.state.subscribed === true) {
             return (
                 <div className="button-footer">
-                    <span className="question">{displayContent(this.props.lang, 9,'form')}</span><br/>
-                    <span>{displayContent(this.props.lang, 10,'form')}</span>
-                    <button className="btn btn-info button-footer" onClick={this.props.redirectProfile}>{displayContent(this.props.lang, 11,'form')}</button>
+                    <span className="question">{displayContent(this.props.lang, 12,'form')}</span><br/>
+                    <span>{displayContent(this.props.lang, 13,'form')}</span>
+                    <button className="btn btn-info button-footer" onClick={this.props.redirectProfile}>{displayContent(this.props.lang, 14,'form')}</button>
                 </div>
             )
         } else if (this.props.connected && !this.props.subscribed) {
             return (
                 <div className="button-footer">
                     <h5 className="button-footer title-bold">
-                        {displayContent(this.props.lang, 7,'form')}
+                        {displayContent(this.props.lang, 10,'form')}
                     </h5>
 	                {
 	                	this.state.emailSent ?  <img src={loading} alt="loading"/>
 			                :
 			                <input type="radio" onClick={this.subscribe} aria-label="Radio button for following option"/>
 	                }
-                    <span>{displayContent(this.props.lang, 8,'form')}</span> <br/>
+                    <span>{displayContent(this.props.lang, 11,'form')}</span> <br/>
                     <img className="button-footer" src={newsletter} alt="newsletter"/>
 	                {
 		                this.state.emailSent ?
@@ -367,9 +402,9 @@ class Form extends Component {
         } else {
 	        return (
 		        <div className="button-footer">
-			        <span className="question">{displayContent(this.props.lang, 9,'form')}</span><br/>
-			        <span>{displayContent(this.props.lang, 10,'form')}</span>
-			        <button className="btn btn-info button-footer" onClick={this.props.redirectProfile}>{displayContent(this.props.lang, 11,'form')}</button>
+			        <span className="question">{displayContent(this.props.lang, 12,'form')}</span><br/>
+			        <span>{displayContent(this.props.lang, 13,'form')}</span>
+			        <button className="btn btn-info button-footer" onClick={this.props.redirectProfile}>{displayContent(this.props.lang, 14,'form')}</button>
 		        </div>
 	        )
         }

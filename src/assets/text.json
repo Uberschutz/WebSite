@@ -55,7 +55,7 @@
       "form": [
         "Vous êtes intéressés par notre solution ?", "N'hésitez pas à vous tenir informés en remplissant ce formulaire !",
         "Ou en nous contactant à l'adresse suivante : ", "Nom ou Prénom", "Adresse email",
-        "Nous ne partagerons jamais votre adresse email avec qui que ce soit.", "Soumettre",
+        "Nous ne partagerons jamais votre adresse email avec qui que ce soit.", "J'accepte de communiquer mon adresse email pour l'inscription", "Soumettre","Plus d'informations", "Fermer",
         "N'hésitez pas à vous tenir informés en activant cette option pour vous inscrire à la Newsletter :", " Inscrit à la Newsletter",
         "Vous voulez vous désinscrire de la Newsletter ?", "Rendez vous sur votre", "Profil"
       ],
@@ -313,7 +313,7 @@
       "form": [
         "Are you interested in our solution ?", "Feel free to keep informed by completing this form !",
         "Or by contacting us at the following address : ", "Name or Surname", "Email address", "We'll never share your email with anyone else.",
-        "Submit",
+        "I agree to communicate my email address for registration", "Submit", "More informations", "Close",
         "Do not hesitate to keep yourself informed by activating this option to subscribe to the Newsletter:", "Subscribe to the Newsletter",
         "Do you want to unsubscribe from the newsletter?", "Go on your", "Profile"
       ],
