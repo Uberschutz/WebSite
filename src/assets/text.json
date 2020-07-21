@@ -107,6 +107,10 @@
       "inComing": [
         "A venir ..."
       ],
+      "others": [
+        "Nos autres services",
+        "L'application mobile Überschutz : ", "Le plug-in d'analyse d'activité Internet : "
+      ],
       "dataCollect": [
         "Collecte de données à caractère personnel",
         "Les informations recueillies sur ce formulaire sont enregistrées dans un fichier informatisé par", "pour l'inscription et l'identification de votre compte.",
@@ -364,6 +368,10 @@
       ],
       "inComing": [
         "In coming ..."
+      ],
+      "others": [
+        "Our other services",
+        "The Überschutz mobile app:", "The Internet activity analysis plug-in:"
       ],
       "dataCollect": [
         "Collection of personal data",

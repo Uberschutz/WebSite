@@ -15,6 +15,9 @@ import Parameters from "./pages/Parameters";
 import Report from "./pages/Report";
 import Confirm from "./pages/Confirm";
 import Subscription from "./pages/Subscription";
+import DataCollect from "./pages/DataCollect";
+import DataInformations from "./pages/DataInformations"
+import Others from "./pages/Others";
 
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware, compose } from 'redux'
@@ -25,8 +28,7 @@ import { PersistGate } from 'redux-persist/integration/react'
 import mainReducer from './combineReducers'
 import NotFound from "./pages/NotFound";
 import InComing from "./pages/InComing";
-import DataCollect from "./pages/DataCollect";
-import DataInformations from "./pages/DataInformations"
+
 
 import ReactGA from 'react-ga';
 
@@ -67,6 +69,7 @@ const App = props => {
 			                    <Route path={'/InComing'} component={InComing}/>
 			                    <Route path={'/DataCollect'} component={DataCollect}/>
 			                    <Route path={'/DataInformations'} component={DataInformations}/>
+			                    <Route path={'/others'} component={Others}/>
 			                    <Route path={'*'} component={NotFound}/>
 		                    </Switch>
 		                    <Footer/>

@@ -48,9 +48,12 @@ class Footer extends Component {
                     {displayContent(this.state.lang, i++, 'footer')}<br/>{displayContent(this.state.lang, i++, 'footer')}<a href="https://icones8.fr">icons8</a> <br/>
                 </span>
 				</div>
-				<div className="button-footer">
+				<div className="button-footer row txt-align">
 					<Link to={'/DataInformations'}>
-						<span>{displayContent(this.state.lang, 0, 'dataInformations')}</span>
+						<span className="col">{displayContent(this.state.lang, 0, 'dataInformations')}</span>
+					</Link>
+					<Link to={'/Others'}>
+						<span className="col">{displayContent(this.state.lang, 0, 'others')}</span>
 					</Link>
 				</div>
 			</footer>
