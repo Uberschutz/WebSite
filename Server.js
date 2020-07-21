@@ -1,3 +1,4 @@
+const cookieSession = require('cookie-session');
 const document = require("docx").Document;
 const pack = require("docx").Packer;
 const paragraph = require("docx").Paragraph;
@@ -13,6 +14,17 @@ const PORT = process.env.PORT || 8080
 const app = express();
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
+
+app.use(cookieSession({
+	name: 'token',
+	maxAge: 2 * 60 * 1000,
+	// maxAge: 365 * 24 * 60 * 60 * 1000,
+	httpOnly: false,
+	signed: true,
+	keys: [credentials.session.cookieKey],
+	sameSite: true
+}));
+
 app.use( express.static(path.resolve( __dirname, "./build" ) ) );
 
 var server_url = "user_server";
@@ -42,9 +54,17 @@ app.post('/get_data', (req, res) => {
 	});
 });
 
+app.get('/disconnect', (req, res) => {
+	req.session = null;
+	res.end();
+})
+
 app.get('/get_auth_user', (req, res) => {
 	axios.get(`http://${server_url}:8081/get_auth_user`, {
-		headers: req.headers
+		// headers: req.headers
+		headers: {
+			'x-access-token': req.session.token
+		}
 	}).then(response => {
 		res.send(response.data);
 	}).catch(err => {
@@ -67,7 +87,7 @@ app.post('/unsubscribe_newsletter', async (req, res) => {
 		name: req.body.name
 	}, {
 		headers: {
-			'x-access-token': req.headers['x-access-token']
+			'x-access-token': req.session.token
 		}
 	}).then(response => response).catch(err => err.response);
 	forward_response(res, result);
@@ -92,11 +112,21 @@ app.post('/verifyaccount', async (req, res) => {
 });
 
 app.post('/connect', async (req, res) => {
-	let result = await axios.post(`http://${server_url}:8081/connect`, {
+	axios.post(`http://${server_url}:8081/connect`, {
 		email: req.body.email,
 		passwd: req.body.passwd
-	}).then(response => response).catch(err => err.response);
-	forward_response(res, result);
+	}).then(response => {
+		req.session.token = response.data.token;
+		res.status(response.status).send(response.data);
+	}).catch(err => {
+		console.log(err);
+		if (err.response.status === 500) {
+			res.status(500).send('Internal server error');
+		} else {
+			res.status(err.response.status).send(err.response.data);
+		}
+	});
+	// forward_response(res, result);
 });
 
 app.post('/children', async (req, res) => {
@@ -109,7 +139,7 @@ app.post('/children', async (req, res) => {
 		discordId: req.body.discordId
 	}, {
 		headers: {
-			'x-access-token': req.headers['x-access-token']
+			'x-access-token': req.session.token
 		}
 	}).then(response => response).catch(err => err.response);
 	forward_response(res, result);
@@ -121,7 +151,7 @@ app.post('/rename', async (req, res) => {
 		value: req.body.value
 	}, {
 		headers: {
-			'x-access-token': req.headers['x-access-token']
+			'x-access-token': req.session.token
 		}
 	}).then(response => response).catch(err => err.response);
 	forward_response(res, result);
@@ -130,7 +160,7 @@ app.post('/rename', async (req, res) => {
 app.post('/change_email', async (req, res) => {
 	let result = await axios.post(`http://${server_url}:8081/change_email`, req.body, {
 		headers: {
-			'x-access-token': req.headers['x-access-token']
+			'x-access-token': req.session.token
 		}
 	}).then(response => response).catch(err => err.response);
 	forward_response(res, result);
@@ -139,7 +169,7 @@ app.post('/change_email', async (req, res) => {
 app.post('/change_password', async (req, res) => {
 	let result = await axios.post(`http://${server_url}:8081/change_password`, req.body, {
 		headers: {
-			'x-access-token': req.headers['x-access-token']
+			'x-access-token': req.session.token
 		}
 	}).then(response => response).catch(err => err.response);
 	forward_response(res, result);
@@ -148,7 +178,7 @@ app.post('/change_password', async (req, res) => {
 app.post('/delete_account', async (req, res) => {
 	let result = await axios.post(`http://${server_url}:8081/delete_account`, '', {
 		headers: {
-			'x-access-token': req.headers['x-access-token']
+			'x-access-token': req.session.token
 		}
 	}).then(response => response).catch(err => err.response);
 	forward_response(res, result);
@@ -157,7 +187,7 @@ app.post('/delete_account', async (req, res) => {
 app.get('/gdpr', async (req, res) => {
 	axios.get(`http://${server_url}:8081/gdpr`, {
 		headers: {
-			'x-access-token': req.headers['x-access-token']
+			'x-access-token': req.session.token
 		}
 	}).then(async response => {
 		console.log(response.data);
@@ -213,7 +243,7 @@ app.get('/get_available_licences', async (req, res) => {
 app.get('/get_subscription', async (req, res) => {
 	let result = await axios.get(`http://${server_url}:8081/get_subscription`,{
 		headers: {
-			'x-access-token': req.headers['x-access-token']
+			'x-access-token': req.session.token
 		}
 	}).then(response => response).catch(err => err.response);
 	forward_response(res, result);
@@ -224,7 +254,7 @@ app.post('/subscribe', async (req, res) => {
 		subscription: req.body.subscription
 	}, {
 		headers: {
-			'x-access-token': req.headers['x-access-token']
+			'x-access-token': req.session.token
 		}
 	}).then(response => response).catch(err => err.response);
 	forward_response(res, result);
@@ -233,7 +263,7 @@ app.post('/subscribe', async (req, res) => {
 app.post('/unsubscribe', async (req, res) => {
 	let result = await axios.post(`http://${server_url}:8081/unsubscribe`, '', {
 		headers: {
-			'x-access-token': req.headers['x-access-token']
+			'x-access-token': req.session.token
 		}
 	}).then(response => response).catch(err => err.response);
 	forward_response(res, result);
@@ -244,7 +274,7 @@ app.post('/unsubscribe', async (req, res) => {
 // 		subscription: req.body.subscription
 // 	}, {
 // 		headers: {
-// 			'x-access-token': req.headers['x-access-token']
+// 			'x-access-token': req.session.token
 // 		}
 // 	}).then(response => {
 // 		console.log(response.data);

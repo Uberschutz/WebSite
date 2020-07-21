@@ -20,6 +20,9 @@ import axios from 'axios';
 import fileDownload from "js-file-download";
 import Modal from "reactstrap/lib/Modal";
 
+import Cookies from "universal-cookie/lib";
+const cookies = new Cookies();
+
 class Profile extends Component {
 	constructor(props) {
 		super(props);
@@ -33,7 +36,6 @@ class Profile extends Component {
 			newsletter: false,
 			subscribed: false,
 			subscription: '',
-			token: null,
 			load: false,
 			newsletterAlert: '',
 			statusErr: false,
@@ -79,9 +81,9 @@ class Profile extends Component {
 			ReactGA.pageview(window.location.pathname + window.location.search);
 		}
 		if (this.props.base) {
-			const { base: { language, logged, token } } = this.props;
+			const { base: { language, logged } } = this.props;
 			this.setState({
-				logged, language, token
+				logged, language
 			}, this.getUser);
 		}
 	}
@@ -92,12 +94,8 @@ class Profile extends Component {
 	}
 
 	getUser() {
-		if (this.props.base && this.props.base.token) {
-			axios.get('/get_auth_user', {
-				headers: {
-					'x-access-token': this.props.base.token
-				}
-			}).then(response => {
+		if (this.props.base && this.props.base.logged) {
+			axios.get('/get_auth_user').then(response => {
 				if (response && response.data) {
 					this.setState({
 						firstname: response.data.firstname,
@@ -118,12 +116,8 @@ class Profile extends Component {
 			load: true
 		}, () => {
 				axios.post('/unsubscribe_newsletter', {
-			}, {
-				headers: {
-					'x-access-token': this.state.token
-				}
 			}).then(response => {
-				console.log(response.data);
+				// console.log(response.data);
 				this.setState({
 					newsletter: false,
 					load: false,
@@ -154,10 +148,6 @@ class Profile extends Component {
 			axios.post('/rename', {
 				key: 'lastname',
 				value: this.state.lastname
-			},{
-				headers: {
-					'x-access-token': this.state.token
-				}
 			}).then(response => {
 				//this.props.setUser(this.state.email, this.state.lastname, this.state.firstname, this.state.token);
 			}).catch(err => {
@@ -180,10 +170,6 @@ class Profile extends Component {
 			axios.post('/rename', {
 				key: 'firstname',
 				value: this.state.firstname
-			},{
-				headers: {
-					'x-access-token': this.state.token
-				}
 			}).then(response => {
 				//this.props.setUser(this.state.email, this.state.lastname, this.state.firstname, this.state.token);
 			}).catch(err => {
@@ -214,13 +200,9 @@ class Profile extends Component {
 	}
 
 	deleteAccount() {
-		axios.post('/delete_account', '',{
-			headers: {
-				'x-access-token': this.state.token
-			}
-		}).then(response => {
+		axios.post('/delete_account', '').then(response => {
 			this.props.setLogged(false);
-			this.props.setAuthToken(null);
+			// this.props.setAuthToken(null);
 			this.props.history.push("/");
 		}).catch(err => {
 			console.log(err, "Error");
@@ -229,9 +211,6 @@ class Profile extends Component {
 
 	getAccountData() {
 		axios.get('/gdpr', {
-			headers: {
-				'x-access-token': this.state.token
-			},
 			responseType: "blob"
 		}).then(response => {
 			try {
@@ -332,10 +311,7 @@ class Profile extends Component {
 			this.setState({requestEmailSent: true});
 			axios.post('/change_email', {
 				email: this.state.email
-			}, {
-				headers: {
-					'x-access-token': this.state.token
-				}}).then(response => {
+			}).then(response => {
 					console.log(response.data);
 				this.setState({
 					requestEmailSent: false,
@@ -379,10 +355,6 @@ class Profile extends Component {
 			axios.post('/change_password', {
 				passwd: this.state.password,
 				new_passwd: this.state.newPassword
-			}, {
-				headers: {
-					'x-access-token': this.state.token
-				}
 			}).then(response => {
 				console.log(response.data);
 				this.setState({

@@ -33,7 +33,6 @@ class Parameters extends Component {
 			numErr: false,
 			lang: 'fr',
 			logged: false,
-			token: '',
 			discordId: ''
 		};
 
@@ -53,19 +52,14 @@ class Parameters extends Component {
 			ReactGA.pageview(window.location.pathname + window.location.search);
 		}
 		if (this.props.base) {
-			const { base: { language, logged, token } } = this.props;
+			const { base: { language, logged } } = this.props;
 				this.setState({
 					lang: language,
 					options: this.options,
 					logged: logged,
-					token
 				}, () => {
 					axios.post('/children', {
 						action: 'list'
-					}, {
-						headers: {
-							'x-access-token': this.state.token
-						}
 					}).then(response => {
 						console.log(response.data);
 						this.setState({
@@ -115,10 +109,6 @@ class Parameters extends Component {
 				age: this.state.age,
 				options: this.state.options,
 				discordId: this.state.discordId
-			}, {
-				headers: {
-					'x-access-token': this.state.token
-				}
 			}).then(response => {
 				console.log(response.data);
 				this.setState({childrens: response.data}, () => this.toggleModal());
@@ -133,10 +123,6 @@ class Parameters extends Component {
 				age: this.state.age,
 				options: this.state.options,
 				discordId: this.state.discordId
-			}, {
-				headers: {
-					'x-access-token': this.state.token
-				}
 			}).then(response => {
 				console.log(response.data);
 				this.setState({childrens: response.data}, () => this.toggleModal());
@@ -161,10 +147,6 @@ class Parameters extends Component {
 		axios.post('/children', {
 			action: 'delete',
 			name: children.name
-		}, {
-			headers: {
-				'x-access-token': this.state.token
-			}
 		}).then(response => {
 			console.log(response.data);
 			this.setState({childrens: response.data});
