@@ -18,6 +18,7 @@ import Subscription from "./pages/Subscription";
 import DataCollect from "./pages/DataCollect";
 import DataInformations from "./pages/DataInformations"
 import Others from "./pages/Others";
+import Payement from "./pages/Payement"
 
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware, compose } from 'redux'
@@ -70,6 +71,7 @@ const App = props => {
 			                    <Route path={'/DataCollect'} component={DataCollect}/>
 			                    <Route path={'/DataInformations'} component={DataInformations}/>
 			                    <Route path={'/others'} component={Others}/>
+			                    <Route path={'/Payement'} component={Payement}/>
 			                    <Route path={'*'} component={NotFound}/>
 		                    </Switch>
 		                    <Footer/>
