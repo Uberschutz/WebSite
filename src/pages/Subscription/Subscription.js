@@ -55,7 +55,7 @@ export default class Subscription extends Component {
                 this.setState({
                     account_licence: response.data
                 });
-                this.props.history.push("/Profile");
+                this.props.history.push("/Payement");
             }).catch(err => {
                 console.log(err);
             });
