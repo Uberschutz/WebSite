@@ -36,13 +36,24 @@ exports[`Testing the Footer component rendering renders Footer in english 1`] = 
       </span>
     </div>
     <div
-      class="button-footer"
+      class="button-footer row txt-align"
     >
       <a
         href="/DataInformations"
       >
-        <span>
+        <span
+          class="col"
+        >
           Personal data
+        </span>
+      </a>
+      <a
+        href="/Others"
+      >
+        <span
+          class="col"
+        >
+          Our other services
         </span>
       </a>
     </div>
@@ -86,13 +97,24 @@ exports[`Testing the Footer component rendering renders Footer in french 1`] = `
       </span>
     </div>
     <div
-      class="button-footer"
+      class="button-footer row txt-align"
     >
       <a
         href="/DataInformations"
       >
-        <span>
+        <span
+          class="col"
+        >
           Données personnelles
+        </span>
+      </a>
+      <a
+        href="/Others"
+      >
+        <span
+          class="col"
+        >
+          Nos autres services
         </span>
       </a>
     </div>
@@ -136,13 +158,24 @@ exports[`Testing the Footer component rendering renders Footer without crashing 
       </span>
     </div>
     <div
-      class="button-footer"
+      class="button-footer row txt-align"
     >
       <a
         href="/DataInformations"
       >
-        <span>
+        <span
+          class="col"
+        >
           Données personnelles
+        </span>
+      </a>
+      <a
+        href="/Others"
+      >
+        <span
+          class="col"
+        >
+          Nos autres services
         </span>
       </a>
     </div>
