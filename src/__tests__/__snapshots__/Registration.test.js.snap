@@ -102,6 +102,22 @@ exports[`Testing the Registration page rendering renders Registration in english
             value=""
           />
         </div>
+        <div
+          class="input-group mb-3"
+        >
+          <div
+            class="input-group-prepend"
+          >
+            <input
+              type="checkbox"
+            />
+            <span
+              class="btn-rgpd"
+            >
+              I agree to provide my email address for registration
+            </span>
+          </div>
+        </div>
         <button
           class="btn btn-primary"
           type="button"
@@ -217,6 +233,22 @@ exports[`Testing the Registration page rendering renders Registration in french 
             value=""
           />
         </div>
+        <div
+          class="input-group mb-3"
+        >
+          <div
+            class="input-group-prepend"
+          >
+            <input
+              type="checkbox"
+            />
+            <span
+              class="btn-rgpd"
+            >
+              J'accepte de communiquer mon adresse email pour l'inscription
+            </span>
+          </div>
+        </div>
         <button
           class="btn btn-primary"
           type="button"
@@ -331,6 +363,22 @@ exports[`Testing the Registration page rendering renders Registration without cr
             type="password"
             value=""
           />
+        </div>
+        <div
+          class="input-group mb-3"
+        >
+          <div
+            class="input-group-prepend"
+          >
+            <input
+              type="checkbox"
+            />
+            <span
+              class="btn-rgpd"
+            >
+              J'accepte de communiquer mon adresse email pour l'inscription
+            </span>
+          </div>
         </div>
         <button
           class="btn btn-primary"
