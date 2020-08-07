@@ -34,8 +34,8 @@ class Footer extends Component {
     render() {
 		let i = 0;
         return (
-			<footer>
-				<div className="uber-color2">
+			<footer className="uber-color2">
+				<div>
 					<Link to ='/Contact+FAQ'>
 						<button type="button" className="btn btn-primary button-footer">Contact</button>
 					</Link>
@@ -47,6 +47,14 @@ class Footer extends Component {
 					<span>
                     {displayContent(this.state.lang, i++, 'footer')}<br/>{displayContent(this.state.lang, i++, 'footer')}<a href="https://icones8.fr">icons8</a> <br/>
                 </span>
+				</div>
+				<div className="button-footer row txt-align">
+					<Link to={'/DataInformations'}>
+						<span className="col">{displayContent(this.state.lang, 0, 'dataInformations')}</span>
+					</Link>
+					<Link to={'/Others'}>
+						<span className="col">{displayContent(this.state.lang, 0, 'others')}</span>
+					</Link>
 				</div>
 			</footer>
         )

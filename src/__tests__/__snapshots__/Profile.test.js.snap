@@ -192,7 +192,9 @@ exports[`Testing the Profile page rendering renders Profile being logged in fren
 
 exports[`Testing the Profile page rendering renders Profile not being logged in english 1`] = `
 <div>
-  <div>
+  <div
+    class="responsive-image"
+  >
     <h1
       class="text-xl-center forbidden"
     >
@@ -201,6 +203,7 @@ exports[`Testing the Profile page rendering renders Profile not being logged in 
     <br />
     <img
       alt="forbidden"
+      class="responsive-image"
       src="fogg-no-comments.png"
     />
   </div>
@@ -209,7 +212,9 @@ exports[`Testing the Profile page rendering renders Profile not being logged in 
 
 exports[`Testing the Profile page rendering renders Profile not being logged in french 1`] = `
 <div>
-  <div>
+  <div
+    class="responsive-image"
+  >
     <h1
       class="text-xl-center forbidden"
     >
@@ -218,6 +223,7 @@ exports[`Testing the Profile page rendering renders Profile not being logged in 
     <br />
     <img
       alt="forbidden"
+      class="responsive-image"
       src="fogg-no-comments.png"
     />
   </div>
@@ -226,7 +232,9 @@ exports[`Testing the Profile page rendering renders Profile not being logged in 
 
 exports[`Testing the Profile page rendering renders Profile without crashing 1`] = `
 <div>
-  <div>
+  <div
+    class="responsive-image"
+  >
     <h1
       class="text-xl-center forbidden"
     >
@@ -235,6 +243,7 @@ exports[`Testing the Profile page rendering renders Profile without crashing 1`]
     <br />
     <img
       alt="forbidden"
+      class="responsive-image"
       src="fogg-no-comments.png"
     />
   </div>

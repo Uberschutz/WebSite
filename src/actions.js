@@ -47,6 +47,13 @@ export const setNewsletter = (newsletter) => ({
 	}
 })
 
+export const setRGPDAcceptation = (acceptedRGPD) => ({
+    type: 'RGPD',
+    payload: {
+        acceptedRGPD
+    }
+})
+
 /*
 import axios from 'axios'
 

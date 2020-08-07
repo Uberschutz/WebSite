@@ -32,11 +32,11 @@ export default class InComing extends Component {
     render() {
         let i = 0;
         return (
-            <div>
+            <div className="responsive-image">
                 <h1 className="text-xl-center forbidden">
                     {displayContent(this.state.lang, i++, 'inComing')}
                 </h1> <br/>
-                <img src={inComing} alt="inComing"/>
+                <img src={inComing} alt="inComing" className="responsive-image"/>
             </div>
         );
     }

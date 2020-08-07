@@ -2,10 +2,10 @@
 
 exports[`Testing the Footer component rendering renders Footer in english 1`] = `
 <div>
-  <footer>
-    <div
-      class="uber-color2"
-    >
+  <footer
+    class="uber-color2"
+  >
+    <div>
       <a
         href="/Contact+FAQ"
       >
@@ -35,16 +35,38 @@ exports[`Testing the Footer component rendering renders Footer in english 1`] = 
         <br />
       </span>
     </div>
+    <div
+      class="button-footer row txt-align"
+    >
+      <a
+        href="/DataInformations"
+      >
+        <span
+          class="col"
+        >
+          Personal data
+        </span>
+      </a>
+      <a
+        href="/Others"
+      >
+        <span
+          class="col"
+        >
+          Our other services
+        </span>
+      </a>
+    </div>
   </footer>
 </div>
 `;
 
 exports[`Testing the Footer component rendering renders Footer in french 1`] = `
 <div>
-  <footer>
-    <div
-      class="uber-color2"
-    >
+  <footer
+    class="uber-color2"
+  >
+    <div>
       <a
         href="/Contact+FAQ"
       >
@@ -74,16 +96,38 @@ exports[`Testing the Footer component rendering renders Footer in french 1`] = `
         <br />
       </span>
     </div>
+    <div
+      class="button-footer row txt-align"
+    >
+      <a
+        href="/DataInformations"
+      >
+        <span
+          class="col"
+        >
+          Données personnelles
+        </span>
+      </a>
+      <a
+        href="/Others"
+      >
+        <span
+          class="col"
+        >
+          Nos autres services
+        </span>
+      </a>
+    </div>
   </footer>
 </div>
 `;
 
 exports[`Testing the Footer component rendering renders Footer without crashing 1`] = `
 <div>
-  <footer>
-    <div
-      class="uber-color2"
-    >
+  <footer
+    class="uber-color2"
+  >
+    <div>
       <a
         href="/Contact+FAQ"
       >
@@ -112,6 +156,28 @@ exports[`Testing the Footer component rendering renders Footer without crashing 
          
         <br />
       </span>
+    </div>
+    <div
+      class="button-footer row txt-align"
+    >
+      <a
+        href="/DataInformations"
+      >
+        <span
+          class="col"
+        >
+          Données personnelles
+        </span>
+      </a>
+      <a
+        href="/Others"
+      >
+        <span
+          class="col"
+        >
+          Nos autres services
+        </span>
+      </a>
     </div>
   </footer>
 </div>

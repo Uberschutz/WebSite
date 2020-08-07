@@ -233,10 +233,10 @@ exports[`Testing the whole app rendering renders whole application without crash
         </div>
       </div>
     </div>
-    <footer>
-      <div
-        class="uber-color2"
-      >
+    <footer
+      class="uber-color2"
+    >
+      <div>
         <a
           href="/Contact+FAQ"
         >
@@ -265,6 +265,28 @@ exports[`Testing the whole app rendering renders whole application without crash
            
           <br />
         </span>
+      </div>
+      <div
+        class="button-footer row txt-align"
+      >
+        <a
+          href="/DataInformations"
+        >
+          <span
+            class="col"
+          >
+            Données personnelles
+          </span>
+        </a>
+        <a
+          href="/Others"
+        >
+          <span
+            class="col"
+          >
+            Nos autres services
+          </span>
+        </a>
       </div>
     </footer>
   </div>
