@@ -47,10 +47,6 @@ export default class Subscription extends Component {
         if (this.props.base.logged) {
             axios.post('/subscribe', {
                 subscription: this.state.available_licences[+data.target.dataset.idx]
-            }, {
-                headers: {
-                    'x-access-token': this.props.base.token
-                }
             }).then(response => {
                 this.setState({
                     account_licence: response.data
@@ -65,13 +61,7 @@ export default class Subscription extends Component {
     }
 
     deleteLicence() {
-        axios.post('/unsubscribe', {
-
-        }, {
-            headers: {
-                'x-access-token': this.props.base.token
-            }
-        }).then(response => {
+        axios.post('/unsubscribe', {}).then(response => {
             console.log(response.data);
             this.setState({
                 account_licence: null

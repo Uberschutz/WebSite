@@ -17,6 +17,9 @@ import ButtonDropdown from 'reactstrap/lib/ButtonDropdown'
 import { displayContent } from '../../utils/translationDisplay';
 import axios from 'axios';
 
+import Cookies from "universal-cookie/lib";
+
+const cookies = new Cookies();
 const Link = require("react-router-dom").Link;
 
 class Header extends Component {
@@ -43,8 +46,14 @@ class Header extends Component {
 
     componentDidMount() {
     	// console.log('header mounted');
+	    let logged = false;
+	    if (cookies.get('token') !== undefined) {
+		    logged = true;
+	    }
 	    if (this.props.base) {
-		    const { base: { language, logged } } = this.props;
+	    	if (!logged)
+	    		this.props.setLogged(false);
+		    const { base: { language } } = this.props;
 		    this.setState({
 			    lang: language,
 			    logged
@@ -63,12 +72,11 @@ class Header extends Component {
     }
 
     getUser() {
-        if (this.props.base && this.props.base.token && this.props.base.logged) {
-            axios.get('/get_auth_user', {
-                headers: {
-                    'x-access-token': this.props.base.token
-                }
-            }).then(response => {
+    	// console.log(this.token);
+    	// console.log(cookies.get('token'));
+        if (cookies.get('token') !== undefined && this.props.base && this.props.base.logged) {
+            axios.get('/get_auth_user')
+	            .then(response => {
                 if (response && response.data) {
                     this.setState({
                         firstname: response.data.firstname,
@@ -78,6 +86,11 @@ class Header extends Component {
             }).catch(err => {
                 console.log(err);
             })
+        } else if (this.props.base.logged) {
+	        axios.get('/disconnect').then().catch();
+	        cookies.remove('token');
+	        cookies.remove('token.sig');
+	        this.props.setLogged(false);
         }
     }
 
@@ -110,8 +123,11 @@ class Header extends Component {
     disconnect() {
     	this.props.setLogged(false);
     	// this.props.setUser(undefined, undefined, undefined, undefined);
-    	this.props.setAuthToken(undefined);
-    	this.setState({logged: false, lastname: undefined});
+    	// this.props.setAuthToken(undefined);
+	    cookies.remove('token');
+	    cookies.remove('token.sig');
+	    axios.get('/disconnect').then().catch();
+	    this.setState({logged: false, lastname: undefined});
     }
 
     render () {

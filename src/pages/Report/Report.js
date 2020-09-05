@@ -28,7 +28,6 @@ class Report extends Component {
 			childData: [],
 			lang: 'fr',
 			logged: false,
-			token: '',
 			childrens: [],
 			filters: [],
 			filterData: [],
@@ -44,18 +43,13 @@ class Report extends Component {
 			ReactGA.pageview(window.location.pathname + window.location.search);
 		}
 		if (this.props.base) {
-			const { base: { language, logged, token } } = this.props;
+			const { base: { language, logged } } = this.props;
 				this.setState({
 					lang: language,
-					logged: logged,
-					token
+					logged: logged
 				}, () => {
 					axios.post('/children', {
 						action: 'list'
-					}, {
-						headers: {
-							'x-access-token': this.state.token
-						}
 					}).then(response => {
 						console.log(response.data);
 						this.setState({

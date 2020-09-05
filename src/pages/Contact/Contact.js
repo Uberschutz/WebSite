@@ -44,11 +44,8 @@ class Contact extends Component {
                 lang: language,
                 connected: logged,
             }, () =>
-                axios.get('/get_auth_user', {
-                    headers: {
-                        'x-access-token': this.props.base.token
-                    }
-                }).then(response => {
+                axios.get('/get_auth_user')
+	                .then(response => {
                     if (response && response.data) {
                         this.setState({
                             subscribed: response.data.newsletter,
