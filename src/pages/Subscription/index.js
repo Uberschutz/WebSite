@@ -9,6 +9,7 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = dispatch => ({
+    setLicence: bindActionCreators(actions.setLicence, dispatch)
 
 })
 

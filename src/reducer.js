@@ -3,6 +3,7 @@ const initialState = {
     logged: false,
     token: undefined, // should be replaced by hidden token or cookie/session
     acceptedRGPD: false,
+    licence: null
     // email: undefined,
     // lastname: undefined,
 	// firstname: undefined,
@@ -30,6 +31,9 @@ const base = (state = initialState, action) => {
         case 'RGPD':
             const {acceptedRGPD} = action.payload;
             return {...state, acceptedRGPD};
+        case 'SET_LICENCE':
+            const {licence} = action.payload;
+            return {...state, licence};
         // case 'SET_SUBSCRIBED':
         //     const { subscribed } = action.payload;
         //     return { ...state, subscribed };

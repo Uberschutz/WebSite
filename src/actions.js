@@ -54,6 +54,13 @@ export const setRGPDAcceptation = (acceptedRGPD) => ({
     }
 })
 
+export const setLicence = (licence) => ({
+    type: 'SET_LICENCE',
+    payload: {
+        licence
+    }
+})
+
 /*
 import axios from 'axios'
 
