@@ -23,7 +23,7 @@ describe('Testing the Header component rendering', () => {
 		const props = {
 			base: {
 				language: 'fr'
-			}
+			}, setLogged: () => ({})
 		};
 		// const paramsComponent = shallow(<Router><Header {...props}/></Router>);
 		// paramsComponent.setProps({base: { language: 'fr'}});
@@ -38,7 +38,7 @@ describe('Testing the Header component rendering', () => {
 		const props = {
 			base: {
 				language: 'en'
-			}
+			}, setLogged: () => ({})
 		};
 		// const paramsComponent = shallow(<Router><Header {...props}/></Router>);
 		// paramsComponent.setProps({base: { logged: true, lang: 'fr' }});
@@ -54,7 +54,7 @@ describe('Testing the Header component rendering', () => {
 			base: {
 				logged: true,
 				language: 'en'
-			}
+			}, setLogged: () => ({})
 		};
 		// const paramsComponent = shallow(<Router><Header {...props}/></Router>);
 		// paramsComponent.setProps({base: { logged: true, lang: 'fr' }});
@@ -70,7 +70,7 @@ describe('Testing the Header component rendering', () => {
 			base: {
 				logged: true,
 				language: 'fr'
-			}
+			}, setLogged: () => ({})
 		};
 		// const paramsComponent = shallow(<Router><Header {...props}/></Router>);
 		// paramsComponent.setProps({base: { logged: true, lang: 'fr' }});

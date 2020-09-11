@@ -51,7 +51,7 @@ class Header extends Component {
 		    logged = true;
 	    }
 	    if (this.props.base) {
-	    	if (!logged)
+	    	if (!logged && !this.props.base.logged)
 	    		this.props.setLogged(false);
 		    const { base: { language } } = this.props;
 		    this.setState({
