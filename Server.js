@@ -17,8 +17,8 @@ app.use(bodyParser.json());
 
 app.use(cookieSession({
 	name: 'token',
-	maxAge: 2 * 60 * 1000,
-	// maxAge: 365 * 24 * 60 * 60 * 1000,
+	// maxAge: 2 * 60 * 1000,
+	maxAge: 365 * 24 * 60 * 60 * 1000,
 	httpOnly: false,
 	signed: true,
 	keys: [credentials.session.cookieKey],
@@ -93,6 +93,14 @@ app.post('/unsubscribe_newsletter', async (req, res) => {
 	forward_response(res, result);
 });
 
+app.get('/options', async (req, res) => {
+	let result = await axios.get(`http://${server_url}:8081/options`, {
+		headers: {
+			'x-access-token': req.session.token
+		}
+	}).then(response => response).catch(err => err.response);
+	forward_response(res, result);
+});
 
 app.post('/register', async (req, res) => {
 	let result = await axios.post(`http://${server_url}:8081/register`, {

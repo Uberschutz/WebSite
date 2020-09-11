@@ -33,7 +33,8 @@ class Parameters extends Component {
 			numErr: false,
 			lang: 'fr',
 			logged: false,
-			discordId: ''
+			discordId: '',
+			available_options: []
 		};
 
 		this.toggleOption = this.toggleOption.bind(this);
@@ -44,7 +45,6 @@ class Parameters extends Component {
 		this.setAge = this.setAge.bind(this);
 		this.setFirstName = this.setFirstName.bind(this);
 		this.setDiscordId = this.setDiscordId.bind(this);
-		this.options = [{name: 'Reports', enabled: false}, {name: 'Uberschutz', enabled: false}, {name: 'Alerts', enabled: false}, {name: 'Adds', enabled: false}];
 	}
 
 	componentDidMount() {
@@ -55,7 +55,6 @@ class Parameters extends Component {
 			const { base: { language, logged } } = this.props;
 				this.setState({
 					lang: language,
-					options: this.options,
 					logged: logged,
 				}, () => {
 					axios.post('/children', {
@@ -68,6 +67,10 @@ class Parameters extends Component {
 					}).catch(err => {
 						console.log(err);
 					});
+					axios.get('/options').then(response => {
+						const { options } = response.data;
+						this.setState({ options, available_options: options })
+					})
 				})
 		}
 	}
@@ -91,7 +94,7 @@ class Parameters extends Component {
 
 	toggleModal() {
 		if (this.state.showModal) {
-			this.setState({name: '', age: '', id: null, state: 'Create', alphaErr: false, numErr: false, options: this.options, discordId: ''},
+			this.setState({name: '', age: '', id: null, state: 'Create', alphaErr: false, numErr: false, options: this.state.available_options, discordId: ''},
 				() => this.setState({showModal: !this.state.showModal}));
 		} else {
 			this.setState({showModal: !this.state.showModal});
