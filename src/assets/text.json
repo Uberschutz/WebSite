@@ -69,7 +69,7 @@
         "Licence Premium", "Premium :", "- 5 appareils protégés et analysés", "- convient à des familles qui ont plus de 2 enfants à protéger ", "- à partir de 35€", "Avantages ! ", "- Profitez de ... ", "Acheter"
       ],
       "payement": [
-        "Récapitulatif de votre commande", "Panier"
+        "Récapitulatif de votre commande", "Panier", "Payer"
       ],
       "profile": [
         "Nom de famille : ", "Prénom : ", "Enfants protégés par Überschutz : X ", "Abonnement utilisé : ", "Se désinscrire", "Echéancier de paiement : ",
@@ -334,7 +334,7 @@
         "Premium License", "Premium:", "- 5 protected and analyzed devices", "- suitable for families with more than 2 children to protect", "- from 35 €", "Advantages!", " - Take advantage of ... "," Buy "
       ],
       "payement": [
-        "Summary of your order", "Shopping cart"
+        "Summary of your order", "Shopping cart", "Buy"
       ],
       "profile": [
         "Last name: ", "First name: ", "Child protected by Überschutz : X ", "Subscription used : ", "Unsubscribe", "Payment schedule : ",
