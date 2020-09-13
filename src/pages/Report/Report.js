@@ -133,7 +133,7 @@ class Report extends Component {
 				this.setState({
 					filters: this.state.filters.concat([filter.target.dataset.filter])
 				}, () => {
-					this.changeChild(this.state.selectedChild === 'General' ? 'general' : this.state.childrens.find(c => c.name === this.state.selectedChild));
+					this.changeChild(this.state.selectedChild === 'Example' ? 'example' : this.state.childrens.find(c => c.name === this.state.selectedChild));
 				});
 			}
 		}
@@ -156,14 +156,14 @@ class Report extends Component {
 					data.splice(idx, 1);
 					data = [safe, ...data];
 					console.log(data);
-					this.setState({selectedChild: 'General', isOpen: false, childData: data, filterData: response.data, dataExists: safe.value !== 0});
+					this.setState({selectedChild: 'Example', isOpen: false, childData: data, filterData: response.data, dataExists: safe.value !== 0});
 				} else {
 					console.log('An error occurred: There is no data from the report API');
-					this.setState({selectedChild: 'General', isOpen: false, filterData: response.data, dataExists: false});
+					this.setState({selectedChild: 'Example', isOpen: false, filterData: response.data, dataExists: false});
 				}
 			}).catch(err => {
 				console.log(err);
-				this.setState({selectedChild: 'General', isOpen: false, dataExists: false})
+				this.setState({selectedChild: 'Example', isOpen: false, dataExists: false})
 			})
 		} else {
 			this.getChildData(this.state.childrens[+child]);
@@ -217,7 +217,7 @@ class Report extends Component {
 									})
 								}
 								<div>
-									<div data-child="general" onClick={this.changeChild}>General</div>
+									<div data-child="general" onClick={this.changeChild}>Example</div>
 								</div>
 							</DropdownMenu>
 						</ButtonDropdown>
