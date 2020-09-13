@@ -77,11 +77,7 @@ export default class Payement extends Component {
     }
 
     deleteLicence() {
-        if (this.props.base.logged) {
-            axios.post({
-
-            })
-        }
+       this.props.setLicence(null);
     }
 
 
@@ -93,16 +89,20 @@ export default class Payement extends Component {
                 <div className="row responsive-image">
                     <div className="col">
                         <span className="title-products">{displayContent(this.state.lang, i++, 'payement')}</span> <br/>
-                        <p className="description-txt h7-font">{this.props.base.licence.name}</p>
-                        <p className="description-txt">{this.props.base.licence.description}Blablablaazazazaz  Blablablaazazazaz Blablablaazazazaz Blablablaazazazaz</p>
+                        {
+                            this.props.base.licence ? <div> <p className="description-txt h7-font">{this.props.base.licence.name}</p>
+                                <p className="description-txt">{this.props.base.licence.desc}</p> </div> : null
+                        }
                         <button className="btn btn-danger float-right" onClick={this.deleteLicence}>
                             <img src={trash} alt="trash"/>
                         </button>
                     </div>
                     <div className="col-4 grey-background">
                         <span className="title-products">{displayContent(this.state.lang, i++, 'payement')}</span> <br/>
-                        <span className="options-margin float-left">{this.props.base.licence.name}</span>
-                        <span className="options-margin float-right">{this.props.base.licence.price}€</span> <br/>
+                        {
+                            this.props.base.licence ? <div> <span className="options-margin float-left">{this.props.base.licence.name}</span>
+                                <span className="options-margin float-right">{this.props.base.licence.price}€</span> <br/> </div> : null
+                        }
                         <button className="btn btn-success options-margin button-border" onClick={this.purchaseLicence}>{displayContent(this.state.lang, i++, 'payement')}</button>
                     </div>
                 </div>
