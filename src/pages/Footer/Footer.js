@@ -45,7 +45,7 @@ class Footer extends Component {
                 </span>
 					<br/>
 					<span>
-                    {displayContent(this.state.lang, i++, 'footer')}<br/>{displayContent(this.state.lang, i++, 'footer')}<a href="https://icones8.fr">icons8</a> <br/>
+                    {displayContent(this.state.lang, i++, 'footer')}<br/>{displayContent(this.state.lang, i++, 'footer')}<a href="https://icones8.fr">icons8</a> & <a href="https://www.flaticon.com/authors/dmitri13" title="dmitri13">dmitri13</a><br/>
                 </span>
 				</div>
 				<div className="button-footer row txt-align">

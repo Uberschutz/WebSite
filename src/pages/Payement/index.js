@@ -2,17 +2,17 @@ import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 
 import * as actions from '../../actions'
-import Subscription from './Subscription'
+import Payement from './Payement'
 
 const mapStateToProps = state => ({
     base: state.base,
 })
 
 const mapDispatchToProps = dispatch => ({
-    setLicence: bindActionCreators(actions.setLicence, dispatch)
+    setLicence: bindActionCreators(actions.setLicence, dispatch),
 
 })
 
-const SubscriptionContainer = connect(mapStateToProps, mapDispatchToProps)(Subscription)
+const PayementContainer = connect(mapStateToProps, mapDispatchToProps)(Payement)
 
-export default SubscriptionContainer
+export default PayementContainer

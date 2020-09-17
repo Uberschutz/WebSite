@@ -174,6 +174,15 @@ app.post('/change_email', async (req, res) => {
 	forward_response(res, result);
 })
 
+app.post('/email', async (req, res) => {
+	let result = await axios.post(`http://${server_url}:8081/email`, req.body, {
+		headers: {
+			'x-access-token': req.headers['x-access-token']
+		}
+	}).then(response => response).catch(err => err.response);
+	forward_response(res, result);
+})
+
 app.post('/change_password', async (req, res) => {
 	let result = await axios.post(`http://${server_url}:8081/change_password`, req.body, {
 		headers: {
