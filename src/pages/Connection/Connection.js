@@ -8,6 +8,7 @@ import Alert from "reactstrap/lib/Alert";
 import loading from "../../assets/Spinner-1s-70px.gif";
 
 import ReactGA from 'react-ga';
+import GoogleLogin from "react-google-login";
 
 const Link = require("react-router-dom").Link;
 
@@ -100,7 +101,23 @@ class Connection extends Component {
 		}
 	}
 
-    render() {
+	responseGoogle = response => {
+		console.log(response);
+		const { tokenId, googleId } = response;
+		console.log(tokenId, googleId);
+		axios.post('/google_sign_in', {
+			id_token: tokenId,
+			googleId
+		}).then(() => { this.props.setLogged(true); this.props.history.push('/')})
+			.catch(err => console.log(err));
+	};
+
+	errorGoogle = error => {
+		console.log(error);
+	};
+
+
+	render() {
 	    let i = 0;
         return (
             <div>
@@ -125,7 +142,20 @@ class Connection extends Component {
                             </div>
                             <input value={this.state.password} onChange={this.onChangePass} onKeyPress={this._handleKeyPressed} type="password" className="form-control" aria-label="Email"/>
                         </div>
-                        <button onClick={this.connect} type="button" className="btn btn-primary">{displayContent(this.state.lang, i++, 'connexion')}</button> <br/>
+                        <button onClick={this.connect} type="button" className="btn btn-primary">{displayContent(this.state.lang, i++, 'connexion')}</button>
+	                    <GoogleLogin
+		                    className="buttonAouth"
+		                    scope="profile email"
+		                    redirectUri={`${window.location.origin}/signin-google`}
+		                    responseType="id_token "
+		                    uxMode="redirect"
+		                    clientId="751613885657-pcp17lkg86ki4l1bin3ngv90dv3q1goc.apps.googleusercontent.com"
+		                    buttonText="Signin with Google"
+		                    onSuccess={this.responseGoogle}
+		                    onFailure={this.errorGoogle}
+		                    isSignedIn={true}
+	                    />
+	                    <br/>
                         {
                             this.state.requestSent ? <img src={loading} alt="loading"/>
                                 : null
