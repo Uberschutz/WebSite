@@ -15,16 +15,16 @@ class GoogleSignIn extends React.PureComponent {
 	}
 
 	componentDidMount() {
-		console.log(window.location);
+		// console.log(window.location);
 		const { hash } = window.location;
 		const id_token = hash.split('&')[1].slice('id_token='.length)
-		console.log(id_token);
+		// console.log(id_token);
 		this.LogGoogleUser(id_token);
 	}
 
 	LogGoogleUser = (id_token) => {
 		axios.post('/google_sign_in', {
-			id_token
+			id_token, registering: true
 		}).then(() => { this.setState({ redirect: true })})
 			.catch(err => console.log(err))/*.finally(() => this.setState({ redirect: true }));*/
 	};
@@ -32,7 +32,7 @@ class GoogleSignIn extends React.PureComponent {
 	render() {
 		if (this.state.redirect)
 		return (
-			<Redirect to={'/'}/>
+			<Redirect to={'/Connection'}/>
 		); return null;
 	}
 }

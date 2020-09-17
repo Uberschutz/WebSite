@@ -32,17 +32,21 @@ if (process.env.NODE_ENV && process.env.NODE_ENV === 'dev') {
 	server_url = credentials.vm_ip;
 }
 
-app.post('/google_sign_up', async (req, res) => {
-	let result = await axios.post(`http://${server_url}:8081/google_sign_up`, req.body)
-		.then(response => response).catch(err => err.response);
-	forward_response(res, result);
-})
+// app.post('/google_sign_up', async (req, res) => {
+// 	let result = await axios.post(`http://${server_url}:8081/google_sign_up`, req.body)
+// 		.then(response => response).catch(err => err.response);
+// 	forward_response(res, result);
+// })
 
 app.post('/google_sign_in', async (req, res) => {
 	axios.post(`http://${server_url}:8081/google_sign_in`, req.body)
 		.then(response => {
-			req.session.token = response.data.token;
-			res.status(response.status).send(response.data);
+			if (response.data) {
+				req.session.token = response.data.token;
+				res.status(response.status).send(response.data);
+			} else {
+				res.end();
+			}
 		}).catch(err => {
 		console.log(err);
 		if (err.response.status === 500) {

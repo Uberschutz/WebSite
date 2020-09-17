@@ -19,7 +19,6 @@ import DataCollect from "./pages/DataCollect";
 import DataInformations from "./pages/DataInformations"
 import Others from "./pages/Others";
 import Payement from "./pages/Payement"
-import GoogleSignUp from './pages/Google-SignUp';
 import GoogleSignIn from './pages/Google-SignIn';
 
 import { Provider } from 'react-redux';
@@ -74,7 +73,6 @@ const App = props => {
 			                    <Route path={'/DataInformations'} component={DataInformations}/>
 			                    <Route path={'/others'} component={Others}/>
 			                    <Route path={'/Payement'} component={Payement}/>
-			                    <Route path={'/signup-google'} component={GoogleSignUp} />
 			                    <Route path={'/signin-google'} component={GoogleSignIn} />
 			                    <Route path={'*'} component={NotFound}/>
 		                    </Switch>

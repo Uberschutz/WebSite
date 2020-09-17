@@ -102,9 +102,9 @@ class Connection extends Component {
 	}
 
 	responseGoogle = response => {
-		console.log(response);
+		// console.log(response);
 		const { tokenId, googleId } = response;
-		console.log(tokenId, googleId);
+		// console.log(tokenId, googleId);
 		axios.post('/google_sign_in', {
 			id_token: tokenId,
 			googleId
