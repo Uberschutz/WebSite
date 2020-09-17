@@ -44,31 +44,16 @@ export default class Payement extends Component {
         if (this.props.base.logged) {
             axios.post('/subscribe', {
                 subscription: this.props.base.licence
-            }, {
-                headers: {
-                    'x-access-token': this.props.base.token
-                }
             }).then(async response => {
 
-                const user = await axios.get('/get_auth_user', {
-                    headers: {
-                        'x-access-token': this.props.base.token
-                    }
-                })
-                const {
-                    lastname, email
-                } = user.data
-                axios.post('/email', {
-
+                const user = await axios.get('/get_auth_user')
+                const { lastname, email } = user.data
+                await axios.post('/email', {
                     name: lastname,
                     email: email,
                     message: "Bonjour, \nNous vous remercions de votre commande. Nous espérons que la protection d'Überschutz vous satisfera !\nN'hésitez pas à nous contacter sur test.controleparental.epitech@gmail.com pour toutes questions.\n\nBonne journée !\nL'équipe Uberschutz",
                     subject: "Votre commande Überschutz.online"
-                },{
-                headers: {
-                    'x-access-token': this.props.base.token
-                }}
-                )
+                })
                 this.props.history.push('/Profile');
             }).catch(err => {
                 console.log(err);
