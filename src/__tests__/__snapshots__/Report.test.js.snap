@@ -25,7 +25,7 @@ exports[`Testing the Report page rendering render Report being logged in english
             <div
               data-child="general"
             >
-              General
+              Example
             </div>
           </div>
         </div>
@@ -97,7 +97,7 @@ exports[`Testing the Report page rendering render Report being logged in french 
             <div
               data-child="general"
             >
-              General
+              Example
             </div>
           </div>
         </div>

@@ -272,7 +272,13 @@ exports[`Testing the whole app rendering renders whole application without crash
           >
             icons8
           </a>
-           
+           & 
+          <a
+            href="https://www.flaticon.com/authors/dmitri13"
+            title="dmitri13"
+          >
+            dmitri13
+          </a>
           <br />
         </span>
       </div>

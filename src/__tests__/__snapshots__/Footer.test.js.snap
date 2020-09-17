@@ -31,7 +31,13 @@ exports[`Testing the Footer component rendering renders Footer in english 1`] = 
         >
           icons8
         </a>
-         
+         & 
+        <a
+          href="https://www.flaticon.com/authors/dmitri13"
+          title="dmitri13"
+        >
+          dmitri13
+        </a>
         <br />
       </span>
     </div>
@@ -92,7 +98,13 @@ exports[`Testing the Footer component rendering renders Footer in french 1`] = `
         >
           icons8
         </a>
-         
+         & 
+        <a
+          href="https://www.flaticon.com/authors/dmitri13"
+          title="dmitri13"
+        >
+          dmitri13
+        </a>
         <br />
       </span>
     </div>
@@ -153,7 +165,13 @@ exports[`Testing the Footer component rendering renders Footer without crashing 
         >
           icons8
         </a>
-         
+         & 
+        <a
+          href="https://www.flaticon.com/authors/dmitri13"
+          title="dmitri13"
+        >
+          dmitri13
+        </a>
         <br />
       </span>
     </div>
