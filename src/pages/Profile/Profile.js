@@ -74,6 +74,7 @@ class Profile extends Component {
 		this.updateEmail = this.updateEmail.bind(this);
 		this.updatePassword = this.updatePassword.bind(this);
 		this.toggleModalDelete = this.toggleModalDelete.bind(this);
+		this.unsubscribe_licence = this.unsubscribe_licence.bind(this);
 	}
 
 	componentDidMount() {
@@ -102,7 +103,8 @@ class Profile extends Component {
 						lastname: response.data.lastname,
 						email: response.data.email,
 						newsletter: response.data.newsletter,
-						subscription: response.data.subscription
+						subscription: response.data.subscription,
+						subscribed : !!response.data.subscription
 					});
 				}
 			}).catch(err => {
@@ -139,6 +141,17 @@ class Profile extends Component {
 						})
 					}, 1000 * 5)
 			});
+		});
+	}
+
+	unsubscribe_licence() {
+		axios.post('/unsubscribe', {
+		}).then(response => {
+			this.setState({
+				subscribed: false,
+			});
+		}).catch(err => {
+			console.log(err);
 		});
 	}
 
@@ -436,6 +449,14 @@ class Profile extends Component {
 										this.state.newsletterAlert !== '' ? <Alert
 											color={this.state.statusErr ? "danger" : "success"}>{this.state.newsletterAlert}</Alert> : null
 									}
+								</div> : null
+						}
+						{
+							this.state.subscribed ?
+								<div>
+									<h6 className="right-btn">
+										Licence : <button className="btn btn-danger btn-sm" onClick={this.unsubscribe_licence}>Se désinscrire</button>
+									</h6>
 								</div> : null
 						}
 						<h6>
