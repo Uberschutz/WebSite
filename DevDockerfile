@@ -8,15 +8,15 @@ ENV NODE_ENV $NODE_ENV
 
 ENV REACT_APP_ANALYTICS $REACT_APP_ANALYTICS
 
-RUN mkdir -p /home/node/app/node_modules && chown -R node:node /home/node/app
-
 WORKDIR /home/node/app
+
+COPY package*.json ./
+
+RUN yarn install --silent --no-progress
 
 USER node
 
 COPY --chown=node:node . .
-
-RUN yarn install --silent --no-progress
 
 EXPOSE 8083
 
