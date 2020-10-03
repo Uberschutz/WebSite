@@ -53,7 +53,9 @@ class Profile extends Component {
 			requestPasswordSent: false,
 			deleteModal: false,
 			emailError: '',
-			passwordError: ''
+			passwordError: '',
+			isNewEmail: false,
+			isNewPassword: false
 		};
 		this._handleKeyPressed = this._handleKeyPressed.bind(this);
 		this.onChangeFirstname = this.onChangeFirstname.bind(this);
@@ -328,7 +330,8 @@ class Profile extends Component {
 					console.log(response.data);
 				this.setState({
 					requestEmailSent: false,
-					emailModal: false
+					emailModal: false,
+					isNewEmail : true
 				})
 			}).catch(err => {
 				console.log(err.response.data);
@@ -372,7 +375,8 @@ class Profile extends Component {
 				console.log(response.data);
 				this.setState({
 					requestPasswordSent: false,
-					passwordModal: false
+					passwordModal: false,
+					isNewPassword : true
 				})
 			}).catch(err => {
 				console.log(err.response.data);
@@ -397,6 +401,60 @@ class Profile extends Component {
 				noneData: displayContent(this.state.lang, 2, 'error'),
 			})
 		}
+	}
+
+	emailAlert() {
+		if (this.state.isNewEmail && !this.state.requestEmailSent) {
+			setTimeout(() => {
+				this.setState({
+					isNewEmail: false
+				})
+			}, 1000 * 10)
+			return (
+				<div>
+					<Alert color="success">{displayContent(this.state.lang, 11, 'modifications')}</Alert>
+				</div>
+			)
+		} else if (!this.state.requestEmailSent && this.state.emailError) {
+			setTimeout(() => {
+				this.setState({
+					emailError: false,
+				})
+			}, 1000 * 10)
+			return (
+				<div>
+					<Alert color="danger">{displayContent(this.state.lang, 12, 'modifications')}</Alert>
+				</div>
+			)
+		} else
+			return null;
+	}
+
+	passwordAlert() {
+		if (this.state.isNewPassword && !this.state.requestPasswordSent) {
+			setTimeout(() => {
+				this.setState({
+					isNewPassword: false
+				})
+			}, 1000 * 10)
+			return (
+				<div>
+					<Alert color="success">{displayContent(this.state.lang, 13, 'modifications')}</Alert>
+				</div>
+			)
+		} else if (!this.state.requestPasswordSent && this.state.passwordError) {
+			setTimeout(() => {
+				this.setState({
+					passwordError: false,
+				})
+			}, 1000 * 10)
+			return (
+				<div>
+					<Alert color="danger">{displayContent(this.state.lang, 14, 'modifications')}</Alert>
+				</div>
+			)
+		} else
+			return null;
 	}
 
     render() {
@@ -516,6 +574,9 @@ class Profile extends Component {
 							<button className="btn btn-danger" onClick={this.toggleModalEmail}>{displayContent(this.state.lang, j++, 'modifications')}</button>
 						</ModalFooter>
 					</Modal>
+					{
+						this.emailAlert()
+					}
 					<button type="button" className="btn btn-outline-dark options-margin" onClick={this.toggleModalPassword}>{displayContent(this.state.lang, i++, 'profile')}</button>
 					<Modal isOpen={this.state.passwordModal} size="lg" toggle={this.toggleModalPassword} centered={true}>
 						<ModalHeader>{displayContent(this.state.lang, j++, 'modifications')}</ModalHeader>
@@ -541,6 +602,9 @@ class Profile extends Component {
 							<button className="btn btn-danger" onClick={this.toggleModalPassword}>{displayContent(this.state.lang, j++, 'modifications')}</button>
 						</ModalFooter>
 					</Modal>
+					{
+						this.passwordAlert()
+					}
 				    <div className="row txt-align">
 						<button className="col-2 btn btn-primary options-margin" onClick={this.getAccountData}>{displayContent(this.state.lang, i++, 'profile')}</button>
 						<button className="col-2 btn btn-danger options-margin" onClick={this.toggleModalDelete}>{displayContent(this.state.lang, i++, 'profile')}</button>

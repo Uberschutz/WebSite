@@ -80,7 +80,9 @@
       ],
       "modifications": [
         "Modifier mon adresse email", "Nouvelle adresse email :", "Confirmer la nouvelle adresse email :", "Valider", "Annuler",
-        "Modifier mon mot de passe", "Ancien mot de passe :", "Nouveau mot de passe :", "Confirmer le nouveau mot de passe :", "Valider", "Annuler"
+        "Modifier mon mot de passe", "Ancien mot de passe :", "Nouveau mot de passe :", "Confirmer le nouveau mot de passe :", "Valider", "Annuler",
+        "Changement d'adresse email confirmé. Un email va vous être envoyé", "Un problème est survenu lors de votre modification d'adresse email.",
+        "Changement de mot de passe confirmé. Un email va vous être envoyé", "Un problème est survenu lors de votre modification de mot de passe"
       ],
       "report": [
         "Enfants",
@@ -345,7 +347,9 @@
       ],
       "modifications": [
         "Change my email address", "New email address:", "Confirm new email address:", "Validate", "Cancel",
-        "Change my password", "Old password:", "New password:", "Confirm new password:", "Validate", "Cancel"
+        "Change my password", "Old password:", "New password:", "Confirm new password:", "Validate", "Cancel",
+        "Email address change confirmed. An email will be sent to you", "A problem occurred while changing your email address.",
+        "Password change confirmed. An email will be sent to you", "A problem occurred while changing your password"
       ],
       "report": [
         "Kids",
