@@ -142,9 +142,9 @@ class Connection extends Component {
                             </div>
                             <input value={this.state.password} onChange={this.onChangePass} onKeyPress={this._handleKeyPressed} type="password" className="form-control" aria-label="Email"/>
                         </div>
-                        <button onClick={this.connect} type="button" className="btn btn-primary">{displayContent(this.state.lang, i++, 'connexion')}</button>
+                        <button onClick={this.connect} type="button" className="btn btn-primary">{displayContent(this.state.lang, i++, 'connexion')}</button> <br/>
 	                    <GoogleLogin
-		                    className="buttonAouth"
+		                    className="buttonAouth button-footer"
 		                    scope="profile email"
 		                    redirectUri={`${window.location.origin}/signin-google`}
 		                    responseType="id_token "
@@ -160,6 +160,9 @@ class Connection extends Component {
                             this.state.requestSent ? <img src={loading} alt="loading"/>
                                 : null
                         }
+						<Link to='/forgetPassword'>
+							Mot de passe oublié ?
+						</Link> <br/>
                     </div>
                 </div>
 	            {
