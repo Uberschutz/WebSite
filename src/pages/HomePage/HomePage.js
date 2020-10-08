@@ -56,11 +56,10 @@ class HomePage extends Component {
         return (
             <div>
                 <img src={canvas} alt="canvas" className="responsive-image"/>
-                <span className="text-span">
-	                {displayContent(this.state.lang, i++, 'home')}
-                    <br/> {displayContent(this.state.lang, i++, 'home')}
-                    <br/> {displayContent(this.state.lang, i++, 'home')}
-                </span>
+                <h1 className="text-span rappel-info h7-font">
+	                {displayContent(this.state.lang, i++, 'home')} {displayContent(this.state.lang, i++, 'home')} {displayContent(this.state.lang, i++, 'home')}
+                </h1>
+                <div className="dropdown-divider Home" style={{ borderBlockColor: 'black', marginTop: "4%", opacity: '30%', width: '50%', marginLeft: '25%'}}></div>
                 <div className="row responsive-image Home">
                     <div>
                         <br/><br/>
@@ -80,6 +79,7 @@ class HomePage extends Component {
                         </h8>
                     </div>
                 </div>
+                <div className="dropdown-divider Home" style={{ borderBlockColor: 'black', marginTop: "4%", opacity: '30%', width: '50%', marginLeft: '25%'}}></div>
                 <div className="Home responsive-image">
                     <br/><br/>
                     <h5 className="rappel-info h7-font">
@@ -90,20 +90,28 @@ class HomePage extends Component {
                         <div className="col">
                             <img src={software} alt="software"/>
                             <br/><br/>
-                            <span className="rappel-info">
-			                    {displayContent(this.state.lang, i++, 'home')}
-                            </span>
                         </div>
                         <div className="col responsive-image">
                             <img src={navigation} alt="navigation"/>
                             <br/><br/>
-                            <span className="rappel-info">
-        	                    {displayContent(this.state.lang, i++, 'home')}
-		                    </span>
                         </div>
                         <div className="col responsive-image">
                             <img src={blocking} alt="blocking"/>
                             <br/> <br/>
+                        </div>
+                    </div>
+                    <div className="row responsive-image">
+                        <div className="col">
+                            <span className="rappel-info">
+			                    {displayContent(this.state.lang, i++, 'home')}
+                            </span>
+                        </div>
+                        <div className="col">
+                            <span className="rappel-info">
+        	                    {displayContent(this.state.lang, i++, 'home')}
+		                    </span>
+                        </div>
+                        <div className="col">
                             <span className="rappel-info">
         	                    {displayContent(this.state.lang, i++, 'home')}
 		                    </span>

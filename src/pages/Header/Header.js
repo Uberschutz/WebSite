@@ -5,6 +5,7 @@ import '../../styles/HomePage.css';
 import logo from '../../assets/Uberschutz-Icon.png';
 import french from '../../assets/icons8-france-96.png';
 import english from '../../assets/icons8-grande-bretagne-48.png';
+import typo from '../../assets/Überschutz-typo-resize.png'
 
 import Navbar from 'reactstrap/lib/Navbar';
 import NavbarBrand from 'reactstrap/lib/NavbarBrand';
@@ -137,7 +138,9 @@ class Header extends Component {
             <div>
                 <Navbar className="navbar navbar-expand-sm uber-color" light expand="md">
                     <img src={logo} alt="logo" width={65} height={70}/>
-                    <NavbarBrand className="navbar-brand uber-color button-footer" href="/"> Überschutz</NavbarBrand>
+                    <NavbarBrand className="navbar-brand uber-color button-footer" href="/">
+                        <img src={typo} alt="typo"/>
+                    </NavbarBrand>
 	                {this.state.logged ? <text className="navbar-brand uber-color button-footer">{displayContent(this.state.lang, 0, 'navbar')} {this.state.lastname} !</text> : null}
 	                {this.state.logged ? <button onClick={this.disconnect}>{displayContent(this.state.lang, 1, 'navbar')}</button> : null}
                     <Collapse className="collapse navbar-collapse" isOpen={true} navbar>

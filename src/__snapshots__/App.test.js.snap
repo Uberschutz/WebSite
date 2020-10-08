@@ -19,7 +19,10 @@ exports[`Testing the whole app rendering renders whole application without crash
           class="navbar-brand uber-color button-footer navbar-brand"
           href="/"
         >
-           Überschutz
+          <img
+            alt="typo"
+            src="Überschutz-typo-resize.png"
+          />
         </a>
         <div
           class="collapse navbar-collapse collapse show navbar-collapse"
@@ -122,17 +125,19 @@ exports[`Testing the whole app rendering renders whole application without crash
         class="responsive-image"
         src="canvas2.png"
       />
-      <span
-        class="text-span"
+      <h1
+        class="text-span rappel-info h7-font"
       >
         Internet :
-        <br />
          
         êtes-vous conscients des dangers
-        <br />
          
         que rencontrent vos enfants ?
-      </span>
+      </h1>
+      <div
+        class="dropdown-divider Home"
+        style="border-block-color: black; margin-top: 4%; width: 50%; margin-left: 25%;"
+      />
       <div
         class="row responsive-image Home"
       >
@@ -168,6 +173,10 @@ exports[`Testing the whole app rendering renders whole application without crash
         </div>
       </div>
       <div
+        class="dropdown-divider Home"
+        style="border-block-color: black; margin-top: 4%; width: 50%; margin-left: 25%;"
+      />
+      <div
         class="Home responsive-image"
       >
         <br />
@@ -191,11 +200,6 @@ exports[`Testing the whole app rendering renders whole application without crash
             />
             <br />
             <br />
-            <span
-              class="rappel-info"
-            >
-              Un logiciel
-            </span>
           </div>
           <div
             class="col responsive-image"
@@ -206,11 +210,6 @@ exports[`Testing the whole app rendering renders whole application without crash
             />
             <br />
             <br />
-            <span
-              class="rappel-info"
-            >
-              Non bloquant
-            </span>
           </div>
           <div
             class="col responsive-image"
@@ -222,6 +221,32 @@ exports[`Testing the whole app rendering renders whole application without crash
             <br />
              
             <br />
+          </div>
+        </div>
+        <div
+          class="row responsive-image"
+        >
+          <div
+            class="col"
+          >
+            <span
+              class="rappel-info"
+            >
+              Un logiciel
+            </span>
+          </div>
+          <div
+            class="col"
+          >
+            <span
+              class="rappel-info"
+            >
+              Non bloquant
+            </span>
+          </div>
+          <div
+            class="col"
+          >
             <span
               class="rappel-info"
             >

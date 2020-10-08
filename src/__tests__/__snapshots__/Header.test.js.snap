@@ -16,7 +16,10 @@ exports[`Testing the Header component rendering render Header being logged in en
         class="navbar-brand uber-color button-footer navbar-brand"
         href="/"
       >
-         Überschutz
+        <img
+          alt="typo"
+          src="Überschutz-typo-resize.png"
+        />
       </a>
       <div
         class="collapse navbar-collapse collapse show navbar-collapse"
@@ -132,7 +135,10 @@ exports[`Testing the Header component rendering render Header being logged in fr
         class="navbar-brand uber-color button-footer navbar-brand"
         href="/"
       >
-         Überschutz
+        <img
+          alt="typo"
+          src="Überschutz-typo-resize.png"
+        />
       </a>
       <div
         class="collapse navbar-collapse collapse show navbar-collapse"
@@ -248,7 +254,10 @@ exports[`Testing the Header component rendering render Header not being logged i
         class="navbar-brand uber-color button-footer navbar-brand"
         href="/"
       >
-         Überschutz
+        <img
+          alt="typo"
+          src="Überschutz-typo-resize.png"
+        />
       </a>
       <div
         class="collapse navbar-collapse collapse show navbar-collapse"
@@ -364,7 +373,10 @@ exports[`Testing the Header component rendering render Header not being logged i
         class="navbar-brand uber-color button-footer navbar-brand"
         href="/"
       >
-         Überschutz
+        <img
+          alt="typo"
+          src="Überschutz-typo-resize.png"
+        />
       </a>
       <div
         class="collapse navbar-collapse collapse show navbar-collapse"
@@ -480,7 +492,10 @@ exports[`Testing the Header component rendering renders Header without crashing 
         class="navbar-brand uber-color button-footer navbar-brand"
         href="/"
       >
-         Überschutz
+        <img
+          alt="typo"
+          src="Überschutz-typo-resize.png"
+        />
       </a>
       <div
         class="collapse navbar-collapse collapse show navbar-collapse"
