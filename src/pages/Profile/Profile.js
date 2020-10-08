@@ -55,7 +55,8 @@ class Profile extends Component {
 			emailError: '',
 			passwordError: '',
 			isNewEmail: false,
-			isNewPassword: false
+			isNewPassword: false,
+			licenceModal: false
 		};
 		this._handleKeyPressed = this._handleKeyPressed.bind(this);
 		this.onChangeFirstname = this.onChangeFirstname.bind(this);
@@ -77,6 +78,7 @@ class Profile extends Component {
 		this.updatePassword = this.updatePassword.bind(this);
 		this.toggleModalDelete = this.toggleModalDelete.bind(this);
 		this.unsubscribe_licence = this.unsubscribe_licence.bind(this);
+		this.toggleModalLicence = this.toggleModalLicence.bind(this);
 	}
 
 	componentDidMount() {
@@ -151,6 +153,7 @@ class Profile extends Component {
 		}).then(response => {
 			this.setState({
 				subscribed: false,
+				licenceModal: false
 			});
 		}).catch(err => {
 			console.log(err);
@@ -276,6 +279,15 @@ class Profile extends Component {
 				() => this.setState({deleteModal: !this.state.deleteModal}));
 		} else {
 			this.setState({deleteModal: !this.state.deleteModal});
+		}
+	}
+
+	toggleModalLicence() {
+		if (this.state.licenceModal) {
+			this.setState({},
+				() => this.setState({licenceModal : !this.state.licenceModal}));
+		} else {
+			this.setState({licenceModal : !this.state.licenceModal});
 		}
 	}
 
@@ -513,10 +525,17 @@ class Profile extends Component {
 							this.state.subscribed ?
 								<div>
 									<h6 className="right-btn">
-										Licence : <button className="btn btn-danger btn-sm" onClick={this.unsubscribe_licence}>Se désinscrire</button>
+										Licence : <button className="btn btn-danger btn-sm" onClick={this.toggleModalLicence}>Se désinscrire</button>
 									</h6>
 								</div> : null
 						}
+						<Modal isOpen={this.state.licenceModal} size="lg" toggle={this.toggleModalLicence} centered={true}>
+							<ModalHeader>Êtes-vous sûre de vouloir supprimer votre licence ?</ModalHeader>
+							<ModalBody centered={true} className="txt-align">
+								<button className="btn btn-primary options-margin" onClick={this.unsubscribe_licence}>Oui</button>
+								<button className="btn btn-danger options-margin" onClick={this.toggleModalLicence}>Non</button>
+							</ModalBody>
+						</Modal>
 						<h6>
 							{displayContent(this.state.lang, i++, 'profile')}
 						</h6><br/>
