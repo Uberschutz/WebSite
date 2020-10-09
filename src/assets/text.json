@@ -112,6 +112,9 @@
       "inComing": [
         "A venir ..."
       ],
+      "forgetPassword" : [
+        "Mot de passe oublié", "Complétez le formulaire pour en recevoir un nouveau :", "Envoyer"
+      ],
       "others": [
         "Nos autres services",
         "L'application mobile Überschutz : ", "Le plug-in d'analyse d'activité Internet : "
@@ -378,6 +381,9 @@
       ],
       "inComing": [
         "In coming ..."
+      ],
+      "forgetPassword" : [
+        "Forgot your password", "Complete the form to receive a new one:", "Send"
       ],
       "others": [
         "Our other services",

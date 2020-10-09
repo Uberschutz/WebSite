@@ -20,7 +20,7 @@ import DataInformations from "./pages/DataInformations"
 import Others from "./pages/Others";
 import Payement from "./pages/Payement"
 import GoogleSignIn from './pages/Google-SignIn';
-import forgetPassword from "./pages/forgetPassword/forgetPassword";
+import forgetPassword from "./pages/forgetPassword";
 
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware, compose } from 'redux'

@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import '../../styles/bootstrap.css';
+import '../../styles/HomePage.css';
 import {displayContent} from "../../utils/translationDisplay";
 
 import ReactGA from 'react-ga';
@@ -36,7 +38,24 @@ export default class forgetPassword extends Component {
         let i = 0;
         return (
             <div className="responsive-image">
-                <span>Coucou</span>
+                <br/>
+                <div className="card text-white bg-dark box-center">
+                    <div className="card-body bg-dark item-align text-align">
+                        <h5 className="card-title text-align">
+                            {displayContent(this.state.lang, i++, 'forgetPassword')}
+                        </h5>
+                        <p className="card-text">
+                            {displayContent(this.state.lang, i++, 'forgetPassword')}
+                        </p>
+                        <div className="input-group mb-3">
+                            <div className="input-group-prepend">
+                                <span className="input-group-text" id="inputGroup-sizing-default">Email</span>
+                            </div>
+                            <input /*value={this.state.email} onChange={this.onChangeEmail} onKeyPress={this._handleKeyPressed}*/ type="text" className="form-control" aria-label="Email"/>
+                        </div>
+                        <button /*onClick={this.connect}*/ type="button" className="btn btn-primary button-footer">{displayContent(this.state.lang, i++, 'forgetPassword')}</button> <br/>
+                    </div>
+                </div>
             </div>
         );
     }
