@@ -14,7 +14,7 @@ COPY package*.json ./
 
 RUN yarn install --silent --no-progress
 
-USER node
+##USER node
 
 COPY --chown=node:node . .
 
