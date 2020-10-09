@@ -14,8 +14,6 @@ COPY package*.json ./
 
 RUN yarn install --silent --no-progress
 
-##USER node
-
 COPY --chown=node:node . .
 
 EXPOSE 8080
@@ -23,5 +21,7 @@ EXPOSE 8080
 ENV PORT 8080
 
 RUN yarn run build
+
+USER node
 
 CMD [ "node", "Server.js" ]
