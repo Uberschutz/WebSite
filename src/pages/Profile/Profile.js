@@ -82,7 +82,8 @@ class Profile extends Component {
 	}
 
 	componentDidMount() {
-		if (process.env.REACT_APP_ANALYTICS === 'true') {
+		const cookieConsent = cookies.get('Universal-cookieAnalytics') || false;
+		if (process.env.REACT_APP_ANALYTICS === 'true' && cookieConsent) {
 			ReactGA.pageview(window.location.pathname + window.location.search);
 		}
 		if (this.props.base) {

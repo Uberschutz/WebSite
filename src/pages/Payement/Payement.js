@@ -6,7 +6,10 @@ import "../../styles/Contact.css";
 import trash from "../../assets/icons8-delete-bin-24.png";
 
 import ReactGA from 'react-ga';
+import Cookies from "universal-cookie/lib";
 import axios from "axios";
+
+const cookies = new Cookies();
 
 export default class Payement extends Component {
 
@@ -22,7 +25,8 @@ export default class Payement extends Component {
     }
 
     componentDidMount() {
-        if (process.env.REACT_APP_ANALYTICS === 'true') {
+        const cookieConsent = cookies.get('Universal-cookieAnalytics') || false;
+        if (process.env.REACT_APP_ANALYTICS === 'true' && cookieConsent) {
             ReactGA.pageview(window.location.pathname + window.location.search);
         }
         if (this.props.base) {

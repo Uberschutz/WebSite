@@ -12,11 +12,13 @@ import ModalBody from "reactstrap/lib/ModalBody";
 import ModalFooter from "reactstrap/lib/ModalFooter";
 
 import ReactGA from 'react-ga';
+import Cookies from "universal-cookie/lib";
 
 import newsletter from '../../assets/icons8-email-100.png';
 import loading from '../../assets/Spinner-1s-70px.gif';
 
 const Link = require("react-router-dom").Link;
+const cookies = new Cookies();
 
 class Contact extends Component {
     constructor(props) {
@@ -34,7 +36,8 @@ class Contact extends Component {
     }
 
 	componentDidMount() {
-		if (process.env.REACT_APP_ANALYTICS === 'true') {
+        const cookieConsent = cookies.get('Universal-cookieAnalytics') || false;
+		if (process.env.REACT_APP_ANALYTICS === 'true' && cookieConsent) {
 			ReactGA.pageview(window.location.pathname + window.location.search);
 		}
     	if (this.props.base) {

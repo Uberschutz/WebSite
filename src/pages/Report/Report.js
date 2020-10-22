@@ -10,11 +10,14 @@ import { displayContent } from '../../utils/translationDisplay';
 import axios from 'axios';
 
 import ReactGA from 'react-ga';
+import Cookies from "universal-cookie/lib";
 
 import bad from '../../assets/icons8-triste-80.png'
 import neutral from '../../assets/icons8-neutre-80.png'
 import good from '../../assets/icons8-content-80.png'
 import Unauthorized from "../Unauthorized";
+
+const cookies = new Cookies();
 
 class Report extends Component {
 
@@ -39,7 +42,8 @@ class Report extends Component {
 	}
 
 	componentDidMount() {
-		if (process.env.REACT_APP_ANALYTICS === 'true') {
+		const cookieConsent = cookies.get('Universal-cookieAnalytics') || false;
+		if (process.env.REACT_APP_ANALYTICS === 'true' && cookieConsent) {
 			ReactGA.pageview(window.location.pathname + window.location.search);
 		}
 		if (this.props.base) {

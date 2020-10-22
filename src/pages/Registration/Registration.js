@@ -4,11 +4,14 @@ import '../../styles/Connection.css';
 
 import ReactGA from 'react-ga';
 import GoogleLogin from "react-google-login";
+import Cookies from "universal-cookie/lib";
 
 import axios from "axios";
 import {displayContent, displayHttpMessages} from "../../utils/translationDisplay";
 import Alert from "reactstrap/lib/Alert";
 import loading from "../../assets/Spinner-1s-70px.gif";
+
+const cookies = new Cookies();
 
 class Registration extends Component {
 
@@ -44,7 +47,8 @@ class Registration extends Component {
             if (this.props.history)
                 this.props.history.push('/DataCollect');
         }
-	    if (process.env.REACT_APP_ANALYTICS === 'true') {
+        const cookieConsent = cookies.get('Universal-cookieAnalytics') || false;
+	    if (process.env.REACT_APP_ANALYTICS === 'true' && cookieConsent) {
 		    ReactGA.pageview(window.location.pathname + window.location.search);
 	    }
         if (this.props.base) {

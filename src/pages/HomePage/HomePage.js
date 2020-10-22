@@ -3,6 +3,7 @@ import '../../styles/bootstrap.css';
 import '../../styles/HomePage.css';
 
 import ReactGA from 'react-ga';
+import Cookies from "universal-cookie/lib";
 
 import canvas from '../../assets/canvas2.png';
 import whois from '../../assets/CacherPseudo.jpg';
@@ -11,6 +12,8 @@ import navigation from '../../assets/icons8-carte-au-trésor-150.png'
 import blocking from '../../assets/icons8-cadenas-100.png'
 
 import { displayContent } from '../../utils/translationDisplay';
+
+const cookies = new Cookies();
 
 class HomePage extends Component {
 	constructor(props) {
@@ -22,7 +25,8 @@ class HomePage extends Component {
     };
 
 	componentDidMount() {
-		if (process.env.REACT_APP_ANALYTICS === 'true') {
+        const cookieConsent = cookies.get('Universal-cookieAnalytics') || false;
+		if (process.env.REACT_APP_ANALYTICS === 'true' && cookieConsent) {
 			ReactGA.pageview(window.location.pathname + window.location.search);
 		}
 		if (this.props.base) {

@@ -9,8 +9,10 @@ import loading from "../../assets/Spinner-1s-70px.gif";
 
 import ReactGA from 'react-ga';
 import GoogleLogin from "react-google-login";
+import Cookies from "universal-cookie/lib";
 
 const Link = require("react-router-dom").Link;
+const cookies = new Cookies();
 
 class Connection extends Component {
 	constructor(props) {
@@ -35,7 +37,8 @@ class Connection extends Component {
     }
 
 	componentDidMount() {
-		if (process.env.REACT_APP_ANALYTICS === 'true') {
+		const cookieConsent = cookies.get('Universal-cookieAnalytics') || false;
+		if (process.env.REACT_APP_ANALYTICS === 'true' && cookieConsent) {
 			ReactGA.pageview(window.location.pathname + window.location.search);
 		}
 		if (this.props.base) {

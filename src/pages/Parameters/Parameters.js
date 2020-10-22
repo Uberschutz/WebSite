@@ -11,11 +11,14 @@ import Button from 'reactstrap/lib/Button';
 import Icon from 'antd/lib/icon/index';
 
 import ReactGA from 'react-ga';
+import Cookies from "universal-cookie/lib";
 
 import DisplayChildrenList from '../../components/ChildCards';
 import OptionsList from '../../components/OptionsList';
 import { displayContent } from '../../utils/translationDisplay';
 import Unauthorized from ".././Unauthorized";
+
+const cookies = new Cookies();
 
 class Parameters extends Component {
 	constructor(props) {
@@ -48,7 +51,8 @@ class Parameters extends Component {
 	}
 
 	componentDidMount() {
-		if (process.env.REACT_APP_ANALYTICS === 'true') {
+		const cookieConsent = cookies.get('Universal-cookieAnalytics') || false;
+		if (process.env.REACT_APP_ANALYTICS === 'true' && cookieConsent) {
 			ReactGA.pageview(window.location.pathname + window.location.search);
 		}
 		if (this.props.base) {
