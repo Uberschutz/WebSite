@@ -19,6 +19,7 @@ import { displayContent } from '../../utils/translationDisplay';
 import axios from 'axios';
 
 import Cookies from "universal-cookie/lib";
+import CookieConsent from "react-cookie-consent";
 
 const cookies = new Cookies();
 const Link = require("react-router-dom").Link;
@@ -131,11 +132,50 @@ class Header extends Component {
 	    this.setState({logged: false, lastname: undefined});
     }
 
+    acceptGACookies() {
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','__gaTracker');
+        // Ici on desactive les cookie
+        //__gaTracker('create', gaProperty, { 'storage': 'none', 'clientId': '0'});
+        //__gaTracker('send', 'event', 'page', 'load', {'nonInteraction': 1});
+    }
+
+    declineGACookies(name) {
+        var path = ";path=" + "/";
+        var expiration = "Thu, 01-Jan-1970 00:00:01 GMT";
+        var cookieNames = ["__utma","__utmb","__utmc","__utmz","_ga","_gat"]
+
+        for (var i=0; i<cookieNames.length; i++)
+            document.cookie = name + "=" + path +" ; "+ "uberschutz.online" + ";expires=" + expiration;
+            //delCookie(cookieNames[i])
+    }
+
     render () {
         let i = 2;
 
         return (
             <div>
+                <CookieConsent
+                    location="bottom"
+                    cookieName="Universal-cookieAnalyticss"
+                    style={{ background: "#2B373B", height: "13%", textAlign: "justify" }}
+                    buttonText="I accept"
+                    buttonStyle={{ backgroundColor: "#27ae60", color: "#000000" }}
+                    enableDeclineButton={true}
+                    declineButtonStyle={{ backgroundColor: "#e53935", color: "#000000" }}
+                    expires={365}
+                    onAccept={() => {this.acceptGACookies()}}
+                    onDecline={() => {this.declineGACookies()}}>
+                    We use cookies and similar technologies ("cookies") to provide and secure our websites, as well as to analyze the usage of our websites, in order to offer you a great user experience.<br/>
+                    To learn more about our use of cookies see our Data Collect information.<br/>
+                    Select "I accept" to consent to this use, "I decline" to reject this use, or "More info" to control our cookies' use.
+                    <Link to={'/DataInformations'}>
+                        <button className="btn btn-primary more-info">More info</button>
+                    </Link>
+                </CookieConsent>
+
                 <Navbar className="navbar navbar-expand-sm uber-color" light expand="md">
                     <img src={logo} alt="logo" width={65} height={70}/>
                     <NavbarBrand className="navbar-brand uber-color button-footer" href="/">

@@ -71,3 +71,8 @@
 .drop {
     min-width: 0!important;
 }
+
+.more-info {
+    right: 1%;
+    position: absolute;
+}
