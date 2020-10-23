@@ -16,6 +16,7 @@ import DropdownMenu from 'reactstrap/lib/DropdownMenu'
 import DropdownToggle from 'reactstrap/lib/DropdownToggle'
 import ButtonDropdown from 'reactstrap/lib/ButtonDropdown'
 import { displayContent } from '../../utils/translationDisplay';
+import { withRouter } from 'react-router-dom';
 import axios from 'axios';
 
 import Cookies from "universal-cookie/lib";
@@ -138,6 +139,7 @@ class Header extends Component {
 
     declineGACookies() {
        cookies.set('Universal-cookieAnalytics', false);
+        this.props.history.push("/NotFound");
     }
 
     render () {
@@ -221,4 +223,4 @@ class Header extends Component {
     }
 }
 
-export default Header;
+export default withRouter(Header);

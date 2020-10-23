@@ -164,7 +164,7 @@ class Connection extends Component {
                                 : null
                         }
 						<Link to='/forgetPassword'>
-							Mot de passe oublié ?
+							{displayContent(this.state.lang, 0, 'forgetPassword')} ?
 						</Link> <br/>
                     </div>
                 </div>
