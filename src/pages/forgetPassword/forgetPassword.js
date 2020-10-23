@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import '../../styles/bootstrap.css';
 import '../../styles/HomePage.css';
 import {displayContent} from "../../utils/translationDisplay";
+import axios from 'axios';
 
 import ReactGA from 'react-ga';
 import Cookies from "universal-cookie/lib";
@@ -15,6 +16,7 @@ export default class forgetPassword extends Component {
 
         this.state = {
             lang: 'fr',
+            email: ''
         };
     }
 
@@ -38,6 +40,26 @@ export default class forgetPassword extends Component {
         }
     }
 
+    _handleKeyPressed = (e) => {
+        if (e.key === 'Enter') {
+            this.runForgotPassword();
+        }
+    }
+
+    onChangeEmail = (email) => {
+        this.setState({ email: email.target.value });
+    }
+
+    runForgotPassword = () => {
+        axios.post('/forgot_password', {
+            email: this.state.email
+        }).then(response => {
+            console.log('forgot password request successful');
+        }).catch(err => {
+            console.log(err);
+        })
+    }
+
     render() {
         let i = 0;
         return (
@@ -55,9 +77,9 @@ export default class forgetPassword extends Component {
                             <div className="input-group-prepend">
                                 <span className="input-group-text" id="inputGroup-sizing-default">Email</span>
                             </div>
-                            <input /*value={this.state.email} onChange={this.onChangeEmail} onKeyPress={this._handleKeyPressed}*/ type="text" className="form-control" aria-label="Email"/>
+                            <input value={this.state.email} onChange={this.onChangeEmail} onKeyPress={this._handleKeyPressed} type="text" className="form-control" aria-label="Email"/>
                         </div>
-                        <button /*onClick={this.connect}*/ type="button" className="btn btn-primary button-footer">{displayContent(this.state.lang, i++, 'forgetPassword')}</button> <br/>
+                        <button onClick={this.runForgotPassword} type="button" className="btn btn-primary button-footer">{displayContent(this.state.lang, i++, 'forgetPassword')}</button> <br/>
                     </div>
                 </div>
             </div>

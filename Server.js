@@ -208,6 +208,12 @@ app.post('/email', async (req, res) => {
 	forward_response(res, result);
 })
 
+app.post('/forgot_password', async (req, res) => {
+	let result = await axios.post(`http://${server_url}:8081/forgot_password`, req.body)
+		.then(response => response).catch(err => err.response);
+	forward_response(res, result);
+})
+
 app.post('/change_password', async (req, res) => {
 	let result = await axios.post(`http://${server_url}:8081/change_password`, req.body, {
 		headers: {
