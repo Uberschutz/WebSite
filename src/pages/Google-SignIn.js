@@ -23,6 +23,7 @@ class GoogleSignIn extends React.PureComponent {
 	}
 
 	LogGoogleUser = (id_token) => {
+		console.log('registering in redirection');
 		axios.post('/google_sign_in', {
 			id_token, registering: true
 		}).then(() => { this.setState({ redirect: true })})

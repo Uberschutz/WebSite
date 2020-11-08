@@ -5,7 +5,7 @@ services:
         depends_on:
           - user_db
         environment:
-          - MONGOKU_DEFAULT_HOST='mongodb://127.0.0.1:27117;${UZ_root_user}:${UZ_root_password}@user_db:27117'
+          - MONGOKU_DEFAULT_HOST='user_db;${UZ_root_user}:${UZ_root_password}@user_db:27117'
         ports:
           - "3100:3100"
     caddy:
