@@ -103,6 +103,7 @@ class Connection extends Component {
 
 	responseGoogle = response => {
 		// console.log(response);
+		console.log('connection in page');
 		const { tokenId, googleId } = response;
 		// console.log(tokenId, googleId);
 		axios.post('/google_sign_in', {
@@ -146,14 +147,16 @@ class Connection extends Component {
 	                    <GoogleLogin
 		                    className="buttonAouth button-footer"
 		                    scope="profile email"
-		                    redirectUri={`${window.location.origin}/signin-google`}
+		                    // redirectUri={`${window.location.origin}/signin-google`}
 		                    responseType="id_token "
-		                    uxMode="redirect"
+		                    // uxMode="redirect"
 		                    clientId="751613885657-pcp17lkg86ki4l1bin3ngv90dv3q1goc.apps.googleusercontent.com"
 		                    buttonText="Signin with Google"
 		                    onSuccess={this.responseGoogle}
 		                    onFailure={this.errorGoogle}
-		                    isSignedIn={true}
+		                    prompt="select_account"
+		                    // autoLoad={true}
+		                    // isSignedIn={true}
 	                    />
 	                    <br/>
                         {

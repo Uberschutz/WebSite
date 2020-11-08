@@ -137,6 +137,22 @@ class Registration extends Component {
         this.setState({isChecked: !this.state.isChecked});
     }
 
+    responseGoogle = response => {
+        // console.log(response);
+        console.log('registering in page');
+        const { tokenId, googleId } = response;
+        // console.log(tokenId, googleId);
+        axios.post('/google_sign_in', {
+            id_token: tokenId,
+            registering: true
+        }).then(() => { this.props.history.push('/Connection')})
+            .catch(err => console.log(err));
+    };
+
+    errorGoogle = error => {
+        console.log(error);
+    };
+
     render() {
         let i = 0;
         return (
@@ -192,6 +208,21 @@ class Registration extends Component {
                         }
 
                         <button type="button" className="btn btn-primary" onClick={this.register}>{displayContent(this.state.lang, i++, 'registration')}</button>
+                        <GoogleLogin
+                            className="buttonAouth button-footer"
+                            scope="profile email"
+                            redirectUri={`${window.location.origin}/signin-google`}
+                            responseType="id_token "
+                            uxMode="redirect"
+                            clientId="751613885657-pcp17lkg86ki4l1bin3ngv90dv3q1goc.apps.googleusercontent.com"
+                            buttonText="Signup with Google"
+                            onSuccess={this.responseGoogle}
+                            // onSuccess={() => console.log('registering')}
+                            onFailure={this.errorGoogle}
+                            prompt="select_account"
+                            autoLoad={false}
+                            // isSignedIn={true}
+                        />
                         <br/>
                         {this.state.alphaSurname || this.state.alphaName ?
                             <span className="address text-danger">{displayContent(this.state.lang, i, 'registration')}</span> : null}

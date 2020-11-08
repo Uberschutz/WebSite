@@ -81,6 +81,8 @@ app.post('/get_data', (req, res) => {
 
 app.get('/disconnect', (req, res) => {
 	req.session = null;
+	// req.cache = null;
+	// req.cookies = null;
 	res.end();
 })
 
