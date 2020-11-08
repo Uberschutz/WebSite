@@ -147,16 +147,12 @@ class Connection extends Component {
 	                    <GoogleLogin
 		                    className="buttonAouth button-footer"
 		                    scope="profile email"
-		                    // redirectUri={`${window.location.origin}/signin-google`}
 		                    responseType="id_token "
-		                    // uxMode="redirect"
 		                    clientId="751613885657-pcp17lkg86ki4l1bin3ngv90dv3q1goc.apps.googleusercontent.com"
 		                    buttonText="Signin with Google"
 		                    onSuccess={this.responseGoogle}
 		                    onFailure={this.errorGoogle}
 		                    prompt="select_account"
-		                    // autoLoad={true}
-		                    // isSignedIn={true}
 	                    />
 	                    <br/>
                         {

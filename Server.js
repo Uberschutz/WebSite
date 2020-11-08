@@ -95,7 +95,7 @@ app.get('/get_auth_user', (req, res) => {
 	}).then(response => {
 		res.send(response.data);
 	}).catch(err => {
-		res.status(err.response.status).send(err.response.data);
+		res.status(err.response?.status || 500).send(err.response?.data || "Internal server error");
 	})
 });
 
