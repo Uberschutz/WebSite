@@ -33,6 +33,7 @@ exports[`Testing the whole app rendering renders whole application without crash
           class=""
         >
           <button
+            aria-label="Decline cookies"
             class=""
             id="rcc-decline-button"
             style="background: rgb(193, 42, 42); border: 0px; border-radius: 0px; box-shadow: none; color: rgb(0, 0, 0); cursor: pointer; flex: 0 0 auto; padding: 5px 10px; margin: 15px; background-color: rgb(229, 57, 53);"
@@ -40,6 +41,7 @@ exports[`Testing the whole app rendering renders whole application without crash
             I decline
           </button>
           <button
+            aria-label="Accept cookies"
             class=""
             id="rcc-confirm-button"
             style="background: rgb(255, 212, 45); border: 0px; border-radius: 0px; box-shadow: none; color: rgb(0, 0, 0); cursor: pointer; flex: 0 0 auto; padding: 5px 10px; margin: 15px; background-color: rgb(39, 174, 96);"
