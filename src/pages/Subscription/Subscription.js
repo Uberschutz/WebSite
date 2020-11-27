@@ -99,8 +99,14 @@ export default class Subscription extends Component {
                                 {displayContent(this.state.lang, i++, 'subscription')}<br/>
                                 {displayContent(this.state.lang, i++, 'subscription')}<br/>
                                 {displayContent(this.state.lang, i++, 'subscription')}<br/>
-                                <button type="button" className="btn btn-success button-border"
-                                        onClick={this.redirectInComing}>{displayContent(this.state.lang, i++, 'subscription')}</button>
+                                {/*<button type="button" className="btn btn-success button-border"
+                                        onClick={this.redirectInComing}>{displayContent(this.state.lang, i++, 'subscription')}</button>*/}
+                                        <button type="button" className="btn btn-success button-border">
+                                            <a href={'https://chrome.google.com/webstore/detail/uberschutz/cldanlbcckgoghkmafniabilnofocfog?hl=fr&authuser=0'} target="_blank" style={{ color:'white' }}>
+                                                {displayContent(this.state.lang, i++, 'subscription')}
+                                            </a>
+                                        </button>
+
                                 <br/>
                             </div>
                             <div className="col-sm">
