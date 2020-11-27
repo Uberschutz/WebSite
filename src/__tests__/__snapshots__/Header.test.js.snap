@@ -30,7 +30,6 @@ exports[`Testing the Header component rendering render Header being logged in en
         class=""
       >
         <button
-          aria-label="Decline cookies"
           class=""
           id="rcc-decline-button"
           style="background: rgb(193, 42, 42); border: 0px; border-radius: 0px; box-shadow: none; color: rgb(0, 0, 0); cursor: pointer; flex: 0 0 auto; padding: 5px 10px; margin: 15px; background-color: rgb(229, 57, 53);"
@@ -38,7 +37,6 @@ exports[`Testing the Header component rendering render Header being logged in en
           I decline
         </button>
         <button
-          aria-label="Accept cookies"
           class=""
           id="rcc-confirm-button"
           style="background: rgb(255, 212, 45); border: 0px; border-radius: 0px; box-shadow: none; color: rgb(0, 0, 0); cursor: pointer; flex: 0 0 auto; padding: 5px 10px; margin: 15px; background-color: rgb(39, 174, 96);"
@@ -193,7 +191,6 @@ exports[`Testing the Header component rendering render Header being logged in fr
         class=""
       >
         <button
-          aria-label="Decline cookies"
           class=""
           id="rcc-decline-button"
           style="background: rgb(193, 42, 42); border: 0px; border-radius: 0px; box-shadow: none; color: rgb(0, 0, 0); cursor: pointer; flex: 0 0 auto; padding: 5px 10px; margin: 15px; background-color: rgb(229, 57, 53);"
@@ -201,7 +198,6 @@ exports[`Testing the Header component rendering render Header being logged in fr
           I decline
         </button>
         <button
-          aria-label="Accept cookies"
           class=""
           id="rcc-confirm-button"
           style="background: rgb(255, 212, 45); border: 0px; border-radius: 0px; box-shadow: none; color: rgb(0, 0, 0); cursor: pointer; flex: 0 0 auto; padding: 5px 10px; margin: 15px; background-color: rgb(39, 174, 96);"
@@ -356,7 +352,6 @@ exports[`Testing the Header component rendering render Header not being logged i
         class=""
       >
         <button
-          aria-label="Decline cookies"
           class=""
           id="rcc-decline-button"
           style="background: rgb(193, 42, 42); border: 0px; border-radius: 0px; box-shadow: none; color: rgb(0, 0, 0); cursor: pointer; flex: 0 0 auto; padding: 5px 10px; margin: 15px; background-color: rgb(229, 57, 53);"
@@ -364,7 +359,6 @@ exports[`Testing the Header component rendering render Header not being logged i
           I decline
         </button>
         <button
-          aria-label="Accept cookies"
           class=""
           id="rcc-confirm-button"
           style="background: rgb(255, 212, 45); border: 0px; border-radius: 0px; box-shadow: none; color: rgb(0, 0, 0); cursor: pointer; flex: 0 0 auto; padding: 5px 10px; margin: 15px; background-color: rgb(39, 174, 96);"
@@ -519,7 +513,6 @@ exports[`Testing the Header component rendering render Header not being logged i
         class=""
       >
         <button
-          aria-label="Decline cookies"
           class=""
           id="rcc-decline-button"
           style="background: rgb(193, 42, 42); border: 0px; border-radius: 0px; box-shadow: none; color: rgb(0, 0, 0); cursor: pointer; flex: 0 0 auto; padding: 5px 10px; margin: 15px; background-color: rgb(229, 57, 53);"
@@ -527,7 +520,6 @@ exports[`Testing the Header component rendering render Header not being logged i
           I decline
         </button>
         <button
-          aria-label="Accept cookies"
           class=""
           id="rcc-confirm-button"
           style="background: rgb(255, 212, 45); border: 0px; border-radius: 0px; box-shadow: none; color: rgb(0, 0, 0); cursor: pointer; flex: 0 0 auto; padding: 5px 10px; margin: 15px; background-color: rgb(39, 174, 96);"
@@ -682,7 +674,6 @@ exports[`Testing the Header component rendering renders Header without crashing 
         class=""
       >
         <button
-          aria-label="Decline cookies"
           class=""
           id="rcc-decline-button"
           style="background: rgb(193, 42, 42); border: 0px; border-radius: 0px; box-shadow: none; color: rgb(0, 0, 0); cursor: pointer; flex: 0 0 auto; padding: 5px 10px; margin: 15px; background-color: rgb(229, 57, 53);"
@@ -690,7 +681,6 @@ exports[`Testing the Header component rendering renders Header without crashing 
           I decline
         </button>
         <button
-          aria-label="Accept cookies"
           class=""
           id="rcc-confirm-button"
           style="background: rgb(255, 212, 45); border: 0px; border-radius: 0px; box-shadow: none; color: rgb(0, 0, 0); cursor: pointer; flex: 0 0 auto; padding: 5px 10px; margin: 15px; background-color: rgb(39, 174, 96);"
