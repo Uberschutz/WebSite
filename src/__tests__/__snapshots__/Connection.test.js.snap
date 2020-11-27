@@ -119,7 +119,8 @@ exports[`Testing the Connection page rendering render Connection in english 1`] 
         <a
           href="/forgetPassword"
         >
-          Mot de passe oublié ?
+          Forgot your password
+           ?
         </a>
          
         <br />
@@ -264,7 +265,8 @@ exports[`Testing the Connection page rendering render Connection in french 1`] =
         <a
           href="/forgetPassword"
         >
-          Mot de passe oublié ?
+          Mot de passe oublié
+           ?
         </a>
          
         <br />
@@ -409,7 +411,8 @@ exports[`Testing the Connection page rendering renders Connection without crashi
         <a
           href="/forgetPassword"
         >
-          Mot de passe oublié ?
+          Mot de passe oublié
+           ?
         </a>
          
         <br />

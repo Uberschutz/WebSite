@@ -96,7 +96,7 @@
         "Prénom", "Annuler","Prénom invalide", "Supprimer", "Éditer", "Nouveau", "Créer", "Sauvegarder", "Age invalide"
       ],
       "options": [
-        "Rapports", "Uberschutz", "Alertes", "Publicités"
+        "Rapports", "Uberschutz", "Alertes", "Publicités", "Images"
       ],
       "confirm": [
         "Votre compte a bien été confirmé !", " Merci !",
@@ -248,6 +248,10 @@
           {
             "key": "Unauthorized request",
             "translate": "Requête non autorisée"
+          },
+          {
+            "key": "Connection failed",
+            "translate": "Connexion échouée"
           }
         ]
       },
@@ -366,7 +370,7 @@
         "Name", "Cancel","Invalid Name", "Delete", "Edit", "New", "Create", "Save", "Invalid Age"
       ],
       "options": [
-        "Reports", "Uberschutz", "Alerts", "Adds"
+        "Reports", "Uberschutz", "Alerts", "Ads", "Images"
       ],
       "confirm": [
         "Your account has been confirmed!", "Thank you!",

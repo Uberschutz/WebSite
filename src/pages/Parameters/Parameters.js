@@ -115,7 +115,7 @@ class Parameters extends Component {
 				name: this.state.name,
 				age: this.state.age,
 				options: this.state.options,
-				discordId: this.state.discordId
+				// discordId: this.state.discordId
 			}).then(response => {
 				console.log(response.data);
 				this.setState({childrens: response.data}, () => this.toggleModal());
@@ -129,7 +129,7 @@ class Parameters extends Component {
 				newName: this.state.name,
 				age: this.state.age,
 				options: this.state.options,
-				discordId: this.state.discordId
+				// discordId: this.state.discordId
 			}).then(response => {
 				console.log(response.data);
 				this.setState({childrens: response.data}, () => this.toggleModal());
@@ -146,7 +146,7 @@ class Parameters extends Component {
 			state: 'Save',
 			id: this.state.childrens.indexOf(children),
 			options: children.options,
-			discordId: children.discordId
+			// discordId: children.discordId
 		}, () => this.toggleModal());
 	}
 
@@ -229,12 +229,12 @@ class Parameters extends Component {
 								{
 									this.state.numErr? (<Alert color="danger">{displayContent(this.state.lang, 8, 'parameters')}</Alert>) : null
 								}
-								<label className="child-field">
+								{/*<label className="child-field">
 									Discord ID (Bêta)<br/>
 									<input className="child-field" type="text"
 										   value={this.state.discordId}
 										   onChange={this.setDiscordId}/>
-								</label>
+								</label>*/}
 								<br/> <br/>
 							</div>
 							<ModalHeader className="tag-header" style={{backgroundColor:"#3498db"}}>Paramètres de protection</ModalHeader>

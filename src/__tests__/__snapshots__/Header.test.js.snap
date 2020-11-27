@@ -3,6 +3,50 @@
 exports[`Testing the Header component rendering render Header being logged in english 1`] = `
 <div>
   <div>
+    <div
+      class="CookieConsent"
+      style="align-items: baseline; background: rgb(43, 55, 59); color: white; display: flex; flex-wrap: wrap; justify-content: space-between; left: 0px; position: fixed; width: 100%; z-index: 999; height: 13%; text-align: justify; bottom: 0px;"
+    >
+      <div
+        class=""
+        style="flex: 1 0 300px; margin: 15px;"
+      >
+        We use cookies and similar technologies ("cookies") to provide and secure our websites, as well as to analyze the usage of our websites, in order to offer you a great user experience.
+        <br />
+        To learn more about our use of cookies see our Data Collect information.
+        <br />
+        Select "I accept" to consent to this use, "I decline" to reject this use, or "More info" to control our cookies' use.
+        <a
+          href="/DataInformations"
+        >
+          <button
+            class="btn btn-primary more-info"
+          >
+            More info
+          </button>
+        </a>
+      </div>
+      <div
+        class=""
+      >
+        <button
+          aria-label="Decline cookies"
+          class=""
+          id="rcc-decline-button"
+          style="background: rgb(193, 42, 42); border: 0px; border-radius: 0px; box-shadow: none; color: rgb(0, 0, 0); cursor: pointer; flex: 0 0 auto; padding: 5px 10px; margin: 15px; background-color: rgb(229, 57, 53);"
+        >
+          I decline
+        </button>
+        <button
+          aria-label="Accept cookies"
+          class=""
+          id="rcc-confirm-button"
+          style="background: rgb(255, 212, 45); border: 0px; border-radius: 0px; box-shadow: none; color: rgb(0, 0, 0); cursor: pointer; flex: 0 0 auto; padding: 5px 10px; margin: 15px; background-color: rgb(39, 174, 96);"
+        >
+          I accept
+        </button>
+      </div>
+    </div>
     <nav
       class="navbar navbar-expand-sm uber-color navbar navbar-expand-md navbar-light"
     >
@@ -122,6 +166,50 @@ exports[`Testing the Header component rendering render Header being logged in en
 exports[`Testing the Header component rendering render Header being logged in french 1`] = `
 <div>
   <div>
+    <div
+      class="CookieConsent"
+      style="align-items: baseline; background: rgb(43, 55, 59); color: white; display: flex; flex-wrap: wrap; justify-content: space-between; left: 0px; position: fixed; width: 100%; z-index: 999; height: 13%; text-align: justify; bottom: 0px;"
+    >
+      <div
+        class=""
+        style="flex: 1 0 300px; margin: 15px;"
+      >
+        We use cookies and similar technologies ("cookies") to provide and secure our websites, as well as to analyze the usage of our websites, in order to offer you a great user experience.
+        <br />
+        To learn more about our use of cookies see our Data Collect information.
+        <br />
+        Select "I accept" to consent to this use, "I decline" to reject this use, or "More info" to control our cookies' use.
+        <a
+          href="/DataInformations"
+        >
+          <button
+            class="btn btn-primary more-info"
+          >
+            More info
+          </button>
+        </a>
+      </div>
+      <div
+        class=""
+      >
+        <button
+          aria-label="Decline cookies"
+          class=""
+          id="rcc-decline-button"
+          style="background: rgb(193, 42, 42); border: 0px; border-radius: 0px; box-shadow: none; color: rgb(0, 0, 0); cursor: pointer; flex: 0 0 auto; padding: 5px 10px; margin: 15px; background-color: rgb(229, 57, 53);"
+        >
+          I decline
+        </button>
+        <button
+          aria-label="Accept cookies"
+          class=""
+          id="rcc-confirm-button"
+          style="background: rgb(255, 212, 45); border: 0px; border-radius: 0px; box-shadow: none; color: rgb(0, 0, 0); cursor: pointer; flex: 0 0 auto; padding: 5px 10px; margin: 15px; background-color: rgb(39, 174, 96);"
+        >
+          I accept
+        </button>
+      </div>
+    </div>
     <nav
       class="navbar navbar-expand-sm uber-color navbar navbar-expand-md navbar-light"
     >
@@ -241,6 +329,50 @@ exports[`Testing the Header component rendering render Header being logged in fr
 exports[`Testing the Header component rendering render Header not being logged in english 1`] = `
 <div>
   <div>
+    <div
+      class="CookieConsent"
+      style="align-items: baseline; background: rgb(43, 55, 59); color: white; display: flex; flex-wrap: wrap; justify-content: space-between; left: 0px; position: fixed; width: 100%; z-index: 999; height: 13%; text-align: justify; bottom: 0px;"
+    >
+      <div
+        class=""
+        style="flex: 1 0 300px; margin: 15px;"
+      >
+        We use cookies and similar technologies ("cookies") to provide and secure our websites, as well as to analyze the usage of our websites, in order to offer you a great user experience.
+        <br />
+        To learn more about our use of cookies see our Data Collect information.
+        <br />
+        Select "I accept" to consent to this use, "I decline" to reject this use, or "More info" to control our cookies' use.
+        <a
+          href="/DataInformations"
+        >
+          <button
+            class="btn btn-primary more-info"
+          >
+            More info
+          </button>
+        </a>
+      </div>
+      <div
+        class=""
+      >
+        <button
+          aria-label="Decline cookies"
+          class=""
+          id="rcc-decline-button"
+          style="background: rgb(193, 42, 42); border: 0px; border-radius: 0px; box-shadow: none; color: rgb(0, 0, 0); cursor: pointer; flex: 0 0 auto; padding: 5px 10px; margin: 15px; background-color: rgb(229, 57, 53);"
+        >
+          I decline
+        </button>
+        <button
+          aria-label="Accept cookies"
+          class=""
+          id="rcc-confirm-button"
+          style="background: rgb(255, 212, 45); border: 0px; border-radius: 0px; box-shadow: none; color: rgb(0, 0, 0); cursor: pointer; flex: 0 0 auto; padding: 5px 10px; margin: 15px; background-color: rgb(39, 174, 96);"
+        >
+          I accept
+        </button>
+      </div>
+    </div>
     <nav
       class="navbar navbar-expand-sm uber-color navbar navbar-expand-md navbar-light"
     >
@@ -360,6 +492,50 @@ exports[`Testing the Header component rendering render Header not being logged i
 exports[`Testing the Header component rendering render Header not being logged in french 1`] = `
 <div>
   <div>
+    <div
+      class="CookieConsent"
+      style="align-items: baseline; background: rgb(43, 55, 59); color: white; display: flex; flex-wrap: wrap; justify-content: space-between; left: 0px; position: fixed; width: 100%; z-index: 999; height: 13%; text-align: justify; bottom: 0px;"
+    >
+      <div
+        class=""
+        style="flex: 1 0 300px; margin: 15px;"
+      >
+        We use cookies and similar technologies ("cookies") to provide and secure our websites, as well as to analyze the usage of our websites, in order to offer you a great user experience.
+        <br />
+        To learn more about our use of cookies see our Data Collect information.
+        <br />
+        Select "I accept" to consent to this use, "I decline" to reject this use, or "More info" to control our cookies' use.
+        <a
+          href="/DataInformations"
+        >
+          <button
+            class="btn btn-primary more-info"
+          >
+            More info
+          </button>
+        </a>
+      </div>
+      <div
+        class=""
+      >
+        <button
+          aria-label="Decline cookies"
+          class=""
+          id="rcc-decline-button"
+          style="background: rgb(193, 42, 42); border: 0px; border-radius: 0px; box-shadow: none; color: rgb(0, 0, 0); cursor: pointer; flex: 0 0 auto; padding: 5px 10px; margin: 15px; background-color: rgb(229, 57, 53);"
+        >
+          I decline
+        </button>
+        <button
+          aria-label="Accept cookies"
+          class=""
+          id="rcc-confirm-button"
+          style="background: rgb(255, 212, 45); border: 0px; border-radius: 0px; box-shadow: none; color: rgb(0, 0, 0); cursor: pointer; flex: 0 0 auto; padding: 5px 10px; margin: 15px; background-color: rgb(39, 174, 96);"
+        >
+          I accept
+        </button>
+      </div>
+    </div>
     <nav
       class="navbar navbar-expand-sm uber-color navbar navbar-expand-md navbar-light"
     >
@@ -479,6 +655,50 @@ exports[`Testing the Header component rendering render Header not being logged i
 exports[`Testing the Header component rendering renders Header without crashing in any language 1`] = `
 <div>
   <div>
+    <div
+      class="CookieConsent"
+      style="align-items: baseline; background: rgb(43, 55, 59); color: white; display: flex; flex-wrap: wrap; justify-content: space-between; left: 0px; position: fixed; width: 100%; z-index: 999; height: 13%; text-align: justify; bottom: 0px;"
+    >
+      <div
+        class=""
+        style="flex: 1 0 300px; margin: 15px;"
+      >
+        We use cookies and similar technologies ("cookies") to provide and secure our websites, as well as to analyze the usage of our websites, in order to offer you a great user experience.
+        <br />
+        To learn more about our use of cookies see our Data Collect information.
+        <br />
+        Select "I accept" to consent to this use, "I decline" to reject this use, or "More info" to control our cookies' use.
+        <a
+          href="/DataInformations"
+        >
+          <button
+            class="btn btn-primary more-info"
+          >
+            More info
+          </button>
+        </a>
+      </div>
+      <div
+        class=""
+      >
+        <button
+          aria-label="Decline cookies"
+          class=""
+          id="rcc-decline-button"
+          style="background: rgb(193, 42, 42); border: 0px; border-radius: 0px; box-shadow: none; color: rgb(0, 0, 0); cursor: pointer; flex: 0 0 auto; padding: 5px 10px; margin: 15px; background-color: rgb(229, 57, 53);"
+        >
+          I decline
+        </button>
+        <button
+          aria-label="Accept cookies"
+          class=""
+          id="rcc-confirm-button"
+          style="background: rgb(255, 212, 45); border: 0px; border-radius: 0px; box-shadow: none; color: rgb(0, 0, 0); cursor: pointer; flex: 0 0 auto; padding: 5px 10px; margin: 15px; background-color: rgb(39, 174, 96);"
+        >
+          I accept
+        </button>
+      </div>
+    </div>
     <nav
       class="navbar navbar-expand-sm uber-color navbar navbar-expand-md navbar-light"
     >

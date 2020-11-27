@@ -154,7 +154,8 @@ class Profile extends Component {
 		}).then(response => {
 			this.setState({
 				subscribed: false,
-				licenceModal: false
+				licenceModal: false,
+				subscription: null
 			});
 		}).catch(err => {
 			console.log(err);
@@ -504,7 +505,7 @@ class Profile extends Component {
 						<h6>
 							{displayContent(this.state.lang, i++, 'profile')}<br/><br/>
 							{displayContent(this.state.lang, i++, 'profile')}
-							<span>{this.state.subscription}</span>
+							<span>{this.state.subscribed ? this.state.subscription : null}</span>
 						</h6>
 						{
 							++i && this.state.newsletter ?
