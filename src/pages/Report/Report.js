@@ -55,7 +55,6 @@ class Report extends Component {
 					axios.post('/children', {
 						action: 'list'
 					}).then(response => {
-						console.log(response.data);
 						this.setState({
 							childrens: response.data
 						});
@@ -71,6 +70,10 @@ class Report extends Component {
 		if (this.props.base !== prevProps.base) {
 			this.setState({lang: this.props.base.language, logged: this.props.base.logged}, () => console.log('re'));
 		}
+		if (this.props.base.language !== prevProps.base.language && this.props.base.language === 'fr' && prevState.selectedChild === 'Example')
+			this.setState({ selectedChild: 'Exemple' });
+		if (this.props.base.language !== prevProps.base.language && this.props.base.language === 'en' && prevState.selectedChild === 'Exemple')
+			this.setState({ selectedChild: 'Example' });
 	}
 
 	toggle() {
@@ -91,7 +94,6 @@ class Report extends Component {
 			let idx = this.state.filters.indexOf(filter.target.dataset.filter);
 			filters.splice(idx, 1);
 			if (filters.length === 1 && this.state.filterData.length > 0) {
-				console.log(this.state.filterData, 'deleting', filters[0]);
 				let data = this.state.filterData.find(obj => obj.key === filters[0]).value.map(obj => {
 					return {name: this.capitalize(obj.name.toLowerCase()), value: obj.percentValue};
 				});
@@ -99,7 +101,6 @@ class Report extends Component {
 				const safe = data[idx];
 				data.splice(idx, 1);
 				data = [safe, ...data];
-				console.log('Editing filter and data (deletion)', data, filters);
 				this.setState({
 					filters: filters,
 					childData: data
@@ -119,7 +120,6 @@ class Report extends Component {
 			}
 		} else {
 			if (this.state.filters.length === 0 && this.state.filterData.length > 0) {
-				console.log(this.state.filterData, 'adding', this.state.filters);
 				let data = this.state.filterData.find(obj => obj.key === filter.target.dataset.filter).value.map(obj => {
 					return {name: this.capitalize(obj.name.toLowerCase()), value: obj.percentValue};
 				});
@@ -127,32 +127,35 @@ class Report extends Component {
 				const safe = data[idx];
 				data.splice(idx, 1);
 				data = [safe, ...data];
-				console.log('Editing filter and data (addition)', data, filter.target.dataset.filter);
 				this.setState({
 					filters: this.state.filters.concat([filter.target.dataset.filter]),
 					childData: data
 				});
 			} else {
-				console.log('request', this.state.filters, filter.target.dataset.filter, this.state.selectedChild)
 				this.setState({
 					filters: this.state.filters.concat([filter.target.dataset.filter])
 				}, () => {
-					this.changeChild(this.state.selectedChild === 'Example' ? 'example' : this.state.childrens.find(c => c.name === this.state.selectedChild));
+					this.changeChild((this.state.selectedChild === 'Example' || this.state.selectedChild === 'Exemple') ? 'general' : this.state.childrens.find(c => c.name === this.state.selectedChild));
 				});
 			}
 		}
 	}
 
 	changeChild(data) {
-		const child = data.target.dataset.child;
+		// console.log(data, data.target, data.target.dataset);
+		const child = data?.target?.dataset?.child || data;
 		if (!Number.isInteger(+child) && child === 'general') {
 			axios.post('/get_data', {
 				services: this.state.filters
 			}).then(response => {
-				const values = response.data.find(obj => obj.key === 'All').value;
+				const datas = Object.keys(response.data).map(key => {
+					return { key, value: response.data[key] };
+				});
+				// const values = response.data.find(obj => obj.key === 'All');
+				const values = datas.find(obj => obj.key === 'All').value;
 				let data;
 				if (values.length > 0) {
-					data = response.data.find(obj => obj.key === 'All').value.map(obj => {
+					data = datas.find(obj => obj.key === 'All').value.map(obj => {
 						return {name: this.capitalize(obj.name.toLowerCase()), value: obj.percentValue};
 					});
 					const idx = data.findIndex(d => d.name === 'Safe');
@@ -160,17 +163,17 @@ class Report extends Component {
 					data.splice(idx, 1);
 					data = [safe, ...data];
 					console.log(data);
-					this.setState({selectedChild: 'Example', isOpen: false, childData: data, filterData: response.data, dataExists: safe.value !== 0});
+					this.setState({selectedChild: this.props.base.language === 'en' ? 'Example' : 'Exemple', isOpen: false, childData: data, filterData: datas, dataExists: safe.value !== 0});
 				} else {
 					console.log('An error occurred: There is no data from the report API');
-					this.setState({selectedChild: 'Example', isOpen: false, filterData: response.data, dataExists: false});
+					this.setState({selectedChild: this.props.base.language === 'en' ? 'Example' : 'Exemple', isOpen: false, filterData: datas, dataExists: false});
 				}
 			}).catch(err => {
 				console.log(err);
-				this.setState({selectedChild: 'Example', isOpen: false, dataExists: false})
+				this.setState({selectedChild: this.props.base.language === 'en' ? 'Example' : 'Exemple', isOpen: false, dataExists: false})
 			})
 		} else {
-			this.getChildData(this.state.childrens[+child]);
+			this.getChildData(this.state.childrens[+child] || 'general');
 		}
 	}
 
@@ -179,20 +182,24 @@ class Report extends Component {
 			discordId: child.discordId,
 			services: this.state.filters
 		}).then(response => {
-			const values = response.data.find(obj => obj.key === 'All').value;
+			const datas = Object.keys(response.data).map(key => {
+				return { key, value: response.data[key] };
+			});
+			// const values = response.data.find(obj => obj.key === 'All');
+			const values = datas.find(obj => obj.key === 'All').value;
 			let data;
 			if (values.length > 0) {
-				data = response.data.find(obj => obj.key === 'All').value.map(obj => {
+				data = datas.find(obj => obj.key === 'All').value.map(obj => {
 					return {name: this.capitalize(obj.name.toLowerCase()), value: obj.percentValue};
 				});
 				const idx = data.findIndex(d => d.name === 'Safe');
 				const safe = data[idx];
 				data.splice(idx, 1);
 				data = [safe, ...data];
-				this.setState({selectedChild: child.name, isOpen: false, childData: data, filterData: response.data, dataExists: safe.value !== 0});
+				this.setState({selectedChild: child.name, isOpen: false, childData: data, filterData: datas, dataExists: safe.value !== 0});
 			} else {
 				console.log('An error occurred: There is no data from the report API');
-				this.setState({selectedChild: child.name, isOpen: false, filterData: response.data, dataExists: false});
+				this.setState({selectedChild: child.name, isOpen: false, filterData: datas, dataExists: false});
 			}
 		}).catch(err => {
 			console.log(err);
@@ -221,7 +228,7 @@ class Report extends Component {
 									})
 								}
 								<div>
-									<div data-child="general" onClick={this.changeChild}>Example</div>
+									<div data-child="general" onClick={this.changeChild}>{this.props.base.language === 'en' ? 'Example' : 'Exemple'}</div>
 								</div>
 							</DropdownMenu>
 						</ButtonDropdown>

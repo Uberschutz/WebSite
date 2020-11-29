@@ -57,17 +57,13 @@ app.post('/google_sign_in', async (req, res) => {
 	});
 })
 
-app.post('/get_data', (req, res) => {
-	let data = `token=${credentials.token}&type=text`;
-	if (req.body.discordId) {
-		data += `&userId=${req.body.discordId}`
-	}
-	if (req.body.services) {
-		data += `&services=${req.body.services.join(';')}`
-	}
+app.post('/get_data', async (req, res) => {
+	const data = { userId: req.body.discordId, services: req.body.services.join(';') };
+	const { data: { token } } = await axios.post(`${credentials.api_ip}/login`);
 	axios.post(`${credentials.api_ip}/collect`, data, {
 		headers: {
-			'Content-Type': 'application/x-www-form-urlencoded'
+			'Content-Type': 'application/json',
+			'Token': token
 		}
 	}).then(response => {
 		res.send(response.data.datas);
