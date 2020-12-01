@@ -87,7 +87,7 @@
       "report": [
         "Enfants",
         "Filtres :", "Navigation internet",
-        "Sain", "Adulte", "Attaque d'identité", "Inflammatoire", "Insulte", "Médical", "Obscénité", "Vulgarité", "Racisme", "Toxicité Sévère", "Menace", "Toxicité", "Violence"
+        "Sain", "Attaque d'identité", "Inflammatoire", "Insulte", "Obscénité", "Vulgarité", "Toxicité Sévère", "Menace", "Toxicité"
         ],
       "summary": [
         "La navigation Internet de ", "est à ", "% saine", "Les données Internet de ", "n'ont pas pu être récupérées"
@@ -361,8 +361,7 @@
       "report": [
         "Kids",
         "Filters:", "Internet browsing",
-        "Safe", "Adult", "Identity Attack", "Inflammatory", "Insult", "Medical", "Obscene", "Profanity", "Racy", "Severe Toxicity", "Threat", "Toxicity", "Violence"
-
+        "Safe", "Identity Attack", "Inflammatory", "Insult", "Obscene", "Profanity", "Severe Toxicity", "Threat", "Toxicity"
       ],
       "summary" : [
         "Internet browsing of ", "is at ", "% safe", "Internet data of ", "could not be recovered"

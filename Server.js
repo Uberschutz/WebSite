@@ -57,22 +57,62 @@ app.post('/google_sign_in', async (req, res) => {
 	});
 })
 
-app.post('/get_data', async (req, res) => {
-	const data = { userId: req.body.discordId, services: req.body.services.join(';') };
-	const { data: { token } } = await axios.post(`${credentials.api_ip}/login`);
-	axios.post(`${credentials.api_ip}/collect`, data, {
+const requestV1 = async (body) => {
+	let data = `token=${credentials.token}&type=text`;
+	if (body.discordId) {
+		data += `&userId=${body.discordId}`
+	}
+	if (body.services) {
+		data += `&services=${body.services.join(';')}`
+	}
+	const res = await axios.post(`${credentials.api_ip_v1}/collect`, data, {
 		headers: {
-			'Content-Type': 'application/json',
-			'Token': token
+			'Content-Type': 'application/x-www-form-urlencoded'
 		}
 	}).then(response => {
-		res.send(response.data.datas);
+		return response?.data?.datas;
 	}).catch(err => {
-		if (err.response)
-			res.status(err.response.status).send(err.response.data.message);
-		else
-			res.status(500).send('Internal server error');
+		console.log(err);
+		return null;
 	});
+	const result = { };
+	res.forEach(d => {
+		result[d.key] = d.value;
+	});
+	return result;
+}
+
+app.post('/get_data', async (req, res) => {
+	try {
+		const data = { userId: req.body.discordId, services: req.body.services.join(';'), type: 'text' };
+		const result = await axios.post(`${credentials.api_ip}/login`).catch(err => {
+			if (err.response)
+				res.status(err.response?.status || 500).send(err.response?.data?.message || 'Internal Server Error');
+			else
+				res.status(500).send('Internal server error');
+		});
+		if (!result) return;
+		const { data: { token } } = result;
+		axios.post(`${credentials.api_ip}/collect`, data, {
+			headers: {
+				'Content-Type': 'application/json',
+				'Token': token
+			}
+		}).then(response => {
+			console.log(response.data.datas);
+			res.send(response.data.datas);
+		}).catch(async err => {
+			const v1Data = await requestV1(req.body);
+			if (v1Data) return res.send(v1Data);
+			if (err.response)
+				res.status(err.response?.status || 500).send(err.response?.data?.message || 'Internal Server Error');
+			else
+				res.status(500).send('Internal server error');
+		});
+	} catch (e) {
+		console.log(e);
+		res.status(500).send('Internal server error');
+	}
 });
 
 app.get('/disconnect', (req, res) => {
@@ -348,6 +388,30 @@ function forward_response(res, promise) {
 	else
 		res.status(500).send('Internal server error');
 }
+
+process.on('unhandledRejection', (reason, promise) => {
+	console.log('Unhandled Rejection at:', promise, 'reason:', reason);
+	// Application specific logging, throwing an error, or other logic here
+	// We ensure that the server does not exit on unhandled rejections
+});
+
+process.on('unhandledPromiseRejection', (reason, promise) => {
+	console.log('Unhandled Promise Rejection at:', promise, 'reason:', reason);
+	// Application specific logging, throwing an error, or other logic here
+	// We ensure that the server does not exit on unhandled rejections
+});
+
+process.on('unhandledRejection', (reason, promise) => {
+	console.log('Unhandled Rejection at:', promise, 'reason:', reason);
+	// Application specific logging, throwing an error, or other logic here
+	// We ensure that the server does not exit on unhandled rejections
+});
+
+process.on('uncaughtException', (reason, promise) => {
+	console.log('Unhandled uncaught exception at:', promise, 'reason:', reason);
+	// Application specific logging, throwing an error, or other logic here
+	// We ensure that the server does not exit on unhandled rejections
+});
 
 app.listen(PORT, () =>
 	console.log(`Server listening on ${PORT}`)
