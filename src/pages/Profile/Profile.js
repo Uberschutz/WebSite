@@ -538,39 +538,39 @@ class Profile extends Component {
 								<button className="btn btn-danger options-margin" onClick={this.toggleModalLicence}>Non</button>
 							</ModalBody>
 						</Modal>
-						<h6>
-							{displayContent(this.state.lang, i++, 'profile')}
-						</h6><br/>
-						<table className="table">
-							<thead className="table-primary">
-							<tr>
-								<th scope="col">Date</th>
-								<th scope="col">{displayContent(this.state.lang, i++, 'profile')}</th>
-								<th scope="col">{displayContent(this.state.lang, i++, 'profile')}</th>
-							</tr>
-							</thead>
-							<tbody>
-							<tr>
-								<th scope="row">22/05/2019</th>
-								<td>Achat d'Überschutz Premium</td>
-								<td>
-									<Icon type="check-circle" theme="twoTone"
-										  twoToneColor="#52c41a"/>
-								</td>
-							</tr>
-							<tr>
-								<th scope="row">25/05/2019</th>
-								<td>Prélèvement n°1 Überschutz Premium</td>
-								<td>En cours ...</td>
-							</tr>
-							<tr>
-								<th scope="row">25/06/2019</th>
-								<td>Prélèvement n°2 Überschutz Premium</td>
-								<td>Prochainement</td>
-							</tr>
-							</tbody>
-						</table>
-						<br/>
+						{/*<h6>*/}
+						{/*	{displayContent(this.state.lang, i++, 'profile')}*/}
+						{/*</h6><br/>*/}
+						{/*<table className="table">*/}
+						{/*	<thead className="table-primary">*/}
+						{/*	<tr>*/}
+						{/*		<th scope="col">Date</th>*/}
+						{/*		<th scope="col">{displayContent(this.state.lang, i++, 'profile')}</th>*/}
+						{/*		<th scope="col">{displayContent(this.state.lang, i++, 'profile')}</th>*/}
+						{/*	</tr>*/}
+						{/*	</thead>*/}
+						{/*	<tbody>*/}
+						{/*	<tr>*/}
+						{/*		<th scope="row">22/05/2019</th>*/}
+						{/*		<td>Achat d'Überschutz Premium</td>*/}
+						{/*		<td>*/}
+						{/*			<Icon type="check-circle" theme="twoTone"*/}
+						{/*				  twoToneColor="#52c41a"/>*/}
+						{/*		</td>*/}
+						{/*	</tr>*/}
+						{/*	<tr>*/}
+						{/*		<th scope="row">25/05/2019</th>*/}
+						{/*		<td>Prélèvement n°1 Überschutz Premium</td>*/}
+						{/*		<td>En cours ...</td>*/}
+						{/*	</tr>*/}
+						{/*	<tr>*/}
+						{/*		<th scope="row">25/06/2019</th>*/}
+						{/*		<td>Prélèvement n°2 Überschutz Premium</td>*/}
+						{/*		<td>Prochainement</td>*/}
+						{/*	</tr>*/}
+						{/*	</tbody>*/}
+						{/*</table>*/}
+						{/*<br/>*/}
 					</div>
 					<button type="button" className="btn btn-outline-dark options-margin" onClick={this.toggleModalEmail}>{displayContent(this.state.lang, i++, 'profile')}</button>
 					<Modal isOpen={this.state.emailModal} size="lg" toggle={this.toggleModalEmail} centered={true}>
@@ -628,13 +628,13 @@ class Profile extends Component {
 					}
 				    <div className="row txt-align">
 						<button className="col-2 btn btn-primary options-margin" onClick={this.getAccountData}>{displayContent(this.state.lang, i++, 'profile')}</button>
-						<button className="col-2 btn btn-danger options-margin" onClick={this.toggleModalDelete}>{displayContent(this.state.lang, i++, 'profile')}</button>
+						<button className="col-2 btn btn-danger options-margin" onClick={this.toggleModalDelete}>{displayContent(this.state.lang, i, 'profile')}</button>
 						<Modal isOpen={this.state.deleteModal} size="lg" toggle={this.toggleModalDelete} centered={true}>
-							<ModalHeader>{displayContent(this.state.lang, j++, 'profile')}</ModalHeader>
+							<ModalHeader>{displayContent(this.state.lang, i++, 'profile')}</ModalHeader>
 							<ModalBody centered={true} className="txt-align">
-								<label className="col-form-label button-footerP txt-align">{displayContent(this.state.lang, j++, 'profile')}</label> <br/>
-								<button className="btn btn-primary options-margin" onClick={this.deleteAccount}>{displayContent(this.state.lang, j++, 'profile')}</button>
-								<button className="btn btn-danger options-margin" onClick={this.toggleModalDelete}>{displayContent(this.state.lang, j++, 'profile')}</button>
+								<label className="col-form-label button-footerP txt-align">{displayContent(this.state.lang, i++, 'profile')}</label> <br/>
+								<button className="btn btn-primary options-margin" onClick={this.deleteAccount}>{displayContent(this.state.lang, i++, 'profile')}</button>
+								<button className="btn btn-danger options-margin" onClick={this.toggleModalDelete}>{displayContent(this.state.lang, i++, 'profile')}</button>
 							</ModalBody>
 						</Modal>
 					</div>
