@@ -27,6 +27,7 @@ export default class Subscription extends Component {
 
     componentDidMount() {
         axios.get('/get_available_licences').then(response => {
+            console.log("TEST", response.data);
             this.setState({
                 available_licences: response.data
             });
@@ -45,33 +46,25 @@ export default class Subscription extends Component {
     addLicence(data) {
         console.log(data.target.dataset);
         if (this.props.base.logged) {
-            axios.post('/subscribe', {
+            this.props.setLicence(this.state.available_licences[+data.target.dataset.idx]);
+            this.props.history.push("/Payement");
+            /*axios.post('/subscribe', {
                 subscription: this.state.available_licences[+data.target.dataset.idx]
-            }, {
-                headers: {
-                    'x-access-token': this.props.base.token
-                }
             }).then(response => {
                 this.setState({
                     account_licence: response.data
                 });
-                this.props.history.push("/Profile");
+                this.props.history.push("/Payement");
             }).catch(err => {
                 console.log(err);
-            });
+            });*/
         } else {
             this.props.history.push("/Connection");
         }
     }
 
     deleteLicence() {
-        axios.post('/unsubscribe', {
-
-        }, {
-            headers: {
-                'x-access-token': this.props.base.token
-            }
-        }).then(response => {
+        axios.post('/unsubscribe', {}).then(response => {
             console.log(response.data);
             this.setState({
                 account_licence: null
@@ -91,69 +84,95 @@ export default class Subscription extends Component {
 
     render() {
         let i = 0;
-        return (
-            <div className="fixed-size">
-                <div className="title-intro">
-                    <h4>{displayContent(this.state.lang, i++, 'subscription')}</h4> <br/>
-                </div>
-                <div>
-                    <div className="row">
-                        <div className="col-sm">
-                            <img className="image-border" src={addOn} alt="addOn"/> <br/>
-                            <span className="title-products">Add-on</span> <br/>
-                            {displayContent(this.state.lang, i++, 'subscription')}<br/>
-                            {displayContent(this.state.lang, i++, 'subscription')}<br/>
-                            {displayContent(this.state.lang, i++, 'subscription')}<br/>
-                            {displayContent(this.state.lang, i++, 'subscription')}<br/>
-                            <button type="button" className="btn btn-success button-border" onClick={this.redirectInComing}>{displayContent(this.state.lang, i++, 'subscription')}</button> <br/>
-                        </div>
-                        <div className="col-sm">
-                            <img className="image-border" src={software} alt="software"/> <br/>
-                            <span className="title-products">{displayContent(this.state.lang, i++, 'subscription')}</span> <br/>
-                            {displayContent(this.state.lang, i++, 'subscription')}<br/>
-                            {displayContent(this.state.lang, i++, 'subscription')}<br/>
-                            {displayContent(this.state.lang, i++, 'subscription')}<br/>
-                            <button type="button" className="btn btn-warning button-border" onClick={this.redirectInComing}>{displayContent(this.state.lang, i++, 'subscription')}</button> <br/>
+        if (this.state.available_licences.length > 0) {
+            return (
+                <div className="fixed-size">
+                    <div className="title-intro">
+                        <h4>{displayContent(this.state.lang, i++, 'subscription')}</h4> <br/>
+                    </div>
+                    <div>
+                        <div className="row">
+                            <div className="col-sm">
+                                <img className="image-border" src={addOn} alt="addOn"/> <br/>
+                                <span className="title-products">Add-on</span> <br/>
+                                {displayContent(this.state.lang, i++, 'subscription')}<br/>
+                                {displayContent(this.state.lang, i++, 'subscription')}<br/>
+                                {displayContent(this.state.lang, i++, 'subscription')}<br/>
+                                {displayContent(this.state.lang, i++, 'subscription')}<br/>
+                                {/*<button type="button" className="btn btn-success button-border"
+                                        onClick={this.redirectInComing}>{displayContent(this.state.lang, i++, 'subscription')}</button>*/}
+                                        <button type="button" className="btn btn-success button-border">
+                                            <a href={'https://chrome.google.com/webstore/detail/uberschutz/cldanlbcckgoghkmafniabilnofocfog?hl=fr&authuser=0'} target="_blank" style={{ color:'white' }}>
+                                                {displayContent(this.state.lang, i++, 'subscription')}
+                                            </a>
+                                        </button>
+
+                                <br/>
+                            </div>
+                            <div className="col-sm">
+                                <img className="image-border" src={software} alt="software"/> <br/>
+                                <span
+                                    className="title-products">{displayContent(this.state.lang, i++, 'subscription')}</span>
+                                <br/>
+                                {displayContent(this.state.lang, i++, 'subscription')}<br/>
+                                {displayContent(this.state.lang, i++, 'subscription')}<br/>
+                                {displayContent(this.state.lang, i++, 'subscription')}<br/>
+                                <button type="button" className="btn btn-warning button-border"
+                                        onClick={this.redirectInComing}>{displayContent(this.state.lang, i++, 'subscription')}</button>
+                                <br/>
+                            </div>
                         </div>
                     </div>
-                </div> <br/>
-                <div className="title-intro">
-                    <h4>{displayContent(this.state.lang, i++, 'subscription')}</h4> <br/>
-                </div>
-                <div>
-                    <div className="row">
-                        <div className="col-xl-4">
-                            <img className="image-border" src={family} alt="family"/> <br/>
-                            <span className="title-products">{displayContent(this.state.lang, i++, 'subscription')}</span> <br/>
-                            {displayContent(this.state.lang, i++, 'subscription')}<br/>
-                            {displayContent(this.state.lang, i++, 'subscription')}<br/>
-                            {displayContent(this.state.lang, i++, 'subscription')}<br/>
-                            {displayContent(this.state.lang, i++, 'subscription')}<br/>
-                            <button type="button" className="btn btn-info button-border" onClick={this.addLicence} data-idx={0}>{displayContent(this.state.lang, i++, 'subscription')}</button> <br/>
-                        </div>
-                        <div className="col-xl-4">
-                            <img className="image-border" src={familyPlus} alt="familyPlus"/> <br/>
-                            <span className="title-products">{displayContent(this.state.lang, i++, 'subscription')}</span> <br/>
-                            {displayContent(this.state.lang, i++, 'subscription')}<br/>
-                            {displayContent(this.state.lang, i++, 'subscription')}<br/>
-                            {displayContent(this.state.lang, i++, 'subscription')}<br/>
-                            {displayContent(this.state.lang, i++, 'subscription')}<br/>
-                            <button type="button" className="btn btn-info button-border" onClick={this.addLicence} data-idx={1}>{displayContent(this.state.lang, i++, 'subscription')}</button> <br/>
-                        </div>
-                        <div className="col-xl-4">
-                            <img className="image-border" src={newLicence} alt="newLicence"/> <br/>
-                            <span className="title-products">{displayContent(this.state.lang, i++, 'subscription')}</span> <br/>
-                            {displayContent(this.state.lang, i++, 'subscription')}<br/>
-                            {displayContent(this.state.lang, i++, 'subscription')}<br/>
-                            {displayContent(this.state.lang, i++, 'subscription')}<br/>
-                            {displayContent(this.state.lang, i++, 'subscription')}<br/>
-                            {displayContent(this.state.lang, i++, 'subscription')}<br/>
-                            {displayContent(this.state.lang, i++, 'subscription')}<br/>
-                            <button type="button" className="btn btn-info image-border button-border" onClick={this.addLicence} data-idx={2}>{displayContent(this.state.lang, i++, 'subscription')}</button> <br/>
+                    <br/>
+                    <div className="title-intro">
+                        <h4>{displayContent(this.state.lang, i++, 'subscription')}</h4> <br/>
+                    </div>
+                    <div>
+                        <div className="row">
+                            <div className="col-xl-4">
+                                <img className="image-border" src={family} alt="family"/> <br/>
+                                <span className="title-products">{displayContent(this.state.lang, i++, 'subscription')}</span><br/>
+                                {displayContent(this.state.lang, i++, 'subscription')}<br/>
+                                {displayContent(this.state.lang, i++, 'subscription')}<br/>
+                                {displayContent(this.state.lang, i++, 'subscription')}<br/>
+                                {displayContent(this.state.lang, i++, 'subscription')}<br/>
+                                <button type="button" className="btn btn-info button-border" onClick={this.addLicence}
+                                        data-idx={0}>{displayContent(this.state.lang, i++, 'subscription')}</button>
+                                <br/>
+                            </div>
+                            <div className="col-xl-4">
+                                <img className="image-border" src={familyPlus} alt="familyPlus"/> <br/>
+                                <span
+                                    className="title-products">{displayContent(this.state.lang, i++, 'subscription')}</span>
+                                <br/>
+                                {displayContent(this.state.lang, i++, 'subscription')}<br/>
+                                {displayContent(this.state.lang, i++, 'subscription')}<br/>
+                                {displayContent(this.state.lang, i++, 'subscription')}<br/>
+                                {displayContent(this.state.lang, i++, 'subscription')}<br/>
+                                <button type="button" className="btn btn-info button-border" onClick={this.addLicence}
+                                        data-idx={1}>{displayContent(this.state.lang, i++, 'subscription')}</button>
+                                <br/>
+                            </div>
+                            <div className="col-xl-4">
+                                <img className="image-border" src={newLicence} alt="newLicence"/> <br/>
+                                <span
+                                    className="title-products">{displayContent(this.state.lang, i++, 'subscription')}</span>
+                                <br/>
+                                {displayContent(this.state.lang, i++, 'subscription')}<br/>
+                                {displayContent(this.state.lang, i++, 'subscription')}<br/>
+                                {displayContent(this.state.lang, i++, 'subscription')}<br/>
+                                {displayContent(this.state.lang, i++, 'subscription')}<br/>
+                                {displayContent(this.state.lang, i++, 'subscription')}<br/>
+                                {displayContent(this.state.lang, i++, 'subscription')}<br/>
+                                <button type="button" className="btn btn-info image-border button-border"
+                                        onClick={this.addLicence}
+                                        data-idx={2}>{displayContent(this.state.lang, i++, 'subscription')}</button>
+                                <br/>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        );
+            );
+        } else return null
     }
 }

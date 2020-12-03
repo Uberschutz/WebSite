@@ -5,6 +5,7 @@ import '../../styles/HomePage.css';
 import logo from '../../assets/Uberschutz-Icon.png';
 import french from '../../assets/icons8-france-96.png';
 import english from '../../assets/icons8-grande-bretagne-48.png';
+import typo from '../../assets/Überschutz-typo-resize.png'
 
 import Navbar from 'reactstrap/lib/Navbar';
 import NavbarBrand from 'reactstrap/lib/NavbarBrand';
@@ -15,8 +16,13 @@ import DropdownMenu from 'reactstrap/lib/DropdownMenu'
 import DropdownToggle from 'reactstrap/lib/DropdownToggle'
 import ButtonDropdown from 'reactstrap/lib/ButtonDropdown'
 import { displayContent } from '../../utils/translationDisplay';
+import { withRouter } from 'react-router-dom';
 import axios from 'axios';
 
+import Cookies from "universal-cookie/lib";
+import CookieConsent from "react-cookie-consent";
+
+const cookies = new Cookies();
 const Link = require("react-router-dom").Link;
 
 class Header extends Component {
@@ -43,8 +49,14 @@ class Header extends Component {
 
     componentDidMount() {
     	// console.log('header mounted');
+	    let logged = false;
+	    if (cookies.get('token') !== undefined) {
+		    logged = true;
+	    }
 	    if (this.props.base) {
-		    const { base: { language, logged } } = this.props;
+	    	if (!logged && !this.props.base.logged)
+	    		this.props.setLogged(false);
+		    const { base: { language } } = this.props;
 		    this.setState({
 			    lang: language,
 			    logged
@@ -63,12 +75,11 @@ class Header extends Component {
     }
 
     getUser() {
-        if (this.props.base && this.props.base.token && this.props.base.logged) {
-            axios.get('/get_auth_user', {
-                headers: {
-                    'x-access-token': this.props.base.token
-                }
-            }).then(response => {
+    	// console.log(this.token);
+    	// console.log(cookies.get('token'));
+        if (cookies.get('token') !== undefined && this.props.base && this.props.base.logged) {
+            axios.get('/get_auth_user')
+	            .then(response => {
                 if (response && response.data) {
                     this.setState({
                         firstname: response.data.firstname,
@@ -78,6 +89,11 @@ class Header extends Component {
             }).catch(err => {
                 console.log(err);
             })
+        } else if (this.props.base.logged) {
+	        axios.get('/disconnect').then().catch();
+	        cookies.remove('token');
+	        cookies.remove('token.sig');
+	        this.props.setLogged(false);
         }
     }
 
@@ -110,8 +126,20 @@ class Header extends Component {
     disconnect() {
     	this.props.setLogged(false);
     	// this.props.setUser(undefined, undefined, undefined, undefined);
-    	this.props.setAuthToken(undefined);
-    	this.setState({logged: false, lastname: undefined});
+    	// this.props.setAuthToken(undefined);
+	    cookies.remove('token');
+	    cookies.remove('token.sig');
+	    axios.get('/disconnect').then().catch();
+	    this.setState({logged: false, lastname: undefined});
+    }
+
+    acceptGACookies() {
+        cookies.set('Universal-cookieAnalytics', true);
+    }
+
+    declineGACookies() {
+       cookies.set('Universal-cookieAnalytics', false);
+        this.props.history.push("/NotFound");
     }
 
     render () {
@@ -119,9 +147,30 @@ class Header extends Component {
 
         return (
             <div>
+                <CookieConsent
+                    location="bottom"
+                    cookieName="Universal-cookieAnalytics"
+                    style={{ background: "#2B373B", height: "13%", textAlign: "justify" }}
+                    buttonText="I accept"
+                    buttonStyle={{ backgroundColor: "#27ae60", color: "#000000" }}
+                    enableDeclineButton={true}
+                    declineButtonStyle={{ backgroundColor: "#e53935", color: "#000000" }}
+                    expires={365}
+                    onAccept={() => {this.acceptGACookies()}}
+                    onDecline={() => {this.declineGACookies()}}>
+                    We use cookies and similar technologies ("cookies") to provide and secure our websites, as well as to analyze the usage of our websites, in order to offer you a great user experience.<br/>
+                    To learn more about our use of cookies see our Data Collect information.<br/>
+                    Select "I accept" to consent to this use, "I decline" to reject this use, or "More info" to control our cookies' use.
+                    <Link to={'/DataInformations'}>
+                        <button className="btn btn-primary more-info">More info</button>
+                    </Link>
+                </CookieConsent>
+
                 <Navbar className="navbar navbar-expand-sm uber-color" light expand="md">
                     <img src={logo} alt="logo" width={65} height={70}/>
-                    <NavbarBrand className="navbar-brand uber-color button-footer" href="/"> Überschutz</NavbarBrand>
+                    <NavbarBrand className="navbar-brand uber-color button-footer" href="/">
+                        <img src={typo} alt="typo"/>
+                    </NavbarBrand>
 	                {this.state.logged ? <text className="navbar-brand uber-color button-footer">{displayContent(this.state.lang, 0, 'navbar')} {this.state.lastname} !</text> : null}
 	                {this.state.logged ? <button onClick={this.disconnect}>{displayContent(this.state.lang, 1, 'navbar')}</button> : null}
                     <Collapse className="collapse navbar-collapse" isOpen={true} navbar>
@@ -171,4 +220,4 @@ class Header extends Component {
     }
 }
 
-export default Header;
+export default withRouter(Header);

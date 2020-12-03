@@ -3,11 +3,15 @@ import '../../styles/bootstrap.css';
 import '../../styles/Connection.css';
 
 import ReactGA from 'react-ga';
+import GoogleLogin from "react-google-login";
+import Cookies from "universal-cookie/lib";
 
 import axios from "axios";
 import {displayContent, displayHttpMessages} from "../../utils/translationDisplay";
 import Alert from "reactstrap/lib/Alert";
 import loading from "../../assets/Spinner-1s-70px.gif";
+
+const cookies = new Cookies();
 
 class Registration extends Component {
 
@@ -43,7 +47,8 @@ class Registration extends Component {
             if (this.props.history)
                 this.props.history.push('/DataCollect');
         }
-	    if (process.env.REACT_APP_ANALYTICS === 'true') {
+        const cookieConsent = cookies.get('Universal-cookieAnalytics') || false;
+	    if (process.env.REACT_APP_ANALYTICS === 'true' && cookieConsent) {
 		    ReactGA.pageview(window.location.pathname + window.location.search);
 	    }
         if (this.props.base) {
@@ -136,6 +141,22 @@ class Registration extends Component {
         this.setState({isChecked: !this.state.isChecked});
     }
 
+    responseGoogle = response => {
+        // console.log(response);
+        console.log('registering in page');
+        const { tokenId, googleId } = response;
+        // console.log(tokenId, googleId);
+        axios.post('/google_sign_in', {
+            id_token: tokenId,
+            registering: true
+        }).then(() => { this.props.history.push('/Connection')})
+            .catch(err => console.log(err));
+    };
+
+    errorGoogle = error => {
+        console.log(error);
+    };
+
     render() {
         let i = 0;
         return (
@@ -191,6 +212,21 @@ class Registration extends Component {
                         }
 
                         <button type="button" className="btn btn-primary" onClick={this.register}>{displayContent(this.state.lang, i++, 'registration')}</button>
+                        <GoogleLogin
+                            className="buttonAouth button-footer"
+                            scope="profile email"
+                            redirectUri={`${window.location.origin}/signin-google`}
+                            responseType="id_token "
+                            uxMode="redirect"
+                            clientId="751613885657-pcp17lkg86ki4l1bin3ngv90dv3q1goc.apps.googleusercontent.com"
+                            buttonText="Signup with Google"
+                            onSuccess={this.responseGoogle}
+                            // onSuccess={() => console.log('registering')}
+                            onFailure={this.errorGoogle}
+                            prompt="select_account"
+                            autoLoad={false}
+                            // isSignedIn={true}
+                        />
                         <br/>
                         {this.state.alphaSurname || this.state.alphaName ?
                             <span className="address text-danger">{displayContent(this.state.lang, i, 'registration')}</span> : null}

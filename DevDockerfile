@@ -8,20 +8,20 @@ ENV NODE_ENV $NODE_ENV
 
 ENV REACT_APP_ANALYTICS $REACT_APP_ANALYTICS
 
-RUN mkdir -p /home/node/app/node_modules && chown -R node:node /home/node/app
-
 WORKDIR /home/node/app
 
-USER node
-
-COPY --chown=node:node . .
+COPY package*.json ./
 
 RUN yarn install --silent --no-progress
+
+COPY --chown=node:node . .
 
 EXPOSE 8083
 
 ENV PORT 8083
 
 RUN yarn run build
+
+USER node
 
 CMD [ "node", "Server.js" ]

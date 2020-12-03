@@ -3,6 +3,50 @@
 exports[`Testing the Header component rendering render Header being logged in english 1`] = `
 <div>
   <div>
+    <div
+      class="CookieConsent"
+      style="align-items: baseline; background: rgb(43, 55, 59); color: white; display: flex; flex-wrap: wrap; justify-content: space-between; left: 0px; position: fixed; width: 100%; z-index: 999; height: 13%; text-align: justify; bottom: 0px;"
+    >
+      <div
+        class=""
+        style="flex: 1 0 300px; margin: 15px;"
+      >
+        We use cookies and similar technologies ("cookies") to provide and secure our websites, as well as to analyze the usage of our websites, in order to offer you a great user experience.
+        <br />
+        To learn more about our use of cookies see our Data Collect information.
+        <br />
+        Select "I accept" to consent to this use, "I decline" to reject this use, or "More info" to control our cookies' use.
+        <a
+          href="/DataInformations"
+        >
+          <button
+            class="btn btn-primary more-info"
+          >
+            More info
+          </button>
+        </a>
+      </div>
+      <div
+        class=""
+      >
+        <button
+          aria-label="Decline cookies"
+          class=""
+          id="rcc-decline-button"
+          style="background: rgb(193, 42, 42); border: 0px; border-radius: 0px; box-shadow: none; color: rgb(0, 0, 0); cursor: pointer; flex: 0 0 auto; padding: 5px 10px; margin: 15px; background-color: rgb(229, 57, 53);"
+        >
+          I decline
+        </button>
+        <button
+          aria-label="Accept cookies"
+          class=""
+          id="rcc-confirm-button"
+          style="background: rgb(255, 212, 45); border: 0px; border-radius: 0px; box-shadow: none; color: rgb(0, 0, 0); cursor: pointer; flex: 0 0 auto; padding: 5px 10px; margin: 15px; background-color: rgb(39, 174, 96);"
+        >
+          I accept
+        </button>
+      </div>
+    </div>
     <nav
       class="navbar navbar-expand-sm uber-color navbar navbar-expand-md navbar-light"
     >
@@ -16,18 +60,11 @@ exports[`Testing the Header component rendering render Header being logged in en
         class="navbar-brand uber-color button-footer navbar-brand"
         href="/"
       >
-         Überschutz
+        <img
+          alt="typo"
+          src="Überschutz-typo-resize.png"
+        />
       </a>
-      <text
-        class="navbar-brand uber-color button-footer"
-      >
-        Welcome
-         
-         !
-      </text>
-      <button>
-        Disconnect
-      </button>
       <div
         class="collapse navbar-collapse collapse show navbar-collapse"
       >
@@ -49,6 +86,16 @@ exports[`Testing the Header component rendering render Header being logged in en
           >
             <a
               class="nav-link uber-color"
+              href="/Connection"
+            >
+              Connection
+            </a>
+          </li>
+          <li
+            class="nav-item nav-item"
+          >
+            <a
+              class="nav-link uber-color"
               href="/Contact+FAQ"
             >
               Contact + FAQ
@@ -59,29 +106,9 @@ exports[`Testing the Header component rendering render Header being logged in en
           >
             <a
               class="nav-link uber-color"
-              href="/Profile"
+              href="/Subscription"
             >
-              Profile
-            </a>
-          </li>
-          <li
-            class="nav-item nav-item"
-          >
-            <a
-              class="nav-link uber-color"
-              href="/Report"
-            >
-              Report
-            </a>
-          </li>
-          <li
-            class="nav-item nav-item"
-          >
-            <a
-              class="nav-link uber-color"
-              href="/Parameters"
-            >
-              Parameters
+              Subscription
             </a>
           </li>
         </ul>
@@ -139,6 +166,50 @@ exports[`Testing the Header component rendering render Header being logged in en
 exports[`Testing the Header component rendering render Header being logged in french 1`] = `
 <div>
   <div>
+    <div
+      class="CookieConsent"
+      style="align-items: baseline; background: rgb(43, 55, 59); color: white; display: flex; flex-wrap: wrap; justify-content: space-between; left: 0px; position: fixed; width: 100%; z-index: 999; height: 13%; text-align: justify; bottom: 0px;"
+    >
+      <div
+        class=""
+        style="flex: 1 0 300px; margin: 15px;"
+      >
+        We use cookies and similar technologies ("cookies") to provide and secure our websites, as well as to analyze the usage of our websites, in order to offer you a great user experience.
+        <br />
+        To learn more about our use of cookies see our Data Collect information.
+        <br />
+        Select "I accept" to consent to this use, "I decline" to reject this use, or "More info" to control our cookies' use.
+        <a
+          href="/DataInformations"
+        >
+          <button
+            class="btn btn-primary more-info"
+          >
+            More info
+          </button>
+        </a>
+      </div>
+      <div
+        class=""
+      >
+        <button
+          aria-label="Decline cookies"
+          class=""
+          id="rcc-decline-button"
+          style="background: rgb(193, 42, 42); border: 0px; border-radius: 0px; box-shadow: none; color: rgb(0, 0, 0); cursor: pointer; flex: 0 0 auto; padding: 5px 10px; margin: 15px; background-color: rgb(229, 57, 53);"
+        >
+          I decline
+        </button>
+        <button
+          aria-label="Accept cookies"
+          class=""
+          id="rcc-confirm-button"
+          style="background: rgb(255, 212, 45); border: 0px; border-radius: 0px; box-shadow: none; color: rgb(0, 0, 0); cursor: pointer; flex: 0 0 auto; padding: 5px 10px; margin: 15px; background-color: rgb(39, 174, 96);"
+        >
+          I accept
+        </button>
+      </div>
+    </div>
     <nav
       class="navbar navbar-expand-sm uber-color navbar navbar-expand-md navbar-light"
     >
@@ -152,18 +223,11 @@ exports[`Testing the Header component rendering render Header being logged in fr
         class="navbar-brand uber-color button-footer navbar-brand"
         href="/"
       >
-         Überschutz
+        <img
+          alt="typo"
+          src="Überschutz-typo-resize.png"
+        />
       </a>
-      <text
-        class="navbar-brand uber-color button-footer"
-      >
-        Bonjour
-         
-         !
-      </text>
-      <button>
-        Déconnexion
-      </button>
       <div
         class="collapse navbar-collapse collapse show navbar-collapse"
       >
@@ -185,6 +249,16 @@ exports[`Testing the Header component rendering render Header being logged in fr
           >
             <a
               class="nav-link uber-color"
+              href="/Connection"
+            >
+              Connexion
+            </a>
+          </li>
+          <li
+            class="nav-item nav-item"
+          >
+            <a
+              class="nav-link uber-color"
               href="/Contact+FAQ"
             >
               Contact + FAQ
@@ -195,29 +269,9 @@ exports[`Testing the Header component rendering render Header being logged in fr
           >
             <a
               class="nav-link uber-color"
-              href="/Profile"
+              href="/Subscription"
             >
-              Profil
-            </a>
-          </li>
-          <li
-            class="nav-item nav-item"
-          >
-            <a
-              class="nav-link uber-color"
-              href="/Report"
-            >
-              Rapport
-            </a>
-          </li>
-          <li
-            class="nav-item nav-item"
-          >
-            <a
-              class="nav-link uber-color"
-              href="/Parameters"
-            >
-              Paramètres
+              Abonnements
             </a>
           </li>
         </ul>
@@ -275,6 +329,50 @@ exports[`Testing the Header component rendering render Header being logged in fr
 exports[`Testing the Header component rendering render Header not being logged in english 1`] = `
 <div>
   <div>
+    <div
+      class="CookieConsent"
+      style="align-items: baseline; background: rgb(43, 55, 59); color: white; display: flex; flex-wrap: wrap; justify-content: space-between; left: 0px; position: fixed; width: 100%; z-index: 999; height: 13%; text-align: justify; bottom: 0px;"
+    >
+      <div
+        class=""
+        style="flex: 1 0 300px; margin: 15px;"
+      >
+        We use cookies and similar technologies ("cookies") to provide and secure our websites, as well as to analyze the usage of our websites, in order to offer you a great user experience.
+        <br />
+        To learn more about our use of cookies see our Data Collect information.
+        <br />
+        Select "I accept" to consent to this use, "I decline" to reject this use, or "More info" to control our cookies' use.
+        <a
+          href="/DataInformations"
+        >
+          <button
+            class="btn btn-primary more-info"
+          >
+            More info
+          </button>
+        </a>
+      </div>
+      <div
+        class=""
+      >
+        <button
+          aria-label="Decline cookies"
+          class=""
+          id="rcc-decline-button"
+          style="background: rgb(193, 42, 42); border: 0px; border-radius: 0px; box-shadow: none; color: rgb(0, 0, 0); cursor: pointer; flex: 0 0 auto; padding: 5px 10px; margin: 15px; background-color: rgb(229, 57, 53);"
+        >
+          I decline
+        </button>
+        <button
+          aria-label="Accept cookies"
+          class=""
+          id="rcc-confirm-button"
+          style="background: rgb(255, 212, 45); border: 0px; border-radius: 0px; box-shadow: none; color: rgb(0, 0, 0); cursor: pointer; flex: 0 0 auto; padding: 5px 10px; margin: 15px; background-color: rgb(39, 174, 96);"
+        >
+          I accept
+        </button>
+      </div>
+    </div>
     <nav
       class="navbar navbar-expand-sm uber-color navbar navbar-expand-md navbar-light"
     >
@@ -288,7 +386,10 @@ exports[`Testing the Header component rendering render Header not being logged i
         class="navbar-brand uber-color button-footer navbar-brand"
         href="/"
       >
-         Überschutz
+        <img
+          alt="typo"
+          src="Überschutz-typo-resize.png"
+        />
       </a>
       <div
         class="collapse navbar-collapse collapse show navbar-collapse"
@@ -324,6 +425,16 @@ exports[`Testing the Header component rendering render Header not being logged i
               href="/Contact+FAQ"
             >
               Contact + FAQ
+            </a>
+          </li>
+          <li
+            class="nav-item nav-item"
+          >
+            <a
+              class="nav-link uber-color"
+              href="/Subscription"
+            >
+              Subscription
             </a>
           </li>
         </ul>
@@ -381,6 +492,50 @@ exports[`Testing the Header component rendering render Header not being logged i
 exports[`Testing the Header component rendering render Header not being logged in french 1`] = `
 <div>
   <div>
+    <div
+      class="CookieConsent"
+      style="align-items: baseline; background: rgb(43, 55, 59); color: white; display: flex; flex-wrap: wrap; justify-content: space-between; left: 0px; position: fixed; width: 100%; z-index: 999; height: 13%; text-align: justify; bottom: 0px;"
+    >
+      <div
+        class=""
+        style="flex: 1 0 300px; margin: 15px;"
+      >
+        We use cookies and similar technologies ("cookies") to provide and secure our websites, as well as to analyze the usage of our websites, in order to offer you a great user experience.
+        <br />
+        To learn more about our use of cookies see our Data Collect information.
+        <br />
+        Select "I accept" to consent to this use, "I decline" to reject this use, or "More info" to control our cookies' use.
+        <a
+          href="/DataInformations"
+        >
+          <button
+            class="btn btn-primary more-info"
+          >
+            More info
+          </button>
+        </a>
+      </div>
+      <div
+        class=""
+      >
+        <button
+          aria-label="Decline cookies"
+          class=""
+          id="rcc-decline-button"
+          style="background: rgb(193, 42, 42); border: 0px; border-radius: 0px; box-shadow: none; color: rgb(0, 0, 0); cursor: pointer; flex: 0 0 auto; padding: 5px 10px; margin: 15px; background-color: rgb(229, 57, 53);"
+        >
+          I decline
+        </button>
+        <button
+          aria-label="Accept cookies"
+          class=""
+          id="rcc-confirm-button"
+          style="background: rgb(255, 212, 45); border: 0px; border-radius: 0px; box-shadow: none; color: rgb(0, 0, 0); cursor: pointer; flex: 0 0 auto; padding: 5px 10px; margin: 15px; background-color: rgb(39, 174, 96);"
+        >
+          I accept
+        </button>
+      </div>
+    </div>
     <nav
       class="navbar navbar-expand-sm uber-color navbar navbar-expand-md navbar-light"
     >
@@ -394,7 +549,10 @@ exports[`Testing the Header component rendering render Header not being logged i
         class="navbar-brand uber-color button-footer navbar-brand"
         href="/"
       >
-         Überschutz
+        <img
+          alt="typo"
+          src="Überschutz-typo-resize.png"
+        />
       </a>
       <div
         class="collapse navbar-collapse collapse show navbar-collapse"
@@ -430,6 +588,16 @@ exports[`Testing the Header component rendering render Header not being logged i
               href="/Contact+FAQ"
             >
               Contact + FAQ
+            </a>
+          </li>
+          <li
+            class="nav-item nav-item"
+          >
+            <a
+              class="nav-link uber-color"
+              href="/Subscription"
+            >
+              Abonnements
             </a>
           </li>
         </ul>
@@ -487,6 +655,50 @@ exports[`Testing the Header component rendering render Header not being logged i
 exports[`Testing the Header component rendering renders Header without crashing in any language 1`] = `
 <div>
   <div>
+    <div
+      class="CookieConsent"
+      style="align-items: baseline; background: rgb(43, 55, 59); color: white; display: flex; flex-wrap: wrap; justify-content: space-between; left: 0px; position: fixed; width: 100%; z-index: 999; height: 13%; text-align: justify; bottom: 0px;"
+    >
+      <div
+        class=""
+        style="flex: 1 0 300px; margin: 15px;"
+      >
+        We use cookies and similar technologies ("cookies") to provide and secure our websites, as well as to analyze the usage of our websites, in order to offer you a great user experience.
+        <br />
+        To learn more about our use of cookies see our Data Collect information.
+        <br />
+        Select "I accept" to consent to this use, "I decline" to reject this use, or "More info" to control our cookies' use.
+        <a
+          href="/DataInformations"
+        >
+          <button
+            class="btn btn-primary more-info"
+          >
+            More info
+          </button>
+        </a>
+      </div>
+      <div
+        class=""
+      >
+        <button
+          aria-label="Decline cookies"
+          class=""
+          id="rcc-decline-button"
+          style="background: rgb(193, 42, 42); border: 0px; border-radius: 0px; box-shadow: none; color: rgb(0, 0, 0); cursor: pointer; flex: 0 0 auto; padding: 5px 10px; margin: 15px; background-color: rgb(229, 57, 53);"
+        >
+          I decline
+        </button>
+        <button
+          aria-label="Accept cookies"
+          class=""
+          id="rcc-confirm-button"
+          style="background: rgb(255, 212, 45); border: 0px; border-radius: 0px; box-shadow: none; color: rgb(0, 0, 0); cursor: pointer; flex: 0 0 auto; padding: 5px 10px; margin: 15px; background-color: rgb(39, 174, 96);"
+        >
+          I accept
+        </button>
+      </div>
+    </div>
     <nav
       class="navbar navbar-expand-sm uber-color navbar navbar-expand-md navbar-light"
     >
@@ -500,7 +712,10 @@ exports[`Testing the Header component rendering renders Header without crashing 
         class="navbar-brand uber-color button-footer navbar-brand"
         href="/"
       >
-         Überschutz
+        <img
+          alt="typo"
+          src="Überschutz-typo-resize.png"
+        />
       </a>
       <div
         class="collapse navbar-collapse collapse show navbar-collapse"
@@ -536,6 +751,16 @@ exports[`Testing the Header component rendering renders Header without crashing 
               href="/Contact+FAQ"
             >
               Contact + FAQ
+            </a>
+          </li>
+          <li
+            class="nav-item nav-item"
+          >
+            <a
+              class="nav-link uber-color"
+              href="/Subscription"
+            >
+              Abonnements
             </a>
           </li>
         </ul>

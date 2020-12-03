@@ -1,3 +1,4 @@
+const cookieSession = require('cookie-session');
 const document = require("docx").Document;
 const pack = require("docx").Packer;
 const paragraph = require("docx").Paragraph;
@@ -13,6 +14,17 @@ const PORT = process.env.PORT || 8080
 const app = express();
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
+
+app.use(cookieSession({
+	name: 'token',
+	// maxAge: 2 * 60 * 1000,
+	maxAge: 365 * 24 * 60 * 60 * 1000,
+	httpOnly: false,
+	signed: true,
+	keys: [credentials.session.cookieKey],
+	sameSite: true
+}));
+
 app.use( express.static(path.resolve( __dirname, "./build" ) ) );
 
 var server_url = "user_server";
@@ -20,35 +32,106 @@ if (process.env.NODE_ENV && process.env.NODE_ENV === 'dev') {
 	server_url = credentials.vm_ip;
 }
 
-app.post('/get_data', (req, res) => {
+// app.post('/google_sign_up', async (req, res) => {
+// 	let result = await axios.post(`http://${server_url}:8081/google_sign_up`, req.body)
+// 		.then(response => response).catch(err => err.response);
+// 	forward_response(res, result);
+// })
+
+app.post('/google_sign_in', async (req, res) => {
+	axios.post(`http://${server_url}:8081/google_sign_in`, req.body)
+		.then(response => {
+			if (response.data) {
+				req.session.token = response.data.token;
+				res.status(response.status).send(response.data);
+			} else {
+				res.end();
+			}
+		}).catch(err => {
+		console.log(err);
+		if (err.response.status === 500) {
+			res.status(500).send('Internal server error');
+		} else {
+			res.status(err.response.status).send(err.response.data);
+		}
+	});
+})
+
+const requestV1 = async (body) => {
 	let data = `token=${credentials.token}&type=text`;
-	if (req.body.discordId) {
-		data += `&userId=${req.body.discordId}`
+	if (body.discordId) {
+		data += `&userId=${body.discordId}`
 	}
-	if (req.body.services) {
-		data += `&services=${req.body.services.join(';')}`
+	if (body.services) {
+		data += `&services=${body.services.join(';')}`
 	}
-	axios.post(`${credentials.api_ip}/collect`, data, {
+	const res = await axios.post(`${credentials.api_ip_v1}/collect`, data, {
 		headers: {
 			'Content-Type': 'application/x-www-form-urlencoded'
 		}
 	}).then(response => {
-		res.send(response.data.datas);
+		return response?.data?.datas;
 	}).catch(err => {
-		if (err.response)
-			res.status(err.response.status).send(err.response.data.message);
-		else
-			res.status(500).send('Internal server error');
+		console.log(err);
+		return null;
 	});
+	const result = { };
+	res.forEach(d => {
+		result[d.key] = d.value;
+	});
+	return result;
+}
+
+app.post('/get_data', async (req, res) => {
+	try {
+		const data = { userId: req.body.discordId, services: req.body.services.join(';'), type: 'text' };
+		const result = await axios.post(`${credentials.api_ip}/login`).catch(err => {
+			if (err.response)
+				res.status(err.response?.status || 500).send(err.response?.data?.message || 'Internal Server Error');
+			else
+				res.status(500).send('Internal server error');
+		});
+		if (!result) return;
+		const { data: { token } } = result;
+		axios.post(`${credentials.api_ip}/collect`, data, {
+			headers: {
+				'Content-Type': 'application/json',
+				'Token': token
+			}
+		}).then(response => {
+			console.log(response.data.datas);
+			res.send(response.data.datas);
+		}).catch(async err => {
+			const v1Data = await requestV1(req.body);
+			if (v1Data) return res.send(v1Data);
+			if (err.response)
+				res.status(err.response?.status || 500).send(err.response?.data?.message || 'Internal Server Error');
+			else
+				res.status(500).send('Internal server error');
+		});
+	} catch (e) {
+		console.log(e);
+		res.status(500).send('Internal server error');
+	}
 });
+
+app.get('/disconnect', (req, res) => {
+	req.session = null;
+	// req.cache = null;
+	// req.cookies = null;
+	res.end();
+})
 
 app.get('/get_auth_user', (req, res) => {
 	axios.get(`http://${server_url}:8081/get_auth_user`, {
-		headers: req.headers
+		// headers: req.headers
+		headers: {
+			'x-access-token': req.session.token
+		}
 	}).then(response => {
 		res.send(response.data);
 	}).catch(err => {
-		res.status(err.response.status).send(err.response.data);
+		res.status(err.response?.status || 500).send(err.response?.data || "Internal server error");
 	})
 });
 
@@ -67,12 +150,20 @@ app.post('/unsubscribe_newsletter', async (req, res) => {
 		name: req.body.name
 	}, {
 		headers: {
-			'x-access-token': req.headers['x-access-token']
+			'x-access-token': req.session.token
 		}
 	}).then(response => response).catch(err => err.response);
 	forward_response(res, result);
 });
 
+app.get('/options', async (req, res) => {
+	let result = await axios.get(`http://${server_url}:8081/options`, {
+		headers: {
+			'x-access-token': req.session.token
+		}
+	}).then(response => response).catch(err => err.response);
+	forward_response(res, result);
+});
 
 app.post('/register', async (req, res) => {
 	let result = await axios.post(`http://${server_url}:8081/register`, {
@@ -92,11 +183,21 @@ app.post('/verifyaccount', async (req, res) => {
 });
 
 app.post('/connect', async (req, res) => {
-	let result = await axios.post(`http://${server_url}:8081/connect`, {
+	axios.post(`http://${server_url}:8081/connect`, {
 		email: req.body.email,
 		passwd: req.body.passwd
-	}).then(response => response).catch(err => err.response);
-	forward_response(res, result);
+	}).then(response => {
+		req.session.token = response.data.token;
+		res.status(response.status).send(response.data);
+	}).catch(err => {
+		console.log(err);
+		if (err.response.status === 500) {
+			res.status(500).send('Internal server error');
+		} else {
+			res.status(err.response.status).send(err.response.data);
+		}
+	});
+	// forward_response(res, result);
 });
 
 app.post('/children', async (req, res) => {
@@ -109,7 +210,7 @@ app.post('/children', async (req, res) => {
 		discordId: req.body.discordId
 	}, {
 		headers: {
-			'x-access-token': req.headers['x-access-token']
+			'x-access-token': req.session.token
 		}
 	}).then(response => response).catch(err => err.response);
 	forward_response(res, result);
@@ -121,7 +222,7 @@ app.post('/rename', async (req, res) => {
 		value: req.body.value
 	}, {
 		headers: {
-			'x-access-token': req.headers['x-access-token']
+			'x-access-token': req.session.token
 		}
 	}).then(response => response).catch(err => err.response);
 	forward_response(res, result);
@@ -130,16 +231,31 @@ app.post('/rename', async (req, res) => {
 app.post('/change_email', async (req, res) => {
 	let result = await axios.post(`http://${server_url}:8081/change_email`, req.body, {
 		headers: {
-			'x-access-token': req.headers['x-access-token']
+			'x-access-token': req.session.token
 		}
 	}).then(response => response).catch(err => err.response);
+	forward_response(res, result);
+})
+
+app.post('/email', async (req, res) => {
+	let result = await axios.post(`http://${server_url}:8081/email`, req.body, {
+		headers: {
+			'x-access-token': req.session.token
+		}
+	}).then(response => response).catch(err => err.response);
+	forward_response(res, result);
+})
+
+app.post('/forgot_password', async (req, res) => {
+	let result = await axios.post(`http://${server_url}:8081/forgot_password`, req.body)
+		.then(response => response).catch(err => err.response);
 	forward_response(res, result);
 })
 
 app.post('/change_password', async (req, res) => {
 	let result = await axios.post(`http://${server_url}:8081/change_password`, req.body, {
 		headers: {
-			'x-access-token': req.headers['x-access-token']
+			'x-access-token': req.session.token
 		}
 	}).then(response => response).catch(err => err.response);
 	forward_response(res, result);
@@ -148,7 +264,7 @@ app.post('/change_password', async (req, res) => {
 app.post('/delete_account', async (req, res) => {
 	let result = await axios.post(`http://${server_url}:8081/delete_account`, '', {
 		headers: {
-			'x-access-token': req.headers['x-access-token']
+			'x-access-token': req.session.token
 		}
 	}).then(response => response).catch(err => err.response);
 	forward_response(res, result);
@@ -157,7 +273,7 @@ app.post('/delete_account', async (req, res) => {
 app.get('/gdpr', async (req, res) => {
 	axios.get(`http://${server_url}:8081/gdpr`, {
 		headers: {
-			'x-access-token': req.headers['x-access-token']
+			'x-access-token': req.session.token
 		}
 	}).then(async response => {
 		console.log(response.data);
@@ -213,7 +329,7 @@ app.get('/get_available_licences', async (req, res) => {
 app.get('/get_subscription', async (req, res) => {
 	let result = await axios.get(`http://${server_url}:8081/get_subscription`,{
 		headers: {
-			'x-access-token': req.headers['x-access-token']
+			'x-access-token': req.session.token
 		}
 	}).then(response => response).catch(err => err.response);
 	forward_response(res, result);
@@ -224,7 +340,7 @@ app.post('/subscribe', async (req, res) => {
 		subscription: req.body.subscription
 	}, {
 		headers: {
-			'x-access-token': req.headers['x-access-token']
+			'x-access-token': req.session.token
 		}
 	}).then(response => response).catch(err => err.response);
 	forward_response(res, result);
@@ -233,7 +349,7 @@ app.post('/subscribe', async (req, res) => {
 app.post('/unsubscribe', async (req, res) => {
 	let result = await axios.post(`http://${server_url}:8081/unsubscribe`, '', {
 		headers: {
-			'x-access-token': req.headers['x-access-token']
+			'x-access-token': req.session.token
 		}
 	}).then(response => response).catch(err => err.response);
 	forward_response(res, result);
@@ -244,7 +360,7 @@ app.post('/unsubscribe', async (req, res) => {
 // 		subscription: req.body.subscription
 // 	}, {
 // 		headers: {
-// 			'x-access-token': req.headers['x-access-token']
+// 			'x-access-token': req.session.token
 // 		}
 // 	}).then(response => {
 // 		console.log(response.data);
@@ -272,6 +388,30 @@ function forward_response(res, promise) {
 	else
 		res.status(500).send('Internal server error');
 }
+
+process.on('unhandledRejection', (reason, promise) => {
+	console.log('Unhandled Rejection at:', promise, 'reason:', reason);
+	// Application specific logging, throwing an error, or other logic here
+	// We ensure that the server does not exit on unhandled rejections
+});
+
+process.on('unhandledPromiseRejection', (reason, promise) => {
+	console.log('Unhandled Promise Rejection at:', promise, 'reason:', reason);
+	// Application specific logging, throwing an error, or other logic here
+	// We ensure that the server does not exit on unhandled rejections
+});
+
+process.on('unhandledRejection', (reason, promise) => {
+	console.log('Unhandled Rejection at:', promise, 'reason:', reason);
+	// Application specific logging, throwing an error, or other logic here
+	// We ensure that the server does not exit on unhandled rejections
+});
+
+process.on('uncaughtException', (reason, promise) => {
+	console.log('Unhandled uncaught exception at:', promise, 'reason:', reason);
+	// Application specific logging, throwing an error, or other logic here
+	// We ensure that the server does not exit on unhandled rejections
+});
 
 app.listen(PORT, () =>
 	console.log(`Server listening on ${PORT}`)

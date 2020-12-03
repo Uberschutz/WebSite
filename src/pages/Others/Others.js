@@ -4,6 +4,9 @@ import {displayContent} from "../../utils/translationDisplay";
 import searching from '../../assets/fogg-searching.png';
 
 import ReactGA from 'react-ga';
+import Cookies from "universal-cookie/lib";
+
+const cookies = new Cookies();
 
 export default class Others extends Component {
 
@@ -16,7 +19,8 @@ export default class Others extends Component {
     }
 
     componentDidMount() {
-        if (process.env.REACT_APP_ANALYTICS === 'true') {
+        const cookieConsent = cookies.get('Universal-cookieAnalytics') || false;
+        if (process.env.REACT_APP_ANALYTICS === 'true' && cookieConsent) {
             ReactGA.pageview(window.location.pathname + window.location.search);
         }
         if (this.props.base) {

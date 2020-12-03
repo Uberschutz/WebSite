@@ -11,11 +11,14 @@ import Button from 'reactstrap/lib/Button';
 import Icon from 'antd/lib/icon/index';
 
 import ReactGA from 'react-ga';
+import Cookies from "universal-cookie/lib";
 
 import DisplayChildrenList from '../../components/ChildCards';
 import OptionsList from '../../components/OptionsList';
 import { displayContent } from '../../utils/translationDisplay';
 import Unauthorized from ".././Unauthorized";
+
+const cookies = new Cookies();
 
 class Parameters extends Component {
 	constructor(props) {
@@ -33,8 +36,8 @@ class Parameters extends Component {
 			numErr: false,
 			lang: 'fr',
 			logged: false,
-			token: '',
-			discordId: ''
+			discordId: '',
+			available_options: []
 		};
 
 		this.toggleOption = this.toggleOption.bind(this);
@@ -45,27 +48,21 @@ class Parameters extends Component {
 		this.setAge = this.setAge.bind(this);
 		this.setFirstName = this.setFirstName.bind(this);
 		this.setDiscordId = this.setDiscordId.bind(this);
-		this.options = [{name: 'Reports', enabled: false}, {name: 'Uberschutz', enabled: false}, {name: 'Alerts', enabled: false}, {name: 'Adds', enabled: false}];
 	}
 
 	componentDidMount() {
-		if (process.env.REACT_APP_ANALYTICS === 'true') {
+		const cookieConsent = cookies.get('Universal-cookieAnalytics') || false;
+		if (process.env.REACT_APP_ANALYTICS === 'true' && cookieConsent) {
 			ReactGA.pageview(window.location.pathname + window.location.search);
 		}
 		if (this.props.base) {
-			const { base: { language, logged, token } } = this.props;
+			const { base: { language, logged } } = this.props;
 				this.setState({
 					lang: language,
-					options: this.options,
 					logged: logged,
-					token
 				}, () => {
 					axios.post('/children', {
 						action: 'list'
-					}, {
-						headers: {
-							'x-access-token': this.state.token
-						}
 					}).then(response => {
 						console.log(response.data);
 						this.setState({
@@ -74,6 +71,10 @@ class Parameters extends Component {
 					}).catch(err => {
 						console.log(err);
 					});
+					axios.get('/options').then(response => {
+						const { options } = response.data;
+						this.setState({ options, available_options: options })
+					})
 				})
 		}
 	}
@@ -97,7 +98,7 @@ class Parameters extends Component {
 
 	toggleModal() {
 		if (this.state.showModal) {
-			this.setState({name: '', age: '', id: null, state: 'Create', alphaErr: false, numErr: false, options: this.options, discordId: ''},
+			this.setState({name: '', age: '', id: null, state: 'Create', alphaErr: false, numErr: false, options: this.state.available_options, discordId: ''},
 				() => this.setState({showModal: !this.state.showModal}));
 		} else {
 			this.setState({showModal: !this.state.showModal});
@@ -114,11 +115,7 @@ class Parameters extends Component {
 				name: this.state.name,
 				age: this.state.age,
 				options: this.state.options,
-				discordId: this.state.discordId
-			}, {
-				headers: {
-					'x-access-token': this.state.token
-				}
+				// discordId: this.state.discordId
 			}).then(response => {
 				console.log(response.data);
 				this.setState({childrens: response.data}, () => this.toggleModal());
@@ -132,11 +129,7 @@ class Parameters extends Component {
 				newName: this.state.name,
 				age: this.state.age,
 				options: this.state.options,
-				discordId: this.state.discordId
-			}, {
-				headers: {
-					'x-access-token': this.state.token
-				}
+				// discordId: this.state.discordId
 			}).then(response => {
 				console.log(response.data);
 				this.setState({childrens: response.data}, () => this.toggleModal());
@@ -153,7 +146,7 @@ class Parameters extends Component {
 			state: 'Save',
 			id: this.state.childrens.indexOf(children),
 			options: children.options,
-			discordId: children.discordId
+			// discordId: children.discordId
 		}, () => this.toggleModal());
 	}
 
@@ -161,10 +154,6 @@ class Parameters extends Component {
 		axios.post('/children', {
 			action: 'delete',
 			name: children.name
-		}, {
-			headers: {
-				'x-access-token': this.state.token
-			}
 		}).then(response => {
 			console.log(response.data);
 			this.setState({childrens: response.data});
@@ -240,12 +229,12 @@ class Parameters extends Component {
 								{
 									this.state.numErr? (<Alert color="danger">{displayContent(this.state.lang, 8, 'parameters')}</Alert>) : null
 								}
-								<label className="child-field">
+								{/*<label className="child-field">
 									Discord ID (Bêta)<br/>
 									<input className="child-field" type="text"
 										   value={this.state.discordId}
 										   onChange={this.setDiscordId}/>
-								</label>
+								</label>*/}
 								<br/> <br/>
 							</div>
 							<br/>

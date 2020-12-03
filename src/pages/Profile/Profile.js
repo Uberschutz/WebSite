@@ -20,6 +20,9 @@ import axios from 'axios';
 import fileDownload from "js-file-download";
 import Modal from "reactstrap/lib/Modal";
 
+import Cookies from "universal-cookie/lib";
+const cookies = new Cookies();
+
 class Profile extends Component {
 	constructor(props) {
 		super(props);
@@ -33,7 +36,6 @@ class Profile extends Component {
 			newsletter: false,
 			subscribed: false,
 			subscription: '',
-			token: null,
 			load: false,
 			newsletterAlert: '',
 			statusErr: false,
@@ -51,7 +53,10 @@ class Profile extends Component {
 			requestPasswordSent: false,
 			deleteModal: false,
 			emailError: '',
-			passwordError: ''
+			passwordError: '',
+			isNewEmail: false,
+			isNewPassword: false,
+			licenceModal: false
 		};
 		this._handleKeyPressed = this._handleKeyPressed.bind(this);
 		this.onChangeFirstname = this.onChangeFirstname.bind(this);
@@ -72,16 +77,19 @@ class Profile extends Component {
 		this.updateEmail = this.updateEmail.bind(this);
 		this.updatePassword = this.updatePassword.bind(this);
 		this.toggleModalDelete = this.toggleModalDelete.bind(this);
+		this.unsubscribe_licence = this.unsubscribe_licence.bind(this);
+		this.toggleModalLicence = this.toggleModalLicence.bind(this);
 	}
 
 	componentDidMount() {
-		if (process.env.REACT_APP_ANALYTICS === 'true') {
+		const cookieConsent = cookies.get('Universal-cookieAnalytics') || false;
+		if (process.env.REACT_APP_ANALYTICS === 'true' && cookieConsent) {
 			ReactGA.pageview(window.location.pathname + window.location.search);
 		}
 		if (this.props.base) {
-			const { base: { language, logged, token } } = this.props;
+			const { base: { language, logged } } = this.props;
 			this.setState({
-				logged, language, token
+				logged, language
 			}, this.getUser);
 		}
 	}
@@ -92,19 +100,16 @@ class Profile extends Component {
 	}
 
 	getUser() {
-		if (this.props.base && this.props.base.token) {
-			axios.get('/get_auth_user', {
-				headers: {
-					'x-access-token': this.props.base.token
-				}
-			}).then(response => {
+		if (this.props.base && this.props.base.logged) {
+			axios.get('/get_auth_user').then(response => {
 				if (response && response.data) {
 					this.setState({
 						firstname: response.data.firstname,
 						lastname: response.data.lastname,
 						email: response.data.email,
 						newsletter: response.data.newsletter,
-						subscription: response.data.subscription
+						subscription: response.data.subscription,
+						subscribed : !!response.data.subscription
 					});
 				}
 			}).catch(err => {
@@ -118,12 +123,8 @@ class Profile extends Component {
 			load: true
 		}, () => {
 				axios.post('/unsubscribe_newsletter', {
-			}, {
-				headers: {
-					'x-access-token': this.state.token
-				}
 			}).then(response => {
-				console.log(response.data);
+				// console.log(response.data);
 				this.setState({
 					newsletter: false,
 					load: false,
@@ -148,16 +149,25 @@ class Profile extends Component {
 		});
 	}
 
+	unsubscribe_licence() {
+		axios.post('/unsubscribe', {
+		}).then(response => {
+			this.setState({
+				subscribed: false,
+				licenceModal: false,
+				subscription: null
+			});
+		}).catch(err => {
+			console.log(err);
+		});
+	}
+
 	changeLastName() {
 		console.log("LastName: ", this.state.lastname);
 		if (this.state.lastname !== '' && this.state.lastname !== null) {
 			axios.post('/rename', {
 				key: 'lastname',
 				value: this.state.lastname
-			},{
-				headers: {
-					'x-access-token': this.state.token
-				}
 			}).then(response => {
 				//this.props.setUser(this.state.email, this.state.lastname, this.state.firstname, this.state.token);
 			}).catch(err => {
@@ -180,10 +190,6 @@ class Profile extends Component {
 			axios.post('/rename', {
 				key: 'firstname',
 				value: this.state.firstname
-			},{
-				headers: {
-					'x-access-token': this.state.token
-				}
 			}).then(response => {
 				//this.props.setUser(this.state.email, this.state.lastname, this.state.firstname, this.state.token);
 			}).catch(err => {
@@ -214,13 +220,9 @@ class Profile extends Component {
 	}
 
 	deleteAccount() {
-		axios.post('/delete_account', '',{
-			headers: {
-				'x-access-token': this.state.token
-			}
-		}).then(response => {
+		axios.post('/delete_account', '').then(response => {
 			this.props.setLogged(false);
-			this.props.setAuthToken(null);
+			// this.props.setAuthToken(null);
 			this.props.history.push("/");
 		}).catch(err => {
 			console.log(err, "Error");
@@ -229,9 +231,6 @@ class Profile extends Component {
 
 	getAccountData() {
 		axios.get('/gdpr', {
-			headers: {
-				'x-access-token': this.state.token
-			},
 			responseType: "blob"
 		}).then(response => {
 			try {
@@ -285,6 +284,15 @@ class Profile extends Component {
 		}
 	}
 
+	toggleModalLicence() {
+		if (this.state.licenceModal) {
+			this.setState({},
+				() => this.setState({licenceModal : !this.state.licenceModal}));
+		} else {
+			this.setState({licenceModal : !this.state.licenceModal});
+		}
+	}
+
 	onChangePassword(psswd) {
 		this.setState({
 			password: psswd.target.value,
@@ -332,14 +340,12 @@ class Profile extends Component {
 			this.setState({requestEmailSent: true});
 			axios.post('/change_email', {
 				email: this.state.email
-			}, {
-				headers: {
-					'x-access-token': this.state.token
-				}}).then(response => {
+			}).then(response => {
 					console.log(response.data);
 				this.setState({
 					requestEmailSent: false,
-					emailModal: false
+					emailModal: false,
+					isNewEmail : true
 				})
 			}).catch(err => {
 				console.log(err.response.data);
@@ -367,7 +373,7 @@ class Profile extends Component {
 	}
 
 	updatePassword() {
-		if (this.state.password.length < 8) {
+		if (this.state.newPassword.length < 8) {
 			this.setState({
 				badPassword: true,
 				passwordError: displayContent(this.state.lang, 1, 'error'),
@@ -379,15 +385,12 @@ class Profile extends Component {
 			axios.post('/change_password', {
 				passwd: this.state.password,
 				new_passwd: this.state.newPassword
-			}, {
-				headers: {
-					'x-access-token': this.state.token
-				}
 			}).then(response => {
 				console.log(response.data);
 				this.setState({
 					requestPasswordSent: false,
-					passwordModal: false
+					passwordModal: false,
+					isNewPassword : true
 				})
 			}).catch(err => {
 				console.log(err.response.data);
@@ -412,6 +415,60 @@ class Profile extends Component {
 				noneData: displayContent(this.state.lang, 2, 'error'),
 			})
 		}
+	}
+
+	emailAlert() {
+		if (this.state.isNewEmail && !this.state.requestEmailSent) {
+			setTimeout(() => {
+				this.setState({
+					isNewEmail: false
+				})
+			}, 1000 * 10)
+			return (
+				<div>
+					<Alert color="success">{displayContent(this.state.lang, 11, 'modifications')}</Alert>
+				</div>
+			)
+		} else if (!this.state.requestEmailSent && this.state.emailError) {
+			setTimeout(() => {
+				this.setState({
+					emailError: false,
+				})
+			}, 1000 * 10)
+			return (
+				<div>
+					<Alert color="danger">{displayContent(this.state.lang, 12, 'modifications')}</Alert>
+				</div>
+			)
+		} else
+			return null;
+	}
+
+	passwordAlert() {
+		if (this.state.isNewPassword && !this.state.requestPasswordSent) {
+			setTimeout(() => {
+				this.setState({
+					isNewPassword: false
+				})
+			}, 1000 * 10)
+			return (
+				<div>
+					<Alert color="success">{displayContent(this.state.lang, 13, 'modifications')}</Alert>
+				</div>
+			)
+		} else if (!this.state.requestPasswordSent && this.state.passwordError) {
+			setTimeout(() => {
+				this.setState({
+					passwordError: false,
+				})
+			}, 1000 * 10)
+			return (
+				<div>
+					<Alert color="danger">{displayContent(this.state.lang, 14, 'modifications')}</Alert>
+				</div>
+			)
+		} else
+			return null;
 	}
 
     render() {
@@ -445,11 +502,11 @@ class Profile extends Component {
 						{
 							this.state.noneDataBis !== '' ? <Alert color="danger" className="txt-align">{this.state.noneDataBis}</Alert> : null
 						}
-{/*						<h6>
+						<h6>
 							{displayContent(this.state.lang, i++, 'profile')}<br/><br/>
 							{displayContent(this.state.lang, i++, 'profile')}
-							<span>{this.state.subscription}</span>
-						</h6>*/}
+							<span>{this.state.subscribed ? this.state.subscription : null}</span>
+						</h6>
 						{
 							++i && this.state.newsletter ?
 								<div>
@@ -466,9 +523,53 @@ class Profile extends Component {
 									}
 								</div> : null
 						}
-						{/*<h6>
+						{
+							this.state.subscribed ?
+								<div>
+									<h6 className="right-btn">
+										Licence : <button className="btn btn-danger btn-sm" onClick={this.toggleModalLicence}>Se désinscrire</button>
+									</h6>
+								</div> : null
+						}
+						<Modal isOpen={this.state.licenceModal} size="lg" toggle={this.toggleModalLicence} centered={true}>
+							<ModalHeader>Êtes-vous sûre de vouloir supprimer votre licence ?</ModalHeader>
+							<ModalBody centered={true} className="txt-align">
+								<button className="btn btn-primary options-margin" onClick={this.unsubscribe_licence}>Oui</button>
+								<button className="btn btn-danger options-margin" onClick={this.toggleModalLicence}>Non</button>
+							</ModalBody>
+						</Modal>
+						<h6>
 							{displayContent(this.state.lang, i++, 'profile')}
-						</h6><br/>*/}
+						</h6><br/>
+						<table className="table">
+							<thead className="table-primary">
+							<tr>
+								<th scope="col">Date</th>
+								<th scope="col">{displayContent(this.state.lang, i++, 'profile')}</th>
+								<th scope="col">{displayContent(this.state.lang, i++, 'profile')}</th>
+							</tr>
+							</thead>
+							<tbody>
+							<tr>
+								<th scope="row">22/05/2019</th>
+								<td>Achat d'Überschutz Premium</td>
+								<td>
+									<Icon type="check-circle" theme="twoTone"
+										  twoToneColor="#52c41a"/>
+								</td>
+							</tr>
+							<tr>
+								<th scope="row">25/05/2019</th>
+								<td>Prélèvement n°1 Überschutz Premium</td>
+								<td>En cours ...</td>
+							</tr>
+							<tr>
+								<th scope="row">25/06/2019</th>
+								<td>Prélèvement n°2 Überschutz Premium</td>
+								<td>Prochainement</td>
+							</tr>
+							</tbody>
+						</table>
 						<br/>
 					</div>
 					<button type="button" className="btn btn-outline-dark options-margin" onClick={this.toggleModalEmail}>{displayContent(this.state.lang, i++, 'profile')}</button>
@@ -494,6 +595,9 @@ class Profile extends Component {
 							<button className="btn btn-danger" onClick={this.toggleModalEmail}>{displayContent(this.state.lang, j++, 'modifications')}</button>
 						</ModalFooter>
 					</Modal>
+					{
+						this.emailAlert()
+					}
 					<button type="button" className="btn btn-outline-dark options-margin" onClick={this.toggleModalPassword}>{displayContent(this.state.lang, i++, 'profile')}</button>
 					<Modal isOpen={this.state.passwordModal} size="lg" toggle={this.toggleModalPassword} centered={true}>
 						<ModalHeader>{displayContent(this.state.lang, j++, 'modifications')}</ModalHeader>
@@ -519,15 +623,18 @@ class Profile extends Component {
 							<button className="btn btn-danger" onClick={this.toggleModalPassword}>{displayContent(this.state.lang, j++, 'modifications')}</button>
 						</ModalFooter>
 					</Modal>
+					{
+						this.passwordAlert()
+					}
 				    <div className="row txt-align">
 						<button className="col-2 btn btn-primary options-margin" onClick={this.getAccountData}>{displayContent(this.state.lang, i++, 'profile')}</button>
-						<button className="col-2 btn btn-danger options-margin" onClick={this.toggleModalDelete}>{displayContent(this.state.lang, i, 'profile')}</button>
+						<button className="col-2 btn btn-danger options-margin" onClick={this.toggleModalDelete}>{displayContent(this.state.lang, i++, 'profile')}</button>
 						<Modal isOpen={this.state.deleteModal} size="lg" toggle={this.toggleModalDelete} centered={true}>
-							<ModalHeader>{displayContent(this.state.lang, i++, 'profile')}</ModalHeader>
+							<ModalHeader>{displayContent(this.state.lang, j++, 'profile')}</ModalHeader>
 							<ModalBody centered={true} className="txt-align">
-								<label className="col-form-label button-footerP txt-align">{displayContent(this.state.lang, i++, 'profile')}</label> <br/>
-								<button className="btn btn-primary options-margin" onClick={this.deleteAccount}>{displayContent(this.state.lang, i++, 'profile')}</button>
-								<button className="btn btn-danger options-margin" onClick={this.toggleModalDelete}>{displayContent(this.state.lang, i++, 'profile')}</button>
+								<label className="col-form-label button-footerP txt-align">{displayContent(this.state.lang, j++, 'profile')}</label> <br/>
+								<button className="btn btn-primary options-margin" onClick={this.deleteAccount}>{displayContent(this.state.lang, j++, 'profile')}</button>
+								<button className="btn btn-danger options-margin" onClick={this.toggleModalDelete}>{displayContent(this.state.lang, j++, 'profile')}</button>
 							</ModalBody>
 						</Modal>
 					</div>

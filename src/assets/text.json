@@ -64,9 +64,12 @@
         "Permet d'analyser votre navigation internet", "Avoir un compte-rendu de toxicité", "De gérer son compte", "GRATUIT", "Télécharger",
         "Logiciel", "Permet de gérer son compte sur un bureau de pc", "Avoir un compte-rendu de toxicité", "Possibilité d'achat", "Télécharger",
         "Licences",
-        "Licence Basique", "Basique :", "- 1 appareil protégé et analysé", "- convient à des familles qui ont 1 enfant à protéger", "- à partir de 20€", "Acheter",
-        "Licence Famille Plus", "Famille :", "- 3 appareils protégés et analysés", "- convient à des familles qui ont 1 ou 2 enfants à protéger", "- à partir de 35€", "Acheter",
-        "Licence Premium", "Premium :", "- 5 appareils protégés et analysés", "- convient à des familles qui ont plus de 2 enfants à protéger ", "- à partir de 50€", "Avantages ! ", "- Profitez de ... ", "Acheter"
+        "Licence Basique", "Basique :", "- 1 appareil protégé et analysé", "- convient à des familles qui ont 1 enfant à protéger", "- à partir de 10€", "Acheter",
+        "Licence Famille Plus", "Famille :", "- 3 appareils protégés et analysés", "- convient à des familles qui ont 1 ou 2 enfants à protéger", "- à partir de 20€", "Acheter",
+        "Licence Premium", "Premium :", "- 5 appareils protégés et analysés", "- convient à des familles qui ont plus de 2 enfants à protéger ", "- à partir de 35€", "Avantages ! ", "- Profitez de ... ", "Acheter"
+      ],
+      "payement": [
+        "Récapitulatif de votre commande", "Panier", "Payer"
       ],
       "profile": [
         "Nom de famille : ", "Prénom : ", "Se désinscrire",
@@ -76,7 +79,9 @@
       ],
       "modifications": [
         "Modifier mon adresse email", "Nouvelle adresse email :", "Confirmer la nouvelle adresse email :", "Valider", "Annuler",
-        "Modifier mon mot de passe", "Ancien mot de passe :", "Nouveau mot de passe :", "Confirmer le nouveau mot de passe :", "Valider", "Annuler"
+        "Modifier mon mot de passe", "Ancien mot de passe :", "Nouveau mot de passe :", "Confirmer le nouveau mot de passe :", "Valider", "Annuler",
+        "Changement d'adresse email confirmé. Un email va vous être envoyé", "Un problème est survenu lors de votre modification d'adresse email.",
+        "Changement de mot de passe confirmé. Un email va vous être envoyé", "Un problème est survenu lors de votre modification de mot de passe"
       ],
       "report": [
         "Enfants",
@@ -90,7 +95,7 @@
         "Prénom", "Annuler","Prénom invalide", "Supprimer", "Éditer", "Nouveau", "Créer", "Sauvegarder", "Age invalide"
       ],
       "options": [
-        "Rapports", "Uberschutz", "Alertes", "Publicités"
+        "Rapports", "Uberschutz", "Alertes", "Publicités", "Images"
       ],
       "confirm": [
         "Votre compte a bien été confirmé !", " Merci !",
@@ -105,6 +110,9 @@
       ],
       "inComing": [
         "A venir ..."
+      ],
+      "forgetPassword" : [
+        "Mot de passe oublié", "Complétez le formulaire pour en recevoir un nouveau :", "Envoyer"
       ],
       "others": [
         "Nos autres services",
@@ -239,6 +247,10 @@
           {
             "key": "Unauthorized request",
             "translate": "Requête non autorisée"
+          },
+          {
+            "key": "Connection failed",
+            "translate": "Connexion échouée"
           }
         ]
       },
@@ -325,9 +337,12 @@
         "Allows you to analyze your internet browsing", "Have a toxicity report", "Manage your account", "FREE", "Download",
         "Software", "Allows you to manage your account on a pc desktop", "Have a toxicity report", "Purchase possibility", "Download",
         "Licenses",
-        "Basic License", "Basic:", "- 1 protected and analyzed device", "- suitable for families with 1 child to protect", "- from 20 €", "Buy",
-        "Family Plus License", "Family:", "- 3 protected and analyzed devices", "- suitable for families with 1 or 2 children to protect", "- from 35 €", "Buy",
-        "Premium License", "Premium:", "- 5 protected and analyzed devices", "- suitable for families with more than 2 children to protect", "- from 50 €", "Advantages!", " - Take advantage of ... "," Buy "
+        "Basic License", "Basic:", "- 1 protected and analyzed device", "- suitable for families with 1 child to protect", "- from 10 €", "Buy",
+        "Family Plus License", "Family:", "- 3 protected and analyzed devices", "- suitable for families with 1 or 2 children to protect", "- from 20 €", "Buy",
+        "Premium License", "Premium:", "- 5 protected and analyzed devices", "- suitable for families with more than 2 children to protect", "- from 35 €", "Advantages!", " - Take advantage of ... "," Buy "
+      ],
+      "payement": [
+        "Summary of your order", "Shopping cart", "Buy"
       ],
       "profile": [
         "Last name: ", "First name: ", "Unsubscribe",
@@ -337,7 +352,9 @@
       ],
       "modifications": [
         "Change my email address", "New email address:", "Confirm new email address:", "Validate", "Cancel",
-        "Change my password", "Old password:", "New password:", "Confirm new password:", "Validate", "Cancel"
+        "Change my password", "Old password:", "New password:", "Confirm new password:", "Validate", "Cancel",
+        "Email address change confirmed. An email will be sent to you", "A problem occurred while changing your email address.",
+        "Password change confirmed. An email will be sent to you", "A problem occurred while changing your password"
       ],
       "report": [
         "Kids",
@@ -351,7 +368,7 @@
         "Name", "Cancel","Invalid Name", "Delete", "Edit", "New", "Create", "Save", "Invalid Age"
       ],
       "options": [
-        "Reports", "Uberschutz", "Alerts", "Adds"
+        "Reports", "Uberschutz", "Alerts", "Ads", "Images"
       ],
       "confirm": [
         "Your account has been confirmed!", "Thank you!",
@@ -366,6 +383,9 @@
       ],
       "inComing": [
         "In coming ..."
+      ],
+      "forgetPassword" : [
+        "Forgot your password", "Complete the form to receive a new one:", "Send"
       ],
       "others": [
         "Our other services",

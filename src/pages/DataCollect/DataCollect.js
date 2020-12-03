@@ -2,7 +2,10 @@ import React, { Component } from "react";
 import {displayContent} from "../../utils/translationDisplay";
 
 import ReactGA from 'react-ga';
+import Cookies from "universal-cookie/lib";
+
 const Link = require("react-router-dom").Link;
+const cookies = new Cookies();
 
 export default class DataCollect extends Component {
 
@@ -15,7 +18,8 @@ export default class DataCollect extends Component {
     }
 
     componentDidMount() {
-        if (process.env.REACT_APP_ANALYTICS === 'true') {
+        const cookieConsent = cookies.get('Universal-cookieAnalytics') || false;
+        if (process.env.REACT_APP_ANALYTICS === 'true' && cookieConsent) {
             ReactGA.pageview(window.location.pathname + window.location.search);
         }
         if (this.props.base) {

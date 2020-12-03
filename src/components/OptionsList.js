@@ -32,16 +32,19 @@ export class Option extends Component {
 
 export default class OptionsList extends Component {
     render() {
-        return (
-            <div className={this.props.listClassName}>
-                {
-                    this.props.options.map((o, key) => {
-                        return (
-                            <Option className={this.props.optionClassName} index={key} key={key} option={o} toggleOption={this.props.toggleOption} value={this.props.translations[key]}/>
-                        )
-                    })
-                }
-            </div>
-        );
+        if (this.props.options) {
+            return (
+                <div className={this.props.listClassName}>
+                    {
+                        this.props.options.map((o, key) => {
+                            return (
+                                <Option className={this.props.optionClassName} index={key} key={key} option={o}
+                                        toggleOption={this.props.toggleOption} value={this.props.translations[key]}/>
+                            )
+                        })
+                    }
+                </div>
+            );
+        } return null;
     }
 }

@@ -8,8 +8,11 @@ import Alert from "reactstrap/lib/Alert";
 import loading from "../../assets/Spinner-1s-70px.gif";
 
 import ReactGA from 'react-ga';
+import GoogleLogin from "react-google-login";
+import Cookies from "universal-cookie/lib";
 
 const Link = require("react-router-dom").Link;
+const cookies = new Cookies();
 
 class Connection extends Component {
 	constructor(props) {
@@ -34,7 +37,8 @@ class Connection extends Component {
     }
 
 	componentDidMount() {
-		if (process.env.REACT_APP_ANALYTICS === 'true') {
+		const cookieConsent = cookies.get('Universal-cookieAnalytics') || false;
+		if (process.env.REACT_APP_ANALYTICS === 'true' && cookieConsent) {
 			ReactGA.pageview(window.location.pathname + window.location.search);
 		}
 		if (this.props.base) {
@@ -81,7 +85,7 @@ class Connection extends Component {
                 // console.log(response.data);
                 this.props.setLogged(true);
                 // this.props.setUser(this.state.email, response.data.lastname, response.data.firstname);
-                this.props.setAuthToken(response.data.token);
+                // this.props.setAuthToken(response.data.token);
                 // this.props.setNewsletter(response.data.newsletter);
                 this.props.history.push('/');
             }).catch(err => {
@@ -100,7 +104,24 @@ class Connection extends Component {
 		}
 	}
 
-    render() {
+	responseGoogle = response => {
+		// console.log(response);
+		console.log('connection in page');
+		const { tokenId, googleId } = response;
+		// console.log(tokenId, googleId);
+		axios.post('/google_sign_in', {
+			id_token: tokenId,
+			googleId
+		}).then(() => { this.props.setLogged(true); this.props.history.push('/')})
+			.catch(err => console.log(err));
+	};
+
+	errorGoogle = error => {
+		console.log(error);
+	};
+
+
+	render() {
 	    let i = 0;
         return (
             <div>
@@ -126,10 +147,24 @@ class Connection extends Component {
                             <input value={this.state.password} onChange={this.onChangePass} onKeyPress={this._handleKeyPressed} type="password" className="form-control" aria-label="Email"/>
                         </div>
                         <button onClick={this.connect} type="button" className="btn btn-primary">{displayContent(this.state.lang, i++, 'connexion')}</button> <br/>
+	                    <GoogleLogin
+		                    className="buttonAouth button-footer"
+		                    scope="profile email"
+		                    responseType="id_token "
+		                    clientId="751613885657-pcp17lkg86ki4l1bin3ngv90dv3q1goc.apps.googleusercontent.com"
+		                    buttonText="Signin with Google"
+		                    onSuccess={this.responseGoogle}
+		                    onFailure={this.errorGoogle}
+		                    prompt="select_account"
+	                    />
+	                    <br/>
                         {
                             this.state.requestSent ? <img src={loading} alt="loading"/>
                                 : null
                         }
+						<Link to='/forgetPassword'>
+							{displayContent(this.state.lang, 0, 'forgetPassword')} ?
+						</Link> <br/>
                     </div>
                 </div>
 	            {
