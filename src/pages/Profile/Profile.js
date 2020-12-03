@@ -373,7 +373,7 @@ class Profile extends Component {
 	}
 
 	updatePassword() {
-		if (this.state.password.length < 8) {
+		if (this.state.newPassword.length < 8) {
 			this.setState({
 				badPassword: true,
 				passwordError: displayContent(this.state.lang, 1, 'error'),

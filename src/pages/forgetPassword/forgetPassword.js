@@ -7,6 +7,8 @@ import axios from 'axios';
 import ReactGA from 'react-ga';
 import Cookies from "universal-cookie/lib";
 
+import loading from "../../assets/Spinner-1s-70px.gif";
+
 const cookies = new Cookies();
 
 export default class forgetPassword extends Component {
@@ -16,7 +18,8 @@ export default class forgetPassword extends Component {
 
         this.state = {
             lang: 'fr',
-            email: ''
+            email: '',
+            pending: false
         };
     }
 
@@ -51,11 +54,14 @@ export default class forgetPassword extends Component {
     }
 
     runForgotPassword = () => {
+        this.setState({pending: true});
         axios.post('/forgot_password', {
             email: this.state.email
         }).then(response => {
+            this.setState({pending: false});
             console.log('forgot password request successful');
         }).catch(err => {
+            this.setState({pending: false});
             console.log(err);
         })
     }
@@ -80,6 +86,10 @@ export default class forgetPassword extends Component {
                             <input value={this.state.email} onChange={this.onChangeEmail} onKeyPress={this._handleKeyPressed} type="text" className="form-control" aria-label="Email"/>
                         </div>
                         <button onClick={this.runForgotPassword} type="button" className="btn btn-primary button-footer">{displayContent(this.state.lang, i++, 'forgetPassword')}</button> <br/>
+                        {
+                            this.state.pending ? <img src={loading} alt="loading"/>
+                                : null
+                        }
                     </div>
                 </div>
             </div>
