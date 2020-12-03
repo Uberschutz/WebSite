@@ -101,6 +101,16 @@ exports[`Testing the Header component rendering render Header being logged in en
               Contact + FAQ
             </a>
           </li>
+          <li
+            class="nav-item nav-item"
+          >
+            <a
+              class="nav-link uber-color"
+              href="/Subscription"
+            >
+              Subscription
+            </a>
+          </li>
         </ul>
       </div>
       <div
@@ -252,6 +262,16 @@ exports[`Testing the Header component rendering render Header being logged in fr
               href="/Contact+FAQ"
             >
               Contact + FAQ
+            </a>
+          </li>
+          <li
+            class="nav-item nav-item"
+          >
+            <a
+              class="nav-link uber-color"
+              href="/Subscription"
+            >
+              Abonnements
             </a>
           </li>
         </ul>
@@ -407,6 +427,16 @@ exports[`Testing the Header component rendering render Header not being logged i
               Contact + FAQ
             </a>
           </li>
+          <li
+            class="nav-item nav-item"
+          >
+            <a
+              class="nav-link uber-color"
+              href="/Subscription"
+            >
+              Subscription
+            </a>
+          </li>
         </ul>
       </div>
       <div
@@ -560,6 +590,16 @@ exports[`Testing the Header component rendering render Header not being logged i
               Contact + FAQ
             </a>
           </li>
+          <li
+            class="nav-item nav-item"
+          >
+            <a
+              class="nav-link uber-color"
+              href="/Subscription"
+            >
+              Abonnements
+            </a>
+          </li>
         </ul>
       </div>
       <div
@@ -711,6 +751,16 @@ exports[`Testing the Header component rendering renders Header without crashing 
               href="/Contact+FAQ"
             >
               Contact + FAQ
+            </a>
+          </li>
+          <li
+            class="nav-item nav-item"
+          >
+            <a
+              class="nav-link uber-color"
+              href="/Subscription"
+            >
+              Abonnements
             </a>
           </li>
         </ul>

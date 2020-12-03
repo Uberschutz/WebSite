@@ -104,6 +104,16 @@ exports[`Testing the whole app rendering renders whole application without crash
                 Contact + FAQ
               </a>
             </li>
+            <li
+              class="nav-item nav-item"
+            >
+              <a
+                class="nav-link uber-color"
+                href="/Subscription"
+              >
+                Abonnements
+              </a>
+            </li>
           </ul>
         </div>
         <div
