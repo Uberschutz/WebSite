@@ -503,7 +503,7 @@ class Profile extends Component {
 							this.state.noneDataBis !== '' ? <Alert color="danger" className="txt-align">{this.state.noneDataBis}</Alert> : null
 						}
 						<h6>
-							{displayContent(this.state.lang, i++, 'profile')}<br/><br/>
+							{/*{displayContent(this.state.lang, i++, 'profile')}<br/><br/>*/}
 							{displayContent(this.state.lang, i++, 'profile')}
 							<span>{this.state.subscribed ? this.state.subscription : null}</span>
 						</h6>

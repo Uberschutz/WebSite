@@ -64,9 +64,6 @@ exports[`Testing the Profile page rendering renders Profile being logged in engl
         <br />
       </div>
       <h6>
-        Enfants protégés par Überschutz : X 
-        <br />
-        <br />
         Abonnement utilisé : 
         <span />
       </h6>
@@ -165,9 +162,6 @@ exports[`Testing the Profile page rendering renders Profile being logged in fren
         <br />
       </div>
       <h6>
-        Enfants protégés par Überschutz : X 
-        <br />
-        <br />
         Abonnement utilisé : 
         <span />
       </h6>

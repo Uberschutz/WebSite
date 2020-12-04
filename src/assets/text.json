@@ -72,7 +72,7 @@
         "Récapitulatif de votre commande", "Panier", "Payer"
       ],
       "profile": [
-        "Nom de famille : ", "Prénom : ", "Enfants protégés par Überschutz : X ", "Abonnement utilisé : ", "Se désinscrire",
+        "Nom de famille : ", "Prénom : ", "Abonnement utilisé : ", "Se désinscrire",
         "Modifier mon adresse email", "Modifier mon mot de passe",
         "Récupérer mes informations", "Supprimer mon compte",
         "Êtes-vous sûr de vouloir supprimer votre compte ?", "Oui", "Non"
@@ -345,7 +345,7 @@
         "Summary of your order", "Shopping cart", "Buy"
       ],
       "profile": [
-        "Last name: ", "First name: ", "Child protected by Überschutz : X ", "Subscription used : ", "Unsubscribe", "Payment schedule : ",
+        "Last name: ", "First name: ", "Subscription used : ", "Unsubscribe", "Payment schedule : ",
         "Levy's name : ", "Payed ?",
         "Change my email address", "Change my password",
         "Recover my information", "Delete my account",
